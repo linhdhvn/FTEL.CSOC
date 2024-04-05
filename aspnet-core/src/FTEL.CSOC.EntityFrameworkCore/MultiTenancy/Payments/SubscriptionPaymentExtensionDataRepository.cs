@@ -8,7 +8,7 @@ namespace FTEL.CSOC.MultiTenancy.Payments
     public class SubscriptionPaymentExtensionDataRepository : CSOCRepositoryBase<SubscriptionPaymentExtensionData, long>,
         ISubscriptionPaymentExtensionDataRepository
     {
-        public SubscriptionPaymentExtensionDataRepository(IDbContextProvider<CSOCDbContext> dbContextProvider) : base(dbContextProvider)
+        public SubscriptionPaymentExtensionDataRepository(IDbContextProvider<AppDbContext> dbContextProvider) : base(dbContextProvider)
         {
         }
 

@@ -23,14 +23,9 @@ using FTEL.CSOC.Authorization.Users.Delegation.Dto;
 using FTEL.CSOC.Authorization.Users.Dto;
 using FTEL.CSOC.Authorization.Users.Importing.Dto;
 using FTEL.CSOC.Authorization.Users.Profile.Dto;
-using FTEL.CSOC.Chat;
-using FTEL.CSOC.Chat.Dto;
 using FTEL.CSOC.DynamicEntityProperties.Dto;
 using FTEL.CSOC.Editions;
 using FTEL.CSOC.Editions.Dto;
-using FTEL.CSOC.Friendships;
-using FTEL.CSOC.Friendships.Cache;
-using FTEL.CSOC.Friendships.Dto;
 using FTEL.CSOC.Localization.Dto;
 using FTEL.CSOC.MultiTenancy;
 using FTEL.CSOC.MultiTenancy.Dto;
@@ -62,10 +57,6 @@ namespace FTEL.CSOC
             configuration.CreateMap<LocalizableComboboxItem, LocalizableComboboxItemDto>();
             configuration.CreateMap<ILocalizableComboboxItem, LocalizableComboboxItemDto>()
                 .Include<LocalizableComboboxItem, LocalizableComboboxItemDto>();
-
-            //Chat
-            configuration.CreateMap<ChatMessage, ChatMessageDto>();
-            configuration.CreateMap<ChatMessage, ChatMessageExportDto>();
 
             //Feature
             configuration.CreateMap<FlatFeatureSelectDto, Feature>().ReverseMap();
@@ -122,7 +113,6 @@ namespace FTEL.CSOC
                 .ForMember(user => user.Password, options => options.Ignore());
             configuration.CreateMap<User, UserLoginInfoDto>();
             configuration.CreateMap<User, UserListDto>();
-            configuration.CreateMap<User, ChatUserDto>();
             configuration.CreateMap<User, OrganizationUnitUserListDto>();
             configuration.CreateMap<Role, OrganizationUnitRoleListDto>();
             configuration.CreateMap<CurrentUserProfileEditDto, User>().ReverseMap();
@@ -133,10 +123,6 @@ namespace FTEL.CSOC
             configuration.CreateMap<AuditLog, AuditLogListDto>();
             configuration.CreateMap<EntityChange, EntityChangeListDto>();
             configuration.CreateMap<EntityPropertyChange, EntityPropertyChangeDto>();
-
-            //Friendship
-            configuration.CreateMap<Friendship, FriendDto>();
-            configuration.CreateMap<FriendCacheItem, FriendDto>();
 
             //OrganizationUnit
             configuration.CreateMap<OrganizationUnit, OrganizationUnitDto>();

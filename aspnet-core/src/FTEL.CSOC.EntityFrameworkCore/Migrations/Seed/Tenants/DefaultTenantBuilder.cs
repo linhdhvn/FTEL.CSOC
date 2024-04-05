@@ -8,9 +8,9 @@ namespace FTEL.CSOC.Migrations.Seed.Tenants
 {
     public class DefaultTenantBuilder
     {
-        private readonly CSOCDbContext _context;
+        private readonly AppDbContext _context;
 
-        public DefaultTenantBuilder(CSOCDbContext context)
+        public DefaultTenantBuilder(AppDbContext context)
         {
             _context = context;
         }

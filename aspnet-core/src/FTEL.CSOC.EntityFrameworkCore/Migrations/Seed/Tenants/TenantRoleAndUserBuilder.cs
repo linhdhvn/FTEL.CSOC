@@ -18,10 +18,10 @@ namespace FTEL.CSOC.Migrations.Seed.Tenants
 {
     public class TenantRoleAndUserBuilder
     {
-        private readonly CSOCDbContext _context;
+        private readonly AppDbContext _context;
         private readonly int _tenantId;
 
-        public TenantRoleAndUserBuilder(CSOCDbContext context, int tenantId)
+        public TenantRoleAndUserBuilder(AppDbContext context, int tenantId)
         {
             _context = context;
             _tenantId = tenantId;

@@ -10,7 +10,7 @@ namespace FTEL.CSOC.Migrations.Seed.Host
     {
         public static List<ApplicationLanguage> InitialLanguages => GetInitialLanguages();
 
-        private readonly CSOCDbContext _context;
+        private readonly AppDbContext _context;
 
         private static List<ApplicationLanguage> GetInitialLanguages()
         {
@@ -22,7 +22,7 @@ namespace FTEL.CSOC.Migrations.Seed.Host
             };
         }
 
-        public DefaultLanguagesCreator(CSOCDbContext context)
+        public DefaultLanguagesCreator(AppDbContext context)
         {
             _context = context;
         }

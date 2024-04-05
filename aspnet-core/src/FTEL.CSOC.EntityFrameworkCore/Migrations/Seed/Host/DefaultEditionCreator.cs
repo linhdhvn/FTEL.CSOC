@@ -9,9 +9,9 @@ namespace FTEL.CSOC.Migrations.Seed.Host
 {
     public class DefaultEditionCreator
     {
-        private readonly CSOCDbContext _context;
+        private readonly AppDbContext _context;
 
-        public DefaultEditionCreator(CSOCDbContext context)
+        public DefaultEditionCreator(AppDbContext context)
         {
             _context = context;
         }

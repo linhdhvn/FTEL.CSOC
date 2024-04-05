@@ -22,10 +22,8 @@ using FTEL.CSOC.Configure;
 using FTEL.CSOC.EntityFrameworkCore;
 using FTEL.CSOC.Identity;
 using FTEL.CSOC.Schemas;
-using FTEL.CSOC.Web.Chat.SignalR;
 using FTEL.CSOC.Web.Common;
 using FTEL.CSOC.Web.Resources;
-using Swashbuckle.AspNetCore.Swagger;
 using FTEL.CSOC.Web.IdentityServer;
 using FTEL.CSOC.Web.Swagger;
 using Stripe;
@@ -34,24 +32,16 @@ using Abp.AspNetCore.Configuration;
 using Abp.AspNetCore.Mvc.Antiforgery;
 using Abp.AspNetCore.Mvc.Caching;
 using Abp.AspNetCore.Mvc.Extensions;
-using Abp.IdentityServer4vNext;
-using HealthChecks.UI;
 using HealthChecks.UI.Client;
 using HealthChecksUISettings = HealthChecks.UI.Configuration.Settings;
-using IdentityServer4.AspNetIdentity;
 using IdentityServer4.Configuration;
-using IdentityServer4.Services;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using FTEL.CSOC.Web.HealthCheck;
 using Owl.reCAPTCHA;
 using Microsoft.AspNetCore.Server.Kestrel.Https;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using FTEL.CSOC.Web.Extensions;
 using FTEL.CSOC.Web.MultiTenancy;
 using SecurityStampValidatorCallback = FTEL.CSOC.Identity.SecurityStampValidatorCallback;
@@ -128,7 +118,7 @@ namespace FTEL.CSOC.Web.Startup
                 {
                     config.UseSqlServerStorage(_appConfiguration.GetConnectionString("Default"));
                 });
-                
+
                 services.AddHangfireServer();
             }
 
@@ -199,9 +189,9 @@ namespace FTEL.CSOC.Web.Startup
 
             if (CSOCConsts.PreventNotExistingTenantSubdomains)
             {
-                app.UseMiddleware<DomainTenantCheckMiddleware>();    
+                app.UseMiddleware<DomainTenantCheckMiddleware>();
             }
-            
+
             app.UseRouting();
 
             app.UseAuthentication();
@@ -256,7 +246,6 @@ namespace FTEL.CSOC.Web.Startup
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHub<AbpCommonHub>("/signalr");
-                endpoints.MapHub<ChatHub>("/signalr-chat");
 
                 endpoints.MapControllerRoute("defaultWithArea", "{area}/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
@@ -317,7 +306,7 @@ namespace FTEL.CSOC.Web.Startup
         {
             services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc("v1", new OpenApiInfo() {Title = "CSOC API", Version = "v1"});
+                options.SwaggerDoc("v1", new OpenApiInfo() { Title = "CSOC API", Version = "v1" });
                 options.DocInclusionPredicate((docName, description) => true);
                 options.ParameterFilter<SwaggerEnumParameterFilter>();
                 options.SchemaFilter<SwaggerEnumSchemaFilter>();

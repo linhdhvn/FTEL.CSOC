@@ -15,10 +15,10 @@ namespace FTEL.CSOC.Migrations.Seed
     {
         public static void SeedHostDb(IIocResolver iocResolver)
         {
-            WithDbContext<CSOCDbContext>(iocResolver, SeedHostDb);
+            WithDbContext<AppDbContext>(iocResolver, SeedHostDb);
         }
 
-        public static void SeedHostDb(CSOCDbContext context)
+        public static void SeedHostDb(AppDbContext context)
         {
             context.SuppressAutoSetTenantId = true;
 

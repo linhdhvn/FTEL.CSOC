@@ -15,21 +15,21 @@ namespace FTEL.CSOC.Test.Base.DependencyInjection
         {
             RegisterIdentity(iocManager);
 
-            var builder = new DbContextOptionsBuilder<CSOCDbContext>();
+            var builder = new DbContextOptionsBuilder<AppDbContext>();
 
             var inMemorySqlite = new SqliteConnection("Data Source=:memory:");
             builder.UseSqlite(inMemorySqlite);
 
             iocManager.IocContainer.Register(
                 Component
-                    .For<DbContextOptions<CSOCDbContext>>()
+                    .For<DbContextOptions<AppDbContext>>()
                     .Instance(builder.Options)
                     .LifestyleSingleton()
             );
 
             inMemorySqlite.Open();
 
-            new CSOCDbContext(builder.Options).Database.EnsureCreated();
+            new AppDbContext(builder.Options).Database.EnsureCreated();
         }
 
         private static void RegisterIdentity(IIocManager iocManager)

@@ -15,10 +15,10 @@ namespace FTEL.CSOC.Test.Base.TestData
      */
     public class TestOrganizationUnitsBuilder
     {
-        private readonly CSOCDbContext _context;
+        private readonly AppDbContext _context;
         private readonly int _tenantId;
 
-        public TestOrganizationUnitsBuilder(CSOCDbContext context, int tenantId)
+        public TestOrganizationUnitsBuilder(AppDbContext context, int tenantId)
         {
             _context = context;
             _tenantId = tenantId;

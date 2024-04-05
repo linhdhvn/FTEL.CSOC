@@ -32,7 +32,7 @@ namespace FTEL.CSOC.Install
     [DisableAuditing]
     public class InstallAppService : CSOCAppServiceBase, IInstallAppService
     {
-        private readonly AbpZeroDbMigrator<CSOCDbContext> _migrator;
+        private readonly AbpZeroDbMigrator<AppDbContext> _migrator;
         private readonly LogInManager _logInManager;
         private readonly SignInManager _signInManager;
         private readonly DatabaseCheckHelper _databaseCheckHelper;

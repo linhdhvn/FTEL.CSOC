@@ -11,11 +11,11 @@ namespace FTEL.CSOC.HealthChecks
 {
     public class CSOCDbContextUsersHealthCheck : IHealthCheck
     {
-        private readonly IDbContextProvider<CSOCDbContext> _dbContextProvider;
+        private readonly IDbContextProvider<AppDbContext> _dbContextProvider;
         private readonly IUnitOfWorkManager _unitOfWorkManager;
 
         public CSOCDbContextUsersHealthCheck(
-            IDbContextProvider<CSOCDbContext> dbContextProvider,
+            IDbContextProvider<AppDbContext> dbContextProvider,
             IUnitOfWorkManager unitOfWorkManager
             )
         {

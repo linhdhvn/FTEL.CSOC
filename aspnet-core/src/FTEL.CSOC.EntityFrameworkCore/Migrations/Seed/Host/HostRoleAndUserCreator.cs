@@ -16,9 +16,9 @@ namespace FTEL.CSOC.Migrations.Seed.Host
 {
     public class HostRoleAndUserCreator
     {
-        private readonly CSOCDbContext _context;
+        private readonly AppDbContext _context;
 
-        public HostRoleAndUserCreator(CSOCDbContext context)
+        public HostRoleAndUserCreator(AppDbContext context)
         {
             _context = context;
         }

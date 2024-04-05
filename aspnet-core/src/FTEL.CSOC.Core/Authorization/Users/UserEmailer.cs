@@ -9,7 +9,6 @@ using Abp.Domain.Uow;
 using Abp.Extensions;
 using Abp.Localization;
 using Abp.Net.Mail;
-using FTEL.CSOC.Chat;
 using FTEL.CSOC.Editions;
 using FTEL.CSOC.Localization;
 using FTEL.CSOC.MultiTenancy;
@@ -189,32 +188,6 @@ namespace FTEL.CSOC.Authorization.Users
 
             await ReplaceBodyAndSendAsync(user.EmailAddress, L("PasswordResetEmail_Subject"), emailTemplate,
                 mailMessage);
-        }
-
-        public async Task TryToSendChatMessageMail(User user, string senderUsername, string senderTenancyName,
-            ChatMessage chatMessage)
-        {
-            try
-            {
-                var emailTemplate = GetTitleAndSubTitle(user.TenantId, L("NewChatMessageEmail_Title"),
-                    L("NewChatMessageEmail_SubTitle"));
-                var mailMessage = new StringBuilder();
-
-                mailMessage.AppendLine("<b>" + L("Sender") + "</b>: " + senderTenancyName + "/" + senderUsername +
-                                       "<br />");
-                mailMessage.AppendLine("<b>" + L("Time") + "</b>: " +
-                                       chatMessage.CreationTime.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss") +
-                                       " UTC<br />");
-                mailMessage.AppendLine("<b>" + L("Message") + "</b>: " + chatMessage.Message + "<br />");
-                mailMessage.AppendLine("<br />");
-
-                await ReplaceBodyAndSendAsync(user.EmailAddress, L("NewChatMessageEmail_Subject"), emailTemplate,
-                    mailMessage);
-            }
-            catch (Exception exception)
-            {
-                Logger.Error(exception.Message, exception);
-            }
         }
 
         public async Task TryToSendSubscriptionExpireEmail(int tenantId, DateTime utcNow)

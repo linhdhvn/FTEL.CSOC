@@ -7,10 +7,10 @@ namespace FTEL.CSOC.Test.Base.TestData
 {
     public class TestSubscriptionPaymentBuilder
     {
-        private readonly CSOCDbContext _context;
+        private readonly AppDbContext _context;
         private readonly int _tenantId;
 
-        public TestSubscriptionPaymentBuilder(CSOCDbContext context, int tenantId)
+        public TestSubscriptionPaymentBuilder(AppDbContext context, int tenantId)
         {
             _context = context;
             _tenantId = tenantId;

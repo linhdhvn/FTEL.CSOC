@@ -32,7 +32,7 @@
         "wwwroot/Common/Scripts/passwordComplexityHelper.js",
         "wwwroot/Common/Scripts/ResourceLoader.js",
         "wwwroot/Common/Scripts/utils.js",
-        "wwwroot/Common/Scripts/main-customize.js"        
+        "wwwroot/Common/Scripts/main-customize.js"
       ]
     },
     {

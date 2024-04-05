@@ -34,14 +34,11 @@ using FTEL.CSOC.Authorization.Delegation;
 using FTEL.CSOC.Authorization.Ldap;
 using FTEL.CSOC.Authorization.Roles;
 using FTEL.CSOC.Authorization.Users;
-using FTEL.CSOC.Chat;
 using FTEL.CSOC.Configuration;
 using FTEL.CSOC.DashboardCustomization.Definitions;
 using FTEL.CSOC.Debugging;
 using FTEL.CSOC.DynamicEntityProperties;
 using FTEL.CSOC.Features;
-using FTEL.CSOC.Friendships;
-using FTEL.CSOC.Friendships.Cache;
 using FTEL.CSOC.Localization;
 using FTEL.CSOC.MultiTenancy;
 using FTEL.CSOC.Net.Emailing;
@@ -123,11 +120,6 @@ namespace FTEL.CSOC
                 );
             });
 
-            Configuration.Caching.Configure(FriendCacheItem.CacheName, cache =>
-            {
-                cache.DefaultSlidingExpireTime = TimeSpan.FromMinutes(30);
-            });
-
             IocManager.Register<DashboardConfiguration>();
             
             Configuration.Notifications.Notifiers.Add<SmsRealTimeNotifier>();
@@ -142,10 +134,8 @@ namespace FTEL.CSOC
 
         public override void PostInitialize()
         {
-            IocManager.RegisterIfNot<IChatCommunicator, NullChatCommunicator>();
             IocManager.Register<IUserDelegationConfiguration, UserDelegationConfiguration>();
 
-            IocManager.Resolve<ChatUserStateWatcher>().Initialize();
             IocManager.Resolve<AppTimes>().StartupTime = Clock.Now;
         }
     }

@@ -12,9 +12,7 @@ using Microsoft.Extensions.Configuration;
 using FTEL.CSOC.Authorization;
 using FTEL.CSOC.Authorization.Roles;
 using FTEL.CSOC.Authorization.Users;
-using FTEL.CSOC.Chat;
 using FTEL.CSOC.Configuration;
-using FTEL.CSOC.Friendships;
 using FTEL.CSOC.Storage;
 
 namespace FTEL.CSOC.MultiTenancy.Demo
@@ -39,8 +37,6 @@ namespace FTEL.CSOC.MultiTenancy.Demo
         private readonly RandomUserGenerator _randomUserGenerator;
         private readonly IBinaryObjectManager _binaryObjectManager;
         private readonly IAppFolders _appFolders;
-        private readonly IFriendshipManager _friendshipManager;
-        private readonly IRepository<ChatMessage, long> _chatMessageRepository;
         private readonly IConfigurationRoot _appConfiguration;
 
         public TenantDemoDataBuilder(
@@ -49,8 +45,6 @@ namespace FTEL.CSOC.MultiTenancy.Demo
             RandomUserGenerator randomUserGenerator,
             IBinaryObjectManager binaryObjectManager,
             IAppFolders appFolders,
-            IFriendshipManager friendshipManager,
-            IRepository<ChatMessage, long> chatMessageRepository,
             IAppConfigurationAccessor configurationAccessor)
         {
             _organizationUnitManager = organizationUnitManager;
@@ -58,8 +52,6 @@ namespace FTEL.CSOC.MultiTenancy.Demo
             _randomUserGenerator = randomUserGenerator;
             _binaryObjectManager = binaryObjectManager;
             _appFolders = appFolders;
-            _friendshipManager = friendshipManager;
-            _chatMessageRepository = chatMessageRepository;
 
             _appConfiguration = configurationAccessor.Configuration;
         }
@@ -138,57 +130,8 @@ namespace FTEL.CSOC.MultiTenancy.Demo
             var admin = await _userManager.GetAdminAsync();
             await SetRandomProfilePictureAsync(admin);
 
-            //Create Friendships
-            var friends = RandomHelper.GenerateRandomizedList(users).Take(3).ToList();
-            foreach (var friend in friends)
-            {
-                await _friendshipManager.CreateFriendshipAsync(
-                    new Friendship(
-                        admin.ToUserIdentifier(),
-                        friend.ToUserIdentifier(),
-                        tenant.TenancyName,
-                        friend.UserName,
-                        friend.ProfilePictureId,
-                        FriendshipState.Accepted)
-                );
+   
 
-                await _friendshipManager.CreateFriendshipAsync(
-                    new Friendship(
-                        friend.ToUserIdentifier(),
-                        admin.ToUserIdentifier(),
-                        tenant.TenancyName,
-                        admin.UserName,
-                        admin.ProfilePictureId,
-                        FriendshipState.Accepted)
-                );
-            }
-
-            //Create chat message
-            var friendWithMessage = RandomHelper.GenerateRandomizedList(friends).First();
-            var sharedMessageId = Guid.NewGuid();
-            await _chatMessageRepository.InsertAndGetIdAsync(
-                new ChatMessage(
-                    friendWithMessage.ToUserIdentifier(),
-                    admin.ToUserIdentifier(),
-                    ChatSide.Sender,
-                    L("Demo_SampleChatMessage"),
-                    ChatMessageReadState.Read,
-                    sharedMessageId,
-                    ChatMessageReadState.Unread
-                )
-            );
-
-            await _chatMessageRepository.InsertAndGetIdAsync(
-                new ChatMessage(
-                    admin.ToUserIdentifier(),
-                    friendWithMessage.ToUserIdentifier(),
-                    ChatSide.Receiver,
-                    L("Demo_SampleChatMessage"),
-                    ChatMessageReadState.Unread,
-                    sharedMessageId,
-                    ChatMessageReadState.Read
-                )
-            );
         }
 
         private async Task EnableIsNewRegisteredUserActiveByDefaultAsync(Tenant tenant)

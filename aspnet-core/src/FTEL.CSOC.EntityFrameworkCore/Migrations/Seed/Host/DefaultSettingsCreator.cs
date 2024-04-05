@@ -10,9 +10,9 @@ namespace FTEL.CSOC.Migrations.Seed.Host
 {
     public class DefaultSettingsCreator
     {
-        private readonly CSOCDbContext _context;
+        private readonly AppDbContext _context;
 
-        public DefaultSettingsCreator(CSOCDbContext context)
+        public DefaultSettingsCreator(AppDbContext context)
         {
             _context = context;
         }

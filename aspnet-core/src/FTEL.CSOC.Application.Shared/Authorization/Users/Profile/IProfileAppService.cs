@@ -25,8 +25,6 @@ namespace FTEL.CSOC.Authorization.Users.Profile
         
         Task<GetProfilePictureOutput> GetProfilePictureByUserName(string username);
 
-        Task<GetProfilePictureOutput> GetFriendProfilePicture(GetFriendProfilePictureInput input);
-
         Task ChangeLanguage(ChangeUserLanguageDto input);
         Task SendVerificationSms(SendVerificationSmsInputDto input);
 

@@ -22,7 +22,6 @@ using FTEL.CSOC.Authorization;
 using FTEL.CSOC.Configuration;
 using FTEL.CSOC.EntityFrameworkCore;
 using FTEL.CSOC.Identity;
-using FTEL.CSOC.Web.Chat.SignalR;
 using FTEL.CSOC.Web.Common;
 using Swashbuckle.AspNetCore.Swagger;
 using FTEL.CSOC.Web.IdentityServer;
@@ -250,7 +249,6 @@ namespace FTEL.CSOC.Web.Startup
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHub<AbpCommonHub>("/signalr");
-                endpoints.MapHub<ChatHub>("/signalr-chat");
 
                 endpoints.MapControllerRoute("defaultWithArea", "{area}/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");

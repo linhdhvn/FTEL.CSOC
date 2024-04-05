@@ -5,7 +5,7 @@ using Abp.Zero.EntityFrameworkCore;
 
 namespace FTEL.CSOC.EntityFrameworkCore
 {
-    public class AbpZeroDbMigrator : AbpZeroDbMigrator<CSOCDbContext>
+    public class AbpZeroDbMigrator : AbpZeroDbMigrator<AppDbContext>
     {
         public AbpZeroDbMigrator(
             IUnitOfWorkManager unitOfWorkManager,

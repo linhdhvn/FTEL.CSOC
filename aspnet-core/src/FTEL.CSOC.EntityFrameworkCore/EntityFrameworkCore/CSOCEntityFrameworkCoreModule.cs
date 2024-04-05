@@ -1,12 +1,10 @@
-﻿using Abp;
-using Abp.Dependency;
+﻿using Abp.Dependency;
 using Abp.EntityFrameworkCore.Configuration;
 using Abp.IdentityServer4vNext;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Abp.Zero.EntityFrameworkCore;
 using FTEL.CSOC.Configuration;
-using FTEL.CSOC.EntityHistory;
 using FTEL.CSOC.Migrations.Seed;
 
 namespace FTEL.CSOC.EntityFrameworkCore
@@ -27,15 +25,15 @@ namespace FTEL.CSOC.EntityFrameworkCore
         {
             if (!SkipDbContextRegistration)
             {
-                Configuration.Modules.AbpEfCore().AddDbContext<CSOCDbContext>(options =>
+                Configuration.Modules.AbpEfCore().AddDbContext<AppDbContext>(options =>
                 {
                     if (options.ExistingConnection != null)
                     {
-                        CSOCDbContextConfigurer.Configure(options.DbContextOptions, options.ExistingConnection);
+                        DbContextConfigurer.Configure(options.DbContextOptions, options.ExistingConnection);
                     }
                     else
                     {
-                        CSOCDbContextConfigurer.Configure(options.DbContextOptions, options.ConnectionString);
+                        DbContextConfigurer.Configure(options.DbContextOptions, options.ConnectionString);
                     }
                 });
             }

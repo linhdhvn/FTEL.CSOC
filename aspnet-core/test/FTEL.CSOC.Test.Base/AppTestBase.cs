@@ -23,7 +23,7 @@ namespace FTEL.CSOC.Test.Base
     /// This is base class for all our test classes.
     /// It prepares ABP system, modules and a fake, in-memory database.
     /// Seeds database with initial data.
-    /// Provides methods to easily work with <see cref="CSOCDbContext"/>.
+    /// Provides methods to easily work with <see cref="AppDbContext"/>.
     /// </summary>
     public abstract class AppTestBase<T> : AbpIntegratedTestBase<T> where T : AbpModule
     {
@@ -35,7 +35,7 @@ namespace FTEL.CSOC.Test.Base
 
         private void SeedTestData()
         {
-            void NormalizeDbContext(CSOCDbContext context)
+            void NormalizeDbContext(AppDbContext context)
             {
                 context.EntityChangeEventHelper = NullEntityChangeEventHelper.Instance;
                 context.EventBus = NullEventBus.Instance;
@@ -59,31 +59,31 @@ namespace FTEL.CSOC.Test.Base
             return new DisposeAction(() => AbpSession.TenantId = previousTenantId);
         }
 
-        protected void UsingDbContext(Action<CSOCDbContext> action)
+        protected void UsingDbContext(Action<AppDbContext> action)
         {
             UsingDbContext(AbpSession.TenantId, action);
         }
 
-        protected Task UsingDbContextAsync(Func<CSOCDbContext, Task> action)
+        protected Task UsingDbContextAsync(Func<AppDbContext, Task> action)
         {
             return UsingDbContextAsync(AbpSession.TenantId, action);
         }
 
-        protected TResult UsingDbContext<TResult>(Func<CSOCDbContext, TResult> func)
+        protected TResult UsingDbContext<TResult>(Func<AppDbContext, TResult> func)
         {
             return UsingDbContext(AbpSession.TenantId, func);
         }
 
-        protected Task<TResult> UsingDbContextAsync<TResult>(Func<CSOCDbContext, Task<TResult>> func)
+        protected Task<TResult> UsingDbContextAsync<TResult>(Func<AppDbContext, Task<TResult>> func)
         {
             return UsingDbContextAsync(AbpSession.TenantId, func);
         }
 
-        protected void UsingDbContext(int? tenantId, Action<CSOCDbContext> action)
+        protected void UsingDbContext(int? tenantId, Action<AppDbContext> action)
         {
             using (UsingTenantId(tenantId))
             {
-                using (var context = LocalIocManager.Resolve<CSOCDbContext>())
+                using (var context = LocalIocManager.Resolve<AppDbContext>())
                 {
                     action(context);
                     context.SaveChanges();
@@ -91,11 +91,11 @@ namespace FTEL.CSOC.Test.Base
             }
         }
 
-        protected async Task UsingDbContextAsync(int? tenantId, Func<CSOCDbContext, Task> action)
+        protected async Task UsingDbContextAsync(int? tenantId, Func<AppDbContext, Task> action)
         {
             using (UsingTenantId(tenantId))
             {
-                using (var context = LocalIocManager.Resolve<CSOCDbContext>())
+                using (var context = LocalIocManager.Resolve<AppDbContext>())
                 {
                     await action(context);
                     await context.SaveChangesAsync();
@@ -103,13 +103,13 @@ namespace FTEL.CSOC.Test.Base
             }
         }
 
-        protected TResult UsingDbContext<TResult>(int? tenantId, Func<CSOCDbContext, TResult> func)
+        protected TResult UsingDbContext<TResult>(int? tenantId, Func<AppDbContext, TResult> func)
         {
             TResult result;
 
             using (UsingTenantId(tenantId))
             {
-                using (var context = LocalIocManager.Resolve<CSOCDbContext>())
+                using (var context = LocalIocManager.Resolve<AppDbContext>())
                 {
                     result = func(context);
                     context.SaveChanges();
@@ -119,13 +119,13 @@ namespace FTEL.CSOC.Test.Base
             return result;
         }
 
-        protected async Task<TResult> UsingDbContextAsync<TResult>(int? tenantId, Func<CSOCDbContext, Task<TResult>> func)
+        protected async Task<TResult> UsingDbContextAsync<TResult>(int? tenantId, Func<AppDbContext, Task<TResult>> func)
         {
             TResult result;
 
             using (UsingTenantId(tenantId))
             {
-                using (var context = LocalIocManager.Resolve<CSOCDbContext>())
+                using (var context = LocalIocManager.Resolve<AppDbContext>())
                 {
                     result = await func(context);
                     await context.SaveChangesAsync();
