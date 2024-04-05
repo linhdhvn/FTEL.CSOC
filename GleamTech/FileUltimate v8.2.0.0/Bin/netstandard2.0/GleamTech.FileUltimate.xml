@@ -1,0 +1,2401 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GleamTech.FileUltimate</name>
+    </assembly>
+    <members>
+        <member name="T:GleamTech.FileUltimate.AspNet.FileUltimateWebConfiguration">
+            <summary>
+            Provides properties and methods for changing this library's configuration for web use.
+            </summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.FileUltimateWebConfiguration.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:GleamTech.FileUltimate.AspNet.FileUltimateWebConfiguration"/> class
+            </summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.FileUltimateWebConfiguration.#ctor(GleamTech.FileUltimate.FileUltimateConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GleamTech.FileUltimate.AspNet.FileUltimateWebConfiguration"/> class with custom configuration.
+            </summary>
+            <param name="configuration">The configuration to use instead of the global configuration.</param>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.FileUltimateWebConfiguration.FileManagerHandlerPath">
+            <summary>
+            Gets or sets a value that specifies the application-relative handler path for <see cref="T:GleamTech.FileUltimate.AspNet.UI.FileManagerHandler"/>.
+            The default is "filemanager.ashx".
+            <para>It is not recommended to change it unless you have a conflict in your web application.
+            This property will be effective only if it is changed before web application starts.</para>
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.FileUltimateWebConfiguration.FileUploaderHandlerPath">
+            <summary>
+            Gets or sets a value that specifies the application-relative handler path for <see cref="T:GleamTech.FileUltimate.AspNet.UI.FileUploaderHandler"/>.
+            The default is "fileuploader.ashx".
+            <para>It is not recommended to change it unless you have a conflict in your web application.
+            This property will be effective only if it is changed before web application starts.</para>
+            </summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.FileUltimateWebConfiguration.InitCurrent">
+            <summary>Initializes only the static Current instance.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.FileUltimateWebConfiguration.Current">
+            <summary>Gets current global configuration instance.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.FileUltimateWebConfiguration.AssemblyResourceStore">
+            <summary>Gets the assembly resource store for this library.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.FileUltimateWebConfiguration.CssBundle">
+            <summary>Gets the css bundle for this library which is used when rendering components.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.FileUltimateWebConfiguration.JsBundle">
+            <summary>Gets the js bundle for this library which is used when rendering components.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.FileUltimateWebConfiguration.AvailableDisplayCultures">
+            <summary>
+            Gets all available display cultures for the file manager. Cultures for both bundled and custom translation files will be returned.
+            </summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.NamespaceDoc">
+            <summary>
+            This is a sub-namespace of this library for web use, it extends the core namespace to support ASP.NET.
+            <para />
+            <para>The main classes in this namespace are:</para>
+            <list type="bullet">
+                <item><see cref="T:GleamTech.FileUltimate.AspNet.FileUltimateWebConfiguration"/> is the class for changing this library's configuration for web use.</item>
+            </list>
+            </summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.ByteSizeUnit">
+            <summary>Defines the units for <see cref="T:GleamTech.FileUltimate.AspNet.UI.ByteSizeValue"/>.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.ByteSizeUnit.Bytes">
+            <summary>Size is in bytes.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.ByteSizeUnit.KB">
+            <summary>Size is in kilobytes.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.ByteSizeUnit.MB">
+            <summary>Size is in megabytes.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.ByteSizeUnit.GB">
+            <summary>Size is in gigabytes.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.ByteSizeUnit.TB">
+            <summary>Size is in terabytes.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.ByteSizeValue">
+            <summary>Represents a byte size value that can be converted to and converted from string.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.ByteSizeValue.#ctor(System.Int64)">
+            <summary>Initializes a new instance of the <see cref="T:GleamTech.FileUltimate.AspNet.UI.ByteSizeValue"/> class with size in bytes.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.ByteSizeValue.#ctor(System.Int64,GleamTech.FileUltimate.AspNet.UI.ByteSizeUnit)">
+            <summary>Initializes a new instance of the <see cref="T:GleamTech.FileUltimate.AspNet.UI.ByteSizeValue"/> class with size and unit.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.ByteSizeValue.#ctor(System.Double,GleamTech.FileUltimate.AspNet.UI.ByteSizeUnit)">
+            <summary>Initializes a new instance of the <see cref="T:GleamTech.FileUltimate.AspNet.UI.ByteSizeValue"/> class with floating size and unit.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.ByteSizeValue.Size">
+            <summary>Gets the size.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.ByteSizeValue.Unit">
+            <summary>Gets the unit.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.ByteSizeValue.SizeInBytes">
+            <summary>Gets the size in bytes.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.ByteSizeValue.Parse(System.String)">
+            <summary>Converts the string representation of a byte size value to its <see cref="T:GleamTech.FileUltimate.AspNet.UI.ByteSizeValue"/> equivalent.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.ByteSizeValue.TryParse(System.String,GleamTech.FileUltimate.AspNet.UI.ByteSizeValue@)">
+            <summary>
+            Tries to convert the string representation of a byte size value to its <see cref="T:GleamTech.FileUltimate.AspNet.UI.ByteSizeValue"/> equivalent,
+            and returns a value that indicates whether the conversion succeeded.
+            </summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.ByteSizeValue.ToUnit(GleamTech.FileUltimate.AspNet.UI.ByteSizeUnit)">
+            <summary>Converts this instance to a new unit.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.ByteSizeValue.ToFileSize">
+            <summary>Converts this instance to a file size (mimics Win32 StrFormatByteSizeA function).</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.ByteSizeValue.ToString">
+            <summary>Converts this instance to a string representation with current culture.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.ByteSizeValue.ToInvariantString">
+            <summary>Converts this instance to a string representation with invariant culture.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.DefaultUploadProvider">
+            <summary>
+            The default provider for handling of uploads in <see cref="T:GleamTech.FileUltimate.AspNet.UI.FileUploader"/>.
+            </summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.DefaultUploadProvider.BeginQueue(GleamTech.FileUltimate.AspNet.UI.UploadQueue,System.Collections.Generic.IEnumerable{GleamTech.FileUltimate.AspNet.UI.UploadItem})">
+            <inheritdoc />
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.DefaultUploadProvider.BeginItem(GleamTech.FileUltimate.AspNet.UI.UploadItem)">
+            <inheritdoc />
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.DefaultUploadProvider.BeginItemChunk(GleamTech.FileUltimate.AspNet.UI.UploadItemChunk)">
+            <inheritdoc />
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.DefaultUploadProvider.EndItemChunk(GleamTech.FileUltimate.AspNet.UI.UploadItemChunk)">
+            <inheritdoc />
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.DefaultUploadProvider.EndItem(GleamTech.FileUltimate.AspNet.UI.UploadItem,System.Exception)">
+            <inheritdoc />
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.DefaultUploadProvider.EndQueue(GleamTech.FileUltimate.AspNet.UI.UploadQueue,System.Collections.Generic.IEnumerable{GleamTech.FileUltimate.AspNet.UI.UploadItem},System.Exception)">
+            <inheritdoc />
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.DefaultUploadProvider.GetFileSystem(GleamTech.FileUltimate.AspNet.UI.UploadQueue)">
+            <summary>Called when a file system is required.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.DefaultUploadProvider.OnItemError(GleamTech.FileUltimate.AspNet.UI.UploadItem,System.Exception,GleamTech.FileSystems.FileSystem)">
+            <summary>Called when an item fails.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.DefaultUploadProvider.GetChunkFileName(GleamTech.FileUltimate.AspNet.UI.UploadItem,System.Int32)">
+            <summary>Called when file name for a chunk is required.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManager">
+            <summary>
+            The component for browsing and managing files with access control.
+            </summary>
+            <example>
+            <code source="AspNetMvcCS\Views\FileUltimate\GettingStarted.cshtml" region="View" language="cs" />
+            <code source = "AspNetMvcVB\Views\FileUltimate\GettingStarted.vbhtml" region="View" language="vb" />
+            <para>Note that for ASP.NET Core, you also need to add and register GleamTech in <c>Startup.cs</c>, please see <conceptualLink target="using-fileultimate-in-an-asp-net-core-project" />.</para>
+            </example>
+            <conceptualLink target="using-fileultimate-in-an-asp-net-core-project" />
+            <conceptualLink target="using-fileultimate-in-an-asp-net-mvc-project" />
+            <conceptualLink target="using-fileultimate-in-an-asp-net-webforms-project" />
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManager.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:GleamTech.FileUltimate.AspNet.UI.FileManager"/> class.
+            </summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManager.#ctor(GleamTech.FileUltimate.AspNet.FileUltimateWebConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GleamTech.FileUltimate.AspNet.UI.FileManager"/> class with custom web configuration.
+            </summary>
+            <param name="webConfiguration">The web configuration to use instead of the global web configuration.</param>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.DisplayLanguage">
+            <summary>
+            Gets or sets the display (user interface) language of the file manager.
+            It is usually set as the two-letter language names like en, de, fr etc. as the bundled languages
+            are usually for general language names. However it can be also set to specific cultures like
+            en-US, de-DE, fr-FR etc. For example, if the property is set to a specific culture like
+            de-CH (German in Switzerland), the component will first look for the language file
+            FileUltimate-de-CH.xml and if the file is not found, it will load the general (fallback)
+            language file of that culture which is FileUltimate-de.xml.
+            If not set, the language file which matches the current UICulture of the host application will be loaded.
+            If there is no language file which matches the current UICulture or its fallback, then
+            the default language file FileUltimate.xml is loaded.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.FormatLanguage">
+            <summary>
+            Gets or sets the format language of the file manager.
+            Format language is used for the number and date/time formats.
+            It is usually set as the specific cultures like en-US, de-DE, fr-FR etc.
+            If not set, the current Culture of the host application will be used.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.RootFolders">
+            <summary>
+            Gets the collection of the root folders to display in the file manager.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.SortRootFolders">
+            <summary>
+            Gets or sets a value that specifies whether the root folders should be listed in alphabetically sorted order.
+            Default is false.
+            When not set, the root folders are listed in the original collection order.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.InitialFolder">
+            <summary>
+            Gets or sets the folder that should be selected and displayed initially.
+            Default is "first".
+            The value can be shortcuts like "first", "last" or the full path of the folder specified in format "[RootFolderName]:\Some\Folder".
+            When set to null or empty string, no folder will be selected and displayed initially.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.ShowRibbon">
+            <summary>
+            Gets or sets a value that specifies whether the ribbon (top toolbar pane) is displayed.
+            Default is true.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.CollapseRibbon">
+            <summary>
+            Gets or sets a value that specifies whether the ribbon (top toolbar pane) is displayed in collapsed mode.
+            Default is false.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.ShowFoldersPane">
+            <summary>
+            Gets or sets a value that specifies whether the folders pane (left pane) is displayed.
+            Default is true.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.ViewLayout">
+            <summary>
+            Gets or sets the initial view layout type for listing files and folders on the right pane.
+            Default is LargeIcons.
+            Possible values are ExtraLargeIcons, LargeIcons, MediumIcons, SmallIcons, Details and Tiles.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.CheckboxSelectionEnabled">
+            <summary>
+            Gets or sets a value that specifies whether "Item check boxes" mode should be forced regardless
+            of being detected as a touch device.
+            Default is false.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.DownloadOnDoubleClick">
+            <summary>
+            Gets or sets a value that specifies whether "Download" action should be triggered when you double-click on a file.
+            Default is false.
+            When not set, "Preview" action will be triggered and
+            if "Preview" permission is not allowed or the file type is not previewable by any of
+            the built-in viewers, then "Open" (open inline in browser or open locally) action will be triggered.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.ShowFileExtensions">
+            <summary>
+            Gets or sets a value that specifies whether the extension part of the file names should be be displayed.
+            Default is false.
+            When this set to true, the file extension will be also editable in dialog boxes
+            when user is prompted (eg. on Rename and Add to Zip actions).
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.ShowHiddenFilesAndFolders">
+            <summary>
+            Gets or sets a value that specifies whether hidden files and subfolders should be displayed. 
+            Default is false.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.ShowSystemFilesAndFolders">
+            <summary>
+            Gets or sets a value that specifies whether system files and subfolders should be displayed. 
+            Default is false.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.ShowSystemTypeDescriptions">
+            <summary>
+            Gets or sets a value that specifies whether file and folder type descriptions from the system's registry (eg. Microsoft Word Document) should be displayed. 
+            Default is false.
+            If set to false, then simple but current language dependant type descriptions (eg. DOC File) will be shown.
+            If registry access is not be possible, even if this property is enabled, simple type descriptions will be shown.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.ImageThumbnailsEnabled">
+            <summary>
+            Gets or sets a value that specifies whether thumbnails for image files should be displayed.
+            Default is true.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.VideoThumbnailsEnabled">
+            <summary>
+            Gets or sets a value that specifies whether thumbnails for video files should be displayed.
+            Default is true.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.ArchiveBrowsingEnabled">
+            <summary>
+            Gets or sets a value that specifies whether browsing inside archive files (.zip etc.) like
+            regular folders should be enabled.
+            Default is true.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.Chooser">
+            <summary>
+            Gets or sets a value that specifies whether the component should be displayed as a file/folder chooser.
+            Default is false.
+            In chooser mode, "Choose" and "Cancel" buttons will be displayed at the bottom of the component
+            and double-clicking on a item of allowed type will choose that item instead of doing the default
+            action (download/explore).
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.ChooserType">
+            <summary>
+            Gets or sets the item type that should be allowed to be chosen in chooser mode.
+            Default is File.
+            Possible values are File, Folder and FileOrFolder.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.ChooserMultipleSelection">
+            <summary>
+            Gets or sets a value that specifies whether multiple item selection should be allowed in chooser mode.
+            Default is false.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.UploadMethods">
+            <summary>
+            Gets or sets a comma separated upload methods in priority order.
+            The default value is "Html5, Silverlight, Flash, Html4".
+            It's not recommended to change this property as the default order offers the best upload experience. 
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.UploadMaxFileSize">
+            <summary>
+            Gets or sets the maximum allowed file size to upload.
+            If not set (null), there will be no size limit for upload.
+            0 (zero) also means unlimited.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.UploadChunkSize">
+            <inheritdoc cref="P:GleamTech.FileUltimate.AspNet.UI.FileUploader.ChunkSize" />
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.ExcludedExtensionsForPreview">
+            <summary>
+            Gets or sets a comma-separated file extensions (e.g. "docx, jpg, mp4") to exclude from previewing.
+            "Preview" action for these file extensions will be disabled.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.ImageViewerEnabled">
+            <summary>
+            Gets or sets a value that specifies whether viewer for image files should be enabled.
+            Default is true.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.MediaPlayerEnabled">
+            <summary>
+            Gets or sets a value that specifies whether player for video and audio files should be enabled.
+            Default is true.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.DocumentViewerEnabled">
+            <summary>
+            Gets or sets a value that specifies whether viewer for document files should be enabled.
+            Default is true.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.OpenInBrowserEnabled">
+            <summary>
+            Gets or sets a value that specifies whether opening files in browser should be enabled.
+            Default is true.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.DownloadWithChunkedTransferThreshold">
+            <summary>
+            Gets or sets the threshold to start using chunked downloading.
+            If not set (null), there will be no chunked downloading.
+            0 (zero) also means no chunked downloading.
+            <para>
+            This property is only useful if you have problems downloading large files due to your environment
+            limitations (reverse proxy etc.). For example, Microsoft Forefront UAG can not parse http responses
+            when content-length is larger than 2GB (throws HTTP 500 due to 32-bit integer limit).
+            By setting this property to 2GB, files up to 2GB will be sent with content-length set
+            (default download method) but files larger than 2GB will be sent without content-length
+            and with chunked-transfer encoding so that you can bypass UAG's limitation and successfully
+            download the files. The reason this setting is specified as a threshold is that default
+            download method (content-length set) is always better as it allows the browser to know
+            the whole file size thus show progress information. However with chunked-transfer encoding,
+            the browser will not know the whole file size so it will not be able to show progress information
+            but it will still be able to download the file as long as it receives the stream.
+            So users downloading files smaller than this threshold should not be punished with indeterminate
+            progress but also users downloading files larger than this threshold should still be able to
+            successfully download even there is no progress.
+            </para>
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.CompressionMaxSize">
+            <summary>
+            Gets or sets the maximum allowed size to compress (per action).
+            If not set (null), there will be no size limit for compression.
+            0 (zero) also means unlimited.
+            <para>
+            This property can be used to prevent users creating large zip files (or other compressed archive files in future)
+            which is CPU intensive. It can be set in &lt;Number&gt; B/KB/MB/GB/TB format (eg. 1024 or 1024 B, 200 KB, 30 MB, 5 GB, 1 TB).
+            Note that this value is the uncompressed size for the action because it's not possible to determine
+            the compressed size before actually doing the compression.
+            </para>
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManager.ClientEvents">
+            <summary>Gets or sets the client-side event handlers.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Failed">
+            <summary>Occurs when an action in file manager fails.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Expanding">
+            <summary>Occurs before user expands a folder in file manager.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Expanded">
+            <summary>Occurs after user expands a folder in file manager.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Listing">
+            <summary>Occurs before user lists a folder in file manager.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Listed">
+            <summary>Occurs after user lists a folder in file manager.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Creating">
+            <summary>Occurs before user creates a file or folder in file manager.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Created">
+            <summary>Occurs after user creates a file or folder in file manager.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Deleting">
+            <summary>Occurs before user deletes a file or folder in file manager.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Deleted">
+            <summary>Occurs after user deletes a file or folder in file manager.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Renaming">
+            <summary>Occurs before user renames a file or folder in file manager.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Renamed">
+            <summary>Occurs after user renames a file or folder in file manager.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Copying">
+            <summary>Occurs before user copies a file or folder in file manager.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Copied">
+            <summary>Occurs after user copies a file or folder in file manager.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Moving">
+            <summary>Occurs before user moves a file or folder in file manager.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Moved">
+            <summary>Occurs after user moves a file or folder in file manager.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Compressing">
+            <summary>Occurs before user compresses (zips) a file or folder in file manager.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Compressed">
+            <summary>Occurs after user compresses (zips) a file or folder in file manager.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Extracting">
+            <summary>Occurs before user extracts (unzips) a file or folder in file manager.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Extracted">
+            <summary>Occurs after user extracts (unzips) a file or folder in file manager.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Uploading">
+            <summary>Occurs before user uploads a file or folder in file manager.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Uploaded">
+            <summary>Occurs after user uploads a file or folder in file manager.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Downloading">
+            <summary>Occurs before user downloads a file or folder in file manager.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Downloaded">
+            <summary>Occurs after user downloads a file or folder in file manager.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Previewing">
+            <summary>Occurs before user previews a file or folder in file manager.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Previewed">
+            <summary>Occurs after user previews a file or folder in file manager.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManager.WriteProperties(GleamTech.AspNet.UI.PropertyWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManager.GetMetaTags">
+            <inheritdoc />
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManager.GetCssFileTags">
+            <inheritdoc />
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManager.GetJsFileTags">
+            <inheritdoc />
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl">
+            <summary>
+            Defines an access control for a folder inside a root folder.
+            </summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl.Root">
+            <summary>The path for root level.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl.Separator">
+            <summary>The path separator.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl.Path">
+            <summary>
+            Gets or sets the relative path of a root folder where this access control will be applied to.
+            For instance, to apply the access control to the root level, the value should be set to \.
+            To apply the access control to a subfolder named subfolder1, the value should be set to \subfolder1.
+            This property can not be empty and should start with backslash (\) or forward slash (/).
+            By default, a subfolder inherits from first parent with an access control unless there is an explicit
+            access control for that subfolder.
+            <para>You can also use these wildcards in a path:
+            <list type="bullet">
+            <item>The ? wildcard character matches a single character.</item>
+            <item>The * wildcard character matches zero or more characters.</item>
+            <item>The ** wildcard character sequence matches a partial path.</item>
+            </list>
+            </para>
+            For example, if you set Path="\**\*MatchMe*", this access control will appy to the folders containing
+            MatchMe keyword in name under both root folder and under root folder's all subfolders (recursive).
+            </summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl.CheckGetCollectionKey(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl.CheckSetCollectionKey(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl.AllowedPermissions">
+            <summary>
+            Gets or sets a value that specifies the allowed permissions for the access control.
+            The default is <see cref="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions.None"/>.
+            <para><see cref="P:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl.DeniedPermissions"/> take precedence over  <see cref="P:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl.AllowedPermissions"/>.
+            For instance, when <see cref="P:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl.AllowedPermissions"/> is set to <see cref="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions.Full"/>
+            and <see cref="P:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl.DeniedPermissions"/> is set to <see cref="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions.Download"/> and <see cref="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions.Upload"/>,
+            all permissions except Download and Upload will be allowed.</para>
+            <para>When combining permissions, they should be separated by comma in string and by bitwise 'or' operator
+            in code (| in C# and OR in VB).</para>
+            </summary>
+            <example>
+            <code source="LibraryCS\FileUltimate\FileManagerRootFolderExamples.cs" region="AccessControlPermissions" language="cs" />
+            <code source="LibraryVB\FileUltimate\FileManagerRootFolderExamples.vb" region="AccessControlPermissions" language="vb" />
+            <code source="AspNetWebFormsCS\FileUltimate\FileManagerRootFolderExamples.aspx" region="AccessControlPermissions" language="cs" />
+            <code source="AspNetWebFormsCS\FileUltimate\FileManagerRootFolderExamples.aspx" region="AccessControlPermissions" language="vb" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl.DeniedPermissions">
+            <summary>
+            Gets or sets a value that specifies the denied permissions for the access control.
+            The default is <see cref="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions.None"/>.
+            <para><see cref="P:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl.DeniedPermissions"/> take precedence over  <see cref="P:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl.AllowedPermissions"/>.
+            For instance, when <see cref="P:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl.AllowedPermissions"/> is set to <see cref="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions.Full"/>
+            and <see cref="P:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl.DeniedPermissions"/> is set to <see cref="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions.Download"/> and <see cref="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions.Upload"/>,
+            all permissions except Download and Upload will be allowed.</para>
+            <para>When combining permissions, they should be separated by comma in string and by bitwise 'or' operator
+            in code (| in C# and OR in VB).</para>
+            </summary>
+            <example>
+            <code source="LibraryCS\FileUltimate\FileManagerRootFolderExamples.cs" region="AccessControlPermissions" language="cs" />
+            <code source="LibraryVB\FileUltimate\FileManagerRootFolderExamples.vb" region="AccessControlPermissions" language="vb" />
+            <code source="AspNetWebFormsCS\FileUltimate\FileManagerRootFolderExamples.aspx" region="AccessControlPermissions" language="cs" />
+            <code source="AspNetWebFormsCS\FileUltimate\FileManagerRootFolderExamples.aspx" region="AccessControlPermissions" language="vb" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl.LimitDiskUsage">
+            <summary>
+            Gets or sets a value that specifies whether to override the quota setting of the parent folder,
+            i.e. when you need unlimited disk space in a subfolder of a parent folder with limited disk space.
+            When Quota property is set, LimitDiskUsage is set to true implicitly.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl.Quota">
+            <summary>
+            Gets or sets the quota limit. It can be set in &lt;Number&gt; B/KB/MB/GB/TB format
+            (eg. 1024 or 1024 B, 200 KB, 30 MB, 5 GB, 1 TB).
+            If omitted, the quota will be unlimited.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl.AllowedFileTypes">
+            <summary>
+            Gets or sets the file patterns that are allowed. This property restricts all actions (List, Delete,
+            Rename, Copy, Move, Extract, Compress, Download and Upload). This means only allowed file types will
+            be visible and manageable in the file list.
+            If not set, any file type is allowed ("*").
+            <para><see cref="P:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl.DeniedFileTypes"/> take precedence over  <see cref="P:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl.AllowedFileTypes"/>.
+            For instance, when <see cref="P:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl.AllowedFileTypes"/> is set to <c>"*.jpg|*.gif"</c>
+            and <see cref="P:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl.DeniedFileTypes"/> is set to <c>"*.gif"</c>,
+            only <c>"*.jpg"</c> will be allowed.</para>
+            <para>When combining patterns in string representation, they should be separated by vertical bar (|).</para>
+            <para>In a pattern, you can use these wildcards:
+            <list type="bullet">
+            <item>*	matches zero or more characters.</item>
+            <item>?	matches exactly one character.</item>
+            </list>
+            </para>
+            <para>Some pattern examples:
+            <list type="bullet">
+            <item>*.* matches files with any extension (does not match files without an extension)</item>
+            <item>*.jpg	matches files only with jpg extension</item>
+            <item>picture*.jpg	matches files only with jpg extension and which names start with 'picture'</item>
+            <item>picture.*	matches files with any extension and which names start with 'picture'</item>
+            <item>picture	matches files with no extension and which names are exactly 'picture'</item>
+            <item>*.jp*	matches files like 'picture.jpg', 'otherpicture.jpe', 'somepicture.jpeg' etc.</item>
+            <item>*.jp?	matches files like 'picture.jpg', 'otherpicture.jpe' etc.</item>
+            <item>picture?.jpg	matches files like 'picture1.jpg', 'picture2.jpg', 'pictures.jpg' etc.</item>
+            </list>
+            </para>
+            </summary>
+            <example>
+            <code source="LibraryCS\FileUltimate\FileManagerRootFolderExamples.cs" region="AccessControlFileTypes" language="cs" />
+            <code source="LibraryVB\FileUltimate\FileManagerRootFolderExamples.vb" region="AccessControlFileTypes" language="vb" />
+            <code source="AspNetWebFormsCS\FileUltimate\FileManagerRootFolderExamples.aspx" region="AccessControlFileTypes" language="cs" />
+            <code source="AspNetWebFormsCS\FileUltimate\FileManagerRootFolderExamples.aspx" region="AccessControlFileTypes" language="vb" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl.DeniedFileTypes">
+            <summary>
+            Gets or sets specifies the file patterns that are denied.
+            Denied patterns take precedence over allowed patterns.
+            This property restricts all actions (List, Delete,
+            Rename, Copy, Move, Extract, Compress, Download and Upload). This means only allowed file types will
+            be visible and manageable in the file list.
+            If not set, no file type is denied ("").
+            <para><see cref="P:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl.DeniedFileTypes"/> take precedence over  <see cref="P:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl.AllowedFileTypes"/>.
+            For instance, when <see cref="P:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl.AllowedFileTypes"/> is set to <c>"*.jpg|*.gif"</c>
+            and <see cref="P:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl.DeniedFileTypes"/> is set to <c>"*.gif"</c>,
+            only <c>"*.jpg"</c> will be allowed.</para>
+            <para>When combining patterns in string representation, they should be separated by vertical bar (|).</para>
+            <para>In a pattern, you can use these wildcards:
+            <list type="bullet">
+            <item>*	matches zero or more characters.</item>
+            <item>?	matches exactly one character.</item>
+            </list>
+            </para>
+            <para>Some pattern examples:
+            <list type="bullet">
+            <item>*.* matches files with any extension (does not match files without an extension)</item>
+            <item>*.jpg	matches files only with jpg extension</item>
+            <item>picture*.jpg	matches files only with jpg extension and which names start with 'picture'</item>
+            <item>picture.*	matches files with any extension and which names start with 'picture'</item>
+            <item>picture	matches files with no extension and which names are exactly 'picture'</item>
+            <item>*.jp*	matches files like 'picture.jpg', 'otherpicture.jpe', 'somepicture.jpeg' etc.</item>
+            <item>*.jp?	matches files like 'picture.jpg', 'otherpicture.jpe' etc.</item>
+            <item>picture?.jpg	matches files like 'picture1.jpg', 'picture2.jpg', 'pictures.jpg' etc.</item>
+            </list>
+            </para>
+            </summary>
+            <example>
+            <code source="LibraryCS\FileUltimate\FileManagerRootFolderExamples.cs" region="AccessControlFileTypes" language="cs" />
+            <code source="LibraryVB\FileUltimate\FileManagerRootFolderExamples.vb" region="AccessControlFileTypes" language="vb" />
+            <code source="AspNetWebFormsCS\FileUltimate\FileManagerRootFolderExamples.aspx" region="AccessControlFileTypes" language="cs" />
+            <code source="AspNetWebFormsCS\FileUltimate\FileManagerRootFolderExamples.aspx" region="AccessControlFileTypes" language="vb" />
+            </example>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerChooserType">
+            <summary>Defines the item types that should be allowed to be chosen in chooser mode.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileManagerChooserType.File">
+            <summary>Only file is allowed.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileManagerChooserType.Folder">
+            <summary>Only folder is allowed.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileManagerChooserType.FileOrFolder">
+            <summary>File or folder is allowed.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerClientEvents">
+            <summary>
+            Defines the client-side events handlers of FileManager.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerClientEvents.Loading">
+            <summary>
+            Gets or sets the client-side event raised before the file manager starts loading.
+            The value should be a valid JavaScript function name which is accessible on the host page. 
+            Function names should be specified without parentheses like "FunctionName" or "Namespace.FunctionName". 
+            </summary>
+            <example>
+            <para>Example function:</para>
+            <code source="LibraryCS\FileUltimate\FileManagerClientEvents.js" region="Loading" language="js" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerClientEvents.Loaded">
+            <summary>
+            Gets or sets the client-side event raised after the file manager has been loaded.
+            The value should be a valid JavaScript function name which is accessible on the host page. 
+            Function names should be specified without parentheses like "FunctionName" or "Namespace.FunctionName". 
+            </summary>
+            <example>
+            <para>Example function:</para>
+            <code source="LibraryCS\FileUltimate\FileManagerClientEvents.js" region="Loaded" language="js" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerClientEvents.Chosen">
+            <summary>
+            Gets or sets the client-side event raised after user chooses items in chooser mode.
+            The value should be a valid JavaScript function name which is accessible on the host page. 
+            Function names should be specified without parentheses like "FunctionName" or "Namespace.FunctionName". 
+            </summary>
+            <example>
+            <para>Example function:</para>
+            <code source="LibraryCS\FileUltimate\FileManagerClientEvents.js" region="Chosen" language="js" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerClientEvents.FolderChanged">
+            <summary>
+            Gets or sets the client-side event raised after user changes folder (navigates to a different folder).
+            The value should be a valid JavaScript function name which is accessible on the host page. 
+            Function names should be specified without parentheses like "FunctionName" or "Namespace.FunctionName". 
+            </summary>
+            <example>
+            <para>Example function:</para>
+            <code source="LibraryCS\FileUltimate\FileManagerClientEvents.js" region="FolderChanged" language="js" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerClientEvents.SelectionChanged">
+            <summary>
+            Gets or sets the client-side event raised after user selects or deselects items inside a folder.
+            The value should be a valid JavaScript function name which is accessible on the host page. 
+            Function names should be specified without parentheses like "FunctionName" or "Namespace.FunctionName". 
+            </summary>
+            <example>
+            <para>Example function:</para>
+            <code source="LibraryCS\FileUltimate\FileManagerClientEvents.js" region="SelectionChanged" language="js" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerClientEvents.Creating">
+            <summary>
+            Gets or sets the client-side event raised before user creates a file or folder in file manager.
+            The value should be a valid JavaScript function name which is accessible on the host page. 
+            Function names should be specified without parentheses like "FunctionName" or "Namespace.FunctionName". 
+            </summary>
+            <example>
+            <para>Example function:</para>
+            <code source="LibraryCS\FileUltimate\FileManagerClientEvents.js" region="Creating" language="js" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerClientEvents.Created">
+            <summary>
+            Gets or sets the client-side event raised after user creates a file or folder in file manager.
+            The value should be a valid JavaScript function name which is accessible on the host page. 
+            Function names should be specified without parentheses like "FunctionName" or "Namespace.FunctionName". 
+            </summary>
+            <example>
+            <para>Example function:</para>
+            <code source="LibraryCS\FileUltimate\FileManagerClientEvents.js" region="Created" language="js" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerClientEvents.Deleting">
+            <summary>
+            Gets or sets the client-side event raised before user deletes a file or folder in file manager.
+            The value should be a valid JavaScript function name which is accessible on the host page. 
+            Function names should be specified without parentheses like "FunctionName" or "Namespace.FunctionName". 
+            </summary>
+            <example>
+            <para>Example function:</para>
+            <code source="LibraryCS\FileUltimate\FileManagerClientEvents.js" region="Deleting" language="js" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerClientEvents.Deleted">
+            <summary>
+            Gets or sets the client-side event raised after user deletes a file or folder in file manager.
+            The value should be a valid JavaScript function name which is accessible on the host page. 
+            Function names should be specified without parentheses like "FunctionName" or "Namespace.FunctionName". 
+            </summary>
+            <example>
+            <para>Example function:</para>
+            <code source="LibraryCS\FileUltimate\FileManagerClientEvents.js" region="Deleted" language="js" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerClientEvents.Renaming">
+            <summary>
+            Gets or sets the client-side event raised before user renames a file or folder in file manager.
+            The value should be a valid JavaScript function name which is accessible on the host page. 
+            Function names should be specified without parentheses like "FunctionName" or "Namespace.FunctionName". 
+            </summary>
+            <example>
+            <para>Example function:</para>
+            <code source="LibraryCS\FileUltimate\FileManagerClientEvents.js" region="Renaming" language="js" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerClientEvents.Renamed">
+            <summary>
+            Gets or sets the client-side event raised after user renames a file or folder in file manager.
+            The value should be a valid JavaScript function name which is accessible on the host page. 
+            Function names should be specified without parentheses like "FunctionName" or "Namespace.FunctionName". 
+            </summary>
+            <example>
+            <para>Example function:</para>
+            <code source="LibraryCS\FileUltimate\FileManagerClientEvents.js" region="Renamed" language="js" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerClientEvents.Copying">
+            <summary>
+            Gets or sets the client-side event raised before user copies a file or folder in file manager.
+            The value should be a valid JavaScript function name which is accessible on the host page. 
+            Function names should be specified without parentheses like "FunctionName" or "Namespace.FunctionName". 
+            </summary>
+            <example>
+            <para>Example function:</para>
+            <code source="LibraryCS\FileUltimate\FileManagerClientEvents.js" region="Copying" language="js" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerClientEvents.Copied">
+            <summary>
+            Gets or sets the client-side event raised after user copies a file or folder in file manager.
+            The value should be a valid JavaScript function name which is accessible on the host page. 
+            Function names should be specified without parentheses like "FunctionName" or "Namespace.FunctionName". 
+            </summary>
+            <example>
+            <para>Example function:</para>
+            <code source="LibraryCS\FileUltimate\FileManagerClientEvents.js" region="Copied" language="js" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerClientEvents.Moving">
+            <summary>
+            Gets or sets the client-side event raised before user moves a file or folder in file manager.
+            The value should be a valid JavaScript function name which is accessible on the host page. 
+            Function names should be specified without parentheses like "FunctionName" or "Namespace.FunctionName". 
+            </summary>
+            <example>
+            <para>Example function:</para>
+            <code source="LibraryCS\FileUltimate\FileManagerClientEvents.js" region="Moving" language="js" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerClientEvents.Moved">
+            <summary>
+            Gets or sets the client-side event raised after user moves a file or folder in file manager.
+            The value should be a valid JavaScript function name which is accessible on the host page. 
+            Function names should be specified without parentheses like "FunctionName" or "Namespace.FunctionName". 
+            </summary>
+            <example>
+            <para>Example function:</para>
+            <code source="LibraryCS\FileUltimate\FileManagerClientEvents.js" region="Moved" language="js" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerClientEvents.Compressing">
+            <summary>
+            Gets or sets the client-side event raised before user compresses (zips) a file or folder in file manager.
+            The value should be a valid JavaScript function name which is accessible on the host page. 
+            Function names should be specified without parentheses like "FunctionName" or "Namespace.FunctionName". 
+            </summary>
+            <example>
+            <para>Example function:</para>
+            <code source="LibraryCS\FileUltimate\FileManagerClientEvents.js" region="Compressing" language="js" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerClientEvents.Compressed">
+            <summary>
+            Gets or sets the client-side event raised after user compresses (zips) a file or folder in file manager.
+            The value should be a valid JavaScript function name which is accessible on the host page. 
+            Function names should be specified without parentheses like "FunctionName" or "Namespace.FunctionName". 
+            </summary>
+            <example>
+            <para>Example function:</para>
+            <code source="LibraryCS\FileUltimate\FileManagerClientEvents.js" region="Compressed" language="js" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerClientEvents.Extracting">
+            <summary>
+            Gets or sets the client-side event raised before user extracts (unzips) a file or folder in file manager.
+            The value should be a valid JavaScript function name which is accessible on the host page. 
+            Function names should be specified without parentheses like "FunctionName" or "Namespace.FunctionName". 
+            </summary>
+            <example>
+            <para>Example function:</para>
+            <code source="LibraryCS\FileUltimate\FileManagerClientEvents.js" region="Extracting" language="js" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerClientEvents.Extracted">
+            <summary>
+            Gets or sets the client-side event raised after user extracts (unzips) a file or folder in file manager.
+            The value should be a valid JavaScript function name which is accessible on the host page. 
+            Function names should be specified without parentheses like "FunctionName" or "Namespace.FunctionName". 
+            </summary>
+            <example>
+            <para>Example function:</para>
+            <code source="LibraryCS\FileUltimate\FileManagerClientEvents.js" region="Extracted" language="js" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerClientEvents.Uploading">
+            <summary>
+            Gets or sets the client-side event raised before user uploads a file or folder in file manager.
+            The value should be a valid JavaScript function name which is accessible on the host page. 
+            Function names should be specified without parentheses like "FunctionName" or "Namespace.FunctionName". 
+            </summary>
+            <example>
+            <para>Example function:</para>
+            <code source="LibraryCS\FileUltimate\FileManagerClientEvents.js" region="Uploading" language="js" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerClientEvents.Uploaded">
+            <summary>
+            Gets or sets the client-side event raised after user uploads a file or folder in file manager.
+            The value should be a valid JavaScript function name which is accessible on the host page. 
+            Function names should be specified without parentheses like "FunctionName" or "Namespace.FunctionName". 
+            </summary>
+            <example>
+            <para>Example function:</para>
+            <code source="LibraryCS\FileUltimate\FileManagerClientEvents.js" region="Uploaded" language="js" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerClientEvents.Downloading">
+            <summary>
+            Gets or sets the client-side event raised before user downloads a file or folder in file manager.
+            The value should be a valid JavaScript function name which is accessible on the host page. 
+            Function names should be specified without parentheses like "FunctionName" or "Namespace.FunctionName". 
+            </summary>
+            <example>
+            <para>Example function:</para>
+            <code source="LibraryCS\FileUltimate\FileManagerClientEvents.js" region="Downloading" language="js" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerClientEvents.Previewing">
+            <summary>
+            Gets or sets the client-side event raised before user previews a file or folder in file manager.
+            The value should be a valid JavaScript function name which is accessible on the host page. 
+            Function names should be specified without parentheses like "FunctionName" or "Namespace.FunctionName". 
+            </summary>
+            <example>
+            <para>Example function:</para>
+            <code source="LibraryCS\FileUltimate\FileManagerClientEvents.js" region="Previewing" language="js" />
+            </example>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerCompressedEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Compressed" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerCompressedEventArgs.ItemNames">
+            <summary>Gets the item names related to the event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerCompressedEventArgs.ZipFileName">
+            <summary>Gets the zip file name related to the event.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerCompressingEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Compressing" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerCompressingEventArgs.ItemNames">
+            <summary>Gets the item names related to the event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerCompressingEventArgs.ZipFileName">
+            <summary>Gets the zip file name related to the event.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerCopiedEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Copied" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerCopiedEventArgs.TargetFolder">
+            <summary>Gets the target folder related to the event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerCopiedEventArgs.ItemNames">
+            <summary>Gets the item names related to the event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerCopiedEventArgs.TargetItemNames">
+            <summary>Gets the target item names related to the event.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerCopyingEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Copying" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerCopyingEventArgs.TargetFolder">
+            <summary>Gets the target folder related to the event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerCopyingEventArgs.ItemNames">
+            <summary>Gets the item names related to the event.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerCreatedEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Created" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerCreatedEventArgs.ItemName">
+            <summary>Gets the item name related to the event.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerCreatingEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Creating" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerCreatingEventArgs.ItemName">
+            <summary>Gets the item name related to the event.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerDeletedEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Deleted" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerDeletedEventArgs.ItemNames">
+            <summary>Gets the item names related to the event.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerDeletingEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Deleting" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerDeletingEventArgs.ItemNames">
+            <summary>Gets the item names related to the event.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerDownloadedEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Downloaded" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerDownloadedEventArgs.ItemNames">
+            <summary>Gets the item names related to the event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerDownloadedEventArgs.DownloadFileName">
+            <summary>Gets the download file name related to the event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerDownloadedEventArgs.OpenInBrowser">
+            <summary>Gets a value that indicates whether the download is opened in browser.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerDownloadedEventArgs.TotalDownloadedSize">
+            <summary>
+            Gets the total downloaded size for all items in the download action.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerDownloadedEventArgs.TotalDownloadedSizeAsString">
+            <summary>
+            Gets the string representation of <see cref="P:GleamTech.FileUltimate.AspNet.UI.FileManagerDownloadedEventArgs.TotalDownloadedSize"/> - the total downloaded size for all items in the download action.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerDownloadedEventArgs.ElapsedTime">
+            <summary>
+            Gets the elapsed time of the download action.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerDownloadedEventArgs.ElapsedTimeAsString">
+            <summary>
+            Gets the string representation of <see cref="P:GleamTech.FileUltimate.AspNet.UI.FileManagerDownloadedEventArgs.ElapsedTime"/> - the elapsed time of the download action.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerDownloadedEventArgs.TransferRate">
+            <summary>
+            Gets the transfer rate (bytes per second) of the download action.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerDownloadedEventArgs.TransferRateAsString">
+            <summary>
+            Gets the string representation of <see cref="P:GleamTech.FileUltimate.AspNet.UI.FileManagerDownloadedEventArgs.TransferRate"/> - the transfer rate of the download action.
+            </summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerDownloadingEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Downloading" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerDownloadingEventArgs.ItemNames">
+            <summary>Gets the item names related to the event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerDownloadingEventArgs.DownloadFileName">
+            <summary>Gets the download file name related to the event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerDownloadingEventArgs.OpenInBrowser">
+            <summary>Gets a value that indicates whether the download is opened in browser.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerException">
+            <summary>The exception that is thrown when there is an error in FileManager.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerException.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:GleamTech.FileUltimate.AspNet.UI.FileManagerException" /> class with a specified error message.</summary>
+            <param name="message">The error message that explains the reason for the exception. </param>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerException.#ctor(System.String,System.Exception)">
+            <summary>Initializes a new instance of the <see cref="T:GleamTech.FileUltimate.AspNet.UI.FileManagerException" /> class with a specified error message and a reference to the inner exception that is the cause of this exception.</summary>
+            <param name="message">The error message that explains the reason for the exception. </param>
+            <param name="innerException">The exception that is the cause of the current exception. If the <paramref name="innerException" /> parameter is not a null reference, the current exception is raised in a <see langword="catch" /> block that handles the inner exception.</param>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerExpandedEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Expanded" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerExpandedEventArgs.IsRefresh">
+            <summary>Gets a value that indicated if this action is a refresh.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerExpandingEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Expanding" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerExpandingEventArgs.IsRefresh">
+            <summary>Gets a value that indicated if this action is a refresh.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerExtractedEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Extracted" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerExtractedEventArgs.ArchiveFileName">
+            <summary>Gets the archive file name related to the event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerExtractedEventArgs.ToSubfolder">
+            <summary>Gets the target subfolder related to the event.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerExtractingEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Extracting" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerExtractingEventArgs.ArchiveFileName">
+            <summary>Gets the archive file name related to the event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerExtractingEventArgs.ToSubfolder">
+            <summary>Gets the target subfolder related to the event.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerFailedEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Failed" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerFailedEventArgs.Exception">
+            <summary>Gets the exception that caused the failed event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerFailedEventArgs.FailedActionInfo">
+            <summary>Gets the action info where the failure occurred.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerFailedEventArgs.Folder">
+            <summary>Gets the folder related to the event.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder">
+            <summary>
+            Defines a folder under a root folder for the file manager.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.Path">
+            <summary>Gets the path of the folder relative to the parent root folder.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.FullPath">
+            <summary>Gets the full path of the folder specified in format [RootFolderName]:\Some\Folder</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.RootName">
+            <summary>Gets the name of the parent root folder.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.IsRoot">
+            <summary>Gets a value indicating whether this folder is the root folder.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.GetFileSystem">
+            <summary>Gets file system for the folder.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.IsChildOfSameRootFolder(GleamTech.FileUltimate.AspNet.UI.FileManagerFolder)">
+            <summary>Returns a value indicating whether the specified folder is child of this folder's parent root folder.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.CheckPermissions(GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions)">
+            <summary>Checks if the specified permissions are allowed for this folder.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.DemandPermissions(GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions)">
+            <summary>Checks if the specified permissions are allowed for this folder and throws an exception if not.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.CheckPermissionsAny(GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions)">
+            <summary>Checks if any of the specified permissions are allowed for this folder.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.DemandPermissionsAny(GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions)">
+            <summary>Checks if any of the specified permissions are allowed for this folder and throws an exception if not.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.CheckDiscovery">
+            <summary>Checks if this folder is allowed to be discovered.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.DemandDiscovery">
+            <summary>Checks if this folder is allowed to be discovered and throws an exception if not.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.CheckCreation">
+            <summary>Checks if this folder is allowed to be created.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.DemandCreation">
+            <summary>Checks if this folder is allowed to be created, and throws an exception if not.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.CheckFolderDiscovery(System.String)">
+            <summary>Checks if the specified folder under this folder is allowed to be discovered.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.DemandFolderDiscovery(System.String)">
+            <summary>Checks if the specified folder under this folder is allowed to be discovered, and throws an exception if not.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.CheckFolderCreation(System.String)">
+            <summary>Checks if the specified folder under this folder is allowed to be created.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.DemandFolderCreation(System.String)">
+            <summary>Checks if the specified folder under this folder is allowed to be created, and throws an exception if not.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.CheckFileDiscovery(System.String)">
+            <summary>Checks if the specified file under this folder is allowed to be discovered.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.DemandFileDiscovery(System.String)">
+            <summary>Checks if the specified file under this folder is allowed to be discovered, and throws an exception if not.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.CheckFileCreation(System.String)">
+            <summary>Checks if the specified file under this folder is allowed to be created.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.DemandFileCreation(System.String)">
+            <summary>Checks if the specified file under this folder is allowed to be created, and throws an exception if not.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.DemandQuota(System.Int64,System.String)">
+            <summary>Checks if the specified file with size under this folder is allowed to be created, and throws an exception if not.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.DemandArchiveSize(System.Int64,GleamTech.FileUltimate.AspNet.UI.ByteSizeValue,System.String)">
+            <summary>Checks if the specified archive file with size under this folder is allowed to be created, and throws an exception if not.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.GetFolder(System.String)">
+            <summary>Gets a folder under this folder.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.GetParent">
+            <summary>Gets the parent of this folder. Returns null if this is the root folder.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.CalculateQuotaUsedSize(System.Boolean)">
+            <summary>Calculates used quota size for this folder.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.SetQuotaUsedSize(System.Int64)">
+            <summary>Sets used quota size for this folder if its known beforehand.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder.SharesQuota(GleamTech.FileUltimate.AspNet.UI.FileManagerFolder)">
+            <summary>Returns a value indicating whether the specified folder shares quota with this folder.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerListedEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Listed" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerListedEventArgs.IsRefresh">
+            <summary>Gets a value that indicated if this action is a refresh.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerListingEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Listing" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerListingEventArgs.IsRefresh">
+            <summary>Gets a value that indicated if this action is a refresh.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerMovedEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Moved" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerMovedEventArgs.TargetFolder">
+            <summary>Gets the target folder related to the event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerMovedEventArgs.ItemNames">
+            <summary>Gets the item names related to the event.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerMovingEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Moving" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerMovingEventArgs.TargetFolder">
+            <summary>Gets the target folder related to the event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerMovingEventArgs.ItemNames">
+            <summary>Gets the item names related to the event.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions">
+            <summary>Defines the file manager permissions.
+            <para>When combining permissions, they should be separated by comma in string and by bitwise 'or' operator
+            in code (| in C# and OR in VB).</para>
+            </summary>
+            <example>
+            <code source="LibraryCS\FileUltimate\FileManagerRootFolderExamples.cs" region="AccessControlPermissions" language="cs" />
+            <code source="LibraryVB\FileUltimate\FileManagerRootFolderExamples.vb" region="AccessControlPermissions" language="vb" />
+            <code source="AspNetWebFormsCS\FileUltimate\FileManagerRootFolderExamples.aspx" region="AccessControlPermissions" language="cs" />
+            <code source="AspNetWebFormsCS\FileUltimate\FileManagerRootFolderExamples.aspx" region="AccessControlPermissions" language="vb" />
+            </example>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions.None">
+            <summary>
+            None of the permissions (unset).
+            </summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions.ListSubfolders">
+            <summary>Ability to list subfolders.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions.ListFiles">
+            <summary>Ability to list files.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions.Create">
+            <summary>Ability to create files or subfolders.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions.Delete">
+            <summary>Ability to delete files or subfolders.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions.Rename">
+            <summary>Ability to rename files or subfolders.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions.Edit">
+            <summary>Ability to overwrite existing files.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions.Upload">
+            <summary>Ability to upload files or subfolders.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions.Download">
+            <summary>Ability to download files or subfolders.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions.Compress">
+            <summary>Ability to compress (zip) files or subfolders.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions.Extract">
+            <summary>Ability to extract archive files.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions.Cut">
+            <summary>Ability to cut files or subfolders.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions.Copy">
+            <summary>Ability to copy files or subfolders.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions.Paste">
+            <summary>Ability to paste files or subfolders.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions.Preview">
+            <summary>Ability to preview files with DocumentViewer, ImageViewer or MediaPlayer.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions.Print">
+            <summary>Ability to print documents (used by DocumentViewer).</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions.ReadOnly">
+            <summary>The read-only permissions combined.
+            </summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPermissions.Full">
+            <summary>All the permissions combined.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerPostEventArgs">
+            <summary>Provides data for the <see cref="T:GleamTech.FileUltimate.AspNet.UI.FileManager" /> post-events.</summary>
+            <tocexclude />
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerPostEventArgs.Folder">
+            <summary>Gets the folder related to the event.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerPreEventArgs">
+            <summary>Provides data for the <see cref="T:GleamTech.FileUltimate.AspNet.UI.FileManager" /> pre-events.</summary>
+            <tocexclude />
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerPreEventArgs.Folder">
+            <summary>Gets the folder related to the event.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerPreviewedEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Previewed" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerPreviewedEventArgs.ItemName">
+            <summary>Gets the item name related to the event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerPreviewedEventArgs.PreviewerType">
+            <summary>Gets the previewer type related to the event.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerPreviewerType">
+            <summary>Defines the previewer types used in the file manager.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPreviewerType.DocumentViewer">
+            <summary>The document viewer.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPreviewerType.MediaPlayer">
+            <summary>The media player.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileManagerPreviewerType.ImageViewer">
+            <summary>The image viewer.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerPreviewingEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Previewing" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerPreviewingEventArgs.ItemName">
+            <summary>Gets the item name related to the event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerPreviewingEventArgs.PreviewerType">
+            <summary>Gets the previewer type related to the event.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerRenamedEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Renamed" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerRenamedEventArgs.ItemName">
+            <summary>Gets the item name related to the event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerRenamedEventArgs.ItemNewName">
+            <summary>Gets the item new name related to the event.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerRenamingEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Renaming" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerRenamingEventArgs.ItemName">
+            <summary>Gets the item name related to the event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerRenamingEventArgs.ItemNewName">
+            <summary>Gets the item new name related to the event.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerRootFolder">
+            <summary>
+            Defines a root folder for the file manager.
+            </summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerRootFolder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:GleamTech.FileUltimate.AspNet.UI.FileManagerRootFolder"/> class.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerRootFolder.Name">
+            <summary>
+            Gets or sets the display name of the root folder.
+            This property can not be empty and can not contain the character sequence "]:" (right square bracket preceding colon).
+            </summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerRootFolder.CheckGetCollectionKey(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerRootFolder.CheckSetCollectionKey(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerRootFolder.AccessControls">
+            <summary>
+            Gets the collection of the access controls for this root folder.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerRootFolder.Location">
+            <summary>
+            Gets or sets the actual location of the root folder.
+            This property is required and can not be omitted.
+            The location can be a plain physical/virtual path string or
+            a <see cref="T:GleamTech.FileSystems.Location"/> instance for one of the supported file systems like Amazon S3 and Azure Blob.
+            </summary>
+            <example>
+            <para>Using physical/virtual path for root folder location:</para>
+            <code source="LibraryCS\FileUltimate\FileManagerRootFolderExamples.cs" region="RootFolderPhysicalLocation" language="cs" />
+            <code source="LibraryVB\FileUltimate\FileManagerRootFolderExamples.vb" region="RootFolderPhysicalLocation" language="vb" />
+            <para />
+            <para>Using Amazon S3 for root folder location:</para>
+            <code source="LibraryCS\FileUltimate\FileManagerRootFolderExamples.cs" region="RootFolderAmazonS3Location" language="cs" />
+            <code source="LibraryVB\FileUltimate\FileManagerRootFolderExamples.vb" region="RootFolderAmazonS3Location" language="vb" />
+            <para />
+            <para>Using Azure for root folder location:</para>
+            <code source="LibraryCS\FileUltimate\FileManagerRootFolderExamples.cs" region="RootFolderAzureBlobLocation" language="cs" />
+            <code source="LibraryVB\FileUltimate\FileManagerRootFolderExamples.vb" region="RootFolderAzureBlobLocation" language="vb" />
+            </example>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerRootFolder.GetFolder(System.String)">
+            <summary>
+            Gets a <see cref="T:GleamTech.FileUltimate.AspNet.UI.FileManagerFolder"/> instance corresponding to the given relative path under this root folder.
+            For getting the folder for the root folder itself, the parameter would be "\".
+            </summary>
+            <param name="path">The relative path of the subfolder.</param>
+            <returns>The full path.</returns>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileManagerRootFolder.GetFullPath(System.String,System.String)">
+            <summary>
+            Gets the full path of a folder specified in format [RootFolderName]:\Some\Folder
+            </summary>
+            <param name="rootFolderName">The name of the root folder.</param>
+            <param name="path">The relative path of the subfolder.</param>
+            <returns>The full path.</returns>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerState">
+            <summary>Represents FileManager state.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerUploadedEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Uploaded" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerUploadedEventArgs.Queue">
+            <summary>Gets the upload queue related to the event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerUploadedEventArgs.Items">
+            <summary>Gets the items of the upload queue related to the event.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileManagerUploadingEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileManager.Uploading" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerUploadingEventArgs.Queue">
+            <summary>Gets the upload queue related to the event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileManagerUploadingEventArgs.Items">
+            <summary>Gets the items of the upload queue related to the event.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileTypeSet">
+            <summary>
+            Represents a set of file patterns.
+            <para>When combining patterns in string representation, they should be separated by vertical bar (|).</para>
+            <para>In a pattern, you can use these wildcards:
+            <list type="bullet">
+            <item>*	matches zero or more characters.</item>
+            <item>?	matches exactly one character.</item>
+            </list>
+            </para>
+            <para>Some pattern examples:
+            <list type="bullet">
+            <item>*.* matches files with any extension (does not match files without an extension)</item>
+            <item>*.jpg	matches files only with jpg extension</item>
+            <item>picture*.jpg	matches files only with jpg extension and which names start with 'picture'</item>
+            <item>picture.*	matches files with any extension and which names start with 'picture'</item>
+            <item>picture	matches files with no extension and which names are exactly 'picture'</item>
+            <item>*.jp*	matches files like 'picture.jpg', 'otherpicture.jpe', 'somepicture.jpeg' etc.</item>
+            <item>*.jp?	matches files like 'picture.jpg', 'otherpicture.jpe' etc.</item>
+            <item>picture?.jpg	matches files like 'picture1.jpg', 'picture2.jpg', 'pictures.jpg' etc.</item>
+            </list>
+            </para>
+            </summary>
+            <example>
+            <code source="LibraryCS\FileUltimate\FileManagerRootFolderExamples.cs" region="AccessControlFileTypes" language="cs" />
+            <code source="LibraryVB\FileUltimate\FileManagerRootFolderExamples.vb" region="AccessControlFileTypes" language="vb" />
+            <code source="AspNetWebFormsCS\FileUltimate\FileManagerRootFolderExamples.aspx" region="AccessControlFileTypes" language="cs" />
+            <code source="AspNetWebFormsCS\FileUltimate\FileManagerRootFolderExamples.aspx" region="AccessControlFileTypes" language="vb" />
+            </example>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileTypeSet.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:GleamTech.FileUltimate.AspNet.UI.FileTypeSet"/> class.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileTypeSet.#ctor(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>Initializes a new instance of the <see cref="T:GleamTech.FileUltimate.AspNet.UI.FileTypeSet"/> class.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileTypeSet.ToString">
+            <summary>Converts the current set of file patterns to a string representation with default separator '|'.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileTypeSet.ToString(System.String)">
+            <summary>Converts the current set of file patterns to a string representation with a custom separator.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileTypeSet.ToRegex">
+            <summary>Converts the current set of file patterns to its <see cref="T:System.Text.RegularExpressions.Regex"/> equivalent.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileTypeSet.Parse(System.String)">
+            <summary>Converts the string representation of a set of file patterns to its <see cref="T:GleamTech.FileUltimate.AspNet.UI.FileTypeSet"/> equivalent.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileTypeSet.op_Implicit(System.String)~GleamTech.FileUltimate.AspNet.UI.FileTypeSet">
+            <summary>Converts the string representation of a set of file patterns to its <see cref="T:GleamTech.FileUltimate.AspNet.UI.FileTypeSet"/> equivalent.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileUploader">
+            <summary>
+            The component for uploading files and folders.
+            </summary>
+            <example>
+            <code source = "AspNetMvcCS\Views\FileUltimate\GettingStarted2.cshtml" region="View" language="cs" />
+            <code source = "AspNetMvcVB\Views\FileUltimate\GettingStarted2.vbhtml" region="View" language="vb" />
+            <para>Note that for ASP.NET Core, you also need to add and register GleamTech in <c>Startup.cs</c>, please see <conceptualLink target="using-fileultimate-in-an-asp-net-core-project" />.</para>
+            </example>
+            <conceptualLink target="using-fileultimate-in-an-asp-net-core-project" />
+            <conceptualLink target="using-fileultimate-in-an-asp-net-mvc-project" />
+            <conceptualLink target="using-fileultimate-in-an-asp-net-webforms-project" />
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileUploader.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:GleamTech.FileUltimate.AspNet.UI.FileUploader"/> class.
+            </summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileUploader.#ctor(GleamTech.FileUltimate.AspNet.FileUltimateWebConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GleamTech.FileUltimate.AspNet.UI.FileUploader"/> class with custom web configuration.
+            </summary>
+            <param name="webConfiguration">The web configuration to use instead of the global web configuration.</param>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploader.DisplayLanguage">
+            <summary>
+            Gets or sets the display (user interface) language of the file uploader.
+            It is usually set as the two-letter language names like en, de, fr etc. as the bundled languages
+            are usually for general language names. However it can be also set to specific cultures like
+            en-US, de-DE, fr-FR etc. For example, if the property is set to a specific culture like
+            de-CH (German in Switzerland), the component will first look for the language file
+            FileUltimate-de-CH.xml and if the file is not found, it will load the general (fallback)
+            language file of that culture which is FileUltimate-de.xml.
+            If not set, the language file which matches the current UICulture of the host application will be loaded.
+            If there is no language file which matches the current UICulture or its fallback, then
+            the default language file FileUltimate.xml is loaded.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploader.FormatLanguage">
+            <summary>
+            Gets or sets the format language of the file uploader.
+            Format language is used for the number and date/time formats.
+            It is usually set as the specific cultures like en-US, de-DE, fr-FR etc.
+            If not set, the current Culture of the host application will be used.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploader.UploadProviderType">
+            <summary>
+            Gets or sets the upload provider type which provides a custom way of handling uploaded files.
+            If not set, by default <see cref="T:GleamTech.FileUltimate.AspNet.UI.DefaultUploadProvider"/> will be used which will handle uploads
+            according to <see cref="P:GleamTech.FileUltimate.AspNet.UI.FileUploader.UploadLocation"/> property.
+            This class should implement <see cref="T:GleamTech.FileUltimate.AspNet.UI.IUploadProvider"/> interface and should have a parameterless
+            constructor so that it can be instantiated internally when necessary.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploader.UploadLocation">
+            <summary>
+            Gets or sets the file system location for uploading files to.
+            The default value is "~/App_Data/Uploads".
+            By default, the location is considered on disk but you can use this property
+            to upload to any of the supported file systems like UNC paths with password, Amazon S3 and Azure Blob.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploader.Methods">
+            <summary>
+            Gets or sets a comma separated upload methods in priority order.
+            The default is "Html5, Silverlight, Flash, Html4".
+            It's not recommended to change this property as the default order offers the best upload experience. 
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploader.ViewLayout">
+            <summary>
+            Gets or sets the initial view layout type for listing files and folders that added to the upload queue.
+            The default is LargeIcons.
+            Possible values are ExtraLargeIcons, LargeIcons, MediumIcons, SmallIcons, Details and Tiles.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploader.ShowFileExtensions">
+            <summary>
+            Gets or sets a value that specifies whether the extension part of the file names should be be displayed.
+            The default is false.
+            When this set to true, the file extension will be also editable in dialog boxes
+            when user is prompted (eg. on Rename).
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploader.AllowedFileTypes">
+            <summary>
+            Gets or sets the file patterns that are allowed to be uploaded.
+            If not set, any file type is allowed ("*").
+            When combining patterns in string representation, they should be separated by vertical bar (|).
+            <para>In a pattern, you can use these wildcards:
+            <list type="bullet">
+            <item>*	matches zero or more characters.</item>
+            <item>?	matches exactly one character.</item>
+            </list>
+            </para>
+            <para>Some pattern examples:
+            <list type="bullet">
+            <item>*.* matches files with any extension (does not match files without an extension)</item>
+            <item>*.jpg	matches files only with jpg extension</item>
+            <item>picture*.jpg	matches files only with jpg extension and which names start with 'picture'</item>
+            <item>picture.*	matches files with any extension and which names start with 'picture'</item>
+            <item>picture	matches files with no extension and which names are exactly 'picture'</item>
+            <item>*.jp*	matches files like 'picture.jpg', 'otherpicture.jpe', 'somepicture.jpeg' etc.</item>
+            <item>*.jp?	matches files like 'picture.jpg', 'otherpicture.jpe' etc.</item>
+            <item>picture?.jpg	matches files like 'picture1.jpg', 'picture2.jpg', 'pictures.jpg' etc.</item>
+            </list>
+            </para>
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploader.DeniedFileTypes">
+            <summary>
+            Gets or sets specifies the file patterns that are denied to be uploaded.
+            Denied patterns take precedence over allowed patterns.
+            If not set, no file type is denied ("").
+            When combining patterns in string representation, they should be separated by vertical bar (|).
+            <para>In a pattern, you can use these wildcards:
+            <list type="bullet">
+            <item>*	matches zero or more characters.</item>
+            <item>?	matches exactly one character.</item>
+            </list>
+            </para>
+            <para>Some pattern examples:
+            <list type="bullet">
+            <item>*.* matches files with any extension (does not match files without an extension)</item>
+            <item>*.jpg	matches files only with jpg extension</item>
+            <item>picture*.jpg	matches files only with jpg extension and which names start with 'picture'</item>
+            <item>picture.*	matches files with any extension and which names start with 'picture'</item>
+            <item>picture	matches files with no extension and which names are exactly 'picture'</item>
+            <item>*.jp*	matches files like 'picture.jpg', 'otherpicture.jpe', 'somepicture.jpeg' etc.</item>
+            <item>*.jp?	matches files like 'picture.jpg', 'otherpicture.jpe' etc.</item>
+            <item>picture?.jpg	matches files like 'picture1.jpg', 'picture2.jpg', 'pictures.jpg' etc.</item>
+            </list>
+            </para>
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploader.MaxFileSize">
+            <summary>
+            Gets or sets the maximum allowed file size to upload.
+            If not set, there will be no size limit for upload.
+            0 (zero) also means unlimited.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploader.ChunkSize">
+            <summary>
+            <para>
+            Gets or sets the chunk size used in chunked uploading mode.
+            The default is usually 28.6 MB (or 4MB for ASP.NET Classic before 4.5). The default and highest value is determined from Web.config.
+            For ASP.NET Core and ASP.NET Classic 4.5+, it is determined only from <c>system.webServer/requestLimits/maxAllowedContentLength</c> property in Web.Config.
+            For ASP.NET Classic before 4.5, it is determined additionally from <c>system.web/httpRuntime/maxRequestLength</c> property in Web.Config.
+            </para>
+            <para>
+            With chunked uploading mode, which is the default mode on modern browsers,
+            file is split into chunks and chunks are uploaded one by one, and then chunks are reassembled back on the server.
+            The reason for using chunked uploading when possible, is to overcome server's default request limitations.
+            By using chunking, normally you don't need to change any settings to allow uploading of very large files out of the box.
+            Currently all upload methods except Html4 uses chunked uploading (Html5 or Flash or Silverlight), this is because Html4 cannot split into chunks
+            and can only send the whole file in a single request (multipart/form-data).
+            </para>
+            <para>Information on various request size limits:</para>
+            <list type="bullet">
+            <item>IIS by default has 30000000 (28.6 MB) request size limit,
+            controlled by <c>system.webServer/requestLimits/maxAllowedContentLength</c> property in Web.Config, in bytes, maximum value is 4294967295 (4 GB).
+            However maximum value is 2147483647 (2 GB) when the application is running under the NET 4.5 Integrated Pipeline Application Pool.
+            This setting effects FileUploader, as it is an IIS setting, FileUploader cannot automatically override it.
+            </item>
+            <item>ASP.NET Core by default has 30000000 (28.6 MB) request size limit,
+            controlled by <c>IHttpMaxRequestBodySizeFeature.MaxRequestBodySize</c> property in code, in bytes, maximum value is unlimited if null.
+            This setting does not effect FileUploader, i.e FileUploader can automatically override it.
+            </item>
+            <item>ASP.NET Classic by default has 4096 (4 MB) request size limit,
+            controlled by <c>system.web/httpRuntime/maxRequestLength</c> property in Web.Config, in kilobytes, maximum value is 2097151 (2 GB).
+            This setting effects FileUploader only if you are running under server runtime lower than ASP.NET Classic 4.5 version, i.e when
+            FileUploader cannot automatically override it.
+            </item>
+            </list>
+            </summary>
+            <conceptualLink target="optional-upload-configuration" />
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploader.AutoStart">
+            <summary>
+            Gets or sets a value that specifies whether <see cref="T:GleamTech.FileUltimate.AspNet.UI.FileUploader"/> starts uploading automatically after any files are added
+            to the upload queue (user does not need to click "Upload" button).
+            The default is false.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploader.AutoClose">
+            <summary>
+            Gets or sets a value that specifies whether <see cref="T:GleamTech.FileUltimate.AspNet.UI.FileUploader"/> closes itself automatically when the upload is successful.
+            The default is false.
+            Note that auto-closing will be canceled if one or more items fails, this allows the user to click "status reason"
+            and examine the problem.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploader.ClientEvents">
+            <summary>Gets or sets the client-side event handlers.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileUploader.Failed">
+            <summary>Occurs when a queue for one or more items fails in file uploader.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileUploader.Uploading">
+            <summary>Occurs before user uploads a queue for one or more items in file uploader.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileUploader.ItemFailed">
+            <summary>Occurs when an item of a queue fails in file uploader.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileUploader.ItemUploading">
+            <summary>Occurs before user uploads an item of a queue in file uploader.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileUploader.ItemUploaded">
+            <summary>Occurs after user uploads an item of a queue in file uploader.</summary>
+        </member>
+        <member name="E:GleamTech.FileUltimate.AspNet.UI.FileUploader.Uploaded">
+            <summary>Occurs after user uploads a queue for one or more items in file uploader.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileUploader.WriteProperties(GleamTech.AspNet.UI.PropertyWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileUploader.GetMetaTags">
+            <inheritdoc />
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileUploader.GetCssFileTags">
+            <inheritdoc />
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileUploader.GetJsFileTags">
+            <inheritdoc />
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileUploaderClientEvents">
+            <summary>
+            Defines the client-side events handlers of FileUploader.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploaderClientEvents.Ready">
+            <summary>
+            Gets or sets the client-side event raised after the file uploader becomes ready for adding files and folders.
+            The value should be a valid JavaScript function name which is accessible on the host page. 
+            Function names should be specified without parentheses like "FunctionName" or "Namespace.FunctionName". 
+            </summary>
+            <example>
+            <para>Example function:</para>
+            <code source="LibraryCS\FileUltimate\FileUploaderClientEvents.js" region="Ready" language="js" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploaderClientEvents.Uploading">
+            <summary>
+            Gets or sets the client-side event raised before user uploads a group of files or folders in file uploader.
+            The value should be a valid JavaScript function name which is accessible on the host page. 
+            Function names should be specified without parentheses like "FunctionName" or "Namespace.FunctionName". 
+            </summary>
+            <example>
+            <para>Example function:</para>
+            <code source="LibraryCS\FileUltimate\FileUploaderClientEvents.js" region="Uploading" language="js" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploaderClientEvents.ItemUploading">
+            <summary>
+            Gets or sets the client-side event raised before user uploads a file or folder of a group in file uploader.
+            The value should be a valid JavaScript function name which is accessible on the host page. 
+            Function names should be specified without parentheses like "FunctionName" or "Namespace.FunctionName". 
+            </summary>
+            <example>
+            <para>Example function:</para>
+            <code source="LibraryCS\FileUltimate\FileUploaderClientEvents.js" region="ItemUploading" language="js" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploaderClientEvents.ItemUploaded">
+            <summary>
+            Gets or sets the client-side event raised after user uploads a file or folder of a group in file uploader.
+            The value should be a valid JavaScript function name which is accessible on the host page. 
+            Function names should be specified without parentheses like "FunctionName" or "Namespace.FunctionName". 
+            </summary>
+            <example>
+            <para>Example function:</para>
+            <code source="LibraryCS\FileUltimate\FileUploaderClientEvents.js" region="ItemUploaded" language="js" />
+            </example>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploaderClientEvents.Uploaded">
+            <summary>
+            Gets or sets the client-side event raised after user uploads a group of files or folders in file uploader.
+            The value should be a valid JavaScript function name which is accessible on the host page. 
+            Function names should be specified without parentheses like "FunctionName" or "Namespace.FunctionName". 
+            </summary>
+            <example>
+            <para>Example function:</para>
+            <code source="LibraryCS\FileUltimate\FileUploaderClientEvents.js" region="Uploaded" language="js" />
+            </example>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileUploaderException">
+            <summary>The exception that is thrown when there is an error in FileUploader.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileUploaderException.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:GleamTech.FileUltimate.AspNet.UI.FileUploaderException" /> class with a specified error message.</summary>
+            <param name="message">The error message that explains the reason for the exception. </param>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileUploaderException.#ctor(System.String,System.Exception)">
+            <summary>Initializes a new instance of the <see cref="T:GleamTech.FileUltimate.AspNet.UI.FileUploaderException" /> class with a specified error message and a reference to the inner exception that is the cause of this exception.</summary>
+            <param name="message">The error message that explains the reason for the exception. </param>
+            <param name="innerException">The exception that is the cause of the current exception. If the <paramref name="innerException" /> parameter is not a null reference, the current exception is raised in a <see langword="catch" /> block that handles the inner exception.</param>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileUploaderException.#ctor(GleamTech.FileUltimate.AspNet.UI.FileUploaderExceptionKind)">
+            <summary>Initializes a new instance of the <see cref="T:GleamTech.FileUltimate.AspNet.UI.FileUploaderException" /> class with a specific kind that is the cause of this exception.</summary>
+            <param name="exceptionKind">The specific kind for the exception.</param>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploaderException.Kind">
+            <summary>The specific kind for the exception.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileUploaderException.IsCanceled(System.Exception)">
+            <summary>Gets a value that indicates whether an exception is of kind <see cref="F:GleamTech.FileUltimate.AspNet.UI.FileUploaderExceptionKind.UploadCanceled"/></summary>
+            <param name="exception">The exception to check.</param>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.FileUploaderException.IsRejected(System.Exception)">
+            <summary>Gets a value that indicates whether an exception is of kind <see cref="F:GleamTech.FileUltimate.AspNet.UI.FileUploaderExceptionKind.UploadRejected"/></summary>
+            <param name="exception">The exception to check.</param>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileUploaderExceptionKind">
+            <summary>Defines the exception kinds for <see cref="T:GleamTech.FileUltimate.AspNet.UI.FileUploaderException" />.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileUploaderExceptionKind.General">
+            <summary>General exception.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileUploaderExceptionKind.UploadCanceled">
+            <summary>Upload canceled exception.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.FileUploaderExceptionKind.UploadRejected">
+            <summary>Upload rejected exception.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileUploaderFailedEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileUploader.Failed" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploaderFailedEventArgs.Exception">
+            <summary>Gets the exception that caused the failed event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploaderFailedEventArgs.FailedActionInfo">
+            <summary>Gets the action info where the failure occurred.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploaderFailedEventArgs.Queue">
+            <summary>Gets the upload queue related to the event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploaderFailedEventArgs.Items">
+            <summary>Gets the items of the upload queue related to the event.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileUploaderItemFailedEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileUploader.ItemFailed" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploaderItemFailedEventArgs.Exception">
+            <summary>Gets the exception that caused the failed event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploaderItemFailedEventArgs.FailedActionInfo">
+            <summary>Gets the action info where the failure occurred.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploaderItemFailedEventArgs.Queue">
+            <summary>Gets the upload queue related to the event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploaderItemFailedEventArgs.Item">
+            <summary>Gets the specific item in the upload queue related to the event.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileUploaderItemUploadedEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileUploader.ItemUploaded" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploaderItemUploadedEventArgs.Queue">
+            <summary>Gets the upload queue related to the event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploaderItemUploadedEventArgs.Item">
+            <summary>Gets the specific item in the upload queue related to the event.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileUploaderItemUploadingEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileUploader.ItemUploading" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploaderItemUploadingEventArgs.Queue">
+            <summary>Gets the upload queue related to the event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploaderItemUploadingEventArgs.Item">
+            <summary>Gets the specific item in the upload queue related to the event.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileUploaderState">
+            <summary>Represents FileUploader state.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileUploaderUploadedEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileUploader.Uploaded" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploaderUploadedEventArgs.Queue">
+            <summary>Gets the upload queue related to the event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploaderUploadedEventArgs.Items">
+            <summary>Gets the items of the upload queue related to the event.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.FileUploaderUploadingEventArgs">
+            <summary>Provides data for the <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileUploader.Uploading" /> event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploaderUploadingEventArgs.Queue">
+            <summary>Gets the upload queue related to the event.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.FileUploaderUploadingEventArgs.Items">
+            <summary>Gets the items of the upload queue related to the event.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.IUploadProvider">
+            <summary>
+            Represents an object for handling of uploads in <see cref="T:GleamTech.FileUltimate.AspNet.UI.FileUploader"/>.
+            Implement this interface to provide a custom way of handling uploads.
+            </summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.IUploadProvider.BeginQueue(GleamTech.FileUltimate.AspNet.UI.UploadQueue,System.Collections.Generic.IEnumerable{GleamTech.FileUltimate.AspNet.UI.UploadItem})">
+            <summary>
+            Called when the upload queue is beginning.
+            Initial validation of items can be done here.
+            </summary>
+            <param name="uploadQueue">The upload queue.</param>
+            <param name="uploadItems">The items in the upload queue.</param>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.IUploadProvider.BeginItem(GleamTech.FileUltimate.AspNet.UI.UploadItem)">
+            <summary>
+            Called when an item in the upload queue is beginning.
+            Final validation of an item can be done here.
+            </summary>
+            <param name="uploadItem">The item in the upload queue.</param>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.IUploadProvider.BeginItemChunk(GleamTech.FileUltimate.AspNet.UI.UploadItemChunk)">
+            <summary>
+            Called when a chunk of the item is beginning.
+            </summary>
+            <param name="uploadItemChunk">The chunk of the item.</param>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.IUploadProvider.EndItemChunk(GleamTech.FileUltimate.AspNet.UI.UploadItemChunk)">
+            <summary>
+            Called when a chunk of the item is ending.
+            </summary>
+            <param name="uploadItemChunk">The chunk of the item.</param>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.IUploadProvider.EndItem(GleamTech.FileUltimate.AspNet.UI.UploadItem,System.Exception)">
+            <summary>
+            Called when an item in the upload queue is ending.
+            </summary>
+            <param name="uploadItem">The item in the upload queue.</param>
+            <param name="exception">The exception if an error occurred.</param>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.IUploadProvider.EndQueue(GleamTech.FileUltimate.AspNet.UI.UploadQueue,System.Collections.Generic.IEnumerable{GleamTech.FileUltimate.AspNet.UI.UploadItem},System.Exception)">
+            <summary>
+            Called when the upload queue is ending.
+            </summary>
+            <param name="uploadQueue">The upload queue.</param>
+            <param name="uploadItems">The items in the upload queue.</param>
+            <param name="exception">The exception if an error occurred.</param>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.NamespaceDoc">
+            <summary>
+            This is a sub-namespace of this library which contains the FileManager component and related classes.
+            <para />
+            <para>The main classes in this namespace are:</para>
+            <list type="bullet">
+                <item><see cref="T:GleamTech.FileUltimate.AspNet.UI.FileManager"/> is the ASP.NET component for browsing and managing files with access control.</item>
+                <item><see cref="T:GleamTech.FileUltimate.AspNet.UI.FileManagerRootFolder"/> is the class representing a root folder for the file manager.</item>
+                <item><see cref="T:GleamTech.FileUltimate.AspNet.UI.FileManagerAccessControl"/> is the class representing an access control for a folder inside a root folder.</item>
+                <item><see cref="T:GleamTech.FileUltimate.AspNet.UI.FileUploader"/> is the ASP.NET component for uploading files and folders.</item>
+            </list>
+            </summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.UploadItem">
+            <summary>
+            Represents details for an upload item in an upload queue started by a client upload action.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadItem.Id">
+            <summary>
+            Gets the unique id passed by the client for the upload item.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadItem.Name">
+            <summary>
+            Gets the file name passed by the client for the upload item.
+            This can be a simple file name (e.g. "SomeFile.jpg") or can contain relative folder information (e.g. "Subfolder\SomeFile.jpg")
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadItem.Size">
+            <summary>
+            Gets the file size passed by the client for the upload item.
+            This can be a null for legacy upload method <see cref="F:GleamTech.FileUltimate.AspNet.UI.UploadMethod.Html4"/>, as the file size cannot be known before starting the actual upload.
+            However, the size will be calculated and updated from "multipart/form-data" request headers as soon as the upload starts.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadItem.DateModified">
+            <summary>
+            Gets the file modified date passed by the client for the upload item.
+            This can be a null for legacy upload methods <see cref="F:GleamTech.FileUltimate.AspNet.UI.UploadMethod.Html4"/> and <see cref="F:GleamTech.FileUltimate.AspNet.UI.UploadMethod.Silverlight"/>, as the file  modified date cannot be known.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadItem.UploadedSize">
+            <summary>
+            Gets the uploaded size for the upload item.
+            This will be incremented until the upload item is completed.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadItem.ChunkCount">
+            <summary>
+            Gets the chunk count for the upload item.
+            Upload method <see cref="F:GleamTech.FileUltimate.AspNet.UI.UploadMethod.Html5"/> splits the file into chunks, then uploads chunks one by one to overcome server's request limitations.
+            The value will be 1 even if there is no chunked uploading.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadItem.Status">
+            <summary>
+            Gets the status for the upload item.
+            This will be updated until the upload item is completed.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadItem.StatusMessage">
+            <summary>
+            Gets the status for the upload item.
+            This will be updated until the upload item is completed.
+            Mostly useful when status is <see cref="F:GleamTech.FileUltimate.AspNet.UI.UploadItemStatus.Rejected"/> or <see cref="F:GleamTech.FileUltimate.AspNet.UI.UploadItemStatus.Failed"/>
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadItem.ContentType">
+            <summary>
+            Gets the file content type (mime type) for the upload item.
+            This property is determined from the value of <see cref="P:GleamTech.FileUltimate.AspNet.UI.UploadItem.Name"/> (from file extension).
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadItem.SizeAsString">
+            <summary>
+            Gets the string representation of <see cref="P:GleamTech.FileUltimate.AspNet.UI.UploadItem.Size"/> - the file size passed by the client for the upload item.
+            This will be empty string if the file size is not known yet.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadItem.UploadedSizeAsString">
+            <summary>
+            Gets the string representation of <see cref="P:GleamTech.FileUltimate.AspNet.UI.UploadItem.UploadedSize"/> - the uploaded size for the upload item.
+            This will be incremented until the upload item is completed.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadItem.OwnerQueue">
+            <summary>
+            Gets the owner queue of the upload item.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadItem.Exception">
+            <summary>
+            Gets the exception thrown for the failed upload item.
+            This will be null unless <see cref="P:GleamTech.FileUltimate.AspNet.UI.UploadItem.Status"/> is <see cref="F:GleamTech.FileUltimate.AspNet.UI.UploadItemStatus.Failed"/>.
+            </summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.UploadItem.Reject(System.String)">
+            <summary>
+            Rejects this upload item and shows a reason to the user.
+            This method is effective only if item uploading is not started yet, i.e. <see cref="P:GleamTech.FileUltimate.AspNet.UI.UploadItem.Status"/> is <see cref="F:GleamTech.FileUltimate.AspNet.UI.UploadItemStatus.Pending"/>,
+            <para>This method can be called inside <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileUploader.Uploading"/>, <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileUploader.ItemUploading"/>
+            event handlers and <see cref="M:GleamTech.FileUltimate.AspNet.UI.IUploadProvider.BeginQueue(GleamTech.FileUltimate.AspNet.UI.UploadQueue,System.Collections.Generic.IEnumerable{GleamTech.FileUltimate.AspNet.UI.UploadItem})"/>, <see cref="M:GleamTech.FileUltimate.AspNet.UI.IUploadProvider.BeginItem(GleamTech.FileUltimate.AspNet.UI.UploadItem)"/> methods.</para>
+            </summary>
+            <param name="reason">The rejection reason to show to the user.</param>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.UploadItem.ConfirmReplace(System.String,System.DateTime,System.Int64,System.String)">
+            <summary>
+            Asks to confirm replacing of an already existing item, i.e. shows a confirmation dialog with existing file info to the user.
+            User can choose to replace (overwrite), skip or keep both (use a new file name).
+            This method is effective only if item uploading is not started yet, i.e. <see cref="P:GleamTech.FileUltimate.AspNet.UI.UploadItem.Status"/> is <see cref="F:GleamTech.FileUltimate.AspNet.UI.UploadItemStatus.Pending"/>,
+            <para>This method can be called inside <see cref="E:GleamTech.FileUltimate.AspNet.UI.FileUploader.Uploading"/>
+            event handler and <see cref="M:GleamTech.FileUltimate.AspNet.UI.IUploadProvider.BeginQueue(GleamTech.FileUltimate.AspNet.UI.UploadQueue,System.Collections.Generic.IEnumerable{GleamTech.FileUltimate.AspNet.UI.UploadItem})"/> method.</para>
+            </summary>
+            <param name="existingFileName">The file name of the existing item, shown to the user.</param>
+            <param name="existingFileDate">The file date of the existing item, shown to the user.</param>
+            <param name="existingFileSize">The file size of the existing item, shown to the user.</param>
+            <param name="newFileName">The new file name to use for "keep both" option, shown to the user.</param>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.UploadItemChunk">
+            <summary>Represents details for a chunk of an upload item.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadItemChunk.Index">
+            <summary>Gets the zero-based index for the upload item chunk.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadItemChunk.UploadedSize">
+            <summary>Gets the uploaded size for the upload item chunk.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadItemChunk.Stream">
+            <summary>Gets the writing stream opened for the upload item chunk.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadItemChunk.OwnerItem">
+            <summary>Gets the owner item of the upload item chunk.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.UploadItemChunk.Dispose">
+            <summary>Disposes the upload item chunk and the underlying writing stream.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.UploadItemStatus">
+            <summary>Defines the status types for an upload item.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.UploadItemStatus.Pending">
+            <summary>The upload item is pending.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.UploadItemStatus.Rejected">
+            <summary>The upload item is rejected.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.UploadItemStatus.Skipped">
+            <summary>The upload item is skipped.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.UploadItemStatus.Uploading">
+            <summary>The upload item is uploading.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.UploadItemStatus.Canceled">
+            <summary>The upload item is canceled.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.UploadItemStatus.Failed">
+            <summary>The upload item is failed.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.UploadItemStatus.Completed">
+            <summary>The upload item is completed.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.UploadMethod">
+            <summary>
+            Defines the possible upload methods.
+            </summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.UploadMethod.Html4">
+            <summary>
+            This method works on all browsers. Browser and Ajax methods in previous versions is merged into
+            this method. This method always provides progress information even if the application is hosted
+            on a shared host (medium-trust) unlike previous Ajax method which required full-trust.
+            This is the only method that chunking the file is not possible so there is a maximum limit of
+            2GB per file imposed by IIS and ASP.NET. 
+            </summary>
+            <remarks>
+            Warning: Due to a issue in Visual Studio's web server (ASP.NET Development Server),
+            when running the component on this web server, there can be a delay with Html4 method while uploading.
+            This delay can be observed especially with large files: the file will be received as a whole first
+            and then progress will start to be updated while writing to disk. Note that this will never happen
+            when running on IIS or IIS Express.
+            </remarks>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.UploadMethod.Flash">
+            <summary>
+            This supports multiple selection at once like Html5 and Silverlight but it does not work well with
+            large files due to problems in Adobe Flash plugin. If you are uploading files larger than few
+            hundred MBs of files, it will probably fail before even starting the upload. Flash plugin loads
+            the whole file into memory which is inefficient and which causes a delay before starting the upload.
+            However this method is different than the Flash method in previous versions as it will now retain
+            cookies and authentication headers. This method should be only used when uploading small files
+            and multiple selection at once is required. 
+            </summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.UploadMethod.Silverlight">
+            <summary>
+            This is the second best one as it's similar to Html5 except it does not support drag &amp; drop currently.
+            Silverlight method can be a good alternative when users can not upgrade to browsers that support Html5.
+            This method is also good for large files like Html5. 
+            </summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.UploadMethod.Html5">
+            <summary>
+            This is the best one as it supports unlimited file size (via chunking), multiple selection at once and
+            drag &amp; drop. This method is available on IE 10 and all other recent browsers. You can also drag and drop
+            files from local folders to the upload window with this method. 
+            </summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.UploadMethodList">
+            <summary>Represents a list of <see cref="T:GleamTech.FileUltimate.AspNet.UI.UploadMethod"/> that can be converted to and converted from string.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.UploadMethodList.#ctor(System.Collections.Generic.IEnumerable{GleamTech.FileUltimate.AspNet.UI.UploadMethod})">
+            <summary>Initializes a new instance of the <see cref="T:GleamTech.FileUltimate.AspNet.UI.UploadMethodList"/> class.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.UploadMethodList.Parse(System.String)">
+            <summary>Converts the string representation of a list of <see cref="T:GleamTech.FileUltimate.AspNet.UI.UploadMethod"/> to its <see cref="T:GleamTech.FileUltimate.AspNet.UI.UploadMethodList"/> equivalent.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.UI.UploadMethodList.ToString">
+            <summary>Converts the current list of <see cref="T:GleamTech.FileUltimate.AspNet.UI.UploadMethod"/> to a string representation.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.UploadQueue">
+            <summary>
+            Represents details for an upload queue started by a client upload action for one or more items.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadQueue.Id">
+            <summary>
+            Gets the unique id passed by the client for the upload queue.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadQueue.Method">
+            <summary>
+            Gets the upload method passed by the client for the upload queue.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadQueue.CustomParameters">
+            <summary>
+            Gets the dictionary of custom parameters passed by the client for the upload queue.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadQueue.StartTime">
+            <summary>
+            Gets the start time of the upload queue.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadQueue.StopTime">
+            <summary>
+            Gets the stop time of the upload queue.
+            This will be null if upload queue is not completed yet (whether successful or failed).
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadQueue.TotalUploadedSize">
+            <summary>
+            Gets the total uploaded size for all items in the upload queue.
+            This will be incremented until the upload queue is completed.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadQueue.UploadProviderType">
+            <summary>
+            Gets the upload provider type which implements <see cref="T:GleamTech.FileUltimate.AspNet.UI.IUploadProvider"/> interface that is used for processing the upload queue.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadQueue.UploadLocation">
+            <summary>
+            Gets the upload location that is used for writing the items in the upload queue.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadQueue.TotalUploadedSizeAsString">
+            <summary>
+            Gets the string representation of <see cref="P:GleamTech.FileUltimate.AspNet.UI.UploadQueue.TotalUploadedSize"/> - the total uploaded size for all items in the upload queue.
+            This will be incremented until the upload queue is completed (whether successful or failed).
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadQueue.ElapsedTime">
+            <summary>
+            Gets the elapsed time of the upload queue.
+            This will be updated when upload queue is completed (whether successful or failed).
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadQueue.ElapsedTimeAsString">
+            <summary>
+            Gets the string representation of <see cref="P:GleamTech.FileUltimate.AspNet.UI.UploadQueue.ElapsedTime"/> - the elapsed time of the upload queue.
+            This will be updated when upload queue is completed (whether successful or failed).
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadQueue.TransferRate">
+            <summary>
+            Gets the transfer rate (bytes per second) of the upload queue.
+            This will be updated when upload queue is completed (whether successful or failed).
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.AspNet.UI.UploadQueue.TransferRateAsString">
+            <summary>
+            Gets the string representation of <see cref="P:GleamTech.FileUltimate.AspNet.UI.UploadQueue.TransferRate"/> - the transfer rate of the upload queue.
+            This will be updated when upload queue is completed (whether successful or failed).
+            </summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.UI.ViewLayout">
+            <summary>Defines the view layout types for listing files and folders.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.ViewLayout.ExtraLargeIcons">
+            <summary>Items are tiled with extra large size icons at the top. Icons are maximum 256 x 256 pixels.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.ViewLayout.LargeIcons">
+            <summary>Items are tiled with large size icons at the top. Icons are maximum 96 x 96 pixels.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.ViewLayout.MediumIcons">
+            <summary>Items are tiled with medium size icons at the top. Icons are maximum 48 x 48 pixels.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.ViewLayout.SmallIcons">
+            <summary>Items are tiled with small size icons on the left. Icons are maximum 16 x 16 pixels.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.ViewLayout.Details">
+            <summary>Items are listed with small size icons on the left in a grid with sortable columns. Icons are maximum 16 x 16 pixels.</summary>
+        </member>
+        <member name="F:GleamTech.FileUltimate.AspNet.UI.ViewLayout.Tiles">
+            <summary>Items are tiled with medium size icons on the left. Icons are maximum 48 x 48 pixels.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.AspNet.WebActivation">
+            <summary>Handles ASP.NET application activation.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.AspNet.WebActivation.PreApplicationStart">
+            <summary>Runs automatically before the ASP.NET application is started.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.FileUltimateConfiguration">
+            <summary>
+            Provides properties and methods for changing this library's configuration.
+            </summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.FileUltimateConfiguration.CreateLicense(System.String)">
+            <summary>Create a new license.</summary>
+        </member>
+        <member name="M:GleamTech.FileUltimate.FileUltimateConfiguration.InitCurrent">
+            <summary>Initializes only the static Current instance.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.FileUltimateConfiguration.Current">
+            <summary>Gets current global configuration instance.</summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.FileUltimateConfiguration.AssemblyInfo">
+            <summary>Gets information on this library's assembly.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.NamespaceDoc">
+            <summary>
+            This is the core namespace of this library.
+            <para />
+            <para>The main classes in this namespace are:</para>
+            <list type="bullet">
+                <item><see cref="T:GleamTech.FileUltimate.FileUltimateConfiguration"/> is the class for changing this library's configuration (e.g. setting license key).</item>
+            </list>
+            </summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.Resources.AssemblyResourceLocator">
+            <summary>Dummy type for locating the root namespace of the assembly resources.</summary>
+        </member>
+        <member name="T:GleamTech.FileUltimate.Resources.Strings">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.Resources.Strings.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.Resources.Strings.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.Resources.Strings.ByteSizeValue_InvalidFormat">
+            <summary>
+              Looks up a localized string similar to String &quot;{0}&quot; was not recognized as a valid ByteSizeValue..
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.Resources.Strings.FileManager_LicenseNotValid">
+            <summary>
+              Looks up a localized string similar to This license key is not valid!.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.Resources.Strings.FileManager_LicenseProductNotApplicable">
+            <summary>
+              Looks up a localized string similar to This license key is not applicable for this product ({0})!.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.Resources.Strings.FileManager_LicenseVersionNotApplicable">
+            <summary>
+              Looks up a localized string similar to This license key is for version {0}.x and not applicable for version {1}.x!.
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.Resources.Strings.FileManagerAccessControl_InvalidPath">
+            <summary>
+              Looks up a localized string similar to Access control path can not be empty and should start with a single backslash (\) or forward slash (/)..
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.Resources.Strings.FileManagerAccessControlCollection_DuplicateName">
+            <summary>
+              Looks up a localized string similar to An access control with the same path &quot;{0}&quot; has already been added..
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.Resources.Strings.FileManagerRootFolder_InvalidName">
+            <summary>
+              Looks up a localized string similar to Root folder name can not be empty and should not contain the character sequence &quot;]:&quot; (right square bracket preceding colon)..
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.Resources.Strings.FileManagerRootFolderCollection_DuplicateName">
+            <summary>
+              Looks up a localized string similar to A root folder with the same name &quot;{0}&quot; has already been added..
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.Resources.Strings.FileManagerState_InvalidPath">
+            <summary>
+              Looks up a localized string similar to Path &apos;{0}&apos; is invalid..
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.Resources.Strings.FileManagerState_RootFolderNotFound">
+            <summary>
+              Looks up a localized string similar to Root folder &quot;{0}&quot; not found..
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.Resources.Strings.FileTypeSet_InvalidFormat">
+            <summary>
+              Looks up a localized string similar to String &quot;{0}&quot; was not recognized as a valid FileTypeSet because it contains forward slash (/)..
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.Resources.Strings.FileUploaderHandler_ClientErrorOccured">
+             <summary>
+               Looks up a localized string similar to Client-side error occured:
+            {0}.
+             </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.Resources.Strings.FileUploaderHandler_InvalidContentLength">
+            <summary>
+              Looks up a localized string similar to Content-Length is invalid ({0})..
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.Resources.Strings.FileUploaderHandler_MultipartAdditionalFields">
+            <summary>
+              Looks up a localized string similar to Multipart form can not contain additional fields if client-side file size is not passed via querystring..
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.Resources.Strings.FileUploaderHandler_MultipartSingleFile">
+            <summary>
+              Looks up a localized string similar to Multipart form should contain only a single file per request..
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.Resources.Strings.FileUploaderHandler_NoMultipartFile">
+            <summary>
+              Looks up a localized string similar to No file was found in multipart form..
+            </summary>
+        </member>
+        <member name="P:GleamTech.FileUltimate.Resources.Strings.FileUploaderHandler_NotMultipart">
+            <summary>
+              Looks up a localized string similar to Content-Type must be multipart/form-data..
+            </summary>
+        </member>
+    </members>
+</doc>

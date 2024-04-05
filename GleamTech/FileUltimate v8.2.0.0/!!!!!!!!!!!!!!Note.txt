@@ -1,0 +1,10 @@
+Dlls in Bin folder has been cracked
+
+Note:
+To avoid error "Strong name signature could not be verified", add the following line to Web.config:
+Code:
+<system.web>
+   ...
+   <hostingEnvironment shadowCopyBinAssemblies="false" />
+   ...
+</system.web>
