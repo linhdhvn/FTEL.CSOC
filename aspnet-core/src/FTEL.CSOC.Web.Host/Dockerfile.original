@@ -3,4 +3,4 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
 COPY . .
 
-ENTRYPOINT ["dotnet", "MyCompanyName.AbpZeroTemplate.Web.Host.dll"]
+ENTRYPOINT ["dotnet", "FTEL.CSOC.Web.Host.dll"]

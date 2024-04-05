@@ -34,7 +34,7 @@ namespace FTEL.CSOC.Migrations.Seed.Host
             AddSettingIfNotExists(EmailSettingNames.DefaultFromDisplayName, "mydomain.com mailer", tenantId);
 
             //Languages
-            AddSettingIfNotExists(LocalizationSettingNames.DefaultLanguage, "en", tenantId);
+            AddSettingIfNotExists(LocalizationSettingNames.DefaultLanguage, "vi-VN", tenantId);
         }
 
         private void AddSettingIfNotExists(string name, string value, int? tenantId = null)
