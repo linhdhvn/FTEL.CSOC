@@ -22,27 +22,6 @@ namespace FTEL.CSOC.Web.Areas.App.Startup
                         permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_Administration_Host_Dashboard)
                     )
                 ).AddItem(new MenuItemDefinition(
-                        AppPageNames.Host.Tenants,
-                        L("Tenants"),
-                        url: "App/Tenants",
-                        icon: "flaticon-list-3",
-                        permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_Tenants)
-                    )
-                ).AddItem(new MenuItemDefinition(
-                        AppPageNames.Host.Editions,
-                        L("Editions"),
-                        url: "App/Editions",
-                        icon: "flaticon-app",
-                        permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_Editions)
-                    )
-                ).AddItem(new MenuItemDefinition(
-                        AppPageNames.Tenant.Dashboard,
-                        L("Dashboard"),
-                        url: "App/TenantDashboard",
-                        icon: "flaticon-line-graph",
-                        permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_Tenant_Dashboard)
-                    )
-                ).AddItem(new MenuItemDefinition(
                         AppPageNames.Common.Administration,
                         L("Administration"),
                         icon: "flaticon-interface-8"
@@ -93,14 +72,6 @@ namespace FTEL.CSOC.Web.Areas.App.Startup
                             icon: "flaticon-lock",
                             permissionDependency: new SimplePermissionDependency(AppPermissions
                                 .Pages_Administration_Host_Maintenance)
-                        )
-                    ).AddItem(new MenuItemDefinition(
-                            AppPageNames.Tenant.SubscriptionManagement,
-                            L("Subscription"),
-                            url: "App/SubscriptionManagement",
-                            icon: "flaticon-refresh",
-                            permissionDependency: new SimplePermissionDependency(AppPermissions
-                                .Pages_Administration_Tenant_SubscriptionManagement)
                         )
                     ).AddItem(new MenuItemDefinition(
                             AppPageNames.Common.UiCustomization,
@@ -165,13 +136,6 @@ namespace FTEL.CSOC.Web.Areas.App.Startup
                                 permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_Administration_MassNotification)
                             )
                         )
-                    )
-                ).AddItem(new MenuItemDefinition(
-                        AppPageNames.Common.DemoUiComponents,
-                        L("DemoUiComponents"),
-                        url: "App/DemoUiComponents",
-                        icon: "flaticon-shapes",
-                        permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_DemoUiComponents)
                     )
                 );
         }
