@@ -14,7 +14,6 @@ using Newtonsoft.Json;
 
 namespace FTEL.CSOC.DashboardCustomization
 {
-    [AbpAuthorize]
     public class DashboardCustomizationAppService : CSOCAppServiceBase, IDashboardCustomizationAppService
     {
         private readonly DashboardConfiguration _dashboardConfiguration;

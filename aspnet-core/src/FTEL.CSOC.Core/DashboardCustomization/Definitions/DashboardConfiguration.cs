@@ -38,31 +38,6 @@ namespace FTEL.CSOC.DashboardCustomization.Definitions
 
             var simplePermissionDependencyForTenantDashboard = new SimplePermissionDependency(AppPermissions.Pages_Tenant_Dashboard);
 
-            var dailySales = new WidgetDefinition(
-                CSOCDashboardCustomizationConsts.Widgets.Tenant.DailySales,
-                "WidgetDailySales",
-                side: MultiTenancySides.Tenant,
-                usedWidgetFilters: new List<string> { dateRangeFilter.Id },
-                permissionDependency: simplePermissionDependencyForTenantDashboard
-            );
-
-            var generalStats = new WidgetDefinition(
-                CSOCDashboardCustomizationConsts.Widgets.Tenant.GeneralStats,
-                "WidgetGeneralStats",
-                side: MultiTenancySides.Tenant,
-                permissionDependency: new SimplePermissionDependency(
-                    requiresAll: true,
-                    AppPermissions.Pages_Tenant_Dashboard,
-                    AppPermissions.Pages_Administration_AuditLogs
-                )
-            );
-
-            var profitShare = new WidgetDefinition(
-                CSOCDashboardCustomizationConsts.Widgets.Tenant.ProfitShare,
-                "WidgetProfitShare",
-                side: MultiTenancySides.Tenant,
-                permissionDependency: simplePermissionDependencyForTenantDashboard
-            );
 
             var memberActivity = new WidgetDefinition(
                 CSOCDashboardCustomizationConsts.Widgets.Tenant.MemberActivity,
@@ -70,22 +45,8 @@ namespace FTEL.CSOC.DashboardCustomization.Definitions
                 side: MultiTenancySides.Tenant,
                 permissionDependency: simplePermissionDependencyForTenantDashboard
             );
-            
-            var regionalStats = new WidgetDefinition(
-                CSOCDashboardCustomizationConsts.Widgets.Tenant.RegionalStats,
-                "WidgetRegionalStats",
-                side: MultiTenancySides.Tenant,
-                permissionDependency: simplePermissionDependencyForTenantDashboard
-            );
 
-            var salesSummary = new WidgetDefinition(
-                CSOCDashboardCustomizationConsts.Widgets.Tenant.SalesSummary,
-                "WidgetSalesSummary",
-                usedWidgetFilters: new List<string>() { dateRangeFilter.Id },
-                side: MultiTenancySides.Tenant,
-                permissionDependency: simplePermissionDependencyForTenantDashboard
-            );
-            
+
             var topStats = new WidgetDefinition(
                 CSOCDashboardCustomizationConsts.Widgets.Tenant.TopStats,
                 "WidgetTopStats",
@@ -93,13 +54,9 @@ namespace FTEL.CSOC.DashboardCustomization.Definitions
                 permissionDependency: simplePermissionDependencyForTenantDashboard
             );
 
-            WidgetDefinitions.Add(generalStats);
-            WidgetDefinitions.Add(dailySales);
-            WidgetDefinitions.Add(profitShare);
+
             WidgetDefinitions.Add(memberActivity);
-            WidgetDefinitions.Add(regionalStats);
             WidgetDefinitions.Add(topStats);
-            WidgetDefinitions.Add(salesSummary);
             // Add your tenant side widgets here
 
             #endregion
@@ -108,12 +65,6 @@ namespace FTEL.CSOC.DashboardCustomization.Definitions
 
             var simplePermissionDependencyForHostDashboard = new SimplePermissionDependency(AppPermissions.Pages_Administration_Host_Dashboard);
 
-            var incomeStatistics = new WidgetDefinition(
-                CSOCDashboardCustomizationConsts.Widgets.Host.IncomeStatistics,
-                "WidgetIncomeStatistics",
-                side: MultiTenancySides.Host,
-                permissionDependency: simplePermissionDependencyForHostDashboard
-            );
 
             var hostTopStats = new WidgetDefinition(
                 CSOCDashboardCustomizationConsts.Widgets.Host.TopStats,
@@ -122,33 +73,10 @@ namespace FTEL.CSOC.DashboardCustomization.Definitions
                 permissionDependency: simplePermissionDependencyForHostDashboard
             );
 
-            var editionStatistics = new WidgetDefinition(
-                CSOCDashboardCustomizationConsts.Widgets.Host.EditionStatistics,
-                "WidgetEditionStatistics",
-                side: MultiTenancySides.Host,
-                permissionDependency: simplePermissionDependencyForHostDashboard
-            );
 
-            var subscriptionExpiringTenants = new WidgetDefinition(
-                CSOCDashboardCustomizationConsts.Widgets.Host.SubscriptionExpiringTenants,
-                "WidgetSubscriptionExpiringTenants",
-                side: MultiTenancySides.Host,
-                permissionDependency: simplePermissionDependencyForHostDashboard
-            );
 
-            var recentTenants = new WidgetDefinition(
-                CSOCDashboardCustomizationConsts.Widgets.Host.RecentTenants,
-                "WidgetRecentTenants",
-                side: MultiTenancySides.Host,
-                usedWidgetFilters: new List<string>() { dateRangeFilter.Id },
-                permissionDependency: simplePermissionDependencyForHostDashboard
-            );
-
-            WidgetDefinitions.Add(incomeStatistics);
             WidgetDefinitions.Add(hostTopStats);
-            WidgetDefinitions.Add(editionStatistics);
-            WidgetDefinitions.Add(subscriptionExpiringTenants);
-            WidgetDefinitions.Add(recentTenants);
+
 
             // Add your host side widgets here
 
@@ -163,7 +91,7 @@ namespace FTEL.CSOC.DashboardCustomization.Definitions
                 CSOCDashboardCustomizationConsts.DashboardNames.DefaultTenantDashboard,
                 new List<string>
                 {
-                    generalStats.Id, dailySales.Id, profitShare.Id, memberActivity.Id, regionalStats.Id, topStats.Id, salesSummary.Id
+                 memberActivity.Id
                 });
 
             DashboardDefinitions.Add(defaultTenantDashboard);
@@ -172,11 +100,8 @@ namespace FTEL.CSOC.DashboardCustomization.Definitions
                 CSOCDashboardCustomizationConsts.DashboardNames.DefaultHostDashboard,
                 new List<string>
                 {
-                    incomeStatistics.Id,
-                    hostTopStats.Id,
-                    editionStatistics.Id,
-                    subscriptionExpiringTenants.Id,
-                    recentTenants.Id
+                    hostTopStats.Id
+
                 });
 
             DashboardDefinitions.Add(defaultHostDashboard);

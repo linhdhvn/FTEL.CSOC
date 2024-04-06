@@ -671,11 +671,6 @@ namespace FTEL.CSOC.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CustomCssId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    DarkLogoId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    DarkLogoFileType = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true),
-                    LightLogoId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    LightLogoFileType = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
                     LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),

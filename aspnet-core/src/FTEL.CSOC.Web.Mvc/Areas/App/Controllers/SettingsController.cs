@@ -1,80 +1,65 @@
 ﻿using System.Threading.Tasks;
 using Abp.AspNetCore.Mvc.Authorization;
 using Abp.Configuration;
-using Abp.Configuration.Startup;
 using Abp.Runtime.Session;
-using Abp.Timing;
 using Microsoft.AspNetCore.Mvc;
 using FTEL.CSOC.Authorization;
 using FTEL.CSOC.Authorization.Users;
 using FTEL.CSOC.Configuration;
-using FTEL.CSOC.Configuration.Tenants;
-using FTEL.CSOC.MultiTenancy;
-using FTEL.CSOC.Security;
+using FTEL.CSOC.Configuration.Host;
+using FTEL.CSOC.Editions;
 using FTEL.CSOC.Timing;
 using FTEL.CSOC.Timing.Dto;
-using FTEL.CSOC.Web.Areas.App.Models.Settings;
+using FTEL.CSOC.Web.Areas.App.Models.HostSettings;
 using FTEL.CSOC.Web.Controllers;
 
 namespace FTEL.CSOC.Web.Areas.App.Controllers
 {
     [Area("App")]
-    [AbpMvcAuthorize(AppPermissions.Pages_Administration_Tenant_Settings)]
+    [AbpMvcAuthorize(AppPermissions.Pages_Administration_Host_Settings)]
     public class SettingsController : CSOCControllerBase
     {
         private readonly UserManager _userManager;
-        private readonly TenantManager _tenantManager;
-        private readonly IAppConfigurationAccessor _configurationAccessor;
-        private readonly ITenantSettingsAppService _tenantSettingsAppService;
-        private readonly IMultiTenancyConfig _multiTenancyConfig;
+        private readonly IHostSettingsAppService _hostSettingsAppService;
         private readonly ITimingAppService _timingAppService;
+        private readonly IAppConfigurationAccessor _configurationAccessor;
 
         public SettingsController(
-            ITenantSettingsAppService tenantSettingsAppService,
-            IMultiTenancyConfig multiTenancyConfig,
-            ITimingAppService timingAppService, 
-            UserManager userManager, 
-            TenantManager tenantManager,
+            IHostSettingsAppService hostSettingsAppService,
+            UserManager userManager,
+            ITimingAppService timingAppService,
             IAppConfigurationAccessor configurationAccessor)
         {
-            _tenantSettingsAppService = tenantSettingsAppService;
-            _multiTenancyConfig = multiTenancyConfig;
-            _timingAppService = timingAppService;
+            _hostSettingsAppService = hostSettingsAppService;
             _userManager = userManager;
-            _tenantManager = tenantManager;
+            _timingAppService = timingAppService;
             _configurationAccessor = configurationAccessor;
         }
 
         public async Task<ActionResult> Index()
         {
-            var output = await _tenantSettingsAppService.GetAllSettings();
-            ViewBag.IsMultiTenancyEnabled = _multiTenancyConfig.IsEnabled;
-
+            var hostSettings = await _hostSettingsAppService.GetAllSettings();
+           
             var timezoneItems = await _timingAppService.GetTimezoneComboboxItems(new GetTimezoneComboboxItemsInput
             {
-                DefaultTimezoneScope = SettingScopes.Tenant,
-                SelectedTimezoneId = await SettingManager.GetSettingValueForTenantAsync(TimingSettingNames.TimeZone, AbpSession.GetTenantId())
+                DefaultTimezoneScope = SettingScopes.Application,
             });
 
             var user = await _userManager.GetUserAsync(AbpSession.ToUserIdentifier());
 
             ViewBag.CurrentUserEmail = user.EmailAddress;
 
-            var tenant = await _tenantManager.FindByIdAsync(AbpSession.GetTenantId());
-            ViewBag.TenantId = tenant.Id;
-
             var model = new SettingsViewModel
             {
-                Settings = output,
+                Settings = hostSettings,
                 TimezoneItems = timezoneItems
-                
             };
 
             AddEnabledSocialLogins(model);
-            
+
             return View(model);
         }
-        
+
         private void AddEnabledSocialLogins(SettingsViewModel model)
         {
             if (!bool.Parse(_configurationAccessor.Configuration["Authentication:AllowSocialLoginSettingsPerTenant"]))
@@ -101,7 +86,7 @@ namespace FTEL.CSOC.Web.Areas.App.Controllers
             {
                 model.EnabledSocialLoginSettings.Add("Microsoft");
             }
-            
+
             if (bool.Parse(_configurationAccessor.Configuration["Authentication:OpenId:IsEnabled"]))
             {
                 model.EnabledSocialLoginSettings.Add("OpenId");

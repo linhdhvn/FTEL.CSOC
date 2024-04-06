@@ -8,10 +8,9 @@ using FTEL.CSOC.Web.Areas.App.Startup;
 namespace FTEL.CSOC.Web.Areas.App.Controllers
 {
     [Area("App")]
-    [AbpMvcAuthorize(AppPermissions.Pages_Administration_Host_Dashboard)]
-    public class HostDashboardController : CustomizableDashboardControllerBase
+    public class DashboardController : CustomizableDashboardControllerBase
     {
-        public HostDashboardController(
+        public DashboardController(
             DashboardViewConfiguration dashboardViewConfiguration,
             IDashboardCustomizationAppService dashboardCustomizationAppService)
             : base(dashboardViewConfiguration, dashboardCustomizationAppService)

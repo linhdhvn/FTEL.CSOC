@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FTEL.CSOC.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240406064903_Initial_Migration")]
+    [Migration("20240406075717_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -1743,16 +1743,6 @@ namespace FTEL.CSOC.Migrations
                     b.Property<long?>("CreatorUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<Guid?>("CustomCssId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("DarkLogoFileType")
-                        .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
-
-                    b.Property<Guid?>("DarkLogoId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<long?>("DeleterUserId")
                         .HasColumnType("bigint");
 
@@ -1773,13 +1763,6 @@ namespace FTEL.CSOC.Migrations
 
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
-
-                    b.Property<string>("LightLogoFileType")
-                        .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
-
-                    b.Property<Guid?>("LightLogoId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .IsRequired()

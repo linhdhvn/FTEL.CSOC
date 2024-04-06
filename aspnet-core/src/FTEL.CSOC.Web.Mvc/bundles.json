@@ -316,39 +316,6 @@
       ]
     },
     {
-      "output": "view-resources/Areas/App/Views/_Bundles/tenant-index-libs.min.js",
-      "input": [
-        "wwwroot/view-resources/Areas/App/Views/Common/_FeaturesTree.js",
-        "wwwroot/view-resources/Areas/App/Views/Tenants/_CreateModal.js",
-        "wwwroot/view-resources/Areas/App/Views/Tenants/_EditModal.js",
-        "wwwroot/view-resources/Areas/App/Views/Tenants/_FeaturesModal.js",
-        "wwwroot/view-resources/Areas/App/Views/Tenants/Index.js"
-      ]
-    },
-    {
-      "output": "view-resources/Areas/App/Views/_Bundles/demo-ui-components.min.js",
-      "input": [
-        "wwwroot/view-resources/Areas/App/Views/DemoUiComponents/DateAndTimePickers/DemoDateAndTimePickers.js",
-        "wwwroot/view-resources/Areas/App/Views/DemoUiComponents/FileUpload/FileUpload.js",
-        "wwwroot/view-resources/Areas/App/Views/DemoUiComponents/Selections/Selections.js",
-        "wwwroot/view-resources/Areas/App/Views/DemoUiComponents/InputMask/InputMask.js",
-        "wwwroot/view-resources/Areas/App/Views/DemoUiComponents/Editor/Editor.js",
-        "node_modules/inputmask/dist/jquery.inputmask.js",
-        "node_modules/quill/dist/quill.js",
-        "node_modules/dropzone/dist/dropzone.js"
-      ]
-    },
-    {
-      "output": "view-resources/Areas/App/Views/_Bundles/edition-list.min.js",
-      "input": [
-        "node_modules/inputmask/dist/jquery.inputmask.js",
-        "wwwroot/view-resources/Areas/App/Views/Common/_FeaturesTree.js",
-        "wwwroot/view-resources/Areas/App/Views/Editions/_CreateModal.js",
-        "wwwroot/view-resources/Areas/App/Views/Editions/_EditModal.js",
-        "wwwroot/view-resources/Areas/App/Views/Editions/Index.js"
-      ]
-    },
-    {
       "output": "view-resources/Areas/App/Views/_Bundles/language-list.min.js",
       "input": [
         "wwwroot/view-resources/Areas/App/Views/Languages/_CreateOrEditModal.js",
@@ -401,13 +368,6 @@
       "input": [
         "wwwroot/view-resources/Areas/App/Views/Common/Modals/_InactivityControllerNotifyModal.js",
         "wwwroot/Common/Scripts/InactivityController.js"
-      ]
-    },
-    {
-      "output": "view-resources/Areas/App/Views/_Bundles/tenant-register.min.js",
-      "input": [
-        "node_modules/pwstrength-bootstrap/dist/pwstrength-bootstrap.js",
-        "wwwroot/view-resources/Views/TenantRegistration/Register.js"
       ]
     },
     {
@@ -575,32 +535,6 @@
         "wwwroot/metronic/vendors/line-awesome/css/line-awesome.css",
         "wwwroot/metronic/vendors/flaticon/flaticon.css",
         "wwwroot/metronic/vendors/flaticon2/flaticon.css"
-      ]
-    },
-    {
-      "output": "view-resources/Areas/App/Views/_Bundles/demo-ui-components.min.css",
-      "input": [
-        "wwwroot/view-resources/Areas/App/Views/DemoUiComponents/DateAndTimePickers/DemoDateAndTimePickers.css",
-        "wwwroot/view-resources/Areas/App/Views/DemoUiComponents/FileUpload/FileUpload.css",
-        "wwwroot/view-resources/Areas/App/Views/DemoUiComponents/Selections/Selections.css",
-        "wwwroot/view-resources/Areas/App/Views/DemoUiComponents/InputMask/InputMask.css",
-        "wwwroot/view-resources/Areas/App/Views/DemoUiComponents/Editor/Editor.css",
-        "node_modules/quill/dist/quill.core.css",
-        "node_modules/dropzone/dist/dropzone.css",
-        "node_modules/bootstrap-markdown/css/bootstrap-markdown.min.css"
-      ]
-    },
-    {
-      "output": "view-resources/Areas/App/Views/_Bundles/edition-list.min.css",
-      "input": [
-        "wwwroot/view-resources/Areas/App/Views/Common/_FeaturesTree.less"
-      ]
-    },
-    {
-      "output": "view-resources/Areas/App/Views/_Bundles/tenant-list.min.css",
-      "input": [
-        "wwwroot/view-resources/Areas/App/Views/Common/_FeaturesTree.less",
-        "wwwroot/view-resources/Areas/App/Views/Tenants/index.less"
       ]
     },
     {

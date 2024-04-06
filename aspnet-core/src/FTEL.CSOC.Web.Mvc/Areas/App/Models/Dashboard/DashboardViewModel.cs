@@ -1,10 +1,10 @@
 ﻿namespace FTEL.CSOC.Web.Areas.App.Models.HostDashboard
 {
-    public class HostDashboardViewModel
+    public class DashboardViewModel
     {
         public int ReportOnLoadDayCount { get; set; } 
 
-        public HostDashboardViewModel(int reportOnLoadDayCount)
+        public DashboardViewModel(int reportOnLoadDayCount)
         {
             ReportOnLoadDayCount = reportOnLoadDayCount;
         }
