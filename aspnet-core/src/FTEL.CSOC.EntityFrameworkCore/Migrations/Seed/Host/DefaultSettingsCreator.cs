@@ -21,8 +21,8 @@ namespace FTEL.CSOC.Migrations.Seed.Host
             int? tenantId = null;
 
             //Emailing
-            AddSettingIfNotExists(EmailSettingNames.DefaultFromAddress, "admin@mydomain.com", tenantId);
-            AddSettingIfNotExists(EmailSettingNames.DefaultFromDisplayName, "mydomain.com mailer", tenantId);
+            AddSettingIfNotExists(EmailSettingNames.DefaultFromAddress, "admin@fpt.net", tenantId);
+            AddSettingIfNotExists(EmailSettingNames.DefaultFromDisplayName, "fpt.net mailer", tenantId);
 
             //Languages
             AddSettingIfNotExists(LocalizationSettingNames.DefaultLanguage, "vi", tenantId);

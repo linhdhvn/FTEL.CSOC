@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Components;
 using FTEL.CSOC.Mobile.MAUI.Services.Account;
 using FTEL.CSOC.Mobile.MAUI.Services.UI;
 using Microsoft.JSInterop;
-using FTEL.CSOC.Mobile.MAUI.Services.Tenants;
 
 #if ANDROID
 using FTEL.CSOC.Mobile.MAUI.Platforms.Android.HttpClient;
@@ -41,7 +40,6 @@ namespace FTEL.CSOC.Mobile.MAUI.Shared.Layout
             var navigationService = DependencyResolver.Resolve<INavigationService>();
             navigationService.Initialize(NavigationManager);
 
-            _logoURL = await DependencyResolver.Resolve<TenantCustomizationService>().GetTenantLogo();
 
             await SetLayout();
         }

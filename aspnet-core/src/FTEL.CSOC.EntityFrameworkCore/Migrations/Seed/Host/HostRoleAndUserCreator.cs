@@ -1,16 +1,9 @@
 ﻿using System.Linq;
-using Abp;
-using Abp.Authorization;
-using Abp.Authorization.Roles;
 using Abp.Authorization.Users;
-using Abp.MultiTenancy;
-using Abp.Notifications;
 using Microsoft.EntityFrameworkCore;
-using FTEL.CSOC.Authorization;
 using FTEL.CSOC.Authorization.Roles;
 using FTEL.CSOC.Authorization.Users;
 using FTEL.CSOC.EntityFrameworkCore;
-using FTEL.CSOC.Notifications;
 
 namespace FTEL.CSOC.Migrations.Seed.Host
 {
@@ -50,7 +43,7 @@ namespace FTEL.CSOC.Migrations.Seed.Host
                     UserName = AbpUserBase.AdminUserName,
                     Name = "admin",
                     Surname = "admin",
-                    EmailAddress = "admin@aspnetzero.com",
+                    EmailAddress = "admin@fpt.net",
                     IsEmailConfirmed = true,
                     ShouldChangePasswordOnNextLogin = false,
                     IsActive = true,
@@ -74,12 +67,6 @@ namespace FTEL.CSOC.Migrations.Seed.Host
                     UserName = AbpUserBase.AdminUserName,
                     EmailAddress = adminUserForHost.EmailAddress
                 });
-
-                _context.SaveChanges();
-
-                //Notification subscriptions
-                _context.NotificationSubscriptions.Add(new NotificationSubscriptionInfo(SequentialGuidGenerator.Instance.Create(), null, adminUserForHost.Id, AppNotificationNames.NewTenantRegistered));
-                _context.NotificationSubscriptions.Add(new NotificationSubscriptionInfo(SequentialGuidGenerator.Instance.Create(), null, adminUserForHost.Id, AppNotificationNames.NewUserRegistered));
 
                 _context.SaveChanges();
             }

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using Abp.Dependency;
 using MvvmHelpers;
 using FTEL.CSOC.Localization;
@@ -17,13 +16,6 @@ namespace FTEL.CSOC.Services.Navigation
         */
         private static IEnumerable<NavigationMenuItem> MenuItems => new Collection<NavigationMenuItem>
         {
-            new NavigationMenuItem
-            {
-                Title = L.Localize("Tenants"),
-                Icon = "Tenants.png",
-                ViewType = typeof(TenantsView),
-                RequiredPermissionName = PermissionKey.Tenants,
-            },
             new NavigationMenuItem
             {
                 Title = L.Localize("Users"),

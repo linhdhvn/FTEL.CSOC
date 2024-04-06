@@ -1,9 +1,7 @@
-﻿using Abp.Threading;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using FTEL.CSOC.Core.Dependency;
 using FTEL.CSOC.Mobile.MAUI.Core.ApiClient;
-using FTEL.CSOC.Mobile.MAUI.Services.Tenants;
 using FTEL.CSOC.Mobile.MAUI.Services.UI;
 
 namespace FTEL.CSOC.Mobile.MAUI.Shared.Layout
@@ -13,23 +11,16 @@ namespace FTEL.CSOC.Mobile.MAUI.Shared.Layout
         [Inject]
         protected IJSRuntime JS { get; set; }
 
-        private string _logoURL;
-
-        protected override async Task OnInitializedAsync()
+        protected override Task OnInitializedAsync()
         {
             MAUIApplicationContext.OnTenantChange += OnTenantChange;
-            await SetLogoUrl();
+            return Task.CompletedTask;
         }
 
         private void OnTenantChange(object sender, EventArgs e)
         {
-            AsyncHelper.RunSync(SetLogoUrl);
+            //AsyncHelper.RunSync(SetLogoUrl);
             StateHasChanged();
-        }
-
-        private async Task SetLogoUrl()
-        {
-            _logoURL = await DependencyResolver.Resolve<TenantCustomizationService>().GetTenantLogo();
         }
 
         private async Task SetLayout()
