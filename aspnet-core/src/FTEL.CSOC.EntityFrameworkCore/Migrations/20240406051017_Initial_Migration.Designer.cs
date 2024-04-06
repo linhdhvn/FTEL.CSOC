@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FTEL.CSOC.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240405153459_Initial_Migration")]
+    [Migration("20240406051017_Initial_Migration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
