@@ -1,6 +1,5 @@
 ﻿using Abp.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using FTEL.CSOC.Authorization;
 using FTEL.CSOC.DashboardCustomization;
 using System.Threading.Tasks;
 using FTEL.CSOC.Web.Areas.App.Startup;
@@ -8,6 +7,7 @@ using FTEL.CSOC.Web.Areas.App.Startup;
 namespace FTEL.CSOC.Web.Areas.App.Controllers
 {
     [Area("App")]
+    [AbpMvcAuthorize]
     public class DashboardController : CustomizableDashboardControllerBase
     {
         public DashboardController(
