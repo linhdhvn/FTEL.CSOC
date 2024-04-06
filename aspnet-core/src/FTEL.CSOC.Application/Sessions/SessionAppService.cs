@@ -15,7 +15,6 @@ using FTEL.CSOC.Authorization.Delegation;
 using FTEL.CSOC.Authorization.Users;
 using Abp.Domain.Uow;
 using Abp.Localization;
-using FTEL.CSOC.Features;
 
 namespace FTEL.CSOC.Sessions
 {
@@ -26,7 +25,7 @@ namespace FTEL.CSOC.Sessions
         private readonly IUnitOfWorkManager _unitOfWorkManager;
         private readonly EditionManager _editionManager;
         private readonly ILocalizationContext _localizationContext;
-        
+
         public SessionAppService(
             IUiThemeCustomizerFactory uiThemeCustomizerFactory,
             IUserDelegationConfiguration userDelegationConfiguration,
@@ -88,7 +87,7 @@ namespace FTEL.CSOC.Sessions
                     return output;
                 }
 
-  
+
 
                 output.Tenant.SubscriptionDateString = GetTenantSubscriptionDateString(output);
                 output.Tenant.CreationTimeString = output.Tenant.CreationTime.ToString("d");
@@ -110,20 +109,6 @@ namespace FTEL.CSOC.Sessions
             {
                 return tenantLoginInfo;
             }
-            
-            var features = FeatureManager
-                .GetAll()
-                .Where(feature => (feature[FeatureMetadata.CustomFeatureKey] as FeatureMetadata)?.IsVisibleOnPricingTable ?? false);
-            
-            var featureDictionary = features.ToDictionary(feature => feature.Name, f => f);
-            
-            tenantLoginInfo.FeatureValues = (await _editionManager.GetFeatureValuesAsync(tenant.EditionId.Value))
-                .Where(featureValue => featureDictionary.ContainsKey(featureValue.Name))
-                .Select(fv => new NameValueDto(
-                    featureDictionary[fv.Name].DisplayName.Localize(_localizationContext),
-                    featureDictionary[fv.Name].GetValueText(fv.Value, _localizationContext))
-                )
-                .ToList();
 
             return tenantLoginInfo;
         }

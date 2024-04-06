@@ -23,17 +23,6 @@ namespace FTEL.CSOC.Common
             _editionManager = editionManager;
         }
 
-        public async Task<ListResultDto<SubscribableEditionComboboxItemDto>> GetEditionsForCombobox(bool onlyFreeItems = false)
-        {
-            var subscribableEditions = (await _editionManager.Editions.Cast<SubscribableEdition>().ToListAsync())
-                .WhereIf(onlyFreeItems, e => e.IsFree)
-                .OrderBy(e => e.MonthlyPrice);
-
-            return new ListResultDto<SubscribableEditionComboboxItemDto>(
-                subscribableEditions.Select(e => new SubscribableEditionComboboxItemDto(e.Id.ToString(), e.DisplayName, e.IsFree)).ToList()
-            );
-        }
-
         public async Task<PagedResultDto<NameValueDto>> FindUsers(FindUsersInput input)
         {
             if (AbpSession.TenantId != null)

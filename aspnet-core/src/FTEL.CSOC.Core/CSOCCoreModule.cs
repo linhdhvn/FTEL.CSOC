@@ -38,7 +38,6 @@ using FTEL.CSOC.Configuration;
 using FTEL.CSOC.DashboardCustomization.Definitions;
 using FTEL.CSOC.Debugging;
 using FTEL.CSOC.DynamicEntityProperties;
-using FTEL.CSOC.Features;
 using FTEL.CSOC.Localization;
 using FTEL.CSOC.MultiTenancy;
 using FTEL.CSOC.Net.Emailing;
@@ -71,9 +70,6 @@ namespace FTEL.CSOC
             Configuration.Modules.Zero().EntityTypes.User = typeof(User);
 
             CSOCLocalizationConfigurer.Configure(Configuration.Localization);
-
-            //Adding feature providers
-            Configuration.Features.Providers.Add<AppFeatureProvider>();
 
             //Adding setting providers
             Configuration.Settings.Providers.Add<AppSettingProvider>();

@@ -5,7 +5,6 @@
 @using Abp.Configuration
 @using Abp.MultiTenancy
 @using Abp.Web.Mvc.Alerts
-@using FTEL.CSOC.Features
 @using FTEL.CSOC.Web.Resources
 @using Abp.Web.Security.AntiForgery
 @using FTEL.CSOC.Configuration
@@ -27,7 +26,6 @@
 @{
     AbpAntiForgeryManager.SetCookie(Context);
 
-    var isChatEnabled = AbpSession.MultiTenancySide == MultiTenancySides.Host || IsFeatureEnabled(AppFeatures.ChatFeature);
     var headerViewModel = new HeaderViewModel();
     var theme = await GetTheme();
     var themeCustomizer = await ThemeCustomizerFactory.GetCurrentUiCustomizer();
@@ -149,12 +147,6 @@ else
 @if (await SettingManager.GetSettingValueAsync<bool>(AppSettings.UserManagement.IsQuickThemeSelectEnabled))
 {
     <script src="@(ApplicationPath)view-resources/Areas/App/Views/Layout/_ThemeSelectionPanel.js" asp-append-version="true"></script>
-}
-
-@if (isChatEnabled)
-{
-    <script src="@(ApplicationPath)view-resources/Areas/App/Views/Layout/_ChatBar.js" asp-append-version="true"></script>
-    <script src="@(ApplicationPath)Common/Scripts/Chat/chat.signalr.js" asp-append-version="true"></script>
 }
 @if (await SettingManager.GetSettingValueAsync<bool>(AppSettings.UserManagement.SessionTimeOut.IsEnabled) && AbpSession.UserId.HasValue)
 {

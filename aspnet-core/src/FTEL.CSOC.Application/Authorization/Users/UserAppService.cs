@@ -50,7 +50,6 @@ namespace FTEL.CSOC.Authorization.Users
         private readonly IRepository<UserPermissionSetting, long> _userPermissionRepository;
         private readonly IRepository<UserRole, long> _userRoleRepository;
         private readonly IRepository<Role> _roleRepository;
-        private readonly IUserPolicy _userPolicy;
         private readonly IEnumerable<IPasswordValidator<User>> _passwordValidators;
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IRepository<OrganizationUnit, long> _organizationUnitRepository;
@@ -60,7 +59,7 @@ namespace FTEL.CSOC.Authorization.Users
         private readonly IRepository<OrganizationUnitRole, long> _organizationUnitRoleRepository;
         private readonly IOptions<UserOptions> _userOptions;
         private readonly IEmailSettingsChecker _emailSettingsChecker;
-        
+
         public UserAppService(
             RoleManager roleManager,
             IUserEmailer userEmailer,
@@ -71,14 +70,13 @@ namespace FTEL.CSOC.Authorization.Users
             IRepository<UserPermissionSetting, long> userPermissionRepository,
             IRepository<UserRole, long> userRoleRepository,
             IRepository<Role> roleRepository,
-            IUserPolicy userPolicy,
             IEnumerable<IPasswordValidator<User>> passwordValidators,
             IPasswordHasher<User> passwordHasher,
             IRepository<OrganizationUnit, long> organizationUnitRepository,
             IRoleManagementConfig roleManagementConfig,
             UserManager userManager,
             IRepository<UserOrganizationUnit, long> userOrganizationUnitRepository,
-            IRepository<OrganizationUnitRole, long> organizationUnitRoleRepository, 
+            IRepository<OrganizationUnitRole, long> organizationUnitRoleRepository,
             IOptions<UserOptions> userOptions, IEmailSettingsChecker emailSettingsChecker)
         {
             _roleManager = roleManager;
@@ -89,7 +87,6 @@ namespace FTEL.CSOC.Authorization.Users
             _rolePermissionRepository = rolePermissionRepository;
             _userPermissionRepository = userPermissionRepository;
             _userRoleRepository = userRoleRepository;
-            _userPolicy = userPolicy;
             _passwordValidators = passwordValidators;
             _passwordHasher = passwordHasher;
             _organizationUnitRepository = organizationUnitRepository;
@@ -161,7 +158,7 @@ namespace FTEL.CSOC.Authorization.Users
                 AllOrganizationUnits = ObjectMapper.Map<List<OrganizationUnitDto>>(allOrganizationUnits),
                 MemberedOrganizationUnits = new List<string>(),
                 AllowedUserNameCharacters = _userOptions.Value.AllowedUserNameCharacters,
-                IsSMTPSettingsProvided = await _emailSettingsChecker.EmailSettingsValidAsync() 
+                IsSMTPSettingsProvided = await _emailSettingsChecker.EmailSettingsValidAsync()
             };
 
             if (!input.Id.HasValue)
@@ -215,11 +212,11 @@ namespace FTEL.CSOC.Authorization.Users
         private List<string> GetAllRoleNamesOfUsersOrganizationUnits(long userId)
         {
             return (from userOu in _userOrganizationUnitRepository.GetAll()
-                join roleOu in _organizationUnitRoleRepository.GetAll() on userOu.OrganizationUnitId equals roleOu
-                    .OrganizationUnitId
-                join userOuRoles in _roleRepository.GetAll() on roleOu.RoleId equals userOuRoles.Id
-                where userOu.UserId == userId
-                select userOuRoles.Name).ToList();
+                    join roleOu in _organizationUnitRoleRepository.GetAll() on userOu.OrganizationUnitId equals roleOu
+                        .OrganizationUnitId
+                    join userOuRoles in _roleRepository.GetAll() on roleOu.RoleId equals userOuRoles.Id
+                    where userOu.UserId == userId
+                    select userOuRoles.Name).ToList();
         }
 
         [AbpAuthorize(AppPermissions.Pages_Administration_Users_ChangePermissions)]
@@ -328,11 +325,6 @@ namespace FTEL.CSOC.Authorization.Users
         [AbpAuthorize(AppPermissions.Pages_Administration_Users_Create)]
         protected virtual async Task CreateUserAsync(CreateOrUpdateUserInput input)
         {
-            if (AbpSession.TenantId.HasValue)
-            {
-                await _userPolicy.CheckMaxUserCountAsync(AbpSession.GetTenantId());
-            }
-
             var user = ObjectMapper.Map<User>(input.User); //Passwords is not mapped (see mapping configuration)
             user.TenantId = AbpSession.TenantId;
 
@@ -452,23 +444,23 @@ namespace FTEL.CSOC.Authorization.Users
                 input.Permissions = input.Permissions.Where(p => !string.IsNullOrEmpty(p)).ToList();
 
                 var userIds = from user in query
-                    join ur in _userRoleRepository.GetAll() on user.Id equals ur.UserId into urJoined
-                    from ur in urJoined.DefaultIfEmpty()
-                    join urr in _roleRepository.GetAll() on ur.RoleId equals urr.Id into urrJoined
-                    from urr in urrJoined.DefaultIfEmpty()
-                    join up in _userPermissionRepository.GetAll()
-                        .Where(userPermission => input.Permissions.Contains(userPermission.Name)) on user.Id equals up.UserId into upJoined
-                    from up in upJoined.DefaultIfEmpty()
-                    join rp in _rolePermissionRepository.GetAll()
-                        .Where(rolePermission => input.Permissions.Contains(rolePermission.Name)) on
-                        new { RoleId = ur == null ? 0 : ur.RoleId } equals new { rp.RoleId } into rpJoined
-                    from rp in rpJoined.DefaultIfEmpty()
-                    where (up != null && up.IsGranted) ||
-                          (up == null && rp != null && rp.IsGranted) ||
-                          (up == null && rp == null && staticRoleNames.Contains(urr.Name))
-                    group user by user.Id
+                              join ur in _userRoleRepository.GetAll() on user.Id equals ur.UserId into urJoined
+                              from ur in urJoined.DefaultIfEmpty()
+                              join urr in _roleRepository.GetAll() on ur.RoleId equals urr.Id into urrJoined
+                              from urr in urrJoined.DefaultIfEmpty()
+                              join up in _userPermissionRepository.GetAll()
+                                  .Where(userPermission => input.Permissions.Contains(userPermission.Name)) on user.Id equals up.UserId into upJoined
+                              from up in upJoined.DefaultIfEmpty()
+                              join rp in _rolePermissionRepository.GetAll()
+                                  .Where(rolePermission => input.Permissions.Contains(rolePermission.Name)) on
+                                  new { RoleId = ur == null ? 0 : ur.RoleId } equals new { rp.RoleId } into rpJoined
+                              from rp in rpJoined.DefaultIfEmpty()
+                              where (up != null && up.IsGranted) ||
+                                    (up == null && rp != null && rp.IsGranted) ||
+                                    (up == null && rp == null && staticRoleNames.Contains(urr.Name))
+                              group user by user.Id
                     into userGrouped
-                    select userGrouped.Key;
+                              select userGrouped.Key;
 
                 query = UserManager.Users.Where(e => userIds.Contains(e.Id));
             }

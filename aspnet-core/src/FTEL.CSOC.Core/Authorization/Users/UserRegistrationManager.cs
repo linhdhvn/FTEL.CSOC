@@ -29,7 +29,6 @@ namespace FTEL.CSOC.Authorization.Users
         private readonly IUserEmailer _userEmailer;
         private readonly INotificationSubscriptionManager _notificationSubscriptionManager;
         private readonly IAppNotifier _appNotifier;
-        private readonly IUserPolicy _userPolicy;
         
 
         public UserRegistrationManager(
@@ -38,8 +37,7 @@ namespace FTEL.CSOC.Authorization.Users
             RoleManager roleManager,
             IUserEmailer userEmailer,
             INotificationSubscriptionManager notificationSubscriptionManager,
-            IAppNotifier appNotifier,
-            IUserPolicy userPolicy)
+            IAppNotifier appNotifier)
         {
             _tenantManager = tenantManager;
             _userManager = userManager;
@@ -47,7 +45,6 @@ namespace FTEL.CSOC.Authorization.Users
             _userEmailer = userEmailer;
             _notificationSubscriptionManager = notificationSubscriptionManager;
             _appNotifier = appNotifier;
-            _userPolicy = userPolicy;
 
             AbpSession = NullAbpSession.Instance;
             AsyncQueryableExecuter = NullAsyncQueryableExecuter.Instance;
@@ -61,7 +58,6 @@ namespace FTEL.CSOC.Authorization.Users
             var tenant = await GetActiveTenantAsync();
             var isNewRegisteredUserActiveByDefault = await SettingManager.GetSettingValueAsync<bool>(AppSettings.UserManagement.IsNewRegisteredUserActiveByDefault);
 
-            await _userPolicy.CheckMaxUserCountAsync(tenant.Id);
 
             var user = new User
             {

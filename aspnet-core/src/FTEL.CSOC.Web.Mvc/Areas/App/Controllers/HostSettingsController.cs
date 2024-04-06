@@ -21,20 +21,17 @@ namespace FTEL.CSOC.Web.Areas.App.Controllers
     {
         private readonly UserManager _userManager;
         private readonly IHostSettingsAppService _hostSettingsAppService;
-        private readonly IEditionAppService _editionAppService;
         private readonly ITimingAppService _timingAppService;
         private readonly IAppConfigurationAccessor _configurationAccessor;
 
         public HostSettingsController(
             IHostSettingsAppService hostSettingsAppService,
             UserManager userManager,
-            IEditionAppService editionAppService,
             ITimingAppService timingAppService,
             IAppConfigurationAccessor configurationAccessor)
         {
             _hostSettingsAppService = hostSettingsAppService;
             _userManager = userManager;
-            _editionAppService = editionAppService;
             _timingAppService = timingAppService;
             _configurationAccessor = configurationAccessor;
         }
@@ -42,8 +39,7 @@ namespace FTEL.CSOC.Web.Areas.App.Controllers
         public async Task<ActionResult> Index()
         {
             var hostSettings = await _hostSettingsAppService.GetAllSettings();
-            var editionItems =
-                await _editionAppService.GetEditionComboboxItems(hostSettings.TenantManagement.DefaultEditionId);
+           
             var timezoneItems = await _timingAppService.GetTimezoneComboboxItems(new GetTimezoneComboboxItemsInput
             {
                 DefaultTimezoneScope = SettingScopes.Application,
@@ -56,7 +52,6 @@ namespace FTEL.CSOC.Web.Areas.App.Controllers
             var model = new HostSettingsViewModel
             {
                 Settings = hostSettings,
-                EditionItems = editionItems,
                 TimezoneItems = timezoneItems
             };
 

@@ -25,7 +25,6 @@ namespace FTEL.CSOC.Authorization.Users.Importing
         private readonly RoleManager _roleManager;
         private readonly IUserListExcelDataReader _userListExcelDataReader;
         private readonly IInvalidUserExporter _invalidUserExporter;
-        private readonly IUserPolicy _userPolicy;
         private readonly IEnumerable<IPasswordValidator<User>> _passwordValidators;
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IAppNotifier _appNotifier;
@@ -38,7 +37,6 @@ namespace FTEL.CSOC.Authorization.Users.Importing
             RoleManager roleManager,
             IUserListExcelDataReader userListExcelDataReader,
             IInvalidUserExporter invalidUserExporter,
-            IUserPolicy userPolicy,
             IEnumerable<IPasswordValidator<User>> passwordValidators,
             IPasswordHasher<User> passwordHasher,
             IAppNotifier appNotifier,
@@ -49,7 +47,6 @@ namespace FTEL.CSOC.Authorization.Users.Importing
             _roleManager = roleManager;
             _userListExcelDataReader = userListExcelDataReader;
             _invalidUserExporter = invalidUserExporter;
-            _userPolicy = userPolicy;
             _passwordValidators = passwordValidators;
             _passwordHasher = passwordHasher;
             _appNotifier = appNotifier;
@@ -145,10 +142,6 @@ namespace FTEL.CSOC.Authorization.Users.Importing
         {
             var tenantId = CurrentUnitOfWork.GetTenantId();
 
-            if (tenantId.HasValue)
-            {
-                await _userPolicy.CheckMaxUserCountAsync(tenantId.Value);
-            }
 
             var user = _objectMapper.Map<User>(input); //Passwords is not mapped (see mapping configuration)
             user.Password = input.Password;

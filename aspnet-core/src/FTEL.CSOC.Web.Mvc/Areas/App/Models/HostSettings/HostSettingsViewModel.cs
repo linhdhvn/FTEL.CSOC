@@ -2,15 +2,12 @@
 using System.Linq;
 using Abp.Application.Services.Dto;
 using FTEL.CSOC.Configuration.Host.Dto;
-using FTEL.CSOC.Editions.Dto;
 
 namespace FTEL.CSOC.Web.Areas.App.Models.HostSettings
 {
     public class HostSettingsViewModel
     {
         public HostSettingsEditDto Settings { get; set; }
-
-        public List<SubscribableEditionComboboxItemDto> EditionItems { get; set; }
 
         public List<ComboboxItemDto> TimezoneItems { get; set; }
 

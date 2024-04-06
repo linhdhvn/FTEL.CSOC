@@ -129,10 +129,6 @@
                 </span>
             </label>
         </div>
-        <div class="mb-5">
-            <label for="DefaultEditionId" class="form-label">@L("Edition")</label>
-            @Html.DropDownList("DefaultEditionId", Model.EditionItems.Select(i => i.ToSelectListItem()), new {@class = "form-select", id = "DefaultEditionId"})
-        </div>
     </form>
 </div>
 
