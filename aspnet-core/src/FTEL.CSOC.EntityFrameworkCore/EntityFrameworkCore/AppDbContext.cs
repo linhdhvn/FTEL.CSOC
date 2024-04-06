@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using FTEL.CSOC.Authorization.Delegation;
 using FTEL.CSOC.Authorization.Roles;
 using FTEL.CSOC.Authorization.Users;
-using FTEL.CSOC.Editions;
 using FTEL.CSOC.MultiTenancy;
 using FTEL.CSOC.Storage;
 
@@ -15,10 +14,6 @@ namespace FTEL.CSOC.EntityFrameworkCore
         /* Define an IDbSet for each entity of the application */
 
         public virtual DbSet<BinaryObject> BinaryObjects { get; set; }
-
-        public virtual DbSet<SubscribableEdition> SubscribableEditions { get; set; }
-
-
 
         public virtual DbSet<PersistedGrantEntity> PersistedGrants { get; set; }
 
@@ -44,7 +39,6 @@ namespace FTEL.CSOC.EntityFrameworkCore
 
             modelBuilder.Entity<Tenant>(b =>
             {
-                b.HasIndex(e => new { e.SubscriptionEndDateUtc });
                 b.HasIndex(e => new { e.CreationTime });
             });
 

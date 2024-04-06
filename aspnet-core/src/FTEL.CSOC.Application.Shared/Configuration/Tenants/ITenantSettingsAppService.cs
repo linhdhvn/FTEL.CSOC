@@ -8,10 +8,6 @@ namespace FTEL.CSOC.Configuration.Tenants
     {
         Task<TenantSettingsEditDto> GetAllSettings();
 
-        Task UpdateAllSettings(TenantSettingsEditDto input);
-
-        Task ClearLogo();
-
-        Task ClearCustomCss();
+        Task UpdateAllSettings(TenantSettingsEditDto input);     
     }
 }

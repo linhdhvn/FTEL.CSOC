@@ -19,7 +19,6 @@ namespace FTEL.CSOC.Identity
                 {
                     options.Tokens.ProviderMap[GoogleAuthenticatorProvider.Name] = new TokenProviderDescriptor(typeof(GoogleAuthenticatorProvider));
                 })
-                .AddAbpTenantManager<TenantManager>()
                 .AddAbpUserManager<UserManager>()
                 .AddAbpRoleManager<RoleManager>()
                 .AddAbpEditionManager<EditionManager>()

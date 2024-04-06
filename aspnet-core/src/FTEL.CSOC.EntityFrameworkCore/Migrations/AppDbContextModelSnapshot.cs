@@ -42,10 +42,6 @@ namespace FTEL.CSOC.Migrations
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("DisplayName")
                         .IsRequired()
                         .HasMaxLength(64)
@@ -68,10 +64,6 @@ namespace FTEL.CSOC.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AbpEditions");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Edition");
-
-                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Abp.Application.Features.FeatureSetting", b =>
@@ -1748,16 +1740,6 @@ namespace FTEL.CSOC.Migrations
                     b.Property<long?>("CreatorUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<Guid?>("CustomCssId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("DarkLogoFileType")
-                        .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
-
-                    b.Property<Guid?>("DarkLogoId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<long?>("DeleterUserId")
                         .HasColumnType("bigint");
 
@@ -1773,29 +1755,16 @@ namespace FTEL.CSOC.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsInTrialPeriod")
-                        .HasColumnType("bit");
-
                     b.Property<DateTime?>("LastModificationTime")
                         .HasColumnType("datetime2");
 
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("LightLogoFileType")
-                        .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
-
-                    b.Property<Guid?>("LightLogoId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(128)
                         .HasColumnType("nvarchar(128)");
-
-                    b.Property<DateTime?>("SubscriptionEndDateUtc")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("TenancyName")
                         .IsRequired()
@@ -1813,8 +1782,6 @@ namespace FTEL.CSOC.Migrations
                     b.HasIndex("EditionId");
 
                     b.HasIndex("LastModifierUserId");
-
-                    b.HasIndex("SubscriptionEndDateUtc");
 
                     b.HasIndex("TenancyName");
 
@@ -1843,36 +1810,6 @@ namespace FTEL.CSOC.Migrations
                     b.HasIndex("TenantId");
 
                     b.ToTable("AppBinaryObjects");
-                });
-
-            modelBuilder.Entity("FTEL.CSOC.Editions.SubscribableEdition", b =>
-                {
-                    b.HasBaseType("Abp.Application.Editions.Edition");
-
-                    b.Property<decimal?>("AnnualPrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal?>("DailyPrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int?>("ExpiringEditionId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal?>("MonthlyPrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int?>("TrialDayCount")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("WaitingDayAfterExpire")
-                        .HasColumnType("int");
-
-                    b.Property<decimal?>("WeeklyPrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.ToTable("AbpEditions");
-
-                    b.HasDiscriminator().HasValue("SubscribableEdition");
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>

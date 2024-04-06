@@ -13,7 +13,7 @@
 {
     @if (ViewBag.UseCaptcha)
     {
-        <recaptcha-script-v3/>
+        <recaptcha-script-v3 />
         <recaptcha-script-v3-js action="login" execute="false" />
     }
     <script abp-src="/view-resources/Views/Account/Login.js" asp-append-version="true"></script>
@@ -34,12 +34,12 @@
     </div>
     <!--begin::Form-->
     <form class="login-form form" asp-action="Login" method="post">
-        <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl"/>
-        <input type="hidden" name="returnUrlHash"/>
-        <input type="hidden" name="ss" value="@ViewBag.SingleSignIn"/>
+        <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
+        <input type="hidden" name="returnUrlHash" />
+        <input type="hidden" name="ss" value="@ViewBag.SingleSignIn" />
         @if (ViewBag.UseCaptcha)
         {
-            <input type="hidden" name="@RecaptchaValidator.RecaptchaResponseKey" id="recaptchaResponse"/>
+            <input type="hidden" name="@RecaptchaValidator.RecaptchaResponseKey" id="recaptchaResponse" />
         }
 
         <div class="mb-5">
@@ -69,7 +69,6 @@
     </form>
 
     <!--end::Form-->
-
     <!--begin::Options-->
     @{
         var loginProviders = (await SignInManager.GetExternalAuthenticationSchemesAsync())
@@ -95,9 +94,9 @@
         <!--end::Divider-->
         <div class="pb-lg-0 pb-5 external-logins">
             <form asp-action="ExternalLogin" method="post">
-                <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl"/>
-                <input type="hidden" name="provider" value=""/>
-                <input type="hidden" name="ss" value="@ViewBag.SingleSignIn"/>
+                <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
+                <input type="hidden" name="provider" value="" />
+                <input type="hidden" name="ss" value="@ViewBag.SingleSignIn" />
 
                 @foreach (var p in loginProviders)
                 {
@@ -119,11 +118,6 @@
     @if (Model.IsSelfRegistrationEnabled)
     {
         <a href="@Url.Action("Register", "Account", new {ss = ViewBag.SingleSignIn, returnUrl = ViewBag.ReturnUrl})" id="register-btn">@L("CreateAnAccount")</a>
-        <span class="pipe-divider"> | </span>
-    }
-    @if (Model.IsTenantSelfRegistrationEnabled)
-    {
-        <a href="@Url.Action("SelectEdition", "TenantRegistration")" id="register-btn">@L("NewTenant")</a>
         <span class="pipe-divider"> | </span>
     }
     <a href="@Url.Action("EmailActivation", "Account")" id="email-activation-btn">@L("EmailActivation")</a>

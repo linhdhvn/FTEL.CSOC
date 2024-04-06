@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FTEL.CSOC.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240406051017_Initial_Migration")]
+    [Migration("20240406064903_Initial_Migration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -45,10 +45,6 @@ namespace FTEL.CSOC.Migrations
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("DisplayName")
                         .IsRequired()
                         .HasMaxLength(64)
@@ -71,10 +67,6 @@ namespace FTEL.CSOC.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AbpEditions");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Edition");
-
-                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Abp.Application.Features.FeatureSetting", b =>
@@ -1733,145 +1725,6 @@ namespace FTEL.CSOC.Migrations
                     b.ToTable("AbpUsers");
                 });
 
-            modelBuilder.Entity("FTEL.CSOC.MultiTenancy.Accounting.Invoice", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("InvoiceDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InvoiceNo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TenantAddress")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TenantLegalName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TenantTaxNo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AppInvoices");
-                });
-
-            modelBuilder.Entity("FTEL.CSOC.MultiTenancy.Payments.SubscriptionPayment", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<long?>("CreatorUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<int>("DayCount")
-                        .HasColumnType("int");
-
-                    b.Property<long?>("DeleterUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("EditionId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("EditionPaymentType")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ErrorUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ExternalPaymentId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("Gateway")
-                        .HasColumnType("int");
-
-                    b.Property<string>("InvoiceNo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsRecurring")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<long?>("LastModifierUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<int?>("PaymentPeriodType")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<string>("SuccessUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TenantId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EditionId");
-
-                    b.HasIndex("ExternalPaymentId", "Gateway");
-
-                    b.HasIndex("Status", "CreationTime");
-
-                    b.ToTable("AppSubscriptionPayments");
-                });
-
-            modelBuilder.Entity("FTEL.CSOC.MultiTenancy.Payments.SubscriptionPaymentExtensionData", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Key")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<long>("SubscriptionPaymentId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SubscriptionPaymentId", "Key", "IsDeleted")
-                        .IsUnique()
-                        .HasFilter("[IsDeleted] = 0");
-
-                    b.ToTable("AppSubscriptionPaymentsExtensionData");
-                });
-
             modelBuilder.Entity("FTEL.CSOC.MultiTenancy.Tenant", b =>
                 {
                     b.Property<int>("Id")
@@ -1915,9 +1768,6 @@ namespace FTEL.CSOC.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsInTrialPeriod")
-                        .HasColumnType("bit");
-
                     b.Property<DateTime?>("LastModificationTime")
                         .HasColumnType("datetime2");
 
@@ -1936,12 +1786,6 @@ namespace FTEL.CSOC.Migrations
                         .HasMaxLength(128)
                         .HasColumnType("nvarchar(128)");
 
-                    b.Property<DateTime?>("SubscriptionEndDateUtc")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("SubscriptionPaymentType")
-                        .HasColumnType("int");
-
                     b.Property<string>("TenancyName")
                         .IsRequired()
                         .HasMaxLength(64)
@@ -1958,8 +1802,6 @@ namespace FTEL.CSOC.Migrations
                     b.HasIndex("EditionId");
 
                     b.HasIndex("LastModifierUserId");
-
-                    b.HasIndex("SubscriptionEndDateUtc");
 
                     b.HasIndex("TenancyName");
 
@@ -1988,36 +1830,6 @@ namespace FTEL.CSOC.Migrations
                     b.HasIndex("TenantId");
 
                     b.ToTable("AppBinaryObjects");
-                });
-
-            modelBuilder.Entity("FTEL.CSOC.Editions.SubscribableEdition", b =>
-                {
-                    b.HasBaseType("Abp.Application.Editions.Edition");
-
-                    b.Property<decimal?>("AnnualPrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal?>("DailyPrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int?>("ExpiringEditionId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal?>("MonthlyPrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int?>("TrialDayCount")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("WaitingDayAfterExpire")
-                        .HasColumnType("int");
-
-                    b.Property<decimal?>("WeeklyPrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.ToTable("AbpEditions");
-
-                    b.HasDiscriminator().HasValue("SubscribableEdition");
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>
@@ -2245,17 +2057,6 @@ namespace FTEL.CSOC.Migrations
                     b.Navigation("DeleterUser");
 
                     b.Navigation("LastModifierUser");
-                });
-
-            modelBuilder.Entity("FTEL.CSOC.MultiTenancy.Payments.SubscriptionPayment", b =>
-                {
-                    b.HasOne("Abp.Application.Editions.Edition", "Edition")
-                        .WithMany()
-                        .HasForeignKey("EditionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Edition");
                 });
 
             modelBuilder.Entity("FTEL.CSOC.MultiTenancy.Tenant", b =>

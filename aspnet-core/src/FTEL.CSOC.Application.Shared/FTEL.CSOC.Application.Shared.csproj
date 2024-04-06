@@ -15,4 +15,8 @@
     <ProjectReference Include="..\FTEL.CSOC.Core.Shared\FTEL.CSOC.Core.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="MultiTenancy\Dto\" />
+  </ItemGroup>
+
 </Project>

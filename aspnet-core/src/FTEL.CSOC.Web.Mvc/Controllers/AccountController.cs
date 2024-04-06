@@ -9,7 +9,6 @@ using System.Transactions;
 using Abp.AspNetCore.Mvc.Authorization;
 using Abp.Authorization;
 using Abp.Authorization.Users;
-using Abp.Caching;
 using Abp.Collections.Extensions;
 using Abp.Configuration;
 using Abp.Configuration.Startup;
@@ -36,7 +35,6 @@ using FTEL.CSOC.Authorization.Delegation;
 using FTEL.CSOC.Authorization.Impersonation;
 using FTEL.CSOC.Authorization.Users;
 using FTEL.CSOC.Configuration;
-using FTEL.CSOC.Debugging;
 using FTEL.CSOC.Identity;
 using FTEL.CSOC.MultiTenancy;
 using FTEL.CSOC.Net.Sms;
@@ -49,13 +47,11 @@ using FTEL.CSOC.Url;
 using FTEL.CSOC.Web.Authentication.External;
 using FTEL.CSOC.Web.Security.Recaptcha;
 using FTEL.CSOC.Web.Session;
-using FTEL.CSOC.Web.Views.Shared.Components.TenantChange;
 using Abp.CachedUniqueKeys;
 using Abp.AspNetCore.Mvc.Caching;
 using FTEL.CSOC.Authorization.Users.Profile;
 using FTEL.CSOC.Authorization.Users.Profile.Dto;
 using Abp.Runtime.Security;
-using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
 namespace FTEL.CSOC.Web.Controllers
 {
@@ -180,7 +176,6 @@ namespace FTEL.CSOC.Web.Controllers
                 new LoginFormViewModel
                 {
                     IsSelfRegistrationEnabled = IsSelfRegistrationEnabled(),
-                    IsTenantSelfRegistrationEnabled = IsTenantSelfRegistrationEnabled(),
                     SuccessMessage = successMessage,
                     UserNameOrEmailAddress = userNameOrEmailAddress
                 }
@@ -271,7 +266,7 @@ namespace FTEL.CSOC.Web.Controllers
 
             await UnitOfWorkManager.Current.SaveChangesAsync();
 
-            return Json(new AjaxResponse {TargetUrl = returnUrl});
+            return Json(new AjaxResponse { TargetUrl = returnUrl });
         }
 
         public async Task<ActionResult> Logout(string returnUrl = "")
@@ -470,7 +465,7 @@ namespace FTEL.CSOC.Web.Controllers
 
             if (signInResultResult.Succeeded)
             {
-                return Json(new AjaxResponse {TargetUrl = model.ReturnUrl});
+                return Json(new AjaxResponse { TargetUrl = model.ReturnUrl });
             }
 
             if (signInResultResult.IsLockedOut)
@@ -680,16 +675,6 @@ namespace FTEL.CSOC.Web.Controllers
             return SettingManager.GetSettingValue<bool>(AppSettings.UserManagement.AllowSelfRegistration);
         }
 
-        private bool IsTenantSelfRegistrationEnabled()
-        {
-            if (AbpSession.TenantId.HasValue)
-            {
-                return false;
-            }
-
-            return SettingManager.GetSettingValue<bool>(AppSettings.TenantManagement.AllowSelfRegistration);
-        }
-
         #endregion
 
         #region ForgotPassword / ResetPassword
@@ -830,19 +815,19 @@ namespace FTEL.CSOC.Web.Controllers
             switch (loginResult.Result)
             {
                 case AbpLoginResultType.Success:
-                {
-                    await _signInManager.SignInAsync(loginResult.Identity, false);
-
-                    if (!string.IsNullOrEmpty(ss) && ss.Equals("true", StringComparison.OrdinalIgnoreCase) &&
-                        loginResult.Result == AbpLoginResultType.Success)
                     {
-                        loginResult.User.SetSignInToken();
-                        returnUrl = AddSingleSignInParametersToReturnUrl(returnUrl, loginResult.User.SignInToken,
-                            loginResult.User.Id, loginResult.User.TenantId);
-                    }
+                        await _signInManager.SignInAsync(loginResult.Identity, false);
 
-                    return Redirect(returnUrl);
-                }
+                        if (!string.IsNullOrEmpty(ss) && ss.Equals("true", StringComparison.OrdinalIgnoreCase) &&
+                            loginResult.Result == AbpLoginResultType.Success)
+                        {
+                            loginResult.User.SetSignInToken();
+                            returnUrl = AddSingleSignInParametersToReturnUrl(returnUrl, loginResult.User.SignInToken,
+                                loginResult.User.Id, loginResult.User.TenantId);
+                        }
+
+                        return Redirect(returnUrl);
+                    }
                 case AbpLoginResultType.UnknownExternalLogin:
                     return await RegisterForExternalLogin(externalLoginInfo);
                 default:
@@ -967,7 +952,7 @@ namespace FTEL.CSOC.Web.Controllers
 
         public virtual JsonResult IsImpersonatedLogin()
         {
-            return Json(new AjaxResponse {Result = AbpSession.ImpersonatorUserId.HasValue});
+            return Json(new AjaxResponse { Result = AbpSession.ImpersonatorUserId.HasValue });
         }
 
         public virtual async Task<JsonResult> BackToImpersonator()
@@ -1021,19 +1006,6 @@ namespace FTEL.CSOC.Web.Controllers
 
         #endregion
 
-        #region Change Tenant
-
-        public async Task<ActionResult> TenantChangeModal()
-        {
-            var loginInfo = await _sessionCache.GetCurrentLoginInformationsAsync();
-            return View("/Views/Shared/Components/TenantChange/_ChangeModal.cshtml", new ChangeModalViewModel
-            {
-                TenancyName = loginInfo.Tenant?.TenancyName
-            });
-        }
-
-        #endregion
-
         #region Common
 
         private string GetTenancyNameOrNull()
@@ -1076,12 +1048,12 @@ namespace FTEL.CSOC.Web.Controllers
 
         public ActionResult RedirectToAppHome()
         {
-            return RedirectToAction("Index", "Home", new {area = "App"});
+            return RedirectToAction("Index", "Home", new { area = "App" });
         }
 
         public string GetAppHomeUrl()
         {
-            return Url.Action("Index", "Home", new {area = "App"});
+            return Url.Action("Index", "Home", new { area = "App" });
         }
 
         private string NormalizeReturnUrl(string returnUrl, Func<string> defaultValueBuilder = null)

@@ -62,8 +62,6 @@ namespace FTEL.CSOC.Web.Areas.App.Controllers
 
             var tenant = await _tenantManager.FindByIdAsync(AbpSession.GetTenantId());
             ViewBag.TenantId = tenant.Id;
-            ViewBag.TenantLogoId = tenant.DarkLogoId;
-            ViewBag.TenantCustomCssId = tenant.CustomCssId;
 
             var model = new SettingsViewModel
             {

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Abp.Auditing;
 using Abp.Authorization.Users;
 using Abp.Extensions;
 using Abp.Timing;
@@ -21,6 +20,7 @@ namespace FTEL.CSOC.Authorization.Users
         public string SignInToken { get; set; }
 
         public string GoogleAuthenticatorKey { get; set; }
+
         public string RecoveryCode { get; set; }
         
         public List<UserOrganizationUnit> OrganizationUnits { get; set; }
@@ -31,32 +31,6 @@ namespace FTEL.CSOC.Authorization.Users
         {
             IsLockoutEnabled = true;
             IsTwoFactorEnabled = true;
-        }
-
-        /// <summary>
-        /// Creates admin <see cref="User"/> for a tenant.
-        /// </summary>
-        /// <param name="tenantId">Tenant Id</param>
-        /// <param name="emailAddress">Email address</param>
-        /// <param name="name">Name of admin user</param>
-        /// <param name="surname">Surname of admin user</param>
-        /// <returns>Created <see cref="User"/> object</returns>
-        public static User CreateTenantAdminUser(int tenantId, string emailAddress, string name = null, string surname = null)
-        {
-            var user = new User
-            {
-                TenantId = tenantId,
-                UserName = AdminUserName,
-                Name = string.IsNullOrWhiteSpace(name) ? AdminUserName : name,
-                Surname = string.IsNullOrWhiteSpace(surname) ? AdminUserName : surname,
-                EmailAddress = emailAddress,
-                Roles = new List<UserRole>(),
-                OrganizationUnits = new List<UserOrganizationUnit>()
-            };
-
-            user.SetNormalizedNames();
-
-            return user;
         }
 
         public override void SetNewPasswordResetCode()

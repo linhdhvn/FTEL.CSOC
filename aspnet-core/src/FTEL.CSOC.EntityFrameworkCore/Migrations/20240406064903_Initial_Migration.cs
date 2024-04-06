@@ -85,14 +85,6 @@ namespace FTEL.CSOC.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
                     DisplayName = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false),
-                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ExpiringEditionId = table.Column<int>(type: "int", nullable: true),
-                    DailyPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    WeeklyPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    MonthlyPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    AnnualPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    TrialDayCount = table.Column<int>(type: "int", nullable: true),
-                    WaitingDayAfterExpire = table.Column<int>(type: "int", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
                     LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -477,23 +469,6 @@ namespace FTEL.CSOC.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AppInvoices",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    InvoiceNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    InvoiceDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    TenantLegalName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TenantAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TenantTaxNo = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AppInvoices", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AppRecentPasswords",
                 columns: table => new
                 {
@@ -507,22 +482,6 @@ namespace FTEL.CSOC.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AppRecentPasswords", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AppSubscriptionPaymentsExtensionData",
-                columns: table => new
-                {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    SubscriptionPaymentId = table.Column<long>(type: "bigint", nullable: false),
-                    Key = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AppSubscriptionPaymentsExtensionData", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -610,45 +569,6 @@ namespace FTEL.CSOC.Migrations
                     table.PrimaryKey("PK_AbpFeatures", x => x.Id);
                     table.ForeignKey(
                         name: "FK_AbpFeatures_AbpEditions_EditionId",
-                        column: x => x.EditionId,
-                        principalTable: "AbpEditions",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AppSubscriptionPayments",
-                columns: table => new
-                {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Gateway = table.Column<int>(type: "int", nullable: false),
-                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false),
-                    EditionId = table.Column<int>(type: "int", nullable: false),
-                    TenantId = table.Column<int>(type: "int", nullable: false),
-                    DayCount = table.Column<int>(type: "int", nullable: false),
-                    PaymentPeriodType = table.Column<int>(type: "int", nullable: true),
-                    ExternalPaymentId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    InvoiceNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsRecurring = table.Column<bool>(type: "bit", nullable: false),
-                    SuccessUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ErrorUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EditionPaymentType = table.Column<int>(type: "int", nullable: false),
-                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
-                    LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
-                    DeletionTime = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AppSubscriptionPayments", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AppSubscriptionPayments_AbpEditions_EditionId",
                         column: x => x.EditionId,
                         principalTable: "AbpEditions",
                         principalColumn: "Id",
@@ -751,14 +671,11 @@ namespace FTEL.CSOC.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    SubscriptionEndDateUtc = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsInTrialPeriod = table.Column<bool>(type: "bit", nullable: false),
                     CustomCssId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     DarkLogoId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     DarkLogoFileType = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true),
                     LightLogoId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LightLogoFileType = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true),
-                    SubscriptionPaymentType = table.Column<int>(type: "int", nullable: false),
                     CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
                     LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -1273,11 +1190,6 @@ namespace FTEL.CSOC.Migrations
                 column: "LastModifierUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AbpTenants_SubscriptionEndDateUtc",
-                table: "AbpTenants",
-                column: "SubscriptionEndDateUtc");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_AbpTenants_TenancyName",
                 table: "AbpTenants",
                 column: "TenancyName");
@@ -1430,28 +1342,6 @@ namespace FTEL.CSOC.Migrations
                 column: "TenantId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AppSubscriptionPayments_EditionId",
-                table: "AppSubscriptionPayments",
-                column: "EditionId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AppSubscriptionPayments_ExternalPaymentId_Gateway",
-                table: "AppSubscriptionPayments",
-                columns: new[] { "ExternalPaymentId", "Gateway" });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AppSubscriptionPayments_Status_CreationTime",
-                table: "AppSubscriptionPayments",
-                columns: new[] { "Status", "CreationTime" });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AppSubscriptionPaymentsExtensionData_SubscriptionPaymentId_Key_IsDeleted",
-                table: "AppSubscriptionPaymentsExtensionData",
-                columns: new[] { "SubscriptionPaymentId", "Key", "IsDeleted" },
-                unique: true,
-                filter: "[IsDeleted] = 0");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_AppUserDelegations_TenantId_SourceUserId",
                 table: "AppUserDelegations",
                 columns: new[] { "TenantId", "SourceUserId" });
@@ -1553,16 +1443,7 @@ namespace FTEL.CSOC.Migrations
                 name: "AppBinaryObjects");
 
             migrationBuilder.DropTable(
-                name: "AppInvoices");
-
-            migrationBuilder.DropTable(
                 name: "AppRecentPasswords");
-
-            migrationBuilder.DropTable(
-                name: "AppSubscriptionPayments");
-
-            migrationBuilder.DropTable(
-                name: "AppSubscriptionPaymentsExtensionData");
 
             migrationBuilder.DropTable(
                 name: "AppUserDelegations");
@@ -1577,10 +1458,10 @@ namespace FTEL.CSOC.Migrations
                 name: "AbpRoles");
 
             migrationBuilder.DropTable(
-                name: "AbpWebhookEvents");
+                name: "AbpEditions");
 
             migrationBuilder.DropTable(
-                name: "AbpEditions");
+                name: "AbpWebhookEvents");
 
             migrationBuilder.DropTable(
                 name: "AbpDynamicProperties");

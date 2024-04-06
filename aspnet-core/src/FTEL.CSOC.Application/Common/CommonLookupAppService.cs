@@ -9,18 +9,15 @@ using Abp.Runtime.Session;
 using Microsoft.EntityFrameworkCore;
 using FTEL.CSOC.Common.Dto;
 using FTEL.CSOC.Editions;
-using FTEL.CSOC.Editions.Dto;
 
 namespace FTEL.CSOC.Common
 {
     [AbpAuthorize]
     public class CommonLookupAppService : CSOCAppServiceBase, ICommonLookupAppService
     {
-        private readonly EditionManager _editionManager;
-
-        public CommonLookupAppService(EditionManager editionManager)
+        public CommonLookupAppService()
         {
-            _editionManager = editionManager;
+
         }
 
         public async Task<PagedResultDto<NameValueDto>> FindUsers(FindUsersInput input)

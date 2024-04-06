@@ -7,7 +7,5 @@
         public string UserNameOrEmailAddress { get; set; }
 
         public bool IsSelfRegistrationEnabled { get; set; }
-
-        public bool IsTenantSelfRegistrationEnabled { get; set; }
     }
 }
