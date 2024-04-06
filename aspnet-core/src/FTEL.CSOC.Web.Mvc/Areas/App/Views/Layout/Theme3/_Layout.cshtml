@@ -1,13 +1,11 @@
 ﻿@using Abp.Web.Mvc.Alerts
 @using FTEL.CSOC.Localization
 @using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppActiveUserDelegationsCombobox
-@using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppChatToggler
 @using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppLanguageSwitch
 @using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppLogo
 @using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppMenu
 @using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppQuickThemeSelect
 @using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppRecentNotifications
-@using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppSubscriptionBar
 @using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppToggleDarkMode
 @using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppUserMenu
 @using FTEL.CSOC.Web.Areas.App.Views.Shared.Themes.Theme3.Components.AppTheme3Brand
@@ -88,10 +86,7 @@
                     <!--begin::Topbar-->
                     <div class="d-flex align-items-center flex-shrink-0">
                         @await Component.InvokeAsync(typeof(AppActiveUserDelegationsComboboxViewComponent))
-                        @await Component.InvokeAsync(typeof(AppSubscriptionBarViewComponent), new
-                        {
-                            cssClass = "btn btn-icon btn-color-gray-700 btn-active-color-primary btn-outline w-40px h-40px position-relative"
-                        })
+               
                         @await Component.InvokeAsync(typeof(AppQuickThemeSelectViewComponent), new
                         {
                             cssClass = "btn btn-icon btn-color-gray-700 btn-active-color-primary btn-outline w-40px h-40px position-relative",
@@ -106,11 +101,7 @@
                             cssClass = "btn btn-icon btn-color-gray-700 btn-active-color-primary btn-outline w-40px h-40px position-relative",
                             iconClass = "flaticon-alert-2 unread-notification fs-4"
                         })
-                        @await Component.InvokeAsync(typeof(AppChatTogglerViewComponent), new
-                        {
-                            cssClass = "btn btn-icon btn-color-gray-700 btn-active-color-primary btn-outline w-40px h-40px position-relative",
-                            iconClass = "flaticon-chat-2 fs-4"
-                        })
+                     
                         @await Component.InvokeAsync(typeof(AppToggleDarkModeViewComponent), new
                         {
                             cssClass = "btn btn-icon btn-color-gray-700 btn-active-color-primary btn-outline w-40px h-40px position-relative",

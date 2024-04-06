@@ -63,11 +63,10 @@ namespace FTEL.CSOC.Web.Startup
             }
 
             var workManager = IocManager.Resolve<IBackgroundWorkerManager>();
+
             if (IocManager.Resolve<IMultiTenancyConfig>().IsEnabled)
             {
-                workManager.Add(IocManager.Resolve<SubscriptionExpirationCheckWorker>());
-                workManager.Add(IocManager.Resolve<SubscriptionExpireEmailNotifierWorker>());
-                workManager.Add(IocManager.Resolve<SubscriptionPaymentNotCompletedEmailNotifierWorker>());
+               
             }
 
             var expiredAuditLogDeleterWorker = IocManager.Resolve<ExpiredAuditLogDeleterWorker>();

@@ -22,7 +22,6 @@ using Abp.BackgroundJobs;
 using Abp.Localization;
 using Abp.Runtime.Session;
 using Abp.UI;
-using FTEL.CSOC.MultiTenancy.Payments;
 
 namespace FTEL.CSOC.MultiTenancy
 {
@@ -232,33 +231,19 @@ namespace FTEL.CSOC.MultiTenancy
         }
 
         public decimal GetUpgradePrice(SubscribableEdition currentEdition, SubscribableEdition targetEdition,
-            int totalRemainingHourCount, PaymentPeriodType paymentPeriodType)
+            int totalRemainingHourCount )
         {
             int numberOfHoursPerDay = 24;
 
             var totalRemainingDayCount = totalRemainingHourCount / numberOfHoursPerDay;
-            var unusedPeriodCount = totalRemainingDayCount / (int) paymentPeriodType;
-            var unusedHoursCount = totalRemainingHourCount % ((int) paymentPeriodType * numberOfHoursPerDay);
+           
 
             decimal currentEditionPriceForUnusedPeriod = 0;
             decimal targetEditionPriceForUnusedPeriod = 0;
 
-            var currentEditionPrice = currentEdition.GetPaymentAmount(paymentPeriodType);
-            var targetEditionPrice = targetEdition.GetPaymentAmount(paymentPeriodType);
+           
 
-            if (currentEditionPrice > 0)
-            {
-                currentEditionPriceForUnusedPeriod = currentEditionPrice * unusedPeriodCount;
-                currentEditionPriceForUnusedPeriod += (currentEditionPrice / (int) paymentPeriodType) /
-                    numberOfHoursPerDay * unusedHoursCount;
-            }
 
-            if (targetEditionPrice > 0)
-            {
-                targetEditionPriceForUnusedPeriod = targetEditionPrice * unusedPeriodCount;
-                targetEditionPriceForUnusedPeriod += (targetEditionPrice / (int) paymentPeriodType) /
-                    numberOfHoursPerDay * unusedHoursCount;
-            }
 
             return targetEditionPriceForUnusedPeriod - currentEditionPriceForUnusedPeriod;
         }
@@ -267,7 +252,6 @@ namespace FTEL.CSOC.MultiTenancy
             int tenantId,
             bool isActive,
             bool? isInTrialPeriod,
-            PaymentPeriodType? paymentPeriodType,
             int editionId,
             EditionPaymentType editionPaymentType)
         {
@@ -281,10 +265,7 @@ namespace FTEL.CSOC.MultiTenancy
                 tenant.IsInTrialPeriod = isInTrialPeriod.Value;
             }
             
-            if (paymentPeriodType.HasValue)
-            {
-                tenant.UpdateSubscriptionDateForPayment(paymentPeriodType.Value, editionPaymentType);
-            }
+     
 
             return tenant;
         }

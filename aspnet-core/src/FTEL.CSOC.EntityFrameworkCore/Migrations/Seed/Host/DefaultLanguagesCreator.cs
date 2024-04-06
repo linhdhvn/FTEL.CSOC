@@ -17,8 +17,8 @@ namespace FTEL.CSOC.Migrations.Seed.Host
             var tenantId = CSOCConsts.MultiTenancyEnabled ? null : (int?)1;
             return new List<ApplicationLanguage>
             {
-                new ApplicationLanguage(tenantId, "en-US", "English", "famfamfam-flags us"),
-                new ApplicationLanguage(tenantId, "vi-VN", "Tiếng Việt", "famfamfam-flags vn")
+                new ApplicationLanguage(tenantId, "en", "English", "famfamfam-flags us"),
+                new ApplicationLanguage(tenantId, "vi", "Tiếng Việt", "famfamfam-flags vn")
             };
         }
 

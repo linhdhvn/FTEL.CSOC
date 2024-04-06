@@ -5,8 +5,6 @@ namespace FTEL.CSOC.MultiTenancy
 {
     public interface ISubscriptionAppService : IApplicationService
     {
-        Task DisableRecurringPayments();
-
-        Task EnableRecurringPayments();
+        
     }
 }

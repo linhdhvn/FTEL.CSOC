@@ -1,10 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using Abp.MultiTenancy;
-using Abp.Timing;
 using FTEL.CSOC.Authorization.Users;
-using FTEL.CSOC.Editions;
-using FTEL.CSOC.MultiTenancy.Payments;
 
 namespace FTEL.CSOC.MultiTenancy
 {
@@ -34,8 +31,6 @@ namespace FTEL.CSOC.MultiTenancy
 
         [MaxLength(MaxLogoMimeTypeLength)]
         public virtual string LightLogoFileType { get; set; }
-
-        public SubscriptionPaymentType SubscriptionPaymentType { get; set; }
 
         protected Tenant()
         {
@@ -70,56 +65,7 @@ namespace FTEL.CSOC.MultiTenancy
             DarkLogoFileType = null;
         }
 
-        public void UpdateSubscriptionDateForPayment(PaymentPeriodType paymentPeriodType, EditionPaymentType editionPaymentType)
-        {
-            switch (editionPaymentType)
-            {
-                case EditionPaymentType.NewRegistration:
-                case EditionPaymentType.BuyNow:
-                    {
-                        SubscriptionEndDateUtc = Clock.Now.ToUniversalTime().AddDays((int)paymentPeriodType);
-                        break;
-                    }
-                case EditionPaymentType.Extend:
-                    ExtendSubscriptionDate(paymentPeriodType);
-                    break;
-                case EditionPaymentType.Upgrade:
-                    if (HasUnlimitedTimeSubscription())
-                    {
-                        SubscriptionEndDateUtc = Clock.Now.ToUniversalTime().AddDays((int)paymentPeriodType);
-                    }
-                    break;
-                default:
-                    throw new ArgumentException();
-            }
-        }
 
-        private void ExtendSubscriptionDate(PaymentPeriodType paymentPeriodType)
-        {
-            if (SubscriptionEndDateUtc == null)
-            {
-                throw new InvalidOperationException("Can not extend subscription date while it's null!");
-            }
-
-            if (IsSubscriptionEnded())
-            {
-                SubscriptionEndDateUtc = Clock.Now.ToUniversalTime();
-            }
-
-            SubscriptionEndDateUtc = SubscriptionEndDateUtc.Value.AddDays((int)paymentPeriodType);
-        }
-
-        private bool IsSubscriptionEnded()
-        {
-            return SubscriptionEndDateUtc < Clock.Now.ToUniversalTime();
-        }
-
-        public int CalculateRemainingHoursCount()
-        {
-            return SubscriptionEndDateUtc != null
-                ? (int)(SubscriptionEndDateUtc.Value - Clock.Now.ToUniversalTime()).TotalHours //converting it to int is not a problem since max value ((DateTime.MaxValue - DateTime.MinValue).TotalHours = 87649416) is in range of integer.
-                : 0;
-        }
 
         public bool HasUnlimitedTimeSubscription()
         {

@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using FTEL.CSOC.MultiTenancy.Payments;
-
-namespace FTEL.CSOC.Editions.Dto
+﻿namespace FTEL.CSOC.Editions.Dto
 {
     public class EditionSelectDto
     {
@@ -29,23 +26,7 @@ namespace FTEL.CSOC.Editions.Dto
 
         public EditionSelectDto()
         {
-        }
 
-        public decimal GetPaymentAmount(PaymentPeriodType? paymentPeriodType)
-        {
-            switch (paymentPeriodType)
-            {
-                case PaymentPeriodType.Daily:
-                    return DailyPrice ?? 0;
-                case PaymentPeriodType.Weekly:
-                    return WeeklyPrice ?? 0;
-                case PaymentPeriodType.Monthly:
-                    return MonthlyPrice ?? 0;
-                case PaymentPeriodType.Annual:
-                    return AnnualPrice ?? 0;
-                default:
-                    return 0;
-            }
         }
     }
 }

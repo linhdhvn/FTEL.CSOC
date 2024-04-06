@@ -12,8 +12,6 @@ namespace FTEL.CSOC.MultiTenancy.HostDashboard
 
         Task<GetExpiringTenantsOutput> GetSubscriptionExpiringTenantsData();
 
-        Task<GetIncomeStatisticsDataOutput> GetIncomeStatistics(GetIncomeStatisticsDataInput input);
-
         Task<GetEditionTenantStatisticsOutput> GetEditionTenantStatistics(GetEditionTenantStatisticsInput input);
     }
 }

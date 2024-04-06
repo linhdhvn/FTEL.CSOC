@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using Abp.Configuration;
 using Abp.Localization;
-using Abp.MultiTenancy;
 using Abp.Net.Mail;
 using Microsoft.EntityFrameworkCore;
 using FTEL.CSOC.EntityFrameworkCore;
@@ -21,20 +20,12 @@ namespace FTEL.CSOC.Migrations.Seed.Host
         {
             int? tenantId = null;
 
-            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
-            if (!CSOCConsts.MultiTenancyEnabled)
-#pragma warning disable 162
-            {
-                tenantId = MultiTenancyConsts.DefaultTenantId;
-            }
-#pragma warning restore 162
-
             //Emailing
             AddSettingIfNotExists(EmailSettingNames.DefaultFromAddress, "admin@mydomain.com", tenantId);
             AddSettingIfNotExists(EmailSettingNames.DefaultFromDisplayName, "mydomain.com mailer", tenantId);
 
             //Languages
-            AddSettingIfNotExists(LocalizationSettingNames.DefaultLanguage, "vi-VN", tenantId);
+            AddSettingIfNotExists(LocalizationSettingNames.DefaultLanguage, "vi", tenantId);
         }
 
         private void AddSettingIfNotExists(string name, string value, int? tenantId = null)

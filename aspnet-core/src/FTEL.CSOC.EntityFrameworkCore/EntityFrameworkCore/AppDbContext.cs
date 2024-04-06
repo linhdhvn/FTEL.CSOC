@@ -6,8 +6,6 @@ using FTEL.CSOC.Authorization.Roles;
 using FTEL.CSOC.Authorization.Users;
 using FTEL.CSOC.Editions;
 using FTEL.CSOC.MultiTenancy;
-using FTEL.CSOC.MultiTenancy.Accounting;
-using FTEL.CSOC.MultiTenancy.Payments;
 using FTEL.CSOC.Storage;
 
 namespace FTEL.CSOC.EntityFrameworkCore
@@ -20,13 +18,10 @@ namespace FTEL.CSOC.EntityFrameworkCore
 
         public virtual DbSet<SubscribableEdition> SubscribableEditions { get; set; }
 
-        public virtual DbSet<SubscriptionPayment> SubscriptionPayments { get; set; }
 
-        public virtual DbSet<Invoice> Invoices { get; set; }
 
         public virtual DbSet<PersistedGrantEntity> PersistedGrants { get; set; }
 
-        public virtual DbSet<SubscriptionPaymentExtensionData> SubscriptionPaymentExtensionDatas { get; set; }
 
         public virtual DbSet<UserDelegation> UserDelegations { get; set; }
         
@@ -53,19 +48,7 @@ namespace FTEL.CSOC.EntityFrameworkCore
                 b.HasIndex(e => new { e.CreationTime });
             });
 
-            modelBuilder.Entity<SubscriptionPayment>(b =>
-            {
-                b.HasIndex(e => new { e.Status, e.CreationTime });
-                b.HasIndex(e => new { PaymentId = e.ExternalPaymentId, e.Gateway });
-            });
-
-            modelBuilder.Entity<SubscriptionPaymentExtensionData>(b =>
-            {
-                b.HasQueryFilter(m => !m.IsDeleted)
-                    .HasIndex(e => new { e.SubscriptionPaymentId, e.Key, e.IsDeleted })
-                    .IsUnique()
-                    .HasFilter("[IsDeleted] = 0");
-            });
+           
 
             modelBuilder.Entity<UserDelegation>(b =>
             {

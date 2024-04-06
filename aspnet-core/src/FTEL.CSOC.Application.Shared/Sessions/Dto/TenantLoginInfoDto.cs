@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Abp.Application.Services.Dto;
 using Abp.Timing;
-using FTEL.CSOC.MultiTenancy.Payments;
 
 namespace FTEL.CSOC.Sessions.Dto
 {
@@ -26,15 +25,12 @@ namespace FTEL.CSOC.Sessions.Dto
 
         public bool IsInTrialPeriod { get; set; }
 
-        public SubscriptionPaymentType SubscriptionPaymentType { get; set; }
-
         public EditionInfoDto Edition { get; set; }
         
         public List<NameValueDto> FeatureValues { get; set; }
 
         public DateTime CreationTime { get; set; }
 
-        public PaymentPeriodType PaymentPeriodType { get; set; }
 
         public string SubscriptionDateString { get; set; }
 
@@ -68,11 +64,6 @@ namespace FTEL.CSOC.Sessions.Dto
             }
 
             return Convert.ToInt32(SubscriptionEndDateUtc.Value.ToUniversalTime().Subtract(Clock.Now.ToUniversalTime()).TotalDays);
-        }
-
-        public bool HasRecurringSubscription()
-        {
-            return SubscriptionPaymentType != SubscriptionPaymentType.Manual;
         }
         
         public virtual bool HasLogo()

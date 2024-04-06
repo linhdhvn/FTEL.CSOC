@@ -30,8 +30,6 @@ using FTEL.CSOC.Localization.Dto;
 using FTEL.CSOC.MultiTenancy;
 using FTEL.CSOC.MultiTenancy.Dto;
 using FTEL.CSOC.MultiTenancy.HostDashboard.Dto;
-using FTEL.CSOC.MultiTenancy.Payments;
-using FTEL.CSOC.MultiTenancy.Payments.Dto;
 using FTEL.CSOC.Notifications.Dto;
 using FTEL.CSOC.Organizations.Dto;
 using FTEL.CSOC.Sessions.Dto;
@@ -81,12 +79,6 @@ namespace FTEL.CSOC
             configuration.CreateMap<Edition, EditionEditDto>();
             configuration.CreateMap<Edition, SubscribableEdition>();
             configuration.CreateMap<Edition, EditionSelectDto>();
-
-
-            //Payment
-            configuration.CreateMap<SubscriptionPaymentDto, SubscriptionPayment>().ReverseMap();
-            configuration.CreateMap<SubscriptionPaymentListDto, SubscriptionPayment>().ReverseMap();
-            configuration.CreateMap<SubscriptionPayment, SubscriptionPaymentInfoDto>();
 
             //Permission
             configuration.CreateMap<Permission, FlatPermissionDto>();

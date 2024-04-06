@@ -1,7 +1,5 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Application.Editions;
-using FTEL.CSOC.MultiTenancy.Payments;
 
 namespace FTEL.CSOC.Editions
 {
@@ -43,32 +41,7 @@ namespace FTEL.CSOC.Editions
             return TrialDayCount.HasValue && TrialDayCount.Value > 0;
         }
 
-        public decimal GetPaymentAmount(PaymentPeriodType? paymentPeriodType)
-        {
-            var amount = GetPaymentAmountOrNull(paymentPeriodType);
-            if (!amount.HasValue)
-            {
-                throw new Exception("No price information found for " + DisplayName + " edition!");
-            }
 
-            return amount.Value;
-        }
 
-        public decimal? GetPaymentAmountOrNull(PaymentPeriodType? paymentPeriodType)
-        {
-            switch (paymentPeriodType)
-            {
-                case PaymentPeriodType.Daily:
-                    return DailyPrice;
-                case PaymentPeriodType.Weekly:
-                    return WeeklyPrice;
-                case PaymentPeriodType.Monthly:
-                    return MonthlyPrice;
-                case PaymentPeriodType.Annual:
-                    return AnnualPrice;
-                default:
-                    return null;
-            }
-        }
     }
 }

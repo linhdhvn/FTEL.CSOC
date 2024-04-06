@@ -61,11 +61,6 @@
         <link rel="stylesheet" href="@(ApplicationPath)Common/Styles/abp-zero-template-rtl.css" asp-append-version="true"/>
     }
 
-    @if (isChatEnabled)
-    {
-        <link rel="stylesheet" abp-href="/view-resources/Areas/App/Views/Layout/_ChatBar.css" asp-append-version="true"/>
-    }
-
     <link rel="stylesheet" abp-href="/view-resources/Areas/App/Views/Layout/_Layout.css" asp-append-version="true"/>
 
     @await RenderSectionAsync("Styles", false)
@@ -98,7 +93,6 @@
       data-kt-app-toolbar-enabled="true"
       data-kt-app-sidebar-push-toolbar="true"
       data-kt-app-sidebar-push-footer="true"
-      data-kt-app-toolbar-enabled="true"
       data-kt-app-sidebar-minimize='@(theme.BaseSettings.Menu.DefaultMinimizedAside ? "on" : "off")'
       class="@await themeCustomizer.GetBodyClass()"
       style="@await themeCustomizer.GetBodyStyle()">
@@ -117,12 +111,7 @@
     <!--end::Svg Icon-->
 </div>
 <!-- end::Scrolltop -->
-<!-- begin::Chat Bar -->
-@if (isChatEnabled)
-{
-    @await Html.PartialAsync("~/Areas/App/Views/Layout/_ChatBar.cshtml")
-}
-<!-- end::Chat Bar -->
+
 <!-- begin::Theme Selection Panel -->
 @if (await SettingManager.GetSettingValueAsync<bool>(AppSettings.UserManagement.IsQuickThemeSelectEnabled))
 {

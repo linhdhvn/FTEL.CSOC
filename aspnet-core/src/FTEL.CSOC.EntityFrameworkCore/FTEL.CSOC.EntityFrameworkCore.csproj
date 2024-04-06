@@ -31,4 +31,8 @@
     <Reference Include="System.Transactions" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="MultiTenancy\" />
+  </ItemGroup>
+
 </Project>

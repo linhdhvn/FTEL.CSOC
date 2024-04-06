@@ -9,7 +9,6 @@ using Abp.Timing;
 using Microsoft.EntityFrameworkCore;
 using FTEL.CSOC.Authorization;
 using FTEL.CSOC.MultiTenancy.HostDashboard.Dto;
-using FTEL.CSOC.MultiTenancy.Payments;
 
 namespace FTEL.CSOC.MultiTenancy.HostDashboard
 {
@@ -22,18 +21,12 @@ namespace FTEL.CSOC.MultiTenancy.HostDashboard
         private const int MaxRecentTenantsShownCount = 10;
         private const int RecentTenantsDayCount = 7;
 
-        private readonly ISubscriptionPaymentRepository _subscriptionPaymentRepository;
         private readonly IRepository<Tenant> _tenantRepository;
-        private readonly IIncomeStatisticsService _incomeStatisticsService;
 
         public HostDashboardAppService(
-            ISubscriptionPaymentRepository subscriptionPaymentRepository,
-            IRepository<Tenant> tenantRepository,
-            IIncomeStatisticsService incomeStatisticsService)
+            IRepository<Tenant> tenantRepository)
         {
-            _subscriptionPaymentRepository = subscriptionPaymentRepository;
             _tenantRepository = tenantRepository;
-            _incomeStatisticsService = incomeStatisticsService;
         }
 
         public async Task<TopStatsData> GetTopStatsData(GetTopStatsInput input)
@@ -42,8 +35,7 @@ namespace FTEL.CSOC.MultiTenancy.HostDashboard
             {
                 DashboardPlaceholder1 = 125,
                 DashboardPlaceholder2 = 830,
-                NewTenantsCount = await GetTenantsCountByDate(input.StartDate, input.EndDate),
-                NewSubscriptionAmount = GetNewSubscriptionAmount(input.StartDate, input.EndDate)
+                NewTenantsCount = await GetTenantsCountByDate(input.StartDate, input.EndDate)
             };
         }
 
@@ -80,15 +72,7 @@ namespace FTEL.CSOC.MultiTenancy.HostDashboard
             };
         }
 
-        public async Task<GetIncomeStatisticsDataOutput> GetIncomeStatistics(GetIncomeStatisticsDataInput input)
-        {
-            return new GetIncomeStatisticsDataOutput(
-                await _incomeStatisticsService.GetIncomeStatisticsData(
-                    input.StartDate, 
-                    input.EndDate,
-                    input.IncomeStatisticsDateInterval)
-            );
-        }
+
 
         public async Task<GetEditionTenantStatisticsOutput> GetEditionTenantStatistics(GetEditionTenantStatisticsInput input)
         {
@@ -117,15 +101,7 @@ namespace FTEL.CSOC.MultiTenancy.HostDashboard
                 .ToList();
         }
 
-        private decimal GetNewSubscriptionAmount(DateTime startDate, DateTime endDate)
-        {
-            return  _subscriptionPaymentRepository.GetAll()
-                  .Where(s => s.CreationTime >= startDate &&
-                              s.CreationTime <= endDate &&
-                              s.Status == SubscriptionPaymentStatus.Paid)
-                  .Select(x => x.Amount).AsEnumerable()
-                  .Sum();
-        }
+
 
         private async Task<int> GetTenantsCountByDate(DateTime startDate, DateTime endDate)
         {

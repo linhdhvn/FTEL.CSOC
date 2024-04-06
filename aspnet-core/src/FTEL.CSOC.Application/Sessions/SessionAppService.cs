@@ -9,7 +9,6 @@ using Abp.Runtime.Session;
 using Microsoft.EntityFrameworkCore;
 using FTEL.CSOC.Authentication.TwoFactor;
 using FTEL.CSOC.Editions;
-using FTEL.CSOC.MultiTenancy.Payments;
 using FTEL.CSOC.Sessions.Dto;
 using FTEL.CSOC.UiCustomization;
 using FTEL.CSOC.Authorization.Delegation;
@@ -23,7 +22,6 @@ namespace FTEL.CSOC.Sessions
     public class SessionAppService : CSOCAppServiceBase, ISessionAppService
     {
         private readonly IUiThemeCustomizerFactory _uiThemeCustomizerFactory;
-        private readonly ISubscriptionPaymentRepository _subscriptionPaymentRepository;
         private readonly IUserDelegationConfiguration _userDelegationConfiguration;
         private readonly IUnitOfWorkManager _unitOfWorkManager;
         private readonly EditionManager _editionManager;
@@ -31,13 +29,11 @@ namespace FTEL.CSOC.Sessions
         
         public SessionAppService(
             IUiThemeCustomizerFactory uiThemeCustomizerFactory,
-            ISubscriptionPaymentRepository subscriptionPaymentRepository,
             IUserDelegationConfiguration userDelegationConfiguration,
             IUnitOfWorkManager unitOfWorkManager,
             EditionManager editionManager, ILocalizationContext localizationContext)
         {
             _uiThemeCustomizerFactory = uiThemeCustomizerFactory;
-            _subscriptionPaymentRepository = subscriptionPaymentRepository;
             _userDelegationConfiguration = userDelegationConfiguration;
             _unitOfWorkManager = unitOfWorkManager;
             _editionManager = editionManager;
@@ -92,17 +88,7 @@ namespace FTEL.CSOC.Sessions
                     return output;
                 }
 
-                if (output.Tenant.Edition != null)
-                {
-                    var lastPayment =
-                        await _subscriptionPaymentRepository.GetLastCompletedPaymentOrDefaultAsync(output.Tenant.Id,
-                            null, null);
-                    if (lastPayment != null)
-                    {
-                        output.Tenant.Edition.IsHighestEdition = IsEditionHighest(output.Tenant.Edition.Id,
-                            lastPayment.GetPaymentPeriodType());
-                    }
-                }
+  
 
                 output.Tenant.SubscriptionDateString = GetTenantSubscriptionDateString(output);
                 output.Tenant.CreationTimeString = output.Tenant.CreationTime.ToString("d");
@@ -142,45 +128,7 @@ namespace FTEL.CSOC.Sessions
             return tenantLoginInfo;
         }
 
-        private bool IsEditionHighest(int editionId, PaymentPeriodType paymentPeriodType)
-        {
-            var topEdition = GetHighestEditionOrNullByPaymentPeriodType(paymentPeriodType);
-            if (topEdition == null)
-            {
-                return false;
-            }
 
-            return editionId == topEdition.Id;
-        }
-
-        private SubscribableEdition GetHighestEditionOrNullByPaymentPeriodType(PaymentPeriodType paymentPeriodType)
-        {
-            var editions = TenantManager.EditionManager.Editions;
-            if (editions == null || !editions.Any())
-            {
-                return null;
-            }
-
-            var query = editions.Cast<SubscribableEdition>();
-
-            switch (paymentPeriodType)
-            {
-                case PaymentPeriodType.Daily:
-                    query = query.OrderByDescending(e => e.DailyPrice ?? 0);
-                    break;
-                case PaymentPeriodType.Weekly:
-                    query = query.OrderByDescending(e => e.WeeklyPrice ?? 0);
-                    break;
-                case PaymentPeriodType.Monthly:
-                    query = query.OrderByDescending(e => e.MonthlyPrice ?? 0);
-                    break;
-                case PaymentPeriodType.Annual:
-                    query = query.OrderByDescending(e => e.AnnualPrice ?? 0);
-                    break;
-            }
-
-            return query.FirstOrDefault();
-        }
 
         private string GetTenantSubscriptionDateString(GetCurrentLoginInformationsOutput output)
         {

@@ -7,7 +7,6 @@ using Abp.MultiTenancy;
 using Microsoft.EntityFrameworkCore;
 using FTEL.CSOC.EntityFrameworkCore;
 using FTEL.CSOC.Migrations.Seed.Host;
-using FTEL.CSOC.Migrations.Seed.Tenants;
 
 namespace FTEL.CSOC.Migrations.Seed
 {
@@ -24,10 +23,6 @@ namespace FTEL.CSOC.Migrations.Seed
 
             //Host seed
             new InitialHostDbBuilder(context).Create();
-
-            //Default tenant seed (in host database).
-            new DefaultTenantBuilder(context).Create();
-            new TenantRoleAndUserBuilder(context, 1).Create();
         }
 
         private static void WithDbContext<TDbContext>(IIocResolver iocResolver, Action<TDbContext> contextAction)

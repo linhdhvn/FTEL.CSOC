@@ -1,13 +1,11 @@
 ﻿@using Abp.Web.Mvc.Alerts
 @using FTEL.CSOC.Localization
 @using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppActiveUserDelegationsCombobox
-@using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppChatToggler
 @using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppLanguageSwitch
 @using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppLogo
 @using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppMenu
 @using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppQuickThemeSelect
 @using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppRecentNotifications
-@using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppSubscriptionBar
 @using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppToggleDarkMode
 @using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppUserMenu
 @using FTEL.CSOC.Web.Areas.App.Views.Shared.Themes.Theme4.Components.AppTheme4Brand
@@ -101,10 +99,7 @@
                         <!--begin::Topbar-->
                         <div class="d-flex align-items-stretch justify-self-end flex-shrink-0">
                             @await Component.InvokeAsync(typeof(AppActiveUserDelegationsComboboxViewComponent))
-                            @await Component.InvokeAsync(typeof(AppSubscriptionBarViewComponent), new
-                            {
-                            cssClass = "btn btn-icon btn-active-light-primary position-relative btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px"
-                            })
+                       
                             @await Component.InvokeAsync(typeof(AppQuickThemeSelectViewComponent), new
                             {
                             cssClass = "btn btn-icon btn-active-light-primary position-relative btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px"
@@ -115,9 +110,7 @@
                             @await Component.InvokeAsync(typeof(AppRecentNotificationsViewComponent), new {
                                 cssClass = "btn btn-icon btn-active-light-primary position-relative btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px"
                             })
-                            @await Component.InvokeAsync(typeof(AppChatTogglerViewComponent), new {
-                                cssClass = "btn btn-icon btn-active-light-primary position-relative btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px"
-                            })
+                    
                             @await Component.InvokeAsync(typeof(AppUserMenuViewComponent), new
                             {
                             renderOnlyIcon = true,
