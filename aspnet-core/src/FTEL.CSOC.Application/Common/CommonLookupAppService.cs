@@ -9,29 +9,15 @@ using Abp.Runtime.Session;
 using Microsoft.EntityFrameworkCore;
 using FTEL.CSOC.Common.Dto;
 using FTEL.CSOC.Editions;
-using FTEL.CSOC.Editions.Dto;
 
 namespace FTEL.CSOC.Common
 {
     [AbpAuthorize]
     public class CommonLookupAppService : CSOCAppServiceBase, ICommonLookupAppService
     {
-        private readonly EditionManager _editionManager;
-
-        public CommonLookupAppService(EditionManager editionManager)
+        public CommonLookupAppService()
         {
-            _editionManager = editionManager;
-        }
 
-        public async Task<ListResultDto<SubscribableEditionComboboxItemDto>> GetEditionsForCombobox(bool onlyFreeItems = false)
-        {
-            var subscribableEditions = (await _editionManager.Editions.Cast<SubscribableEdition>().ToListAsync())
-                .WhereIf(onlyFreeItems, e => e.IsFree)
-                .OrderBy(e => e.MonthlyPrice);
-
-            return new ListResultDto<SubscribableEditionComboboxItemDto>(
-                subscribableEditions.Select(e => new SubscribableEditionComboboxItemDto(e.Id.ToString(), e.DisplayName, e.IsFree)).ToList()
-            );
         }
 
         public async Task<PagedResultDto<NameValueDto>> FindUsers(FindUsersInput input)

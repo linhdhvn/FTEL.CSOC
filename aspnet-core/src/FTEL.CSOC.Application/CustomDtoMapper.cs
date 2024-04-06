@@ -23,20 +23,11 @@ using FTEL.CSOC.Authorization.Users.Delegation.Dto;
 using FTEL.CSOC.Authorization.Users.Dto;
 using FTEL.CSOC.Authorization.Users.Importing.Dto;
 using FTEL.CSOC.Authorization.Users.Profile.Dto;
-using FTEL.CSOC.Chat;
-using FTEL.CSOC.Chat.Dto;
 using FTEL.CSOC.DynamicEntityProperties.Dto;
-using FTEL.CSOC.Editions;
 using FTEL.CSOC.Editions.Dto;
-using FTEL.CSOC.Friendships;
-using FTEL.CSOC.Friendships.Cache;
-using FTEL.CSOC.Friendships.Dto;
 using FTEL.CSOC.Localization.Dto;
 using FTEL.CSOC.MultiTenancy;
-using FTEL.CSOC.MultiTenancy.Dto;
 using FTEL.CSOC.MultiTenancy.HostDashboard.Dto;
-using FTEL.CSOC.MultiTenancy.Payments;
-using FTEL.CSOC.MultiTenancy.Payments.Dto;
 using FTEL.CSOC.Notifications.Dto;
 using FTEL.CSOC.Organizations.Dto;
 using FTEL.CSOC.Sessions.Dto;
@@ -48,14 +39,7 @@ namespace FTEL.CSOC
     {
         public static void CreateMappings(IMapperConfigurationExpression configuration)
         {
-            //Inputs
-            configuration.CreateMap<CheckboxInputType, FeatureInputTypeDto>();
-            configuration.CreateMap<SingleLineStringInputType, FeatureInputTypeDto>();
-            configuration.CreateMap<ComboboxInputType, FeatureInputTypeDto>();
-            configuration.CreateMap<IInputType, FeatureInputTypeDto>()
-                .Include<CheckboxInputType, FeatureInputTypeDto>()
-                .Include<SingleLineStringInputType, FeatureInputTypeDto>()
-                .Include<ComboboxInputType, FeatureInputTypeDto>();
+            //Inputs           
             configuration.CreateMap<StaticLocalizableComboboxItemSource, LocalizableComboboxItemSourceDto>();
             configuration.CreateMap<ILocalizableComboboxItemSource, LocalizableComboboxItemSourceDto>()
                 .Include<StaticLocalizableComboboxItemSource, LocalizableComboboxItemSourceDto>();
@@ -63,39 +47,10 @@ namespace FTEL.CSOC
             configuration.CreateMap<ILocalizableComboboxItem, LocalizableComboboxItemDto>()
                 .Include<LocalizableComboboxItem, LocalizableComboboxItemDto>();
 
-            //Chat
-            configuration.CreateMap<ChatMessage, ChatMessageDto>();
-            configuration.CreateMap<ChatMessage, ChatMessageExportDto>();
-
-            //Feature
-            configuration.CreateMap<FlatFeatureSelectDto, Feature>().ReverseMap();
-            configuration.CreateMap<Feature, FlatFeatureDto>();
-
             //Role
             configuration.CreateMap<RoleEditDto, Role>().ReverseMap();
             configuration.CreateMap<Role, RoleListDto>();
             configuration.CreateMap<UserRole, UserListRoleDto>();
-
-            
-
-            //Edition
-            configuration.CreateMap<EditionEditDto, SubscribableEdition>().ReverseMap();
-            configuration.CreateMap<EditionCreateDto, SubscribableEdition>();
-            configuration.CreateMap<EditionSelectDto, SubscribableEdition>().ReverseMap();
-            configuration.CreateMap<SubscribableEdition, EditionInfoDto>();
-
-            configuration.CreateMap<Edition, EditionInfoDto>().Include<SubscribableEdition, EditionInfoDto>();
-
-            configuration.CreateMap<SubscribableEdition, EditionListDto>();
-            configuration.CreateMap<Edition, EditionEditDto>();
-            configuration.CreateMap<Edition, SubscribableEdition>();
-            configuration.CreateMap<Edition, EditionSelectDto>();
-
-
-            //Payment
-            configuration.CreateMap<SubscriptionPaymentDto, SubscriptionPayment>().ReverseMap();
-            configuration.CreateMap<SubscriptionPaymentListDto, SubscriptionPayment>().ReverseMap();
-            configuration.CreateMap<SubscriptionPayment, SubscriptionPaymentInfoDto>();
 
             //Permission
             configuration.CreateMap<Permission, FlatPermissionDto>();
@@ -109,10 +64,7 @@ namespace FTEL.CSOC
                 .ForMember(ldto => ldto.IsEnabled, options => options.MapFrom(l => !l.IsDisabled));
 
             //Tenant
-            configuration.CreateMap<Tenant, RecentTenant>();
             configuration.CreateMap<Tenant, TenantLoginInfoDto>();
-            configuration.CreateMap<Tenant, TenantListDto>();
-            configuration.CreateMap<TenantEditDto, Tenant>().ReverseMap();
             configuration.CreateMap<CurrentTenantInfoDto, Tenant>().ReverseMap();
 
             //User
@@ -122,7 +74,6 @@ namespace FTEL.CSOC
                 .ForMember(user => user.Password, options => options.Ignore());
             configuration.CreateMap<User, UserLoginInfoDto>();
             configuration.CreateMap<User, UserListDto>();
-            configuration.CreateMap<User, ChatUserDto>();
             configuration.CreateMap<User, OrganizationUnitUserListDto>();
             configuration.CreateMap<Role, OrganizationUnitRoleListDto>();
             configuration.CreateMap<CurrentUserProfileEditDto, User>().ReverseMap();
@@ -133,10 +84,6 @@ namespace FTEL.CSOC
             configuration.CreateMap<AuditLog, AuditLogListDto>();
             configuration.CreateMap<EntityChange, EntityChangeListDto>();
             configuration.CreateMap<EntityPropertyChange, EntityPropertyChangeDto>();
-
-            //Friendship
-            configuration.CreateMap<Friendship, FriendDto>();
-            configuration.CreateMap<FriendCacheItem, FriendDto>();
 
             //OrganizationUnit
             configuration.CreateMap<OrganizationUnit, OrganizationUnitDto>();
@@ -159,7 +106,7 @@ namespace FTEL.CSOC
             configuration.CreateMap<DynamicEntityPropertyDto, DynamicEntityProperty>();
 
             configuration.CreateMap<DynamicEntityPropertyValue, DynamicEntityPropertyValueDto>().ReverseMap();
-            
+
             //User Delegations
             configuration.CreateMap<CreateUserDelegationDto, UserDelegation>();
 

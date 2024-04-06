@@ -12,8 +12,6 @@ using Abp.UI;
 using Microsoft.AspNetCore.Identity;
 using FTEL.CSOC.Authorization.Roles;
 using FTEL.CSOC.Configuration;
-using FTEL.CSOC.Debugging;
-using FTEL.CSOC.MultiTenancy;
 using FTEL.CSOC.Notifications;
 
 namespace FTEL.CSOC.Authorization.Users
@@ -23,31 +21,25 @@ namespace FTEL.CSOC.Authorization.Users
         public IAbpSession AbpSession { get; set; }
         public IAsyncQueryableExecuter AsyncQueryableExecuter { get; set; }
 
-        private readonly TenantManager _tenantManager;
         private readonly UserManager _userManager;
         private readonly RoleManager _roleManager;
         private readonly IUserEmailer _userEmailer;
         private readonly INotificationSubscriptionManager _notificationSubscriptionManager;
         private readonly IAppNotifier _appNotifier;
-        private readonly IUserPolicy _userPolicy;
-        
+
 
         public UserRegistrationManager(
-            TenantManager tenantManager,
             UserManager userManager,
             RoleManager roleManager,
             IUserEmailer userEmailer,
             INotificationSubscriptionManager notificationSubscriptionManager,
-            IAppNotifier appNotifier,
-            IUserPolicy userPolicy)
+            IAppNotifier appNotifier)
         {
-            _tenantManager = tenantManager;
             _userManager = userManager;
             _roleManager = roleManager;
             _userEmailer = userEmailer;
             _notificationSubscriptionManager = notificationSubscriptionManager;
             _appNotifier = appNotifier;
-            _userPolicy = userPolicy;
 
             AbpSession = NullAbpSession.Instance;
             AsyncQueryableExecuter = NullAsyncQueryableExecuter.Instance;
@@ -58,14 +50,12 @@ namespace FTEL.CSOC.Authorization.Users
             CheckForTenant();
             CheckSelfRegistrationIsEnabled();
 
-            var tenant = await GetActiveTenantAsync();
             var isNewRegisteredUserActiveByDefault = await SettingManager.GetSettingValueAsync<bool>(AppSettings.UserManagement.IsNewRegisteredUserActiveByDefault);
 
-            await _userPolicy.CheckMaxUserCountAsync(tenant.Id);
 
             var user = new User
             {
-                TenantId = tenant.Id,
+                TenantId = null,
                 Name = name,
                 Surname = surname,
                 EmailAddress = emailAddress,
@@ -80,7 +70,7 @@ namespace FTEL.CSOC.Authorization.Users
             var defaultRoles = await AsyncQueryableExecuter.ToListAsync(_roleManager.Roles.Where(r => r.IsDefault));
             foreach (var defaultRole in defaultRoles)
             {
-                user.Roles.Add(new UserRole(tenant.Id, user.Id, defaultRole.Id));
+                user.Roles.Add(new UserRole(null, user.Id, defaultRole.Id));
             }
 
             await _userManager.InitializeOptionsAsync(AbpSession.TenantId);
@@ -120,32 +110,6 @@ namespace FTEL.CSOC.Authorization.Users
         private bool UseCaptchaOnRegistration()
         {
             return SettingManager.GetSettingValue<bool>(AppSettings.UserManagement.UseCaptchaOnRegistration);
-        }
-
-        private async Task<Tenant> GetActiveTenantAsync()
-        {
-            if (!AbpSession.TenantId.HasValue)
-            {
-                return null;
-            }
-
-            return await GetActiveTenantAsync(AbpSession.TenantId.Value);
-        }
-
-        private async Task<Tenant> GetActiveTenantAsync(int tenantId)
-        {
-            var tenant = await _tenantManager.FindByIdAsync(tenantId);
-            if (tenant == null)
-            {
-                throw new UserFriendlyException(L("UnknownTenantId{0}", tenantId));
-            }
-
-            if (!tenant.IsActive)
-            {
-                throw new UserFriendlyException(L("TenantIdIsNotActive{0}", tenantId));
-            }
-
-            return tenant;
         }
 
         protected virtual void CheckErrors(IdentityResult identityResult)

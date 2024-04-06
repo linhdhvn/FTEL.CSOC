@@ -10,7 +10,7 @@ namespace FTEL.CSOC.Authorization.Users
 {
     public class UserRepository : CSOCRepositoryBase<User, long>, IUserRepository
     {
-        public UserRepository(IDbContextProvider<CSOCDbContext> dbContextProvider)
+        public UserRepository(IDbContextProvider<AppDbContext> dbContextProvider)
             : base(dbContextProvider)
         {
         }

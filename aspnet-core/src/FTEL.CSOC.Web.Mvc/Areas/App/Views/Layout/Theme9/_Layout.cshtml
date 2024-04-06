@@ -1,13 +1,11 @@
 ﻿@using Abp.Web.Mvc.Alerts
 @using FTEL.CSOC.Localization
 @using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppActiveUserDelegationsCombobox
-@using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppChatToggler
 @using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppLanguageSwitch
 @using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppLogo
 @using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppMenu
 @using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppQuickThemeSelect
 @using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppRecentNotifications
-@using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppSubscriptionBar
 @using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppToggleDarkMode
 @using FTEL.CSOC.Web.Areas.App.Views.Shared.Components.AppUserMenu
 @using FTEL.CSOC.Web.Areas.App.Views.Shared.Themes.Theme9.Components.AppTheme9Brand
@@ -97,10 +95,7 @@
                         <!--begin::Action-->
                         <div class="d-flex align-items-center py-3 py-lg-0">
                             @await Component.InvokeAsync(typeof(AppActiveUserDelegationsComboboxViewComponent))
-                            @await Component.InvokeAsync(typeof(AppSubscriptionBarViewComponent), new
-                            {
-                                cssClass = "btn btn-icon btn-custom btn-active-color-primary position-relative"
-                            })
+                    
                             @await Component.InvokeAsync(typeof(AppQuickThemeSelectViewComponent), new
                             {
                                 cssClass = "btn btn-icon btn-custom btn-active-color-primary"
@@ -113,10 +108,7 @@
                             {
                                 cssClass = "btn btn-icon btn-custom btn-active-color-primary position-relative"
                             })
-                            @await Component.InvokeAsync(typeof(AppChatTogglerViewComponent), new
-                            {
-                                cssClass = "btn btn-icon btn-custom btn-active-color-primary position-relative"
-                            })
+                      
                             @await Component.InvokeAsync(typeof(AppToggleDarkModeViewComponent), new
                             {
                                 cssClass = "btn btn-icon btn-custom btn-active-color-primary position-relative",

@@ -8,11 +8,11 @@ namespace FTEL.CSOC.EntityFrameworkCore
 {
     public class DatabaseCheckHelper : ITransientDependency
     {
-        private readonly IDbContextProvider<CSOCDbContext> _dbContextProvider;
+        private readonly IDbContextProvider<AppDbContext> _dbContextProvider;
         private readonly IUnitOfWorkManager _unitOfWorkManager;
 
         public DatabaseCheckHelper(
-            IDbContextProvider<CSOCDbContext> dbContextProvider,
+            IDbContextProvider<AppDbContext> dbContextProvider,
             IUnitOfWorkManager unitOfWorkManager
         )
         {

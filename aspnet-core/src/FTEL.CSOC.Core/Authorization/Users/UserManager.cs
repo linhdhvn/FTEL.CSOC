@@ -160,10 +160,10 @@ namespace FTEL.CSOC.Authorization.Users
                 )
             };
 
-            var upperCaseLetters = "ABCDEFGHJKLMNOPQRSTUVWXYZ";
-            var lowerCaseLetters = "abcdefghijkmnopqrstuvwxyz";
-            var digits = "0123456789";
-            var nonAlphanumerics = "!@$?_-";
+            var upperCaseLetters = "ABCDEFGHJKLMNPQRSTUVWXYZ";
+            var lowerCaseLetters = "abcdefghijkmnpqrstuvwxyz";
+            var digits = "123456789";
+            var nonAlphanumerics = "!@#$%&";
 
             string[] randomChars =
             {

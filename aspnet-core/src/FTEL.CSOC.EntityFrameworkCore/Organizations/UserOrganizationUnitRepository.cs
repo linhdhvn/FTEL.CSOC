@@ -16,7 +16,7 @@ namespace FTEL.CSOC.Organizations
     public class UserOrganizationUnitRepository : CSOCRepositoryBase<UserOrganizationUnit, long>,
         IUserOrganizationUnitRepository
     {
-        public UserOrganizationUnitRepository(IDbContextProvider<CSOCDbContext> dbContextProvider)
+        public UserOrganizationUnitRepository(IDbContextProvider<AppDbContext> dbContextProvider)
             : base(dbContextProvider)
         {
         }

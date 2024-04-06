@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using Abp.Application.Services.Dto;
-using Abp.Timing;
-using FTEL.CSOC.MultiTenancy.Payments;
 
 namespace FTEL.CSOC.Sessions.Dto
 {
@@ -15,7 +12,7 @@ namespace FTEL.CSOC.Sessions.Dto
         public virtual Guid? DarkLogoId { get; set; }
 
         public virtual string DarkLogoFileType { get; set; }
-        
+
         public virtual Guid? LightLogoId { get; set; }
 
         public virtual string LightLogoFileType { get; set; }
@@ -24,57 +21,15 @@ namespace FTEL.CSOC.Sessions.Dto
 
         public DateTime? SubscriptionEndDateUtc { get; set; }
 
-        public bool IsInTrialPeriod { get; set; }
-
-        public SubscriptionPaymentType SubscriptionPaymentType { get; set; }
-
         public EditionInfoDto Edition { get; set; }
-        
-        public List<NameValueDto> FeatureValues { get; set; }
 
         public DateTime CreationTime { get; set; }
-
-        public PaymentPeriodType PaymentPeriodType { get; set; }
 
         public string SubscriptionDateString { get; set; }
 
         public string CreationTimeString { get; set; }
 
-        public TenantLoginInfoDto()
-        {
-            FeatureValues = new List<NameValueDto>();
-        }
-        
-        public bool IsInTrial()
-        {
-            return IsInTrialPeriod;
-        }
 
-        public bool SubscriptionIsExpiringSoon(int subscriptionExpireNootifyDayCount)
-        {
-            if (SubscriptionEndDateUtc.HasValue)
-            {
-                return Clock.Now.ToUniversalTime().AddDays(subscriptionExpireNootifyDayCount) >= SubscriptionEndDateUtc.Value;
-            }
-
-            return false;
-        }
-
-        public int GetSubscriptionExpiringDayCount()
-        {
-            if (!SubscriptionEndDateUtc.HasValue)
-            {
-                return 0;
-            }
-
-            return Convert.ToInt32(SubscriptionEndDateUtc.Value.ToUniversalTime().Subtract(Clock.Now.ToUniversalTime()).TotalDays);
-        }
-
-        public bool HasRecurringSubscription()
-        {
-            return SubscriptionPaymentType != SubscriptionPaymentType.Manual;
-        }
-        
         public virtual bool HasLogo()
         {
             return (DarkLogoId != null && DarkLogoFileType != null) ||

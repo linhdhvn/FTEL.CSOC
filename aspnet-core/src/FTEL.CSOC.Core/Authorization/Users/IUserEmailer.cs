@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using FTEL.CSOC.Chat;
 
 namespace FTEL.CSOC.Authorization.Users
 {
@@ -21,14 +20,5 @@ namespace FTEL.CSOC.Authorization.Users
         /// <param name="user">User</param>
         /// <param name="link">Password reset link (optional)</param>
         Task SendPasswordResetLinkAsync(User user, string link = null);
-
-        /// <summary>
-        /// Sends an email for unread chat message to user's email.
-        /// </summary>
-        /// <param name="user"></param>
-        /// <param name="senderUsername"></param>
-        /// <param name="senderTenancyName"></param>
-        /// <param name="chatMessage"></param>
-        Task TryToSendChatMessageMail(User user, string senderUsername, string senderTenancyName, ChatMessage chatMessage);
     }
 }

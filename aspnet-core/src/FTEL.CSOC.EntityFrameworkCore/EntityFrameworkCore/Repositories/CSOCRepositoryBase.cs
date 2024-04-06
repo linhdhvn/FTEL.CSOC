@@ -9,10 +9,10 @@ namespace FTEL.CSOC.EntityFrameworkCore.Repositories
     /// </summary>
     /// <typeparam name="TEntity">Entity type</typeparam>
     /// <typeparam name="TPrimaryKey">Primary key type of the entity</typeparam>
-    public abstract class CSOCRepositoryBase<TEntity, TPrimaryKey> : EfCoreRepositoryBase<CSOCDbContext, TEntity, TPrimaryKey>
+    public abstract class CSOCRepositoryBase<TEntity, TPrimaryKey> : EfCoreRepositoryBase<AppDbContext, TEntity, TPrimaryKey>
         where TEntity : class, IEntity<TPrimaryKey>
     {
-        protected CSOCRepositoryBase(IDbContextProvider<CSOCDbContext> dbContextProvider)
+        protected CSOCRepositoryBase(IDbContextProvider<AppDbContext> dbContextProvider)
             : base(dbContextProvider)
         {
 
@@ -29,7 +29,7 @@ namespace FTEL.CSOC.EntityFrameworkCore.Repositories
     public abstract class CSOCRepositoryBase<TEntity> : CSOCRepositoryBase<TEntity, int>
         where TEntity : class, IEntity<int>
     {
-        protected CSOCRepositoryBase(IDbContextProvider<CSOCDbContext> dbContextProvider)
+        protected CSOCRepositoryBase(IDbContextProvider<AppDbContext> dbContextProvider)
             : base(dbContextProvider)
         {
 

@@ -30,14 +30,9 @@
 <head>
     <meta charset="utf-8" />
     <title>CSOC</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-
-    @* Fill these meta tags upon your project specification *@
-    <meta content="CSOC" name="description" />
-    <meta content="CSOC" name="keywords">
-    <meta content="CSOC" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 
     <link rel="shortcut icon" href="~/favicon.ico" />
 
@@ -69,14 +64,7 @@
         <div class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed"
              style="background-image: url(@(ApplicationPath)metronic/assets/media/svg/illustrations/login@(theme.BaseSettings.Layout.DarkMode ? "-dark": "").png)">
             <div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
-                <vc:account-logo skin="light"></vc:account-logo>
                 <div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
-                    @if (!(ViewBag.DisableTenantChange ?? false) && MultiTenancyConfig.IsEnabled && !WebUrlService.SupportsTenancyNameInUrl)
-                    {
-                        <div class="tenant-change-box mb-5">
-                            <vc:tenant-change></vc:tenant-change>
-                        </div>
-                    }
                     @RenderBody()
                 </div>
             </div>

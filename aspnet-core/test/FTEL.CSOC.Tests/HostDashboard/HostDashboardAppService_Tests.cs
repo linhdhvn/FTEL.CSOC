@@ -95,7 +95,7 @@ namespace FTEL.CSOC.Tests.HostDashboard
             output.IncomeStatistics[4].Amount.ShouldBe(0);
         }
 
-        private void CreatePaidPayment(CSOCDbContext context, SubscriptionPayment subscriptionPayment)
+        private void CreatePaidPayment(AppDbContext context, SubscriptionPayment subscriptionPayment)
         {
             subscriptionPayment.SetAsPaid();
             context.SubscriptionPayments.Add(subscriptionPayment);

@@ -18,7 +18,7 @@ namespace FTEL.CSOC.Web.IdentityServer
                 .AddInMemoryApiScopes(IdentityServerConfig.GetApiScopes())
                 .AddInMemoryApiResources(IdentityServerConfig.GetApiResources())
                 .AddInMemoryClients(IdentityServerConfig.GetClients(configuration))
-                .AddAbpPersistedGrants<CSOCDbContext>()
+                .AddAbpPersistedGrants<AppDbContext>()
                 .AddAbpIdentityServer<User>();
         }
 

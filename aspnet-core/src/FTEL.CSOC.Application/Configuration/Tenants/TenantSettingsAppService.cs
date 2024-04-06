@@ -689,44 +689,5 @@ namespace FTEL.CSOC.Configuration.Tenants
 
         #endregion
 
-        #region Others
-
-        public async Task ClearLogo()
-        {
-            var tenant = await GetCurrentTenantAsync();
-
-            if (!tenant.HasLogo())
-            {
-                return;
-            }
-
-            var logoObject = await _binaryObjectManager.GetOrNullAsync(tenant.DarkLogoId.Value);
-            if (logoObject != null)
-            {
-                await _binaryObjectManager.DeleteAsync(tenant.DarkLogoId.Value);
-            }
-
-            tenant.ClearLogo();
-        }
-
-        public async Task ClearCustomCss()
-        {
-            var tenant = await GetCurrentTenantAsync();
-
-            if (!tenant.CustomCssId.HasValue)
-            {
-                return;
-            }
-
-            var cssObject = await _binaryObjectManager.GetOrNullAsync(tenant.CustomCssId.Value);
-            if (cssObject != null)
-            {
-                await _binaryObjectManager.DeleteAsync(tenant.CustomCssId.Value);
-            }
-
-            tenant.CustomCssId = null;
-        }
-
-        #endregion
     }
 }

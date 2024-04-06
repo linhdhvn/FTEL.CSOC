@@ -4,16 +4,15 @@ namespace FTEL.CSOC.Migrations.Seed.Host
 {
     public class InitialHostDbBuilder
     {
-        private readonly CSOCDbContext _context;
+        private readonly AppDbContext _context;
 
-        public InitialHostDbBuilder(CSOCDbContext context)
+        public InitialHostDbBuilder(AppDbContext context)
         {
             _context = context;
         }
 
         public void Create()
         {
-            new DefaultEditionCreator(_context).Create();
             new DefaultLanguagesCreator(_context).Create();
             new HostRoleAndUserCreator(_context).Create();
             new DefaultSettingsCreator(_context).Create();

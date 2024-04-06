@@ -20,11 +20,6 @@ namespace FTEL.CSOC.Web.Controllers
                 await _signInManager.SignOutAsync();
             }
 
-            if (redirect == "TenantRegistration")
-            {
-                return RedirectToAction("SelectEdition", "TenantRegistration");
-            }
-
             return AbpSession.UserId.HasValue ?
                 RedirectToAction("Index", "Home", new { area = "App" }) :
                 RedirectToAction("Login", "Account");

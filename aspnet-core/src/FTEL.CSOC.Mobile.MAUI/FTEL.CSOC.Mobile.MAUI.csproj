@@ -14,7 +14,7 @@
         <ApplicationTitle>FTEL.CSOC.Mobile.MAUI</ApplicationTitle>
 
         <!-- App Identifier -->
-        <ApplicationId>com.companyname.mycompanyname.abpzerotemplate.mobile.maui</ApplicationId>
+        <ApplicationId>com.companyname.FTEL.CSOC.mobile.maui</ApplicationId>
         <ApplicationIdGuid>5664ADE0-0A6B-4CFF-A3FD-975486AE90CA</ApplicationIdGuid>
 
         <!-- Versions -->

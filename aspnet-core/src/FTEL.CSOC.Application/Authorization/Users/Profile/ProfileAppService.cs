@@ -18,7 +18,6 @@ using FTEL.CSOC.Authorization.Users.Dto;
 using FTEL.CSOC.Authorization.Users.Profile.Cache;
 using FTEL.CSOC.Authorization.Users.Profile.Dto;
 using FTEL.CSOC.Configuration;
-using FTEL.CSOC.Friendships;
 using FTEL.CSOC.Gdpr;
 using FTEL.CSOC.Net.Sms;
 using FTEL.CSOC.Security;
@@ -33,7 +32,6 @@ namespace FTEL.CSOC.Authorization.Users.Profile
         private const int MaxProfilePictureBytes = 5242880; //5MB
         private readonly IBinaryObjectManager _binaryObjectManager;
         private readonly ITimeZoneService _timeZoneService;
-        private readonly IFriendshipManager _friendshipManager;
         private readonly GoogleTwoFactorAuthenticateService _googleTwoFactorAuthenticateService;
         private readonly ISmsSender _smsSender;
         private readonly ICacheManager _cacheManager;
@@ -44,7 +42,6 @@ namespace FTEL.CSOC.Authorization.Users.Profile
         public ProfileAppService(
             IBinaryObjectManager binaryObjectManager,
             ITimeZoneService timezoneService,
-            IFriendshipManager friendshipManager,
             GoogleTwoFactorAuthenticateService googleTwoFactorAuthenticateService,
             ISmsSender smsSender,
             ICacheManager cacheManager,
@@ -54,7 +51,6 @@ namespace FTEL.CSOC.Authorization.Users.Profile
         {
             _binaryObjectManager = binaryObjectManager;
             _timeZoneService = timezoneService;
-            _friendshipManager = friendshipManager;
             _googleTwoFactorAuthenticateService = googleTwoFactorAuthenticateService;
             _smsSender = smsSender;
             _cacheManager = cacheManager;
@@ -433,27 +429,6 @@ namespace FTEL.CSOC.Authorization.Users.Profile
             {
                 var profileImage = await profileImageService.Object.GetProfilePictureContentForUser(userIdentifier);
                 return new GetProfilePictureOutput(profileImage);
-            }
-        }
-
-        public async Task<GetProfilePictureOutput> GetFriendProfilePicture(GetFriendProfilePictureInput input)
-        {
-            var friendUserIdentifier = input.ToUserIdentifier();
-            var friendShip = await _friendshipManager.GetFriendshipOrNullAsync(
-                AbpSession.ToUserIdentifier(),
-                friendUserIdentifier
-            );
-
-            if (friendShip == null)
-            {
-                return new GetProfilePictureOutput(string.Empty);
-            }
-
-
-            using (var profileImageService = await _profileImageServiceFactory.Get(friendUserIdentifier))
-            {
-                var image = await profileImageService.Object.GetProfilePictureContentForUser(friendUserIdentifier);
-                return new GetProfilePictureOutput(image);
             }
         }
 

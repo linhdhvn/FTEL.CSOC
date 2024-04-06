@@ -13,14 +13,14 @@
 }
 
 @section Styles {
-    <link rel="stylesheet" abp-href="/view-resources/Areas/App/Views/_Bundles/customizable-dashboard-libs.css" asp-append-version="true"/>
+    <link rel="stylesheet" abp-href="/view-resources/Areas/App/Views/_Bundles/customizable-dashboard-libs.css" asp-append-version="true" />
 
     @foreach (var widget in Model.DashboardOutput.Widgets)
     {
         var widgetViewDefinition = DashboardViewConfiguration.WidgetViewDefinitions[widget.Id];
         if (!string.IsNullOrEmpty(widgetViewDefinition.CssFile) && Model.UserDashboard.Pages != null && Model.UserDashboard.Pages.Any(p => p.Widgets != null && p.Widgets.Any(w => widgetViewDefinition.Id == w.WidgetId)))
         {
-            <link rel="stylesheet" abp-href="/view-resources@(widgetViewDefinition.CssFile)" asp-append-version="true"/>
+            <link rel="stylesheet" abp-href="/view-resources@(widgetViewDefinition.CssFile)" asp-append-version="true" />
         }
     }
 
@@ -31,7 +31,7 @@
             var widgetFilterViewDefinition = DashboardViewConfiguration.WidgetFilterViewDefinitions[widgetFilter.Id];
             if (!string.IsNullOrEmpty(widgetFilterViewDefinition.CssFile))
             {
-                <link rel="stylesheet" abp-href="/view-resources@(widgetFilterViewDefinition.CssFile)" asp-append-version="true"/>
+                <link rel="stylesheet" abp-href="/view-resources@(widgetFilterViewDefinition.CssFile)" asp-append-version="true" />
             }
         }
     }
@@ -84,7 +84,7 @@
 
 }
 
-<input hidden id="DashboardName" value="@Model.DashboardOutput.Name"/>
+<input hidden id="DashboardName" value="@Model.DashboardOutput.Name" />
 <abp-page-subheader title="@L("Dashboard")" description="@L("DashboardHeaderInfo")">
     @if (allModelWidgetFilterOutputs.Any())
     {
@@ -163,7 +163,7 @@
                             </div>
                         </div>
                     }
-                    <input type="hidden" id="dashboardPageCount" value="@Model.UserDashboard.Pages.Count"/>
+                    <input type="hidden" id="dashboardPageCount" value="@Model.UserDashboard.Pages.Count" />
                     <button id="DeletePageButton" class="btn btn-sm btn-danger btn-elevate-hover btn-pill">
                         <i class="fa fa-trash"></i>
                         @if (Model.UserDashboard.Pages.Count > 1)
@@ -237,9 +237,9 @@
                                 }
                             }
                         </div>
-                        <input hidden name="PageIndex" value="@i"/>
-                        <input hidden name="PageName" value="@pageDto.Name"/>
-                        <input hidden name="PageId" value="@pageDto.Id"/>
+                        <input hidden name="PageIndex" value="@i" />
+                        <input hidden name="PageName" value="@pageDto.Name" />
+                        <input hidden name="PageId" value="@pageDto.Id" />
                     </div>
                 }
             </div>
@@ -272,7 +272,7 @@
 
                         @if (i != allModelWidgetFilterOutputs.Count - 1)
                         {
-                            <hr/>
+                            <hr />
                         }
                     }
                 </div>

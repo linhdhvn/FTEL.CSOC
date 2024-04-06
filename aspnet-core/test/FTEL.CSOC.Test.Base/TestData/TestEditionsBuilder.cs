@@ -5,9 +5,9 @@ namespace FTEL.CSOC.Test.Base.TestData
 {
     public class TestEditionsBuilder
     {
-        private readonly CSOCDbContext _context;
+        private readonly AppDbContext _context;
 
-        public TestEditionsBuilder(CSOCDbContext context)
+        public TestEditionsBuilder(AppDbContext context)
         {
             _context = context;
         }
