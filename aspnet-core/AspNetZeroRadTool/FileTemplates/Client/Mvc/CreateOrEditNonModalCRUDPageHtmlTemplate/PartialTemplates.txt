@@ -1,4 +1,4 @@
-{
+﻿{
 "propertyTemplates":[
 		{
 			"placeholder" : "{{Property_Looped_Template_Before_V110000_Here}}",
@@ -10,7 +10,7 @@
 								{{LocalizationPrepareForEnum}}
 								<div class=\"form-group m-form__group\">
 									<label for=\"{{Entity_Name_Here}}_{{Property_Name_Here}}\">@L(\"{{Property_Name_Here}}\")</label>
-										<select class=\"form-select m-input m-input--square\" name=\"{{property_Name_Here}}\" id=\"{{Entity_Name_Here}}_{{Property_Name_Here}}\" asp-for=\"@Model.{{Entity_Name_Here}}.{{Property_Name_Here}}\" asp-items=\"@selectList{{Property_Name_Here}}\" {{Required}}>
+										<select class=\"form-control m-input m-input--square\" name=\"{{property_Name_Here}}\" id=\"{{Entity_Name_Here}}_{{Property_Name_Here}}\" asp-for=\"@Model.{{Entity_Name_Here}}.{{Property_Name_Here}}\" asp-items=\"@selectList{{Property_Name_Here}}\" {{Required}}>
 									</select>
 								</div>
 					"
@@ -100,7 +100,7 @@
 								{{LocalizationPrepareForEnum}}
 								<div class=\"my-3 m-form__group\">
 									<label class=\"form-label\" for=\"{{Entity_Name_Here}}_{{Property_Name_Here}}\">@L(\"{{Property_Name_Here}}\")</label>
-										<select class=\"form-select m-input m-input--square\" name=\"{{property_Name_Here}}\" id=\"{{Entity_Name_Here}}_{{Property_Name_Here}}\" asp-for=\"@Model.{{Entity_Name_Here}}.{{Property_Name_Here}}\" asp-items=\"@selectList{{Property_Name_Here}}\" {{Required}}>
+										<select class=\"form-control m-input m-input--square\" name=\"{{property_Name_Here}}\" id=\"{{Entity_Name_Here}}_{{Property_Name_Here}}\" asp-for=\"@Model.{{Entity_Name_Here}}.{{Property_Name_Here}}\" asp-items=\"@selectList{{Property_Name_Here}}\" {{Required}}>
 									</select>
 								</div>
 					"
@@ -117,16 +117,15 @@
 					{
 					"type" : "bool",
 					"content" : "								
-								<label class=\"form-check form-check-custom\">
+								<label class="form-check form-check-custom">
                                     <input
                                         id=\"{{Entity_Name_Here}}_{{Property_Name_Here}}\"
                                         name=\"{{property_Name_Here}}\"                                        
-                                        type=\"checkbox\"
-                                        class=\"form-check-input\"
-                                        value=\"true\"
+                                        type="checkbox"
+                                        class="form-check-input"
                                         @Html.Raw(Model.{{Entity_Name_Here}}.{{Property_Name_Here}} ?\"checked=\\\"checked\\\"\":\"\") 
                                     />
-                                    <span class=\"form-check-label\">
+                                    <span class="form-check-label">
                                         @L(\"{{Property_Name_Here}}\")
                                     </span>
                                 </label>
@@ -188,7 +187,7 @@
 "navigationPropertyTemplates":[
 		{
 			"placeholder" : "{{NP_Looped_Template_Before_V110000_Here}}",
-			"condition" : "{{Project_Version_Here}} < 110000",
+			"condition" : "{{Project_Version_Here}} < 110000"
 			"templates" : [
 					{
 					"relation" : "single",
@@ -234,7 +233,7 @@
 		},
         {
 			"placeholder" : "{{NP_Looped_Template_After_V110000_Here}}",
-			"condition" : " {{Project_Version_Here}} >= 110000",
+			"condition" : " {{Project_Version_Here}} >= 110000"
 			"templates" : [
 					{
 					"relation" : "single",
