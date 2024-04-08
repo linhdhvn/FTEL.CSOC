@@ -26,7 +26,6 @@ using MyCompanyName.AbpZeroTemplate.Web.Common;
 using Swashbuckle.AspNetCore.Swagger;
 using MyCompanyName.AbpZeroTemplate.Web.IdentityServer;
 using MyCompanyName.AbpZeroTemplate.Web.Swagger;
-using Stripe;
 using ILoggerFactory = Microsoft.Extensions.Logging.ILoggerFactory;
 using GraphQL.Server;
 using GraphQL.Server.Ui.Playground;
@@ -229,11 +228,6 @@ namespace MyCompanyName.AbpZeroTemplate.Web.Startup
                     Authorization = new[]
                         {new AbpHangfireAuthorizationFilter(AppPermissions.Pages_Administration_HangfireDashboard)}
                 });
-            }
-
-            if (bool.Parse(_appConfiguration["Payment:Stripe:IsActive"]))
-            {
-                StripeConfiguration.ApiKey = _appConfiguration["Payment:Stripe:SecretKey"];
             }
 
             if (WebConsts.GraphQL.Enabled)

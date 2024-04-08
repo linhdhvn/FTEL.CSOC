@@ -27,7 +27,6 @@ using MyCompanyName.AbpZeroTemplate.Web.Resources;
 using Swashbuckle.AspNetCore.Swagger;
 using MyCompanyName.AbpZeroTemplate.Web.IdentityServer;
 using MyCompanyName.AbpZeroTemplate.Web.Swagger;
-using Stripe;
 using System.Reflection;
 using Abp.AspNetCore.Configuration;
 using Abp.AspNetCore.Mvc.Antiforgery;
