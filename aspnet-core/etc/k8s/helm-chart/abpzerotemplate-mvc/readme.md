@@ -1,4 +1,4 @@
-﻿Install using;
+Install using;
 
 ```bash
 helm upgrade --install anz abpzerotemplate-mvc
@@ -13,6 +13,6 @@ helm uninstall anz
 ## Create Images
 
 ```bash
-docker build -t abpzerotemplate-mvc -f src\FTEL.CSOC.Web.Mvc\Dockerfile .
-docker build -t abpzerotemplate-migrator -f src\FTEL.CSOC.Migrator\Dockerfile .
+docker build -t abpzerotemplate-mvc -f src\MyCompanyName.AbpZeroTemplate.Web.Mvc\Dockerfile .
+docker build -t abpzerotemplate-migrator -f src\MyCompanyName.AbpZeroTemplate.Migrator\Dockerfile .
 ```

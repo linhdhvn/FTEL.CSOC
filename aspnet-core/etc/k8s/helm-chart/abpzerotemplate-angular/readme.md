@@ -1,4 +1,4 @@
-﻿Install using;
+Install using;
 
 ```bash
 helm upgrade --install anz abpzerotemplate-angular
@@ -14,8 +14,8 @@ helm uninstall anz
 
 ### run in the aspnet-core folder
 ```bash
-docker build -t abpzerotemplate-host -f src\FTEL.CSOC.Web.Host\Dockerfile .
-docker build -t abpzerotemplate-migrator -f src\FTEL.CSOC.Migrator\Dockerfile .
+docker build -t abpzerotemplate-host -f src\MyCompanyName.AbpZeroTemplate.Web.Host\Dockerfile .
+docker build -t abpzerotemplate-migrator -f src\MyCompanyName.AbpZeroTemplate.Migrator\Dockerfile .
 ```
 
 ### run in the angular folder
