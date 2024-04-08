@@ -7,7 +7,7 @@ namespace FTEL.CSOC.Web.Areas.App.Controllers
 {
     [Area("App")]
     [AbpMvcAuthorize]
-    public class WidgetsController : CSOCControllerBase
+    public class WidgetsController : ControllerBase.ControllerBase
     {
         #region Host
 

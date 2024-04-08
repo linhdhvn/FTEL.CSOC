@@ -13,9 +13,9 @@ using Abp.AspNetCore.Mvc.Authorization;
 using Abp.Runtime.Session;
 using FTEL.CSOC.Authorization.Users.Importing;
 
-namespace FTEL.CSOC.Web.Controllers
+namespace FTEL.CSOC.Web.ControllerBase
 {
-    public abstract class UsersControllerBase : CSOCControllerBase
+    public abstract class UsersControllerBase : ControllerBase
     {
         protected readonly IBinaryObjectManager BinaryObjectManager;
         protected readonly IBackgroundJobManager BackgroundJobManager;

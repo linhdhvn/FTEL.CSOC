@@ -84,7 +84,7 @@ namespace FTEL.CSOC.Authorization.Roles
 
         private new string L(string name)
         {
-            return _localizationManager.GetString(CSOCConsts.LocalizationSourceName, name);
+            return _localizationManager.GetString(Consts.LocalizationSourceName, name);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace FTEL.CSOC.Authorization.Users.Password
             Timer.Period = CheckPeriodAsMilliseconds;
             Timer.RunOnStart = true;
 
-            LocalizationSourceName = CSOCConsts.LocalizationSourceName;
+            LocalizationSourceName = Consts.LocalizationSourceName;
         }
 
         protected override void DoWork()

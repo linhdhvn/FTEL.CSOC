@@ -16,8 +16,6 @@ namespace FTEL.CSOC.Test.Base.TestData
         public void Create()
         {
             new TestOrganizationUnitsBuilder(_context, _tenantId).Create();
-            new TestSubscriptionPaymentBuilder(_context, _tenantId).Create();
-            new TestEditionsBuilder(_context).Create();
 
             _context.SaveChanges();
         }

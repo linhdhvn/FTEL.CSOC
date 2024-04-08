@@ -12,7 +12,7 @@ namespace FTEL.CSOC.Web.Areas.App.Controllers
 {
     [Area("App")]
     [AbpMvcAuthorize(AppPermissions.Pages_Administration_DynamicEntityPropertyValue)]
-    public class DynamicEntityPropertyValuesController : CSOCControllerBase
+    public class DynamicEntityPropertyValuesController : ControllerBase.ControllerBase
     {
         private readonly IDynamicEntityPropertyDefinitionManager _dynamicEntityPropertyDefinitionManager;
 

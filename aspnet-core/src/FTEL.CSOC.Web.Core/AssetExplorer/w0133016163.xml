@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Computer ComputerName="w0133016163" ComputerDomain="officesg.local" BaseBoardManufacturer="Gigabyte Technology Co., Ltd." BaseBoardModel="H510M H" BaseBoardSerialNumber="Default string" BaseBoardUUID="035E02D8-04D3-05EF-5106-160700080009" BIOSVersion="ALASKA - 1072009" BIOSReleaseDate="2022/3/25" DNSDomain="officesg.local" DNSHostName="W0133016163">
+	<OperatingSystem Name="Microsoft Windows 11 Enterprise" OSBuildNumber="10.0.22631" InstallDate="2024/2/6" LastBootUpTime="2024/3/20 17:41:39"/>
+	<Processor>
+		<CPU Name="Intel(R) Core(TM) i5-10400 CPU @ 2.90GHz"/>
+	</Processor>
+	<PhysicalMemory>
+		<MemoryModule Name="Physical Memory 0" Capacity="8589934592" Speed="2400" PartNumber="F4-2400C17-8GNT"/>
+		<MemoryModule Name="Physical Memory 1" Capacity="8589934592" Speed="2400" PartNumber="F4-2400C17-8GNT"/>
+	</PhysicalMemory>
+	<HardDisk>
+		<Disk MediaType="SSD" Model="Lexar 256GB SSD" Size="256060514304" SerialNumber="MDS4372008292"/>
+		<Disk MediaType="SSD" Model="WDC WDS240G2G0A-00JH30" Size="240065183744" SerialNumber="193891800676"/>
+		<Disk MediaType="HDD" Model="TOSHIBA DT01ACA100" Size="1000204886016" SerialNumber="X9F1X3RMS"/>
+	</HardDisk>
+	<Monitor>
+		<Display Manufacturer="AOC International (Europe) GmbH" Model="AOC 2060W3" SerialNumber="GCDF7HA032505"/>
+		<Display Manufacturer="AOC International (Europe) GmbH" Model="AOC 2060W3" SerialNumber="GCDF7HA032490"/>
+	</Monitor>
+	<NetworkAdapter>
+		<Adapter Name="Hyper-V Virtual Ethernet Adapter" MACAddress="D8:5E:D3:EF:51:16" DHCPEnabled="True" IpAddress="172.30.39.65-fe80::862e:369f:3ba1:24ca"/>
+		<Adapter Name="Hyper-V Virtual Ethernet Adapter" MACAddress="00:15:5D:1D:FA:07" DHCPEnabled="True" IpAddress="169.254.178.70-fe80::3ea6:a9ce:2aba:7a46"/>
+	</NetworkAdapter>
+	<ScanScriptInfo version="1.0"/>
+</Computer>

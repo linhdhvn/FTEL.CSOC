@@ -22,9 +22,14 @@
 
 	<ItemGroup>
 		<Compile Remove="App_Data\**" />
+		<Compile Remove="Areas\Api\**" />
 		<Content Remove="App_Data\**" />
+		<Content Remove="Areas\Api\**" />
 		<EmbeddedResource Remove="App_Data\**" />
+		<EmbeddedResource Remove="Areas\Api\**" />
 		<None Remove="App_Data\**" />
+		<None Remove="Areas\Api\**" />
+		<TypeScriptCompile Remove="Areas\Api\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -68,13 +73,6 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="Areas\Api\Controllers\" />
-		<Folder Include="Areas\Api\Data\" />
-		<Folder Include="Areas\Api\Models\" />
-		<Folder Include="Areas\Api\Views\" />
 	</ItemGroup>
 
 </Project>

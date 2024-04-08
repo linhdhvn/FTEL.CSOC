@@ -183,11 +183,11 @@ namespace FTEL.CSOC.Web.Startup
                 app.UseCSOCForwardedHeaders();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseStaticFiles();
 
-            if (CSOCConsts.PreventNotExistingTenantSubdomains)
+            if (Consts.PreventNotExistingTenantSubdomains)
             {
                 app.UseMiddleware<DomainTenantCheckMiddleware>();
             }
@@ -226,11 +226,6 @@ namespace FTEL.CSOC.Web.Startup
                     Authorization = new[]
                         {new AbpHangfireAuthorizationFilter(AppPermissions.Pages_Administration_HangfireDashboard)}
                 });
-            }
-
-            if (bool.Parse(_appConfiguration["Payment:Stripe:IsActive"]))
-            {
-                StripeConfiguration.ApiKey = _appConfiguration["Payment:Stripe:SecretKey"];
             }
 
             if (WebConsts.GraphQL.Enabled)

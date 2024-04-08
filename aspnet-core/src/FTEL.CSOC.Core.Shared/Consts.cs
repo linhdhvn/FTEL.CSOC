@@ -1,8 +1,8 @@
 ﻿namespace FTEL.CSOC
 {
-    public class CSOCConsts
+    public class Consts
     {
-        public const string LocalizationSourceName = "CSOC";
+        public const string LocalizationSourceName = "AppLanguage";
 
         public const string ConnectionStringName = "Default";
 
@@ -14,6 +14,8 @@
         public const bool PreventNotExistingTenantSubdomains = false;
 
         public const bool AllowTenantsToChangeEmailSettings = false;
+
+        public const string Culture = "vi-VN";
 
         public const string Currency = "USD";
 
@@ -30,5 +32,7 @@
         
 
         public const string DateTimeOffsetFormat = "yyyy-MM-ddTHH:mm:sszzz";
+
+        
     }
 }

@@ -65,7 +65,7 @@ namespace FTEL.CSOC.Web
         {
             //Set default connection string
             Configuration.DefaultNameOrConnectionString = _appConfiguration.GetConnectionString(
-                CSOCConsts.ConnectionStringName
+                Consts.ConnectionStringName
             );
 
             //Use database for language management

@@ -11,7 +11,7 @@ using FTEL.CSOC.Storage;
 
 namespace FTEL.CSOC.Web.Controllers
 {
-    public class FileController : CSOCControllerBase
+    public class FileController : ControllerBase.ControllerBase
     {
         private readonly ITempFileCacheManager _tempFileCacheManager;
         private readonly IBinaryObjectManager _binaryObjectManager;
@@ -46,7 +46,7 @@ namespace FTEL.CSOC.Web.Controllers
             var fileObject = await _binaryObjectManager.GetOrNullAsync(id);
             if (fileObject == null)
             {
-                return StatusCode((int) HttpStatusCode.NotFound);
+                return StatusCode((int)HttpStatusCode.NotFound);
             }
 
             if (fileName.IsNullOrEmpty())
@@ -58,7 +58,7 @@ namespace FTEL.CSOC.Web.Controllers
                 }
                 else
                 {
-                    return StatusCode((int) HttpStatusCode.BadRequest);
+                    return StatusCode((int)HttpStatusCode.BadRequest);
                 }
             }
 
@@ -70,7 +70,7 @@ namespace FTEL.CSOC.Web.Controllers
                 }
                 else
                 {
-                    return StatusCode((int) HttpStatusCode.BadRequest);
+                    return StatusCode((int)HttpStatusCode.BadRequest);
                 }
             }
 

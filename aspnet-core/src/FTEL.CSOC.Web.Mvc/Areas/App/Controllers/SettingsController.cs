@@ -17,7 +17,7 @@ namespace FTEL.CSOC.Web.Areas.App.Controllers
 {
     [Area("App")]
     [AbpMvcAuthorize(AppPermissions.Pages_Administration_Host_Settings)]
-    public class SettingsController : CSOCControllerBase
+    public class SettingsController : ControllerBase.ControllerBase
     {
         private readonly UserManager _userManager;
         private readonly IHostSettingsAppService _hostSettingsAppService;

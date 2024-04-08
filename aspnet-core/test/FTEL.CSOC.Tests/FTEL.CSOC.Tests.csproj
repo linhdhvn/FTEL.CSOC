@@ -27,4 +27,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Editions\" />
+    <Folder Include="Features\" />
+    <Folder Include="MultiTenancy\" />
+  </ItemGroup>
+
 </Project>

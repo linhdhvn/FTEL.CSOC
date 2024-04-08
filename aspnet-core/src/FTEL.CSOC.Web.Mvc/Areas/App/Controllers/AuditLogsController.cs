@@ -13,7 +13,7 @@ namespace FTEL.CSOC.Web.Areas.App.Controllers
     [Area("App")]
     [DisableAuditing]
     [AbpMvcAuthorize(AppPermissions.Pages_Administration_AuditLogs)]
-    public class AuditLogsController : CSOCControllerBase
+    public class AuditLogsController : ControllerBase.ControllerBase
     {
         private readonly IAuditLogAppService _auditLogAppService;
 

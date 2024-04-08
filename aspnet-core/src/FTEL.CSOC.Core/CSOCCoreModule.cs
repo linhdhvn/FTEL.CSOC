@@ -83,7 +83,7 @@ namespace FTEL.CSOC
             Configuration.Webhooks.IsAutomaticSubscriptionDeactivationEnabled = false;
 
             //Enable this line to create a multi-tenant application.
-            Configuration.MultiTenancy.IsEnabled = CSOCConsts.MultiTenancyEnabled;
+            Configuration.MultiTenancy.IsEnabled = Consts.MultiTenancyEnabled;
 
             //Enable LDAP authentication 
             //Configuration.Modules.ZeroLdap().Enable(typeof(AppLdapAuthenticationSource));

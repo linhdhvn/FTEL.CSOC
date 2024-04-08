@@ -11,7 +11,7 @@ namespace FTEL.CSOC.Web.Areas.App.Controllers
 {
     [Area("App")]
     [AbpMvcAuthorize]
-    public class CommonController : CSOCControllerBase
+    public class CommonController : ControllerBase.ControllerBase
     {
         private readonly IPermissionAppService _permissionAppService;
 

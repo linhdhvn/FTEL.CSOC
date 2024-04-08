@@ -48,10 +48,10 @@ using FTEL.CSOC.Web.Authentication.External;
 using FTEL.CSOC.Web.Common;
 using FTEL.CSOC.Authorization.Delegation;
 
-namespace FTEL.CSOC.Web.Controllers
+namespace FTEL.CSOC.Web.ControllerBase
 {
     [Route("api/[controller]/[action]")]
-    public class TokenAuthController : CSOCControllerBase
+    public class TokenAuthController : ControllerBase
     {
         private readonly LogInManager _logInManager;
         private readonly ITenantCache _tenantCache;
@@ -133,7 +133,7 @@ namespace FTEL.CSOC.Web.Controllers
             );
 
             var expireDate = Uri.EscapeDataString(Clock.Now.AddHours(expirationHours)
-                .ToString(CSOCConsts.DateTimeOffsetFormat));
+                .ToString(Consts.DateTimeOffsetFormat));
 
             var query = $"userId={userId}&resetCode={passwordResetCode}&expireDate={expireDate}";
 

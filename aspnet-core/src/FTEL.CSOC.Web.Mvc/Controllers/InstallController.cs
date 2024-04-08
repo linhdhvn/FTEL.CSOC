@@ -37,7 +37,7 @@ namespace FTEL.CSOC.Web.Controllers
         public ActionResult Index()
         {
             var appSettings = _installAppService.GetAppSettingsJson();
-            var connectionString = _appConfiguration[$"ConnectionStrings:{CSOCConsts.ConnectionStringName}"];
+            var connectionString = _appConfiguration[$"ConnectionStrings:{Consts.ConnectionStringName}"];
 
             if (_databaseCheckHelper.Exist(connectionString))
             {

@@ -2,7 +2,7 @@
 
 namespace FTEL.CSOC.Web.Controllers
 {
-    public class AntiForgeryController : CSOCControllerBase
+    public class AntiForgeryController : ControllerBase.ControllerBase
     {
         private readonly IAntiforgery _antiforgery;
 

@@ -12,7 +12,7 @@ namespace FTEL.CSOC.Web.Areas.App.Controllers
 {
     [Area("App")]
     [AbpMvcAuthorize(AppPermissions.Pages_Administration_OrganizationUnits)]
-    public class OrganizationUnitsController : CSOCControllerBase
+    public class OrganizationUnitsController : ControllerBase.ControllerBase
     {
         private readonly IRepository<OrganizationUnit, long> _organizationUnitRepository;
 

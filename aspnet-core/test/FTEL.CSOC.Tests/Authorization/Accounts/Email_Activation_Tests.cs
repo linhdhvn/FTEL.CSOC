@@ -4,7 +4,6 @@ using Castle.MicroKernel.Registration;
 using FTEL.CSOC.Authorization.Accounts;
 using FTEL.CSOC.Authorization.Accounts.Dto;
 using FTEL.CSOC.Authorization.Users;
-using FTEL.CSOC.Test.Base;
 using NSubstitute;
 using Shouldly;
 using Xunit;

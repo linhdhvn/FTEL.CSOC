@@ -4,7 +4,7 @@ using FTEL.CSOC.Identity;
 
 namespace FTEL.CSOC.Web.Controllers
 {
-    public class HomeController : CSOCControllerBase
+    public class HomeController : ControllerBase.ControllerBase
     {
         private readonly SignInManager _signInManager;
 

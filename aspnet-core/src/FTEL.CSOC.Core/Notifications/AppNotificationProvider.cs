@@ -28,7 +28,7 @@ namespace FTEL.CSOC.Notifications
 
         private static ILocalizableString L(string name)
         {
-            return new LocalizableString(name, CSOCConsts.LocalizationSourceName);
+            return new LocalizableString(name, Consts.LocalizationSourceName);
         }
     }
 }

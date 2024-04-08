@@ -122,7 +122,7 @@ namespace FTEL.CSOC.Web.Areas.App.Startup
 
         private static ILocalizableString L(string name)
         {
-            return new LocalizableString(name, CSOCConsts.LocalizationSourceName);
+            return new LocalizableString(name, Consts.LocalizationSourceName);
         }
     }
 }

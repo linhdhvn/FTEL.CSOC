@@ -33,7 +33,7 @@ namespace FTEL.CSOC.Notifications
             var notificationData = new LocalizableMessageNotificationData(
                 new LocalizableString(
                     "NewUserRegisteredNotificationMessage",
-                    CSOCConsts.LocalizationSourceName
+                    Consts.LocalizationSourceName
                 )
             );
 
@@ -49,7 +49,7 @@ namespace FTEL.CSOC.Notifications
             var notificationData = new LocalizableMessageNotificationData(
                 new LocalizableString(
                     "NewTenantRegisteredNotificationMessage",
-                    CSOCConsts.LocalizationSourceName
+                    Consts.LocalizationSourceName
                 )
             );
 
@@ -62,7 +62,7 @@ namespace FTEL.CSOC.Notifications
             var notificationData = new LocalizableMessageNotificationData(
                 new LocalizableString(
                     "GdprDataPreparedNotificationMessage",
-                    CSOCConsts.LocalizationSourceName
+                    Consts.LocalizationSourceName
                 )
             );
 
@@ -126,7 +126,7 @@ namespace FTEL.CSOC.Notifications
             return SendNotificationAsync(AppNotificationNames.TenantsMovedToEdition, user,
                 new LocalizableString(
                     "TenantsMovedToEditionNotificationMessage",
-                    CSOCConsts.LocalizationSourceName
+                    Consts.LocalizationSourceName
                 ),
                 new Dictionary<string, object>
                 {
@@ -146,7 +146,7 @@ namespace FTEL.CSOC.Notifications
             return SendNotificationAsync(AppNotificationNames.DownloadInvalidImportUsers, user, 
                 new LocalizableString(
                     "ClickToSeeInvalidUsers",
-                    CSOCConsts.LocalizationSourceName
+                    Consts.LocalizationSourceName
                 ), 
                 new Dictionary<string, object>
                 {

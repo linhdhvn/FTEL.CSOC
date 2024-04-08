@@ -184,7 +184,7 @@ namespace FTEL.CSOC.Authorization.Users.Importing
                 await _appNotifier.SendMessageAsync(
                     args.User,
                     new LocalizableString("AllUsersSuccessfullyImportedFromExcel",
-                        CSOCConsts.LocalizationSourceName),
+                        Consts.LocalizationSourceName),
                     null,
                     Abp.Notifications.NotificationSeverity.Success);
             }
@@ -200,7 +200,7 @@ namespace FTEL.CSOC.Authorization.Users.Importing
                         args.User,
                         new LocalizableString(
                             "FileCantBeConvertedToUserList",
-                            CSOCConsts.LocalizationSourceName
+                            Consts.LocalizationSourceName
                         ),
                         null,
                         Abp.Notifications.NotificationSeverity.Warn);

@@ -14,7 +14,7 @@ namespace FTEL.CSOC.Web.Areas.App.Controllers
 {
     [Area("App")]
     [AbpMvcAuthorize]
-    public class ProfileController : CSOCControllerBase
+    public class ProfileController : ControllerBase.ControllerBase
     {
         private readonly IProfileAppService _profileAppService;
         private readonly ITimingAppService _timingAppService;

@@ -16,7 +16,7 @@ namespace FTEL.CSOC.Web.Areas.App.Controllers
 {
     [Area("App")]
     [AbpMvcAuthorize]
-    public class NotificationsController : CSOCControllerBase
+    public class NotificationsController : ControllerBase.ControllerBase
     {
         private readonly INotificationAppService _notificationAppService;
         private readonly IOrganizationUnitAppService _organizationUnitAppService;

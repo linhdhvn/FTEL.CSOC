@@ -5,7 +5,7 @@ using FTEL.CSOC.Web.Controllers;
 namespace FTEL.CSOC.Web.Areas.App.Controllers
 {
     [Area("App")]
-    public class HomeController : CSOCControllerBase
+    public class HomeController : ControllerBase.ControllerBase
     {
         public ActionResult Index()
         {
