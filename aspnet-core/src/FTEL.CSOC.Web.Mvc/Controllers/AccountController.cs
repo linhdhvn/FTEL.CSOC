@@ -55,7 +55,7 @@ using Abp.Runtime.Security;
 
 namespace FTEL.CSOC.Web.Controllers
 {
-    public class AccountController : CSOCControllerBase
+    public class AccountController : ControllerBase.ControllerBase
     {
         private readonly UserManager _userManager;
         private readonly TenantManager _tenantManager;
@@ -222,7 +222,7 @@ namespace FTEL.CSOC.Web.Controllers
                 loginResult.User.SetNewPasswordResetCode();
 
                 var expireDate =
-                    Uri.EscapeDataString(Clock.Now.AddHours(1).ToString(CSOCConsts.DateTimeOffsetFormat));
+                    Uri.EscapeDataString(Clock.Now.AddHours(1).ToString(Consts.DateTimeOffsetFormat));
 
                 var code =
                     $"?userId={loginResult.User.Id}&resetCode={loginResult.User.PasswordResetCode}&expireDate={expireDate}";

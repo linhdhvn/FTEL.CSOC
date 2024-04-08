@@ -1,14 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
-using Abp.Application.Services.Dto;
-using Abp.Web.Models;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using FTEL.CSOC.Notifications;
 
 namespace FTEL.CSOC.Web.Controllers;
 
-public class BrowserCacheCleanerController : CSOCControllerBase
+public class BrowserCacheCleanerController : ControllerBase.ControllerBase
 {
     private readonly INotificationAppService _notificationAppService;
 
@@ -16,13 +13,13 @@ public class BrowserCacheCleanerController : CSOCControllerBase
     {
         _notificationAppService = notificationAppService;
     }
-    
+
     public async Task<IActionResult> Clear()
     {
         var result = await _notificationAppService.SetAllAvailableVersionNotificationAsRead();
-        
+
         HttpContext.Response.Headers.Append("Clear-Site-Data", "\"cache\"");
 
-        return Json(new {Result = result});
+        return Json(new { Result = result });
     }
 }

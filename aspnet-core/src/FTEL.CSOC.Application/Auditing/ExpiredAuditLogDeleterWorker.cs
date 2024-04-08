@@ -47,7 +47,7 @@ namespace FTEL.CSOC.Auditing
             _tenantRepository = tenantRepository;
             _expiredAndDeletedAuditLogBackupService = expiredAndDeletedAuditLogBackupService;
 
-            LocalizationSourceName = CSOCConsts.LocalizationSourceName;
+            LocalizationSourceName = Consts.LocalizationSourceName;
 
             Timer.Period = CheckPeriodAsMilliseconds;
             Timer.RunOnStart = true;

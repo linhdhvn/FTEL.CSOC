@@ -12,10 +12,10 @@ namespace FTEL.CSOC.Localization
         {
             localizationConfiguration.Sources.Add(
                 new DictionaryBasedLocalizationSource(
-                    CSOCConsts.LocalizationSourceName,
+                    Consts.LocalizationSourceName,
                     new XmlEmbeddedFileLocalizationDictionaryProvider(
                         typeof(CSOCLocalizationConfigurer).GetAssembly(),
-                        "FTEL.CSOC.Localization.CSOC"
+                        "FTEL.CSOC.Localization.AppLanguage"
                     )
                 )
             );

@@ -24,7 +24,7 @@ namespace FTEL.CSOC.Web.Areas.App.Controllers
 {
     [Area("App")]
     [AbpMvcAuthorize]
-    public class UsersController : CSOCControllerBase
+    public class UsersController : ControllerBase.ControllerBase
     {
         private readonly IUserAppService _userAppService;
         private readonly UserManager _userManager;

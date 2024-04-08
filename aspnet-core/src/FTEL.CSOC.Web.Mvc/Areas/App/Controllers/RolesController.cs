@@ -15,7 +15,7 @@ namespace FTEL.CSOC.Web.Areas.App.Controllers
 {
     [Area("App")]
     [AbpMvcAuthorize(AppPermissions.Pages_Administration_Roles)]
-    public class RolesController : CSOCControllerBase
+    public class RolesController : ControllerBase.ControllerBase
     {
         private readonly IRoleAppService _roleAppService;
         private readonly IPermissionAppService _permissionAppService;

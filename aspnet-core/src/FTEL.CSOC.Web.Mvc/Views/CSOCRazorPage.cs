@@ -24,7 +24,7 @@ namespace FTEL.CSOC.Web.Views
 
         protected CSOCRazorPage()
         {
-            LocalizationSourceName = CSOCConsts.LocalizationSourceName;
+            LocalizationSourceName = Consts.LocalizationSourceName;
         }
 
         public async Task<UiCustomizationSettingsDto> GetTheme()

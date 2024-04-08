@@ -12,7 +12,7 @@ namespace FTEL.CSOC.Web.Areas.App.Controllers
 {
     [Area("App")]
     [AbpMvcAuthorize(AppPermissions.Pages_Administration_WebhookSubscription)]
-    public class WebhookSubscriptionController : CSOCControllerBase
+    public class WebhookSubscriptionController : ControllerBase.ControllerBase
     {
         private readonly IWebhookSubscriptionAppService _webhookSubscriptionAppService;
         private readonly IWebhookEventAppService _webhookEventAppService;

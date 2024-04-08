@@ -20,7 +20,7 @@ namespace FTEL.CSOC.Tests.Localization
     {
         private readonly ILanguageAppService _languageAppService;
         private readonly IApplicationLanguageManager _languageManager;
-        private readonly bool _multiTenancyEnabled  = CSOCConsts.MultiTenancyEnabled;
+        private readonly bool _multiTenancyEnabled  = Consts.MultiTenancyEnabled;
 
         public LanguageAppService_Tests()
         {
@@ -133,7 +133,7 @@ namespace FTEL.CSOC.Tests.Localization
             await _languageAppService.UpdateLanguageText(
                 new UpdateLanguageTextInput
                 {
-                    SourceName = CSOCConsts.LocalizationSourceName,
+                    SourceName = Consts.LocalizationSourceName,
                     LanguageName = "en",
                     Key = "Save",
                     Value = "save-new-value"
@@ -141,7 +141,7 @@ namespace FTEL.CSOC.Tests.Localization
 
             var newValue = Resolve<ILocalizationManager>()
                 .GetString(
-                    CSOCConsts.LocalizationSourceName,
+                    Consts.LocalizationSourceName,
                     "Save",
                     CultureInfo.GetCultureInfo("en")
                 );

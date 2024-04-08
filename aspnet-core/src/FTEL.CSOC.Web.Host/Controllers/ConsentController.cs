@@ -12,7 +12,7 @@ using FTEL.CSOC.Web.Models.Consent;
 
 namespace FTEL.CSOC.Web.Controllers
 {
-    public class ConsentController : CSOCControllerBase
+    public class ConsentController : ControllerBase.ControllerBase
     {
         private readonly IIdentityServerInteractionService _interaction;
         private readonly IResourceStore _resourceStore;

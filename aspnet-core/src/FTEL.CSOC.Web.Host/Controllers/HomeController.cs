@@ -7,13 +7,13 @@ using FTEL.CSOC.Configuration;
 
 namespace FTEL.CSOC.Web.Controllers
 {
-    public class HomeController : CSOCControllerBase
+    public class HomeController : ControllerBase.ControllerBase
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
         readonly IConfigurationRoot _appConfiguration;
-        
+
         public HomeController(
-            IWebHostEnvironment webHostEnvironment, 
+            IWebHostEnvironment webHostEnvironment,
             IAppConfigurationAccessor appConfigurationAccessor)
         {
             _webHostEnvironment = webHostEnvironment;

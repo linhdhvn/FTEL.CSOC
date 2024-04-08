@@ -6,7 +6,7 @@ namespace FTEL.CSOC.Web.Views
     {
         protected CSOCViewComponent()
         {
-            LocalizationSourceName = CSOCConsts.LocalizationSourceName;
+            LocalizationSourceName = Consts.LocalizationSourceName;
         }
     }
 }

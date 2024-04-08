@@ -34,7 +34,7 @@ namespace FTEL.CSOC.Net.Emailing
 
         private string L(string name)
         {
-            return _localizationManager.GetString(CSOCConsts.LocalizationSourceName, name);
+            return _localizationManager.GetString(Consts.LocalizationSourceName, name);
         }
     }
 }

@@ -16,7 +16,7 @@ using FTEL.CSOC.Web.Session;
 
 namespace FTEL.CSOC.Web.Controllers
 {
-    public class UiController : CSOCControllerBase
+    public class UiController : ControllerBase.ControllerBase
     {
         private readonly IPerRequestSessionCache _sessionCache;
         private readonly IMultiTenancyConfig _multiTenancyConfig;

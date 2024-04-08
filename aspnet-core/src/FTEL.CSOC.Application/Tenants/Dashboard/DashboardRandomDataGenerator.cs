@@ -112,16 +112,16 @@ namespace FTEL.CSOC.Tenants.Dashboard
         {
             return new List<MemberActivity>
             {
-                new MemberActivity("Brain", CSOCConsts.CurrencySign + GetRandomInt(100, 500), GetRandomInt(10, 100), GetRandomInt(10, 150),
+                new MemberActivity("Brain", Consts.CurrencySign + GetRandomInt(100, 500), GetRandomInt(10, 100), GetRandomInt(10, 150),
                     GetRandomInt(10, 99) + "%", "015-boy-6.svg"),
 
-                new MemberActivity("Jane", CSOCConsts.CurrencySign + GetRandomInt(100, 500), GetRandomInt(10, 100), GetRandomInt(10, 150),
+                new MemberActivity("Jane", Consts.CurrencySign + GetRandomInt(100, 500), GetRandomInt(10, 100), GetRandomInt(10, 150),
                     GetRandomInt(10, 99) + "%","017-girl-8.svg"),
 
-                new MemberActivity("Tim", CSOCConsts.CurrencySign + GetRandomInt(100, 500), GetRandomInt(10, 100), GetRandomInt(10, 150),
+                new MemberActivity("Tim", Consts.CurrencySign + GetRandomInt(100, 500), GetRandomInt(10, 100), GetRandomInt(10, 150),
                     GetRandomInt(10, 99) + "%", "004-boy-1.svg"),
 
-                new MemberActivity("Kate", CSOCConsts.CurrencySign + GetRandomInt(100, 500), GetRandomInt(10, 100), GetRandomInt(10, 150),
+                new MemberActivity("Kate", Consts.CurrencySign + GetRandomInt(100, 500), GetRandomInt(10, 100), GetRandomInt(10, 150),
                     GetRandomInt(10, 99) + "%", "039-girl-21.svg")
             };
         }

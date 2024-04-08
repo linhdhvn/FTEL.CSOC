@@ -17,7 +17,7 @@ namespace FTEL.CSOC.Web.Areas.App.Controllers
 {
     [Area("App")]
     [AbpMvcAuthorize(AppPermissions.Pages_Administration_Languages)]
-    public class LanguagesController : CSOCControllerBase
+    public class LanguagesController : ControllerBase.ControllerBase
     {
         private readonly ILanguageAppService _languageAppService;
         private readonly ILanguageManager _languageManager;
@@ -63,7 +63,7 @@ namespace FTEL.CSOC.Web.Areas.App.Controllers
             //Normalize arguments
             if (sourceName.IsNullOrEmpty())
             {
-                sourceName = CSOCConsts.LocalizationSourceName;
+                sourceName = Consts.LocalizationSourceName;
             }
 
             if (baseLanguageName.IsNullOrEmpty())

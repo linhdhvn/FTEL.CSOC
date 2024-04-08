@@ -57,7 +57,7 @@ namespace FTEL.CSOC.Configuration
 
         private void ChangeEmailSettingScopes(SettingDefinitionProviderContext context)
         {
-            if (!CSOCConsts.AllowTenantsToChangeEmailSettings)
+            if (!Consts.AllowTenantsToChangeEmailSettings)
             {
                 context.Manager.GetSettingDefinition(EmailSettingNames.Smtp.Host).Scopes = SettingScopes.Application;
                 context.Manager.GetSettingDefinition(EmailSettingNames.Smtp.Port).Scopes = SettingScopes.Application;
@@ -152,7 +152,7 @@ namespace FTEL.CSOC.Configuration
                     GetFromAppSettings(AppSettings.TenantManagement.BillingTaxVatNo, ""), scopes: SettingScopes.Tenant),
                 new SettingDefinition(AppSettings.Email.UseHostDefaultEmailSettings,
                     GetFromAppSettings(AppSettings.Email.UseHostDefaultEmailSettings,
-                        CSOCConsts.MultiTenancyEnabled ? "true" : "false"), scopes: SettingScopes.Tenant)
+                        Consts.MultiTenancyEnabled ? "true" : "false"), scopes: SettingScopes.Tenant)
             };
         }
 

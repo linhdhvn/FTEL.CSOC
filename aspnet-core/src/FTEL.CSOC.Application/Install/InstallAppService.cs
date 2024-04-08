@@ -111,7 +111,7 @@ namespace FTEL.CSOC.Install
 
         private bool CheckDatabaseInternal()
         {
-            var connectionString = _appConfiguration[$"ConnectionStrings:{CSOCConsts.ConnectionStringName}"];
+            var connectionString = _appConfiguration[$"ConnectionStrings:{Consts.ConnectionStringName}"];
 
             if (string.IsNullOrEmpty(connectionString))
             {
@@ -123,7 +123,7 @@ namespace FTEL.CSOC.Install
 
         private void SetConnectionString(string constring)
         {
-            EditAppSettingsjson($"ConnectionStrings:{CSOCConsts.ConnectionStringName}", constring);
+            EditAppSettingsjson($"ConnectionStrings:{Consts.ConnectionStringName}", constring);
         }
 
         private async Task SetAdminPassword(string adminPassword)

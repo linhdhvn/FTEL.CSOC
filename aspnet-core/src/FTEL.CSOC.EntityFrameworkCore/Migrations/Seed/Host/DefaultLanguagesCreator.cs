@@ -14,7 +14,7 @@ namespace FTEL.CSOC.Migrations.Seed.Host
 
         private static List<ApplicationLanguage> GetInitialLanguages()
         {
-            var tenantId = CSOCConsts.MultiTenancyEnabled ? null : (int?)1;
+            var tenantId = Consts.MultiTenancyEnabled ? null : (int?)1;
             return new List<ApplicationLanguage>
             {
                 new ApplicationLanguage(tenantId, "en", "English", "famfamfam-flags us"),

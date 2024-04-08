@@ -545,26 +545,14 @@
 		<text name="TestCheckFeature">Kiểm tra chức năng kiểm tra</text>
 		<text name="TestCheckFeature2">Kiểm tra chức năng kiểm tra 2</text>
 		<text name="Unlimited">Không giới hạn</text>
-		<text name="LatestPaymentAmount">Số tiền thanh toán mới nhất</text>
-		<text name="Payment">Thanh toán</text>
 		<text name="Next">Kế tiếp</text>
 		<text name="Start">Bắt đầu</text>
-		<text name="FreeTrial">Dùng thử miễn phí</text>
-		<text name="BuyNow">Mua ngay</text>
-		<text name="WhatWillDoneAfterSubscriptionExpiry">Điều gì sẽ được thực hiện sau khi hết hạn đăng ký</text>
-		<text name="DeactiveTenant">Thuê bao</text>
-		<text name="AssignToAnotherEdition">Chỉ định cho một phiên bản khác</text>
-		<text name="SubscriptionPrice">Giá thuê bao</text>
-		<text name="Free">Miễn phí</text>
-		<text name="Paid">Trả tiền</text>
+
 		<text name="IsTrialActive">Thử nghiệm đang hoạt động</text>
 		<text name="TrialDayCount">Số ngày dùng thử</text>
 		<text name="WaitAfterSubscriptionExpireDate">Đợi sau ngày hết hạn đăng ký</text>
 		<text name="WaitingDayAfterExpire">Chờ một ngày sau khi hết hạn</text>
 		<text name="DisplayOrder">Thứ tự hiển thị</text>
-		<text name="Annual">Hàng năm</text>
-		<text name="SubscriptionStartDate">Ngày bắt đầu đăng ký</text>
-		<text name="Pricing">Định giá</text>
 		<text name="ClientIsRequestingYourPermission">{0} đang yêu cầu sự cho phép của bạn</text>
 		<text name="ApplicationAccess">Truy cập ứng dụng</text>
 		<text name="RememberMyDecision">Nhớ quyết định của tôi</text>

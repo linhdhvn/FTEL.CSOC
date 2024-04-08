@@ -305,7 +305,7 @@ namespace FTEL.CSOC.Web.UiCustomization.Metronic
             if (settings.Menu.AllowAsideMinimizing && !settings.Menu.HoverableAside)
             {
                 throw new UserFriendlyException(
-                    _localizationManager.GetSource(CSOCConsts.LocalizationSourceName)
+                    _localizationManager.GetSource(Consts.LocalizationSourceName)
                         .GetString("AllowAsideMinimizing_HoverableAside_Warning")
                 );
             }

@@ -28,7 +28,7 @@ namespace FTEL.CSOC.Migrator
         public override void PreInitialize()
         {
             Configuration.DefaultNameOrConnectionString = _appConfiguration.GetConnectionString(
-                CSOCConsts.ConnectionStringName
+                Consts.ConnectionStringName
                 );
             Configuration.Modules.AspNetZero().LicenseCode = _appConfiguration["AbpZeroLicenseCode"];
 

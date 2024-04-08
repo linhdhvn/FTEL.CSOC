@@ -10,7 +10,7 @@ namespace FTEL.CSOC.Web.Areas.App.Controllers
 {
     [Area("App")]
     [AbpMvcAuthorize]
-    public class UiCustomizationController : CSOCControllerBase
+    public class UiCustomizationController : ControllerBase.ControllerBase
     {
         private readonly IUiCustomizationSettingsAppService _uiCustomizationAppService;
 

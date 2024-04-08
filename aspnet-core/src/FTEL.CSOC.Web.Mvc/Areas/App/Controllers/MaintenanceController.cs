@@ -9,7 +9,7 @@ namespace FTEL.CSOC.Web.Areas.App.Controllers
 {
     [Area("App")]
     [AbpMvcAuthorize(AppPermissions.Pages_Administration_Host_Maintenance)]
-    public class MaintenanceController : CSOCControllerBase
+    public class MaintenanceController : ControllerBase.ControllerBase
     {
         private readonly ICachingAppService _cachingAppService;
 

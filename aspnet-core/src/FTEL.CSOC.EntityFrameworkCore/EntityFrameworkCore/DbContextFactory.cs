@@ -24,7 +24,7 @@ namespace FTEL.CSOC.EntityFrameworkCore
                 addUserSecrets: true
             );
 
-            DbContextConfigurer.Configure(builder, configuration.GetConnectionString(CSOCConsts.ConnectionStringName));
+            DbContextConfigurer.Configure(builder, configuration.GetConnectionString(Consts.ConnectionStringName));
 
             return new AppDbContext(builder.Options);
         }

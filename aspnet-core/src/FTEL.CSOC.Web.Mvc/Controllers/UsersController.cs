@@ -3,6 +3,7 @@ using FTEL.CSOC.Authorization;
 using FTEL.CSOC.Storage;
 using Abp.BackgroundJobs;
 using Abp.Authorization;
+using FTEL.CSOC.Web.ControllerBase;
 
 namespace FTEL.CSOC.Web.Controllers
 {

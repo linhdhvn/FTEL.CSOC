@@ -13,7 +13,7 @@ namespace FTEL.CSOC
     {
         protected CSOCServiceBase()
         {
-            LocalizationSourceName = CSOCConsts.LocalizationSourceName;
+            LocalizationSourceName = Consts.LocalizationSourceName;
         }
     }
 }

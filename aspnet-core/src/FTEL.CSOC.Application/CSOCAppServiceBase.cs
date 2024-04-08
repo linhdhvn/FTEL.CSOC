@@ -22,7 +22,7 @@ namespace FTEL.CSOC
 
         protected CSOCAppServiceBase()
         {
-            LocalizationSourceName = CSOCConsts.LocalizationSourceName;
+            LocalizationSourceName = Consts.LocalizationSourceName;
         }
 
         protected virtual async Task<User> GetCurrentUserAsync()

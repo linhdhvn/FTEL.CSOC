@@ -111,7 +111,7 @@ namespace FTEL.CSOC.Tests.Authorization.Accounts
 
             var localizationManager = Resolve<ILocalizationManager>();
 
-            exception.Message.ShouldContain(localizationManager.GetString(CSOCConsts.LocalizationSourceName,
+            exception.Message.ShouldContain(localizationManager.GetString(Consts.LocalizationSourceName,
                 "PasswordResetLinkExpired"));
         }
     }

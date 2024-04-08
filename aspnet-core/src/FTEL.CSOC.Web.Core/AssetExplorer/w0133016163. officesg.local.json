@@ -1,0 +1,74 @@
+{
+  "ScriptVersion": "1.0",
+  "ComputerName": "w0133016163",
+  "ComputerDomain": "officesg.local",
+  "LastBootUpTime": "2023/3/18 14:5:44",
+  "BaseBoardManufacturer": "Gigabyte Technology Co., Ltd.",
+  "BaseBoardModel": "H510M H",
+  "BaseBoardSerialNumber": "Default string",
+  "BaseBoardUUID": "035E02D8-04D3-05EF-5106-160700080009",
+  "BIOSVersion": "ALASKA - 1072009",
+  "BIOSReleaseDate": "2022/3/25",
+  "OperatingSystem": {
+    "Name": "Microsoft Windows 11 Enterprise",
+    "InstallDate": "2023/3/18 14:5:44",
+    "OSBuildNumber": "10.0.22621"
+  },
+  "Processors": [
+    "Intel(R) Core(TM) i5-10400 CPU @ 2.90GHz"
+  ],
+  "PhysicalMemories": [
+    {
+      "MemoryModule": "Physical Memory 0",
+      "Capacity": 8589934592,
+      "Speed": 2400,
+      "PartNumber": "F4-2400C17-8GNT"
+    },
+    {
+      "MemoryModule": "Physical Memory 1",
+      "Capacity": 8589934592,
+      "Speed": 2400,
+      "PartNumber": "F4-2400C17-8GNT"
+    }
+  ],
+  "HardDisks": [
+    {
+      "MediaType": "SSD",
+      "Model": "Lexar 256GB SSD",
+      "Size": 256060514304,
+      "SerialNumber": "MDS4372008292"
+    },
+    {
+      "MediaType": "SSD",
+      "Model": "WDC WDS240G2G0A-00JH30",
+      "Size": 240065183744,
+      "SerialNumber": "193891800676"
+    },
+    {
+      "MediaType": "HDD",
+      "Model": "TOSHIBA DT01ACA100",
+      "Size": 1000204886016,
+      "SerialNumber": "X9F1X3RMS"
+    }
+  ],
+  "Monitors": [
+    {
+      "Manufacturer": "AOC International (Europe) GmbH",
+      "Model": "AOC 2060W3",
+      "SerialNumber": "GCDF7HA032505"
+    },
+    {
+      "Manufacturer": "AOC International (Europe) GmbH",
+      "Model": "AOC 2060W3",
+      "SerialNumber": "GCDF7HA032490"
+    }
+  ],
+  "NetworkAdapters": [
+    {
+      "Name": "Realtek Gaming GbE Family Controller",
+      "MACAddress": "D8:5E:D3:EF:51:16",
+      "DHCPEnabled": false,
+      "IpAddress": "172.27.29.250"
+    }
+  ]
+}

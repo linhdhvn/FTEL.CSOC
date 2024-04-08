@@ -51,9 +51,9 @@ namespace FTEL.CSOC.Sessions
                         Version = AppVersionHelper.Version,
                         ReleaseDate = AppVersionHelper.ReleaseDate,
                         Features = new Dictionary<string, bool>(),
-                        Currency = CSOCConsts.Currency,
-                        CurrencySign = CSOCConsts.CurrencySign,
-                        AllowTenantsToChangeEmailSettings = CSOCConsts.AllowTenantsToChangeEmailSettings,
+                        Currency = Consts.Currency,
+                        CurrencySign = Consts.CurrencySign,
+                        AllowTenantsToChangeEmailSettings = Consts.AllowTenantsToChangeEmailSettings,
                         UserDelegationIsEnabled = _userDelegationConfiguration.IsEnabled,
                         TwoFactorCodeExpireSeconds = TwoFactorCodeCacheItem.DefaultSlidingExpireTime.TotalSeconds
                     }

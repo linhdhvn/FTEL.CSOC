@@ -380,7 +380,7 @@ namespace FTEL.CSOC.Configuration.Tenants
 
         private async Task UpdateEmailSettingsAsync(TenantEmailSettingsEditDto input)
         {
-            if (_multiTenancyConfig.IsEnabled && !CSOCConsts.AllowTenantsToChangeEmailSettings)
+            if (_multiTenancyConfig.IsEnabled && !Consts.AllowTenantsToChangeEmailSettings)
             {
                 return;
             }

@@ -13,9 +13,9 @@ using FTEL.CSOC.Dto;
 using FTEL.CSOC.Graphics;
 using FTEL.CSOC.Storage;
 
-namespace FTEL.CSOC.Web.Controllers
+namespace FTEL.CSOC.Web.ControllerBase
 {
-    public abstract class ProfileControllerBase : CSOCControllerBase
+    public abstract class ProfileControllerBase : ControllerBase
     {
         private readonly ITempFileCacheManager _tempFileCacheManager;
         private readonly IProfileAppService _profileAppService;

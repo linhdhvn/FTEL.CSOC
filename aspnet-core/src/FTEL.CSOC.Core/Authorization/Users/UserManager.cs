@@ -227,7 +227,7 @@ namespace FTEL.CSOC.Authorization.Users
 
         private new string L(string name)
         {
-            return _localizationManager.GetString(CSOCConsts.LocalizationSourceName, name);
+            return _localizationManager.GetString(Consts.LocalizationSourceName, name);
         }
 
         protected string L(string name, params object[] args) => string.Format(L(name), args);

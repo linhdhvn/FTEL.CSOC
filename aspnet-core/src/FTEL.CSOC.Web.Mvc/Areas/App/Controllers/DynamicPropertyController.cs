@@ -12,7 +12,7 @@ using FTEL.CSOC.Web.Controllers;
 namespace FTEL.CSOC.Web.Areas.App.Controllers
 {
     [Area("App")]
-    public class DynamicPropertyController : CSOCControllerBase
+    public class DynamicPropertyController : ControllerBase.ControllerBase
     {
         private readonly IDynamicPropertyAppService _dynamicPropertyAppService;
         private readonly IDynamicEntityPropertyDefinitionManager _dynamicEntityPropertyDefinitionManager;

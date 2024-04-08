@@ -163,7 +163,7 @@ namespace FTEL.CSOC.Authorization.Users
                 link = link.Replace("{userId}", user.Id.ToString());
                 link = link.Replace("{resetCode}", Uri.EscapeDataString(user.PasswordResetCode));
 
-                var expireDate = Uri.EscapeDataString(Clock.Now.AddHours(expirationHours).ToString(CSOCConsts.DateTimeOffsetFormat));
+                var expireDate = Uri.EscapeDataString(Clock.Now.AddHours(expirationHours).ToString(Consts.DateTimeOffsetFormat));
 
                 link = link.Replace("{expireDate}", expireDate);
 

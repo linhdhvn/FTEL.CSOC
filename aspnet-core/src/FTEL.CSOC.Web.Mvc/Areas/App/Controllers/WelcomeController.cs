@@ -6,7 +6,7 @@ namespace FTEL.CSOC.Web.Areas.App.Controllers
 {
     [Area("App")]
     [AbpMvcAuthorize]
-    public class WelcomeController : CSOCControllerBase
+    public class WelcomeController : ControllerBase.ControllerBase
     {
         public ActionResult Index()
         {

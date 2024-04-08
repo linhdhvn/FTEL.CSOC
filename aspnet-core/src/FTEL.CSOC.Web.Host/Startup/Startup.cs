@@ -192,7 +192,7 @@ namespace FTEL.CSOC.Web.Startup
 
             app.UseStaticFiles();
 
-            if (CSOCConsts.PreventNotExistingTenantSubdomains)
+            if (Consts.PreventNotExistingTenantSubdomains)
             {
                 app.UseMiddleware<DomainTenantCheckMiddleware>();
             }

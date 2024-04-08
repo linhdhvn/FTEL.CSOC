@@ -9,7 +9,7 @@ using FTEL.CSOC.Web.Areas.App.Startup;
 
 namespace FTEL.CSOC.Web.Areas.App.Controllers
 {
-    public abstract class CustomizableDashboardControllerBase : CSOCControllerBase
+    public abstract class CustomizableDashboardControllerBase : ControllerBase.ControllerBase
     {
         protected readonly IDashboardCustomizationAppService DashboardCustomizationAppService;
         protected readonly DashboardViewConfiguration DashboardViewConfiguration;

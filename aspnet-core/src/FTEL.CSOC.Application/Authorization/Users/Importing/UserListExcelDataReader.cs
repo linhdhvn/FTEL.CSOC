@@ -16,7 +16,7 @@ namespace FTEL.CSOC.Authorization.Users.Importing
 
         public UserListExcelDataReader(ILocalizationManager localizationManager)
         {
-            _localizationSource = localizationManager.GetSource(CSOCConsts.LocalizationSourceName);
+            _localizationSource = localizationManager.GetSource(Consts.LocalizationSourceName);
         }
 
         public List<ImportUserDto> GetUsersFromExcel(byte[] fileBytes)

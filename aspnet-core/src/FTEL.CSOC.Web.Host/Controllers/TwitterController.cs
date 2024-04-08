@@ -5,14 +5,13 @@ using Abp.AspNetZeroCore.Web.Authentication.External.Twitter;
 using Abp.Extensions;
 using Abp.UI;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Configuration;
 using FTEL.CSOC.Configuration;
 
 namespace FTEL.CSOC.Web.Controllers
 {
     [Route("api/[controller]/[action]")]
-    public class TwitterController : CSOCControllerBase
+    public class TwitterController : ControllerBase.ControllerBase
     {
         private readonly ExternalAuthConfiguration _externalAuthConfiguration;
         private readonly IConfigurationRoot _appConfiguration;

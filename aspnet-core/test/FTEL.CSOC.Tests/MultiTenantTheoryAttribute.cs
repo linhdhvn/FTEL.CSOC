@@ -4,7 +4,7 @@ namespace FTEL.CSOC.Tests
 {
     public sealed class MultiTenantTheoryAttribute : TheoryAttribute
     {
-        private readonly bool _multiTenancyEnabled = CSOCConsts.MultiTenancyEnabled;
+        private readonly bool _multiTenancyEnabled = Consts.MultiTenancyEnabled;
       
         public MultiTenantTheoryAttribute()
         {
