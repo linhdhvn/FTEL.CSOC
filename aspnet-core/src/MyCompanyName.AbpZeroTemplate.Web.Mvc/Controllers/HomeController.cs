@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MyCompanyName.AbpZeroTemplate.Identity;
+using MyCompanyName.AbpZeroTemplate.Web.ControllerBase;
 
 namespace MyCompanyName.AbpZeroTemplate.Web.Controllers
 {
@@ -18,11 +19,6 @@ namespace MyCompanyName.AbpZeroTemplate.Web.Controllers
             if (forceNewRegistration)
             {
                 await _signInManager.SignOutAsync();
-            }
-
-            if (redirect == "TenantRegistration")
-            {
-                return RedirectToAction("SelectEdition", "TenantRegistration");
             }
 
             return AbpSession.UserId.HasValue ?

@@ -11,6 +11,7 @@ using MyCompanyName.AbpZeroTemplate.Authorization.Accounts.Dto;
 using MyCompanyName.AbpZeroTemplate.Authorization.Users;
 using MyCompanyName.AbpZeroTemplate.Identity;
 using MyCompanyName.AbpZeroTemplate.MultiTenancy;
+using MyCompanyName.AbpZeroTemplate.Web.ControllerBase;
 using MyCompanyName.AbpZeroTemplate.Web.Models.Ui;
 using MyCompanyName.AbpZeroTemplate.Web.Session;
 

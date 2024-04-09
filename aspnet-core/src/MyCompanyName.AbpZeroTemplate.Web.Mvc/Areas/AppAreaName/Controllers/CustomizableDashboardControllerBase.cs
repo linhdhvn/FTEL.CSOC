@@ -2,10 +2,10 @@
 using MyCompanyName.AbpZeroTemplate.DashboardCustomization;
 using MyCompanyName.AbpZeroTemplate.DashboardCustomization.Dto;
 using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.CustomizableDashboard;
-using MyCompanyName.AbpZeroTemplate.Web.Controllers;
 using System.Linq;
 using System.Threading.Tasks;
 using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Startup;
+using MyCompanyName.AbpZeroTemplate.Web.ControllerBase;
 
 namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Controllers
 {

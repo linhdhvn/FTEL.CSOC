@@ -8,7 +8,7 @@ using MyCompanyName.AbpZeroTemplate.Configuration;
 using MyCompanyName.AbpZeroTemplate.Timing;
 using MyCompanyName.AbpZeroTemplate.Timing.Dto;
 using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Profile;
-using MyCompanyName.AbpZeroTemplate.Web.Controllers;
+using MyCompanyName.AbpZeroTemplate.Web.ControllerBase;
 
 namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Controllers
 {

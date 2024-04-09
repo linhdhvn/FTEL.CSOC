@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Antiforgery;
+using MyCompanyName.AbpZeroTemplate.Web.ControllerBase;
 
 namespace MyCompanyName.AbpZeroTemplate.Web.Controllers
 {

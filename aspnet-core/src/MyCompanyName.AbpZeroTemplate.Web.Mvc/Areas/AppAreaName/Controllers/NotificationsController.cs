@@ -9,8 +9,8 @@ using MyCompanyName.AbpZeroTemplate.Notifications;
 using MyCompanyName.AbpZeroTemplate.Organizations;
 using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Notifications;
 using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.OrganizationUnits;
-using MyCompanyName.AbpZeroTemplate.Web.Controllers;
 using MyCompanyName.AbpZeroTemplate.Organizations.Dto;
+using MyCompanyName.AbpZeroTemplate.Web.ControllerBase;
 
 namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Controllers
 {

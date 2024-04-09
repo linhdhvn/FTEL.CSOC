@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using MyCompanyName.AbpZeroTemplate.Authorization.Permissions;
 using MyCompanyName.AbpZeroTemplate.Authorization.Permissions.Dto;
 using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Common.Modals;
-using MyCompanyName.AbpZeroTemplate.Web.Controllers;
+using MyCompanyName.AbpZeroTemplate.Web.ControllerBase;
 
 namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Controllers
 {

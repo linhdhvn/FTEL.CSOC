@@ -126,7 +126,7 @@ namespace MyCompanyName.AbpZeroTemplate.Web.Startup
                 {
                     config.UseSqlServerStorage(_appConfiguration.GetConnectionString("Default"));
                 });
-                
+
                 services.AddHangfireServer();
             }
 
@@ -197,9 +197,9 @@ namespace MyCompanyName.AbpZeroTemplate.Web.Startup
 
             if (AbpZeroTemplateConsts.PreventNotExistingTenantSubdomains)
             {
-                app.UseMiddleware<DomainTenantCheckMiddleware>();    
+                app.UseMiddleware<DomainTenantCheckMiddleware>();
             }
-            
+
             app.UseRouting();
 
             app.UseAuthentication();
@@ -231,8 +231,7 @@ namespace MyCompanyName.AbpZeroTemplate.Web.Startup
                 //Hangfire dashboard & server (Enable to use Hangfire instead of default job manager)
                 app.UseHangfireDashboard("/hangfire", new DashboardOptions
                 {
-                    Authorization = new[]
-                        {new AbpHangfireAuthorizationFilter(AppPermissions.Pages_Administration_HangfireDashboard)}
+                    Authorization = new[] { new AbpHangfireAuthorizationFilter(AppPermissions.Pages_Administration_HangfireDashboard) }
                 });
             }
 
@@ -241,8 +240,7 @@ namespace MyCompanyName.AbpZeroTemplate.Web.Startup
                 app.UseGraphQL<MainSchema>();
                 if (WebConsts.GraphQL.PlaygroundEnabled)
                 {
-                    app.UseGraphQLPlayground(
-                        new GraphQLPlaygroundOptions()); //to explorer API navigate https://*DOMAIN*/ui/playground
+                    app.UseGraphQLPlayground(new GraphQLPlaygroundOptions()); //to explorer API navigate https://*DOMAIN*/ui/playground
                 }
             }
 
@@ -295,8 +293,8 @@ namespace MyCompanyName.AbpZeroTemplate.Web.Startup
                     {
                         var certPassword = _appConfiguration.GetValue<string>("Kestrel:Certificates:Default:Password");
                         var certPath = _appConfiguration.GetValue<string>("Kestrel:Certificates:Default:Path");
-                        var cert = new System.Security.Cryptography.X509Certificates.X509Certificate2(certPath,
-                            certPassword);
+                        var cert = new System.Security.Cryptography.X509Certificates.X509Certificate2(certPath, certPassword);
+
                         listenOptions.UseHttps(new HttpsConnectionAdapterOptions()
                         {
                             ServerCertificate = cert
@@ -309,7 +307,7 @@ namespace MyCompanyName.AbpZeroTemplate.Web.Startup
         {
             services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc("v1", new OpenApiInfo() {Title = "AbpZeroTemplate API", Version = "v1"});
+                options.SwaggerDoc("v1", new OpenApiInfo() { Title = "AbpZeroTemplate API", Version = "v1" });
                 options.DocInclusionPredicate((docName, description) => true);
                 options.ParameterFilter<SwaggerEnumParameterFilter>();
                 options.SchemaFilter<SwaggerEnumSchemaFilter>();

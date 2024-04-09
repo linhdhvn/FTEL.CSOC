@@ -55,6 +55,7 @@ using MyCompanyName.AbpZeroTemplate.Authorization.Users.Profile;
 using MyCompanyName.AbpZeroTemplate.Authorization.Users.Profile.Dto;
 using Abp.Runtime.Security;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
+using MyCompanyName.AbpZeroTemplate.Web.ControllerBase;
 
 namespace MyCompanyName.AbpZeroTemplate.Web.Controllers
 {

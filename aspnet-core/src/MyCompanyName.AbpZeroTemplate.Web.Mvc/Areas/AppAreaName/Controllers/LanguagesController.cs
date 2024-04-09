@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using MyCompanyName.AbpZeroTemplate.Authorization;
 using MyCompanyName.AbpZeroTemplate.Localization;
 using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Languages;
-using MyCompanyName.AbpZeroTemplate.Web.Controllers;
+using MyCompanyName.AbpZeroTemplate.Web.ControllerBase;
 
 namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Controllers
 {

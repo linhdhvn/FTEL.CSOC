@@ -8,6 +8,7 @@ using IdentityServer4.Services;
 using IdentityServer4.Stores;
 using IdentityServer4.Validation;
 using Microsoft.AspNetCore.Mvc;
+using MyCompanyName.AbpZeroTemplate.Web.ControllerBase;
 using MyCompanyName.AbpZeroTemplate.Web.Models.Consent;
 
 namespace MyCompanyName.AbpZeroTemplate.Web.Controllers

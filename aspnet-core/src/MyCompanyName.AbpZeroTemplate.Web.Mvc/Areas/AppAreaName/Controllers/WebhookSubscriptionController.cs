@@ -5,7 +5,7 @@ using Abp.Webhooks;
 using Microsoft.AspNetCore.Mvc;
 using MyCompanyName.AbpZeroTemplate.Authorization;
 using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Webhooks;
-using MyCompanyName.AbpZeroTemplate.Web.Controllers;
+using MyCompanyName.AbpZeroTemplate.Web.ControllerBase;
 using MyCompanyName.AbpZeroTemplate.WebHooks;
 
 namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Controllers

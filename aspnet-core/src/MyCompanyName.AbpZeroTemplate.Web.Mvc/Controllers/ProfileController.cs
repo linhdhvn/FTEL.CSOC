@@ -9,6 +9,7 @@ using MyCompanyName.AbpZeroTemplate.Authorization.Users.Profile;
 using MyCompanyName.AbpZeroTemplate.Authorization.Users.Profile.Dto;
 using MyCompanyName.AbpZeroTemplate.Graphics;
 using MyCompanyName.AbpZeroTemplate.Storage;
+using MyCompanyName.AbpZeroTemplate.Web.ControllerBase;
 
 namespace MyCompanyName.AbpZeroTemplate.Web.Controllers
 {

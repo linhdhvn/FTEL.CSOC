@@ -18,7 +18,7 @@ using MyCompanyName.AbpZeroTemplate.Authorization.Users.Dto;
 using MyCompanyName.AbpZeroTemplate.Security;
 using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Roles;
 using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Users;
-using MyCompanyName.AbpZeroTemplate.Web.Controllers;
+using MyCompanyName.AbpZeroTemplate.Web.ControllerBase;
 
 namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Controllers
 {

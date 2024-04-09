@@ -47,6 +47,7 @@ using MyCompanyName.AbpZeroTemplate.Security.Recaptcha;
 using MyCompanyName.AbpZeroTemplate.Web.Authentication.External;
 using MyCompanyName.AbpZeroTemplate.Web.Common;
 using MyCompanyName.AbpZeroTemplate.Authorization.Delegation;
+using MyCompanyName.AbpZeroTemplate.Web.ControllerBase;
 
 namespace MyCompanyName.AbpZeroTemplate.Web.Controllers
 {

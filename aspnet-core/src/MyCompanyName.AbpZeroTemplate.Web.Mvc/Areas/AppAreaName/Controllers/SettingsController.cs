@@ -14,7 +14,7 @@ using MyCompanyName.AbpZeroTemplate.Security;
 using MyCompanyName.AbpZeroTemplate.Timing;
 using MyCompanyName.AbpZeroTemplate.Timing.Dto;
 using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Settings;
-using MyCompanyName.AbpZeroTemplate.Web.Controllers;
+using MyCompanyName.AbpZeroTemplate.Web.ControllerBase;
 
 namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Controllers
 {

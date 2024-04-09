@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using MyCompanyName.AbpZeroTemplate.Authorization;
 using MyCompanyName.AbpZeroTemplate.DynamicEntityProperties;
 using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.DynamicEntityProperty;
-using MyCompanyName.AbpZeroTemplate.Web.Controllers;
+using MyCompanyName.AbpZeroTemplate.Web.ControllerBase;
 
 namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Controllers
 {

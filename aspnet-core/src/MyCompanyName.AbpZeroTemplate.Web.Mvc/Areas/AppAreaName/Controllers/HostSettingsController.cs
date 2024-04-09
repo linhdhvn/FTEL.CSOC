@@ -11,7 +11,7 @@ using MyCompanyName.AbpZeroTemplate.Editions;
 using MyCompanyName.AbpZeroTemplate.Timing;
 using MyCompanyName.AbpZeroTemplate.Timing.Dto;
 using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.HostSettings;
-using MyCompanyName.AbpZeroTemplate.Web.Controllers;
+using MyCompanyName.AbpZeroTemplate.Web.ControllerBase;
 
 namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Controllers
 {
