@@ -1,0 +1,37 @@
+﻿
+@using System.Globalization
+@using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Common.Modals
+@using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Processors
+@model CreateOrEditProcessorModalViewModel
+@using Abp.Extensions
+@await Html.PartialAsync("~/Areas/AppAreaName/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(Model.IsEditMode ? (L("EditProcessor")) : L("CreateNewProcessor")))
+
+<div class="modal-body">
+    <div id="ProcessorInformationsTab">
+        <form name="ProcessorInformationsForm" role="form" novalidate class="form-validation">
+
+            @if (Model.IsEditMode)
+            {
+            <input type="hidden" name="id" value="@Model.Processor.Id" />
+            }
+
+            <div class="my-3">
+                <label class="form-label" for="Processor_Name">@L("Name")</label>
+                <input class="form-control" id="Processor_Name" value="@Model.Processor.Name" type="text" name="name" required maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.ProcessorConsts.MaxNameLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.ProcessorConsts.MinNameLength" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Processor_SerialNumber">@L("SerialNumber")</label>
+                <input class="form-control" id="Processor_SerialNumber" value="@Model.Processor.SerialNumber" type="text" name="serialNumber" maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.ProcessorConsts.MaxSerialNumberLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.ProcessorConsts.MinSerialNumberLength" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Processor_PartNumber">@L("PartNumber")</label>
+                <input class="form-control" id="Processor_PartNumber" value="@Model.Processor.PartNumber" type="text" name="partNumber" maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.ProcessorConsts.MaxPartNumberLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.ProcessorConsts.MinPartNumberLength" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/AppAreaName/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

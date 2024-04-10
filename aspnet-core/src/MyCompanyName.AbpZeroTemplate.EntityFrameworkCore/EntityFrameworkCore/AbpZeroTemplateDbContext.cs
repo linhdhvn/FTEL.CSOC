@@ -1,4 +1,5 @@
-﻿using MyCompanyName.AbpZeroTemplate.Localization;
+﻿using MyCompanyName.AbpZeroTemplate.Inventory;
+using MyCompanyName.AbpZeroTemplate.Localization;
 using Abp.IdentityServer4vNext;
 using Abp.Zero.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,18 @@ namespace MyCompanyName.AbpZeroTemplate.EntityFrameworkCore
 {
     public class AbpZeroTemplateDbContext : AbpZeroDbContext<Tenant, Role, User, AbpZeroTemplateDbContext>, IAbpPersistedGrantDbContext
     {
+        public virtual DbSet<Resource> Resources { get; set; }
+
+        public virtual DbSet<NetworkAdapter> NetworkAdapters { get; set; }
+
+        public virtual DbSet<DataStorage> DataStorages { get; set; }
+
+        public virtual DbSet<PhysicalMemory> PhysicalMemories { get; set; }
+
+        public virtual DbSet<Processor> Processors { get; set; }
+
+        public virtual DbSet<BaseBoard> BaseBoards { get; set; }
+
         public virtual DbSet<Ward> Wards { get; set; }
 
         public virtual DbSet<WardType> WardTypes { get; set; }

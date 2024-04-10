@@ -22,6 +22,12 @@
 
         public static class Host
         {
+            public const string Resources = "Inventory.Resources";
+            public const string NetworkAdapters = "Inventory.NetworkAdapters";
+            public const string DataStorages = "Inventory.DataStorages";
+            public const string PhysicalMemories = "Inventory.PhysicalMemories";
+            public const string Processors = "Inventory.Processors";
+            public const string BaseBoards = "Inventory.BaseBoards";
             public const string Tenants = "Tenants";
             public const string Editions = "Editions";
             public const string Maintenance = "Administration.Maintenance";

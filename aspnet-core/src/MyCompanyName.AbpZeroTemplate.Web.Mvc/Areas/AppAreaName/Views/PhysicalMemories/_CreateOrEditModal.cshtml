@@ -1,0 +1,47 @@
+﻿
+@using System.Globalization
+@using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Common.Modals
+@using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.PhysicalMemories
+@model CreateOrEditPhysicalMemoryModalViewModel
+@using Abp.Extensions
+@await Html.PartialAsync("~/Areas/AppAreaName/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(Model.IsEditMode ? (L("EditPhysicalMemory")) : L("CreateNewPhysicalMemory")))
+
+<div class="modal-body">
+    <div id="PhysicalMemoryInformationsTab">
+        <form name="PhysicalMemoryInformationsForm" role="form" novalidate class="form-validation">
+
+            @if (Model.IsEditMode)
+            {
+            <input type="hidden" name="id" value="@Model.PhysicalMemory.Id" />
+            }
+
+            <div class="my-3">
+                <label class="form-label" for="PhysicalMemory_Name">@L("Name")</label>
+                <input class="form-control" id="PhysicalMemory_Name" value="@Model.PhysicalMemory.Name" type="text" name="name" maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.PhysicalMemoryConsts.MaxNameLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.PhysicalMemoryConsts.MinNameLength" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="PhysicalMemory_Capacity">@L("Capacity")</label>
+                <input class="form-control m-input" id="PhysicalMemory_Capacity" value="@Model.PhysicalMemory.Capacity.ToString(CultureInfo.InvariantCulture)" type="number" name="capacity" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="PhysicalMemory_PartNumber">@L("PartNumber")</label>
+                <input class="form-control" id="PhysicalMemory_PartNumber" value="@Model.PhysicalMemory.PartNumber" type="text" name="partNumber" maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.PhysicalMemoryConsts.MaxPartNumberLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.PhysicalMemoryConsts.MinPartNumberLength" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="PhysicalMemory_Speed">@L("Speed")</label>
+                <input class="form-control m-input" id="PhysicalMemory_Speed" value="@Model.PhysicalMemory.Speed.ToString(CultureInfo.InvariantCulture)" type="number" name="speed" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="PhysicalMemory_SerialNumber">@L("SerialNumber")</label>
+                <input class="form-control" id="PhysicalMemory_SerialNumber" value="@Model.PhysicalMemory.SerialNumber" type="text" name="serialNumber" maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.PhysicalMemoryConsts.MaxSerialNumberLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.PhysicalMemoryConsts.MinSerialNumberLength" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/AppAreaName/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

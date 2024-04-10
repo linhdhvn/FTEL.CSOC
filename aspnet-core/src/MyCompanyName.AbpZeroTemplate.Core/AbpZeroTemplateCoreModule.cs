@@ -69,7 +69,7 @@ namespace MyCompanyName.AbpZeroTemplate
             Configuration.Modules.Zero().EntityTypes.Role = typeof(Role);
             Configuration.Modules.Zero().EntityTypes.User = typeof(User);
 
-            AbpZeroTemplateLocalizationConfigurer.Configure(Configuration.Localization);
+            LocalizationTranslatorConfigurer.Configure(Configuration.Localization);
 
             //Adding setting providers
             Configuration.Settings.Providers.Add<AppSettingProvider>();

@@ -6,6 +6,36 @@
     /// </summary>
     public static class AppPermissions
     {
+        public const string Pages_Resources = "Pages.Resources";
+        public const string Pages_Resources_Create = "Pages.Resources.Create";
+        public const string Pages_Resources_Edit = "Pages.Resources.Edit";
+        public const string Pages_Resources_Delete = "Pages.Resources.Delete";
+
+        public const string Pages_NetworkAdapters = "Pages.NetworkAdapters";
+        public const string Pages_NetworkAdapters_Create = "Pages.NetworkAdapters.Create";
+        public const string Pages_NetworkAdapters_Edit = "Pages.NetworkAdapters.Edit";
+        public const string Pages_NetworkAdapters_Delete = "Pages.NetworkAdapters.Delete";
+
+        public const string Pages_DataStorages = "Pages.DataStorages";
+        public const string Pages_DataStorages_Create = "Pages.DataStorages.Create";
+        public const string Pages_DataStorages_Edit = "Pages.DataStorages.Edit";
+        public const string Pages_DataStorages_Delete = "Pages.DataStorages.Delete";
+
+        public const string Pages_PhysicalMemories = "Pages.PhysicalMemories";
+        public const string Pages_PhysicalMemories_Create = "Pages.PhysicalMemories.Create";
+        public const string Pages_PhysicalMemories_Edit = "Pages.PhysicalMemories.Edit";
+        public const string Pages_PhysicalMemories_Delete = "Pages.PhysicalMemories.Delete";
+
+        public const string Pages_Processors = "Pages.Processors";
+        public const string Pages_Processors_Create = "Pages.Processors.Create";
+        public const string Pages_Processors_Edit = "Pages.Processors.Edit";
+        public const string Pages_Processors_Delete = "Pages.Processors.Delete";
+
+        public const string Pages_BaseBoards = "Pages.BaseBoards";
+        public const string Pages_BaseBoards_Create = "Pages.BaseBoards.Create";
+        public const string Pages_BaseBoards_Edit = "Pages.BaseBoards.Edit";
+        public const string Pages_BaseBoards_Delete = "Pages.BaseBoards.Delete";
+
         public const string Pages_Wards = "Pages.Wards";
         public const string Pages_Wards_Create = "Pages.Wards.Create";
         public const string Pages_Wards_Edit = "Pages.Wards.Edit";

@@ -21,6 +21,54 @@ namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Startup
                         icon: "flaticon-line-graph",
                         permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_Administration_Host_Dashboard)
                     )
+                )
+                .AddItem(new MenuItemDefinition(
+                        AppAreaNamePageNames.Host.Resources,
+                        L("Resources"),
+                        url: "AppAreaName/Resources",
+                        icon: "flaticon-more",
+                        permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_Resources)
+                    )
+                )
+                .AddItem(new MenuItemDefinition(
+                        AppAreaNamePageNames.Host.NetworkAdapters,
+                        L("NetworkAdapters"),
+                        url: "AppAreaName/NetworkAdapters",
+                        icon: "flaticon-more",
+                        permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_NetworkAdapters)
+                    )
+                )
+                .AddItem(new MenuItemDefinition(
+                        AppAreaNamePageNames.Host.DataStorages,
+                        L("DataStorages"),
+                        url: "AppAreaName/DataStorages",
+                        icon: "flaticon-more",
+                        permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_DataStorages)
+                    )
+                )
+                .AddItem(new MenuItemDefinition(
+                        AppAreaNamePageNames.Host.PhysicalMemories,
+                        L("PhysicalMemories"),
+                        url: "AppAreaName/PhysicalMemories",
+                        icon: "flaticon-more",
+                        permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_PhysicalMemories)
+                    )
+                )
+                .AddItem(new MenuItemDefinition(
+                        AppAreaNamePageNames.Host.Processors,
+                        L("Processors"),
+                        url: "AppAreaName/Processors",
+                        icon: "flaticon-more",
+                        permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_Processors)
+                    )
+                )
+                .AddItem(new MenuItemDefinition(
+                        AppAreaNamePageNames.Host.BaseBoards,
+                        L("BaseBoards"),
+                        url: "AppAreaName/BaseBoards",
+                        icon: "flaticon-more",
+                        permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_BaseBoards)
+                    )
                 ).AddItem(new MenuItemDefinition(
                         AppAreaNamePageNames.Tenant.Dashboard,
                         L("Dashboard"),

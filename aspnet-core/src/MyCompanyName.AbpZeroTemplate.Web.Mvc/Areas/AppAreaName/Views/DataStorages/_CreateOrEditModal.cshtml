@@ -1,0 +1,47 @@
+﻿
+@using System.Globalization
+@using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Common.Modals
+@using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.DataStorages
+@model CreateOrEditDataStorageModalViewModel
+@using Abp.Extensions
+@await Html.PartialAsync("~/Areas/AppAreaName/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(Model.IsEditMode ? (L("EditDataStorage")) : L("CreateNewDataStorage")))
+
+<div class="modal-body">
+    <div id="DataStorageInformationsTab">
+        <form name="DataStorageInformationsForm" role="form" novalidate class="form-validation">
+
+            @if (Model.IsEditMode)
+            {
+            <input type="hidden" name="id" value="@Model.DataStorage.Id" />
+            }
+
+            <div class="my-3">
+                <label class="form-label" for="DataStorage_Model">@L("Model")</label>
+                <input class="form-control" id="DataStorage_Model" value="@Model.DataStorage.Model" type="text" name="model" maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.DataStorageConsts.MaxModelLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.DataStorageConsts.MinModelLength" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="DataStorage_Size">@L("Size")</label>
+                <input class="form-control m-input" id="DataStorage_Size" value="@Model.DataStorage.Size?.ToString(CultureInfo.InvariantCulture)" type="number" name="size" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="DataStorage_SerialNumber">@L("SerialNumber")</label>
+                <input class="form-control" id="DataStorage_SerialNumber" value="@Model.DataStorage.SerialNumber" type="text" name="serialNumber" maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.DataStorageConsts.MaxSerialNumberLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.DataStorageConsts.MinSerialNumberLength" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="DataStorage_MediaType">@L("MediaType")</label>
+                <input class="form-control" id="DataStorage_MediaType" value="@Model.DataStorage.MediaType" type="text" name="mediaType" maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.DataStorageConsts.MaxMediaTypeLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.DataStorageConsts.MinMediaTypeLength" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="DataStorage_HealthStatus">@L("HealthStatus")</label>
+                <input class="form-control" id="DataStorage_HealthStatus" value="@Model.DataStorage.HealthStatus" type="text" name="healthStatus" maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.DataStorageConsts.MaxHealthStatusLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.DataStorageConsts.MinHealthStatusLength" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/AppAreaName/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

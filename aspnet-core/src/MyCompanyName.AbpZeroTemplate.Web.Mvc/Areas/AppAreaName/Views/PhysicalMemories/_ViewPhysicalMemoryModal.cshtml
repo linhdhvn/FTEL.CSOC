@@ -1,0 +1,38 @@
+﻿
+@using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Common.Modals
+@using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.PhysicalMemories
+@model PhysicalMemoryViewModel
+
+@await Html.PartialAsync("~/Areas/AppAreaName/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("Details")))
+
+<div class="modal-body">
+    <div id="PhysicalMemoryInformationsTab">
+
+        <div class="row">
+            <div class="col-6 mb-3">
+                <h6>@L("Name") :</h6>
+                @Model.PhysicalMemory.Name
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("Capacity") :</h6>
+                @Model.PhysicalMemory.Capacity
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("PartNumber") :</h6>
+                @Model.PhysicalMemory.PartNumber
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("Speed") :</h6>
+                @Model.PhysicalMemory.Speed
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("SerialNumber") :</h6>
+                @Model.PhysicalMemory.SerialNumber
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/AppAreaName/Views/Common/Modals/_ModalFooterWithClose.cshtml")

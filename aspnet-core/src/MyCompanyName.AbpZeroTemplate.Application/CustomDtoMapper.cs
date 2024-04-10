@@ -1,4 +1,6 @@
-﻿using MyCompanyName.AbpZeroTemplate.Localization.Dtos;
+﻿using MyCompanyName.AbpZeroTemplate.Inventory.Dtos;
+using MyCompanyName.AbpZeroTemplate.Inventory;
+using MyCompanyName.AbpZeroTemplate.Localization.Dtos;
 using MyCompanyName.AbpZeroTemplate.Localization;
 using Abp.Application.Editions;
 using Abp.Application.Features;
@@ -40,6 +42,18 @@ namespace MyCompanyName.AbpZeroTemplate
     {
         public static void CreateMappings(IMapperConfigurationExpression configuration)
         {
+            configuration.CreateMap<CreateOrEditResourceDto, Resource>().ReverseMap();
+            configuration.CreateMap<ResourceDto, Resource>().ReverseMap();
+            configuration.CreateMap<CreateOrEditNetworkAdapterDto, NetworkAdapter>().ReverseMap();
+            configuration.CreateMap<NetworkAdapterDto, NetworkAdapter>().ReverseMap();
+            configuration.CreateMap<CreateOrEditDataStorageDto, DataStorage>().ReverseMap();
+            configuration.CreateMap<DataStorageDto, DataStorage>().ReverseMap();
+            configuration.CreateMap<CreateOrEditPhysicalMemoryDto, PhysicalMemory>().ReverseMap();
+            configuration.CreateMap<PhysicalMemoryDto, PhysicalMemory>().ReverseMap();
+            configuration.CreateMap<CreateOrEditProcessorDto, Processor>().ReverseMap();
+            configuration.CreateMap<ProcessorDto, Processor>().ReverseMap();
+            configuration.CreateMap<CreateOrEditBaseBoardDto, BaseBoard>().ReverseMap();
+            configuration.CreateMap<BaseBoardDto, BaseBoard>().ReverseMap();
             configuration.CreateMap<CreateOrEditWardDto, Ward>().ReverseMap();
             configuration.CreateMap<WardDto, Ward>().ReverseMap();
 
@@ -95,7 +109,6 @@ namespace MyCompanyName.AbpZeroTemplate
             configuration.CreateMap<AuditLog, AuditLogListDto>();
             configuration.CreateMap<EntityChange, EntityChangeListDto>();
             configuration.CreateMap<EntityPropertyChange, EntityPropertyChangeDto>();
-
 
             //OrganizationUnit
             configuration.CreateMap<OrganizationUnit, OrganizationUnitDto>();

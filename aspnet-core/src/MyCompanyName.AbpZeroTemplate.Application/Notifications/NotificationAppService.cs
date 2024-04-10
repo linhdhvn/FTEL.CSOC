@@ -25,6 +25,7 @@ using MyCompanyName.AbpZeroTemplate.Organizations;
 namespace MyCompanyName.AbpZeroTemplate.Notifications
 {
     [AbpAuthorize]
+    [DisableAuditing]
     public class NotificationAppService : AbpZeroTemplateAppServiceBase, INotificationAppService
     {
         private readonly INotificationDefinitionManager _notificationDefinitionManager;
@@ -65,7 +66,6 @@ namespace MyCompanyName.AbpZeroTemplate.Notifications
             _userNotificationRepository = userNotificationRepository;
         }
 
-        [DisableAuditing]
         public async Task<GetNotificationsOutput> GetUserNotifications(GetUserNotificationsInput input)
         {
             var totalCount = await _userNotificationManager.GetUserNotificationCountAsync(
@@ -82,26 +82,26 @@ namespace MyCompanyName.AbpZeroTemplate.Notifications
 
             return new GetNotificationsOutput(totalCount, unreadCount, notifications);
         }
-        
+
         public async Task<bool> ShouldUserUpdateApp()
         {
             var notifications = await _userNotificationManager.GetUserNotificationsAsync(
                 AbpSession.ToUserIdentifier(), UserNotificationState.Unread
             );
-            
+
             return notifications.Any(x => x.Notification.NotificationName == AppNotificationNames.NewVersionAvailable);
         }
-        
+
         public async Task<SetNotificationAsReadOutput> SetAllAvailableVersionNotificationAsRead()
         {
             var notifications = await _userNotificationManager.GetUserNotificationsAsync(
                 AbpSession.ToUserIdentifier(), UserNotificationState.Unread
             );
-            
-            var filteredNotifications =  notifications
+
+            var filteredNotifications = notifications
                 .Where(x => x.Notification.NotificationName == AppNotificationNames.NewVersionAvailable)
                 .ToList();
-            
+
             if (!filteredNotifications.Any())
             {
                 return new SetNotificationAsReadOutput(false);
@@ -120,7 +120,7 @@ namespace MyCompanyName.AbpZeroTemplate.Notifications
                     UserNotificationState.Read
                 );
             }
-            
+
             return new SetNotificationAsReadOutput(true);
         }
 
@@ -229,8 +229,7 @@ namespace MyCompanyName.AbpZeroTemplate.Notifications
         }
 
         [AbpAuthorize(AppPermissions.Pages_Administration_MassNotification)]
-        public async Task<PagedResultDto<MassNotificationUserLookupTableDto>> GetAllUserForLookupTable(
-            GetAllForLookupTableInput input)
+        public async Task<PagedResultDto<MassNotificationUserLookupTableDto>> GetAllUserForLookupTable(GetAllForLookupTableInput input)
         {
             var query = _userRepository.GetAll()
                 .WhereIf(!string.IsNullOrWhiteSpace(input.Filter),
@@ -263,8 +262,7 @@ namespace MyCompanyName.AbpZeroTemplate.Notifications
         }
 
         [AbpAuthorize(AppPermissions.Pages_Administration_MassNotification)]
-        public async Task<PagedResultDto<MassNotificationOrganizationUnitLookupTableDto>>
-            GetAllOrganizationUnitForLookupTable(GetAllForLookupTableInput input)
+        public async Task<PagedResultDto<MassNotificationOrganizationUnitLookupTableDto>> GetAllOrganizationUnitForLookupTable(GetAllForLookupTableInput input)
         {
             var query = _organizationUnitRepository.GetAll()
                 .WhereIf(!string.IsNullOrWhiteSpace(input.Filter),
@@ -343,7 +341,7 @@ namespace MyCompanyName.AbpZeroTemplate.Notifications
                 targetNotifiers.ToArray()
             );
         }
-        
+
         [AbpAuthorize(AppPermissions.Pages_Administration_NewVersion_Create)]
         public async Task CreateNewVersionReleasedNotification()
         {

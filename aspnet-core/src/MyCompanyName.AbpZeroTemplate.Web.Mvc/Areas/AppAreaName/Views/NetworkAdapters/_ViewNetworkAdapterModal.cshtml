@@ -1,0 +1,38 @@
+﻿
+@using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Common.Modals
+@using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.NetworkAdapters
+@model NetworkAdapterViewModel
+
+@await Html.PartialAsync("~/Areas/AppAreaName/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("Details")))
+
+<div class="modal-body">
+    <div id="NetworkAdapterInformationsTab">
+
+        <div class="row">
+            <div class="col-6 mb-3">
+                <h6>@L("Name") :</h6>
+                @Model.NetworkAdapter.Name
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("PhysicalAddress") :</h6>
+                @Model.NetworkAdapter.PhysicalAddress
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("IPv4Address") :</h6>
+                @Model.NetworkAdapter.IPv4Address
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("IPv6Address") :</h6>
+                @Model.NetworkAdapter.IPv6Address
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("UseDHCP") :</h6>
+                @Model.NetworkAdapter.UseDHCP
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/AppAreaName/Views/Common/Modals/_ModalFooterWithClose.cshtml")

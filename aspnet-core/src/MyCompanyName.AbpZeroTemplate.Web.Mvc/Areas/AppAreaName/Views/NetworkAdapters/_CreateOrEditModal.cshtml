@@ -1,0 +1,49 @@
+﻿
+@using System.Globalization
+@using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Common.Modals
+@using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.NetworkAdapters
+@model CreateOrEditNetworkAdapterModalViewModel
+@using Abp.Extensions
+@await Html.PartialAsync("~/Areas/AppAreaName/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(Model.IsEditMode ? (L("EditNetworkAdapter")) : L("CreateNewNetworkAdapter")))
+
+<div class="modal-body">
+    <div id="NetworkAdapterInformationsTab">
+        <form name="NetworkAdapterInformationsForm" role="form" novalidate class="form-validation">
+
+            @if (Model.IsEditMode)
+            {
+            <input type="hidden" name="id" value="@Model.NetworkAdapter.Id" />
+            }
+
+            <div class="my-3">
+                <label class="form-label" for="NetworkAdapter_Name">@L("Name")</label>
+                <input class="form-control" id="NetworkAdapter_Name" value="@Model.NetworkAdapter.Name" type="text" name="name" maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.NetworkAdapterConsts.MaxNameLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.NetworkAdapterConsts.MinNameLength" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="NetworkAdapter_PhysicalAddress">@L("PhysicalAddress")</label>
+                <input class="form-control" id="NetworkAdapter_PhysicalAddress" value="@Model.NetworkAdapter.PhysicalAddress" type="text" name="physicalAddress" maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.NetworkAdapterConsts.MaxPhysicalAddressLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.NetworkAdapterConsts.MinPhysicalAddressLength" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="NetworkAdapter_IPv4Address">@L("IPv4Address")</label>
+                <input class="form-control" id="NetworkAdapter_IPv4Address" value="@Model.NetworkAdapter.IPv4Address" type="text" name="iPv4Address" maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.NetworkAdapterConsts.MaxIPv4AddressLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.NetworkAdapterConsts.MinIPv4AddressLength" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="NetworkAdapter_IPv6Address">@L("IPv6Address")</label>
+                <input class="form-control" id="NetworkAdapter_IPv6Address" value="@Model.NetworkAdapter.IPv6Address" type="text" name="iPv6Address" maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.NetworkAdapterConsts.MaxIPv6AddressLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.NetworkAdapterConsts.MinIPv6AddressLength" />
+            </div>
+
+            <label class="form-check form-check-custom">
+                <input id="NetworkAdapter_UseDHCP" name="useDHCP" type="checkbox" class="form-check-input" value="true" @Html.Raw(Model.NetworkAdapter.UseDHCP ?"checked=\"checked\"":"") />
+                <span class="form-check-label">
+                    @L("UseDHCP")
+                </span>
+            </label>
+
+        </form>
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/AppAreaName/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

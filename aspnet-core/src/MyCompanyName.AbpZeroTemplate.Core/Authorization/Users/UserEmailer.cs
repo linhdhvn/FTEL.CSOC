@@ -190,7 +190,7 @@ namespace MyCompanyName.AbpZeroTemplate.Authorization.Users
                 mailMessage);
         }
 
-     
+
         public async Task TryToSendSubscriptionExpireEmail(int tenantId, DateTime utcNow)
         {
             try

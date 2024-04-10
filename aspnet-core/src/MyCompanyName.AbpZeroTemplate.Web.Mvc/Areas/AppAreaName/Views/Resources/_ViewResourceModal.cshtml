@@ -1,0 +1,58 @@
+﻿
+@using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Common.Modals
+@using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Resources
+@model ResourceViewModel
+
+@await Html.PartialAsync("~/Areas/AppAreaName/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("Details")))
+
+<div class="modal-body">
+    <div id="ResourceInformationsTab">
+
+        <div class="row">
+            <div class="col-6 mb-3">
+                <h6>@L("Name") :</h6>
+                @Model.Resource.Name
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("OperatingSystem") :</h6>
+                @Model.Resource.OperatingSystem
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("BuildNumber") :</h6>
+                @Model.Resource.BuildNumber
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("InstallDate") :</h6>
+                @Model.Resource.InstallDate
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("HostName") :</h6>
+                @Model.Resource.HostName
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("Domain") :</h6>
+                @Model.Resource.Domain
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("Description") :</h6>
+                @Model.Resource.Description
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("CreateTime") :</h6>
+                @Model.Resource.CreateTime
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("UpdateTime") :</h6>
+                @Model.Resource.UpdateTime
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("LastBootUpTime") :</h6>
+                @Model.Resource.LastBootUpTime
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/AppAreaName/Views/Common/Modals/_ModalFooterWithClose.cshtml")

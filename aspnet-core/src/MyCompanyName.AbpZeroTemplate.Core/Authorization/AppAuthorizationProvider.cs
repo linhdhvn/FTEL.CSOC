@@ -30,6 +30,36 @@ namespace MyCompanyName.AbpZeroTemplate.Authorization
 
             var pages = context.GetPermissionOrNull(AppPermissions.Pages) ?? context.CreatePermission(AppPermissions.Pages, L("Pages"));
 
+            var resources = pages.CreateChildPermission(AppPermissions.Pages_Resources, L("Resources"), multiTenancySides: MultiTenancySides.Host);
+            resources.CreateChildPermission(AppPermissions.Pages_Resources_Create, L("CreateNewResource"), multiTenancySides: MultiTenancySides.Host);
+            resources.CreateChildPermission(AppPermissions.Pages_Resources_Edit, L("EditResource"), multiTenancySides: MultiTenancySides.Host);
+            resources.CreateChildPermission(AppPermissions.Pages_Resources_Delete, L("DeleteResource"), multiTenancySides: MultiTenancySides.Host);
+
+            var networkAdapters = pages.CreateChildPermission(AppPermissions.Pages_NetworkAdapters, L("NetworkAdapters"), multiTenancySides: MultiTenancySides.Host);
+            networkAdapters.CreateChildPermission(AppPermissions.Pages_NetworkAdapters_Create, L("CreateNewNetworkAdapter"), multiTenancySides: MultiTenancySides.Host);
+            networkAdapters.CreateChildPermission(AppPermissions.Pages_NetworkAdapters_Edit, L("EditNetworkAdapter"), multiTenancySides: MultiTenancySides.Host);
+            networkAdapters.CreateChildPermission(AppPermissions.Pages_NetworkAdapters_Delete, L("DeleteNetworkAdapter"), multiTenancySides: MultiTenancySides.Host);
+
+            var dataStorages = pages.CreateChildPermission(AppPermissions.Pages_DataStorages, L("DataStorages"), multiTenancySides: MultiTenancySides.Host);
+            dataStorages.CreateChildPermission(AppPermissions.Pages_DataStorages_Create, L("CreateNewDataStorage"), multiTenancySides: MultiTenancySides.Host);
+            dataStorages.CreateChildPermission(AppPermissions.Pages_DataStorages_Edit, L("EditDataStorage"), multiTenancySides: MultiTenancySides.Host);
+            dataStorages.CreateChildPermission(AppPermissions.Pages_DataStorages_Delete, L("DeleteDataStorage"), multiTenancySides: MultiTenancySides.Host);
+
+            var physicalMemories = pages.CreateChildPermission(AppPermissions.Pages_PhysicalMemories, L("PhysicalMemories"), multiTenancySides: MultiTenancySides.Host);
+            physicalMemories.CreateChildPermission(AppPermissions.Pages_PhysicalMemories_Create, L("CreateNewPhysicalMemory"), multiTenancySides: MultiTenancySides.Host);
+            physicalMemories.CreateChildPermission(AppPermissions.Pages_PhysicalMemories_Edit, L("EditPhysicalMemory"), multiTenancySides: MultiTenancySides.Host);
+            physicalMemories.CreateChildPermission(AppPermissions.Pages_PhysicalMemories_Delete, L("DeletePhysicalMemory"), multiTenancySides: MultiTenancySides.Host);
+
+            var processors = pages.CreateChildPermission(AppPermissions.Pages_Processors, L("Processors"), multiTenancySides: MultiTenancySides.Host);
+            processors.CreateChildPermission(AppPermissions.Pages_Processors_Create, L("CreateNewProcessor"), multiTenancySides: MultiTenancySides.Host);
+            processors.CreateChildPermission(AppPermissions.Pages_Processors_Edit, L("EditProcessor"), multiTenancySides: MultiTenancySides.Host);
+            processors.CreateChildPermission(AppPermissions.Pages_Processors_Delete, L("DeleteProcessor"), multiTenancySides: MultiTenancySides.Host);
+
+            var BaseBoards = pages.CreateChildPermission(AppPermissions.Pages_BaseBoards, L("BaseBoards"), multiTenancySides: MultiTenancySides.Host);
+            BaseBoards.CreateChildPermission(AppPermissions.Pages_BaseBoards_Create, L("CreateNewBaseBoards"), multiTenancySides: MultiTenancySides.Host);
+            BaseBoards.CreateChildPermission(AppPermissions.Pages_BaseBoards_Edit, L("EditBaseBoards"), multiTenancySides: MultiTenancySides.Host);
+            BaseBoards.CreateChildPermission(AppPermissions.Pages_BaseBoards_Delete, L("DeleteBaseBoards"), multiTenancySides: MultiTenancySides.Host);
+
             var wards = pages.CreateChildPermission(AppPermissions.Pages_Wards, L("Wards"), multiTenancySides: MultiTenancySides.Host);
             wards.CreateChildPermission(AppPermissions.Pages_Wards_Create, L("CreateNewWard"), multiTenancySides: MultiTenancySides.Host);
             wards.CreateChildPermission(AppPermissions.Pages_Wards_Edit, L("EditWard"), multiTenancySides: MultiTenancySides.Host);

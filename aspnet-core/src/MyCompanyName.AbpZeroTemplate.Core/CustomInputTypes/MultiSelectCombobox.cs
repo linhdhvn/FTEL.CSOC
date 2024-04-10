@@ -10,5 +10,6 @@ namespace MyCompanyName.AbpZeroTemplate.CustomInputTypes
     [InputType("MULTISELECTCOMBOBOX")]
     public class MultiSelectComboboxInputType : InputTypeBase
     {
+
     }
 }

@@ -5,11 +5,16 @@ using Microsoft.Extensions.Configuration;
 using Abp.Runtime.Session;
 using MyCompanyName.AbpZeroTemplate.Web.ControllerBase;
 using MyCompanyName.AbpZeroTemplate.Configuration;
+using System.Net.Mime;
+using System.IO;
+using System.Xml.Linq;
+using System.Text;
+using MyCompanyName.AbpZeroTemplate.Inventory.Dtos;
+using MyCompanyName.AbpZeroTemplate.Web.Helpers;
 
 namespace MyCompanyName.AbpZeroTemplate.Web.Web.Controllers
 {
     //[ApiExplorerSettings(IgnoreApi = true)]
-    //[Consumes(MediaTypeNames.Application.Xml)]
     //[DisableAuditing]
     [Route("api/assetexplorer")]
     public class AssetExplorerController : ServiceControllerBase
@@ -27,12 +32,31 @@ namespace MyCompanyName.AbpZeroTemplate.Web.Web.Controllers
 
         [HttpPost, ActionName("Discover")]
         [Route("discover.html")]
-        public string Discover()
+        [Consumes("application/xml", "text/xml")]
+        public async Task<string> DiscoverAsync()
         {
-            //StreamReader streamReader = new(Request.Body, encoding: Encoding.UTF8, detectEncodingFromByteOrderMarks: false);
-            //XDocument xDocument = XDocument.Parse(await streamReader.ReadToEndAsync());
+            StreamReader streamReader = new(Request.Body, encoding: Encoding.UTF8, detectEncodingFromByteOrderMarks: false);
+            XDocument xDocument = XDocument.Parse(await streamReader.ReadToEndAsync());
 
-            //AgentServletInput.InventoryAsset asset = XmlSerializationUtil.Deserialize<AgentServletInput.InventoryAsset>(xDocument);
+            try
+            {
+                var asset = XmlSerialization.Deserialize<AssetExplorerInput.Resource>(xDocument);
+
+                return Newtonsoft.Json.JsonConvert.SerializeObject(new
+                {
+                    Success = true,
+                    Message = "Good job!"
+                });
+            }
+            catch (System.Exception ex)
+            {
+                return Newtonsoft.Json.JsonConvert.SerializeObject(new
+                {
+                    Success = false,
+                    Message = ex.Message
+                });
+            }
+
 
             //if (asset.Processor.CPU.Count > 0 && asset.PhysicalMemory.MemoryModule.Count > 0 && asset.HardDisk.Disk.Count > 0)
             //{
@@ -163,12 +187,6 @@ namespace MyCompanyName.AbpZeroTemplate.Web.Web.Controllers
             //        Message = "Unknown resource."
             //    });
             //}
-
-            return Newtonsoft.Json.JsonConvert.SerializeObject(new
-            {
-                Success = false,
-                Message = "Unknown resource."
-            });
         }
     }
 }

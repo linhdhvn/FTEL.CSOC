@@ -14,7 +14,7 @@
     "AppAuthorizationProvider": "{{Namespace_Here}}.Core\\Authorization\\AppAuthorizationProvider.cs",
     "EntityHistoryHelper": "{{Namespace_Here}}.Core\\EntityHistory\\EntityHistoryHelper.cs",
     "AppPermissions": "{{Namespace_Here}}.Core\\Authorization\\AppPermissions.cs",
-    "LocalizationFile": "{{Namespace_Here}}.Core\\Localization\\Translation\\TextTranslation.xml",
+    "LocalizationFile": "{{Namespace_Here}}.Core\\Localization\\TextTranslation\\TextTranslation.xml",
     "EntityFrameWorkProjectFolder": "{{Namespace_Here}}.EntityFrameworkCore",
     "Mvc": {
       "AppNavigationProvider": "{{Namespace_Here}}.Web.Mvc\\Areas\\{{App_Area_Name_Here}}\\Startup\\{{App_Area_Name_Here}}NavigationProvider.cs",

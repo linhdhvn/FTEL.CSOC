@@ -1596,6 +1596,9 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                         .HasMaxLength(128)
                         .HasColumnType("nvarchar(128)");
 
+                    b.Property<int?>("CountryId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
 
@@ -1607,6 +1610,9 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<long?>("DistrictId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("EmailAddress")
                         .IsRequired()
@@ -1678,6 +1684,9 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                     b.Property<Guid?>("ProfilePictureId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<long?>("ProvinceId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("RecoveryCode")
                         .HasColumnType("nvarchar(max)");
 
@@ -1707,19 +1716,240 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
+                    b.Property<long?>("WardId")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
 
                     b.HasIndex("CreatorUserId");
 
                     b.HasIndex("DeleterUserId");
 
+                    b.HasIndex("DistrictId");
+
                     b.HasIndex("LastModifierUserId");
+
+                    b.HasIndex("ProvinceId");
+
+                    b.HasIndex("WardId");
 
                     b.HasIndex("TenantId", "NormalizedEmailAddress");
 
                     b.HasIndex("TenantId", "NormalizedUserName");
 
                     b.ToTable("AbpUsers");
+                });
+
+            modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Inventory.BaseBoard", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Manufacturer")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Model")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("SerialNumber")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("UUID")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<DateTime?>("UpdateTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BaseBoards");
+                });
+
+            modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Inventory.DataStorage", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("HealthStatus")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("MediaType")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Model")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("SerialNumber")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<long?>("Size")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("inv_DataStorages");
+                });
+
+            modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Inventory.NetworkAdapter", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("IPv4Address")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("IPv6Address")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("PhysicalAddress")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<bool>("UseDHCP")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("inv_NetworkAdapters");
+                });
+
+            modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Inventory.PhysicalMemory", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("Capacity")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("PartNumber")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("SerialNumber")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<int>("Speed")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("inv_PhysicalMemories");
+                });
+
+            modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Inventory.Processor", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("PartNumber")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("SerialNumber")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("inv_Processors");
+                });
+
+            modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Inventory.Resource", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("BuildNumber")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Domain")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("HostName")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("InstallDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("LastBootUpTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("OperatingSystem")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<DateTime?>("UpdateTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("inv_Resources");
                 });
 
             modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Localization.Country", b =>
@@ -2228,6 +2458,10 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
             modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Authorization.Users.User", b =>
                 {
+                    b.HasOne("MyCompanyName.AbpZeroTemplate.Localization.Country", "CountryFk")
+                        .WithMany()
+                        .HasForeignKey("CountryId");
+
                     b.HasOne("MyCompanyName.AbpZeroTemplate.Authorization.Users.User", "CreatorUser")
                         .WithMany()
                         .HasForeignKey("CreatorUserId");
@@ -2236,15 +2470,35 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                         .WithMany()
                         .HasForeignKey("DeleterUserId");
 
+                    b.HasOne("MyCompanyName.AbpZeroTemplate.Localization.District", "DistrictFk")
+                        .WithMany()
+                        .HasForeignKey("DistrictId");
+
                     b.HasOne("MyCompanyName.AbpZeroTemplate.Authorization.Users.User", "LastModifierUser")
                         .WithMany()
                         .HasForeignKey("LastModifierUserId");
+
+                    b.HasOne("MyCompanyName.AbpZeroTemplate.Localization.Province", "ProvinceFk")
+                        .WithMany()
+                        .HasForeignKey("ProvinceId");
+
+                    b.HasOne("MyCompanyName.AbpZeroTemplate.Localization.Ward", "WardFk")
+                        .WithMany()
+                        .HasForeignKey("WardId");
+
+                    b.Navigation("CountryFk");
 
                     b.Navigation("CreatorUser");
 
                     b.Navigation("DeleterUser");
 
+                    b.Navigation("DistrictFk");
+
                     b.Navigation("LastModifierUser");
+
+                    b.Navigation("ProvinceFk");
+
+                    b.Navigation("WardFk");
                 });
 
             modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Localization.District", b =>

@@ -1,0 +1,72 @@
+﻿
+@using System.Globalization
+@using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Common.Modals
+@using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Resources
+@model CreateOrEditResourceModalViewModel
+@using Abp.Extensions
+@await Html.PartialAsync("~/Areas/AppAreaName/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(Model.IsEditMode ? (L("EditResource")) : L("CreateNewResource")))
+
+<div class="modal-body">
+    <div id="ResourceInformationsTab">
+        <form name="ResourceInformationsForm" role="form" novalidate class="form-validation">
+
+            @if (Model.IsEditMode)
+            {
+            <input type="hidden" name="id" value="@Model.Resource.Id" />
+            }
+
+            <div class="my-3">
+                <label class="form-label" for="Resource_Name">@L("Name")</label>
+                <input class="form-control" id="Resource_Name" value="@Model.Resource.Name" type="text" name="name" required maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.ResourceConsts.MaxNameLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.ResourceConsts.MinNameLength" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Resource_OperatingSystem">@L("OperatingSystem")</label>
+                <input class="form-control" id="Resource_OperatingSystem" value="@Model.Resource.OperatingSystem" type="text" name="operatingSystem" maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.ResourceConsts.MaxOperatingSystemLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.ResourceConsts.MinOperatingSystemLength" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Resource_BuildNumber">@L("BuildNumber")</label>
+                <input class="form-control" id="Resource_BuildNumber" value="@Model.Resource.BuildNumber" type="text" name="buildNumber" maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.ResourceConsts.MaxBuildNumberLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.ResourceConsts.MinBuildNumberLength" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Resource_InstallDate">@L("InstallDate")</label>
+                <input class="form-control m-input date-picker" id="Resource_InstallDate" type="text" name="installDate" value="@Model.Resource.InstallDate" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Resource_HostName">@L("HostName")</label>
+                <input class="form-control" id="Resource_HostName" value="@Model.Resource.HostName" type="text" name="hostName" maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.ResourceConsts.MaxHostNameLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.ResourceConsts.MinHostNameLength" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Resource_Domain">@L("Domain")</label>
+                <input class="form-control" id="Resource_Domain" value="@Model.Resource.Domain" type="text" name="domain" maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.ResourceConsts.MaxDomainLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.ResourceConsts.MinDomainLength" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Resource_Description">@L("Description")</label>
+                <input class="form-control" id="Resource_Description" value="@Model.Resource.Description" type="text" name="description" maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.ResourceConsts.MaxDescriptionLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.ResourceConsts.MinDescriptionLength" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Resource_CreateTime">@L("CreateTime")</label>
+                <input class="form-control m-input date-picker" id="Resource_CreateTime" type="text" name="createTime" value="@Model.Resource.CreateTime" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Resource_UpdateTime">@L("UpdateTime")</label>
+                <input class="form-control m-input date-picker" id="Resource_UpdateTime" type="text" name="updateTime" value="@Model.Resource.UpdateTime" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Resource_LastBootUpTime">@L("LastBootUpTime")</label>
+                <input class="form-control m-input date-picker" id="Resource_LastBootUpTime" type="text" name="lastBootUpTime" value="@Model.Resource.LastBootUpTime" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/AppAreaName/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

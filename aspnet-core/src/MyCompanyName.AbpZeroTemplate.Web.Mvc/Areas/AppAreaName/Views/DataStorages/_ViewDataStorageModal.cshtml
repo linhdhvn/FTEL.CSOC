@@ -1,0 +1,38 @@
+﻿
+@using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Common.Modals
+@using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.DataStorages
+@model DataStorageViewModel
+
+@await Html.PartialAsync("~/Areas/AppAreaName/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("Details")))
+
+<div class="modal-body">
+    <div id="DataStorageInformationsTab">
+
+        <div class="row">
+            <div class="col-6 mb-3">
+                <h6>@L("Model") :</h6>
+                @Model.DataStorage.Model
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("Size") :</h6>
+                @Model.DataStorage.Size
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("SerialNumber") :</h6>
+                @Model.DataStorage.SerialNumber
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("MediaType") :</h6>
+                @Model.DataStorage.MediaType
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("HealthStatus") :</h6>
+                @Model.DataStorage.HealthStatus
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/AppAreaName/Views/Common/Modals/_ModalFooterWithClose.cshtml")

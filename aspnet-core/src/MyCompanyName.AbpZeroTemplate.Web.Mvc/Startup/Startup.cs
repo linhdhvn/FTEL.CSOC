@@ -77,7 +77,8 @@ namespace MyCompanyName.AbpZeroTemplate.Web.Startup
 #if DEBUG
                 .AddRazorRuntimeCompilation()
 #endif
-                .AddNewtonsoftJson();
+                .AddNewtonsoftJson()
+                .AddXmlDataContractSerializerFormatters();
 
             if (bool.Parse(_appConfiguration["KestrelServer:IsEnabled"]))
             {

@@ -14,6 +14,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations.Seed.Host
         public void Create()
         {
             new DefaultLanguagesCreator(_context).Create();
+            new LocationCreator(_context).Create();
             new HostRoleAndUserCreator(_context).Create();
             new DefaultSettingsCreator(_context).Create();
 

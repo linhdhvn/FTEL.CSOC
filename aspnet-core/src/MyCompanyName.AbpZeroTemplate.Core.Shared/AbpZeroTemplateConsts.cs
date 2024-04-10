@@ -2,7 +2,7 @@
 {
     public class AbpZeroTemplateConsts
     {
-        public const string LocalizationSourceName = "AbpZeroTemplate";
+        public const string LocalizationSourceName = "TextTranslation";
 
         public const bool MultiTenancyEnabled = true;
         
