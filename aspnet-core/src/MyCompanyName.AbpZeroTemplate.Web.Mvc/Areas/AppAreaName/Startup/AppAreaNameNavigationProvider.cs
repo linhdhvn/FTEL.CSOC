@@ -17,9 +17,8 @@ namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Startup
                 .AddItem(new MenuItemDefinition(
                         AppAreaNamePageNames.Host.Dashboard,
                         L("Dashboard"),
-                        url: "AppAreaName/HostDashboard",
-                        icon: "flaticon-line-graph",
-                        permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_Administration_Host_Dashboard)
+                        url: "AppAreaName/Dashboard",
+                        icon: "flaticon-line-graph"
                     )
                 )
                 .AddItem(new MenuItemDefinition(
@@ -31,27 +30,11 @@ namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Startup
                     )
                 )
                 .AddItem(new MenuItemDefinition(
-                        AppAreaNamePageNames.Host.NetworkAdapters,
-                        L("NetworkAdapters"),
-                        url: "AppAreaName/NetworkAdapters",
+                        AppAreaNamePageNames.Host.BaseBoards,
+                        L("BaseBoards"),
+                        url: "AppAreaName/BaseBoards",
                         icon: "flaticon-more",
-                        permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_NetworkAdapters)
-                    )
-                )
-                .AddItem(new MenuItemDefinition(
-                        AppAreaNamePageNames.Host.DataStorages,
-                        L("DataStorages"),
-                        url: "AppAreaName/DataStorages",
-                        icon: "flaticon-more",
-                        permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_DataStorages)
-                    )
-                )
-                .AddItem(new MenuItemDefinition(
-                        AppAreaNamePageNames.Host.PhysicalMemories,
-                        L("PhysicalMemories"),
-                        url: "AppAreaName/PhysicalMemories",
-                        icon: "flaticon-more",
-                        permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_PhysicalMemories)
+                        permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_BaseBoards)
                     )
                 )
                 .AddItem(new MenuItemDefinition(
@@ -63,20 +46,30 @@ namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Startup
                     )
                 )
                 .AddItem(new MenuItemDefinition(
-                        AppAreaNamePageNames.Host.BaseBoards,
-                        L("BaseBoards"),
-                        url: "AppAreaName/BaseBoards",
+                        AppAreaNamePageNames.Host.PhysicalMemories,
+                        L("PhysicalMemories"),
+                        url: "AppAreaName/PhysicalMemories",
                         icon: "flaticon-more",
-                        permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_BaseBoards)
+                        permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_PhysicalMemories)
                     )
-                ).AddItem(new MenuItemDefinition(
-                        AppAreaNamePageNames.Tenant.Dashboard,
-                        L("Dashboard"),
-                        url: "AppAreaName/TenantDashboard",
-                        icon: "flaticon-line-graph",
-                        permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_Tenant_Dashboard)
+                )
+                .AddItem(new MenuItemDefinition(
+                        AppAreaNamePageNames.Host.DataStorages,
+                        L("DataStorages"),
+                        url: "AppAreaName/DataStorages",
+                        icon: "flaticon-more",
+                        permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_DataStorages)
                     )
-                ).AddItem(new MenuItemDefinition(
+                )
+                .AddItem(new MenuItemDefinition(
+                        AppAreaNamePageNames.Host.NetworkAdapters,
+                        L("NetworkAdapters"),
+                        url: "AppAreaName/NetworkAdapters",
+                        icon: "flaticon-more",
+                        permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_NetworkAdapters)
+                    )
+                )
+                .AddItem(new MenuItemDefinition(
                         AppAreaNamePageNames.Common.Administration,
                         L("Administration"),
                         icon: "flaticon-interface-8"
@@ -157,19 +150,10 @@ namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Startup
                     .AddItem(new MenuItemDefinition(
                             AppAreaNamePageNames.Host.Settings,
                             L("Settings"),
-                            url: "AppAreaName/HostSettings",
-                            icon: "flaticon-settings",
-                            permissionDependency: new SimplePermissionDependency(AppPermissions
-                                .Pages_Administration_Host_Settings)
-                        )
-                    )
-                    .AddItem(new MenuItemDefinition(
-                            AppAreaNamePageNames.Tenant.Settings,
-                            L("Settings"),
                             url: "AppAreaName/Settings",
                             icon: "flaticon-settings",
                             permissionDependency: new SimplePermissionDependency(AppPermissions
-                                .Pages_Administration_Tenant_Settings)
+                                .Pages_Administration_Host_Settings)
                         )
                     )
                     .AddItem(new MenuItemDefinition(

@@ -79,6 +79,7 @@ Set objReg = GetObject("winmgmts:{impersonationLevel=impersonate}!\\" & strCompu
 Set queryResult = objCIMVService.ExecQuery ("SELECT * FROM Win32_ComputerSystem")
 For Each iterResult in queryResult
     csdata = ""
+
     computerNameForFile = LCase(iterResult.Caption & "")
     computerName = computerNameForFile
 
@@ -96,9 +97,17 @@ For Each iterResult in queryResult
 	    end if
 	    csdata = addCategoryData(csdata, "Domain", domainName)
     end if
+
+    if InStr(UCase(iterResult.Model), "VIRTUAL") Then
+        csdata = addCategoryData(csdata, "IsVirtualMachine", "True")
+    else
+        csdata = addCategoryData(csdata, "IsVirtualMachine", "False")
+    end if
 Next
 
 nameAttr = addCategoryData("", "HostName", computerName)
+
+
 outputText = outputText & nameAttr & csdata
 outputText = outputText & bbdata
 outputText = outputText & dnsdata
@@ -353,7 +362,6 @@ resolution = ""
 
 
 
-
 'Sending Data via http
 '=====================
 
@@ -416,15 +424,14 @@ if(saveXMLFile = true) then
     fileName = ".\" & computerNameForFile  & ".xml"
     xml.save fileName
     if (Err or getFileSize(fileName) = 0) Then
-        writesuccess = writeFile(computerNameForFile & ".xml",outputText)
+        writesuccess = writeFile(computerNameForFile & ".xml", outputText)
         if not writesuccess Then
             if(cause = "") then
                 errorMessage = getErrorMessage(Err)
                 cause = "Could not write the system data in a xml."
-                resolution = "Open a command prompt and execute the script as  " & doubleQuote & "cscript AgentService.vbs -debug >" &computerNameForFile &  ".xml" & doubleQuote &  ",This will generate a file " & doubleQuote & computerNameForFile & ".xml" & doubleQuote &"." & newLineConst & "Send this file to "& supportMailID & " to help you."
+                resolution = "Open a command prompt and execute the script as  " & doubleQuote & "cscript AgentService.vbs -debug >" & computerNameForFile &  ".xml" & doubleQuote &  ",This will generate a file " & doubleQuote & computerNameForFile & ".xml" & doubleQuote &"." & newLineConst & "Send this file to " & supportMailID & " to help you."
                 
                 displayErrorMessage()
-                
 
             end if
         end if
@@ -435,24 +442,24 @@ end if
 '===========
 Function addCategoryData(outputText, category, data)
     'For handling problem when data contains &
-    pos = InStr(data,"&")
+    pos = InStr(data, "&")
     if pos > 0 Then
-        data = Replace(data,"&","###AND###")
+        data = Replace(data, "&", "###AND###")
     end if
     'For handling problem when data contains <
-    pos = InStr(data,"<")
+    pos = InStr(data, "<")
     if pos > 0 Then
-        data = Replace(data,"<","###[###")
+        data = Replace(data, "<", "###[###")
     end if
     'For handling problem when data contains >
     pos = InStr(data,">")
     if pos > 0 Then
-        data = Replace(data,">","###]###")
+        data = Replace(data, ">", "###]###")
     end if
     'For handling problem when data contains DOUBLEQUOTE
-    pos = InStr(data,doubleQuote)
+    pos = InStr(data, doubleQuote)
     if pos > 0 Then
-        data = Replace(data,doubleQuote,"###DQ###")
+        data = Replace(data, doubleQuote, "###DQ###")
     end if
     data = removeInvalidXMLChar(data)
     retStr = outputText
@@ -472,9 +479,9 @@ End Function
 '======================================
 Function getNetworkCaption(captionString)
     getNetworkCaption = captionString
-    idx = InStr(captionString," ")
+    idx = InStr(captionString, " ")
     If(idx > 0) Then
-        getNetworkCaption = Trim(Mid(captionString,idx))
+        getNetworkCaption = Trim(Mid(captionString, idx))
     End If
 End Function
 
@@ -484,14 +491,14 @@ Function GetMonitorSerialNumber(EDID)
 
     sernumstr = ""
     sernum = 0
-    for i = 0 to ubound(EDID)-4
+    for i = 0 to ubound(EDID) - 4
         if EDID(i) = 0 AND EDID(i + 1) = 0 AND EDID(i + 2) = 0 AND EDID(i + 3) = 255 AND EDID(i + 4) = 0 Then
             ' if sernum<>0 then
                 'sMsgString = "a second serial number has been found!"
                 'WScript.ECho sMsgString
                 'suspicious=1
             'end if
-            sernum = i+4
+            sernum = i + 4
         end if
     next
     if sernum <> 0 then
@@ -521,10 +528,10 @@ End Function
 '===============
 Function displayErrorMessage()
     if resolution = "" Then
-        resolution = "Open a command prompt and execute the script as  " & doubleQuote & "cscript AgentService.vbs -debug >" &computerNameForFile &  ".xml" & doubleQuote &  ",This will generate a file " & doubleQuote & computerNameForFile & ".xml" & doubleQuote &"." & newLineConst & "Send this file to "& supportMailID & " to help you."
+        resolution = "Open a command prompt and execute the script as  " & doubleQuote & "cscript AgentService.vbs -debug >" & computerNameForFile &  ".xml" & doubleQuote &  ",This will generate a file " & doubleQuote & computerNameForFile & ".xml" & doubleQuote & "." & newLineConst & "Send this file to " & supportMailID & " to help you."
     end if
     
-    Wscript.Echo errorMessage & newLineConst & "Cause: " & cause & newLineConst & "Resolution : "& resolution & newLineConst & "If you have any difficulties " & "please report the above Error Message to " & supportMailID
+    Wscript.Echo errorMessage & newLineConst & "Cause: " & cause & newLineConst & "Resolution : " & resolution & newLineConst & "If you have any difficulties " & "please report the above Error Message to " & supportMailID
     
 End Function
 
@@ -568,11 +575,11 @@ Function writeFile(fileName,content)
     writeFile = false
     Dim oFilesys, oFiletxt, sFilename, sPath
     Set oFilesys = CreateObject("Scripting.FileSystemObject")
-    Set oFiletxt = oFilesys.CreateTextFile(fileName,True)
+    Set oFiletxt = oFilesys.CreateTextFile(fileName, True)
     sPath = oFilesys.GetAbsolutePathName(fileName)
     sFilename = oFilesys.GetFileName(sPath)
     isXPOrLaterOS = isXPAndAbove()
-    if(Not isXPOrLaterOS)then
+    if(Not isXPOrLaterOS) then
         oFiletxt.WriteLine(content)
         if(Err) then
             writeFile = false
@@ -582,8 +589,8 @@ Function writeFile(fileName,content)
     End if
     oFiletxt.Close'
 
-    if(isXPOrLaterOS)then
-        res = saveAsUTF8File(fileName,content)
+    if(isXPOrLaterOS) then
+        res = saveAsUTF8File(fileName, content)
         if(res) then
             writeFile = false
         else
@@ -665,9 +672,9 @@ Function HexToDec(hexVal)
     strLen = len(hexVal)
     for i =  strLen to 1 step -1
 
-        digit = instr("0123456789ABCDEF", ucase(mid(hexVal, i, 1)))-1
+        digit = instr("0123456789ABCDEF", ucase(mid(hexVal, i, 1))) - 1
         if digit >= 0 then
-                intValue = digit * (16 ^ (len(hexVal)-i))
+                intValue = digit * (16 ^ (len(hexVal) - i))
             dec = dec + intValue
         else
             dec = 0

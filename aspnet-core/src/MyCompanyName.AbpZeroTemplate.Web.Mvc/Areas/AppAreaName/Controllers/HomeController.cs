@@ -1,8 +1,6 @@
-﻿using System.Threading.Tasks;
-using Abp.AspNetCore.Mvc.Authorization;
-using Abp.MultiTenancy;
+﻿using Abp.AspNetCore.Mvc.Authorization;
+using Abp.Domain.Uow;
 using Microsoft.AspNetCore.Mvc;
-using MyCompanyName.AbpZeroTemplate.Authorization;
 using MyCompanyName.AbpZeroTemplate.Web.ControllerBase;
 
 namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Controllers
@@ -11,30 +9,18 @@ namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Controllers
     [AbpMvcAuthorize]
     public class HomeController : AbpZeroTemplateControllerBase
     {
-        public async Task<ActionResult> Index()
+        private readonly IUnitOfWorkManager _unitOfWorkManager;
+
+        public HomeController(IUnitOfWorkManager unitOfWorkManager)
         {
-            if (AbpSession.MultiTenancySide == MultiTenancySides.Host)
-            {
-                if (await IsGrantedAsync(AppPermissions.Pages_Administration_Host_Dashboard))
-                {
-                    return RedirectToAction("Index", "HostDashboard");
-                }
+            _unitOfWorkManager = unitOfWorkManager;
+        }
 
-                if (await IsGrantedAsync(AppPermissions.Pages_Tenants))
-                {
-                    return RedirectToAction("Index", "Tenants");
-                }
-            }
-            else
-            {
-                if (await IsGrantedAsync(AppPermissions.Pages_Tenant_Dashboard))
-                {
-                    return RedirectToAction("Index", "TenantDashboard");
-                }
-            }
+        public ActionResult Index()
+        {
+            _unitOfWorkManager.Current.SetTenantId(null);
 
-            //Default page if no permission to the pages above
-            return RedirectToAction("Index", "Welcome");
+            return RedirectToAction("Index", "Dashboard");
         }
     }
 }

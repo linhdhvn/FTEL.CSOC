@@ -3,11 +3,11 @@
 @using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Startup
 @model BaseBoardsViewModel
 @{
-ViewBag.CurrentPageName = AppAreaNamePageNames.Host.BaseBoards;
+    ViewBag.CurrentPageName = AppAreaNamePageNames.Host.BaseBoards;
 }
 @section Scripts
 {
-<script abp-src="/view-resources/Areas/AppAreaName/Views/BaseBoards/Index.js" asp-append-version="true"></script>
+    <script abp-src="/view-resources/Areas/AppAreaName/Views/BaseBoards/Index.js" asp-append-version="true"></script>
 }
 
 <div class="content d-flex flex-column flex-column-fluid">
@@ -17,7 +17,7 @@ ViewBag.CurrentPageName = AppAreaNamePageNames.Host.BaseBoards;
 
         @if (IsGranted(AppPermissions.Pages_BaseBoards_Create))
         {
-        <button id="CreateNewInv_BaseBoardButton" class="btn btn-primary blue"><i class="fa fa-plus"></i> @L("CreateNewInv_BaseBoard")</button>
+            <button id="CreateNewBaseBoardButton" class="btn btn-primary blue"><i class="fa fa-plus"></i> @L("CreateNewBaseBoard")</button>
         }
     </abp-page-subheader>
 
@@ -38,69 +38,7 @@ ViewBag.CurrentPageName = AppAreaNamePageNames.Host.BaseBoards;
                         </div>
                     </div>
                 </div>
-                <div id="AdvacedAuditFiltersArea" style="display: none" class="row mb-4">
-                    <div class="col-md-12">
 
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="my-3">
-                            <label class="form-label" for="ManufacturerFilterId">@L("Manufacturer")</label>
-                            <input type="text" class="form-control" name="manufacturerFilter" id="ManufacturerFilterId">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="my-3">
-                            <label class="form-label" for="ModelFilterId">@L("Model")</label>
-                            <input type="text" class="form-control" name="modelFilter" id="ModelFilterId">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="my-3">
-                            <label class="form-label" for="SerialNumberFilterId">@L("SerialNumber")</label>
-                            <input type="text" class="form-control" name="serialNumberFilter" id="SerialNumberFilterId">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="my-3">
-                            <label class="form-label" for="UUIDFilterId">@L("UUID")</label>
-                            <input type="text" class="form-control" name="uuidFilter" id="UUIDFilterId">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="my-3">
-                            <label class="form-label" for="DescriptionFilterId">@L("Description")</label>
-                            <input type="text" class="form-control" name="descriptionFilter" id="DescriptionFilterId">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="my-3">
-                            <label class="form-label" for="MinCreateTimeFilterId">@L("CreateTimeRange")</label>
-                            <div class="input-group">
-                                <input class="form-control m-input date-picker" type="text" placeholder="@L(" MinValue")" id="MinCreateTimeFilterId">
-                                <span style="line-height: 40px;padding: 0 15px 0 15px;"> &mdash; </span>
-                                <input class="form-control m-input date-picker" type="text" placeholder="@L(" MaxValue")" id="MaxCreateTimeFilterId">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="my-3">
-                            <label class="form-label" for="MinUpdateTimeFilterId">@L("UpdateTimeRange")</label>
-                            <div class="input-group">
-                                <input class="form-control m-input date-picker" type="text" placeholder="@L(" MinValue")" id="MinUpdateTimeFilterId">
-                                <span style="line-height: 40px;padding: 0 15px 0 15px;"> &mdash; </span>
-                                <input class="form-control m-input date-picker" type="text" placeholder="@L(" MaxValue")" id="MaxUpdateTimeFilterId">
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="row my-4">
-                    <div class="col-xl-12">
-                        <span id="ShowAdvancedFiltersSpan" class="text-muted clickable-item"><i class="fa fa-angle-down"></i> @L("ShowAdvancedFilters")</span>
-                        <span id="HideAdvancedFiltersSpan" class="text-muted clickable-item" style="display: none"><i class="fa fa-angle-up"></i> @L("HideAdvancedFilters")</span>
-                    </div>
-                </div>
                 <div class="row align-items-center">
                     <table id="BaseBoardsTable" class="table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer">
                         <thead>

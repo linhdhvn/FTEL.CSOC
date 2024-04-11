@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Resource HostName="w0133016163" Domain="officesg.local">
+<Resource HostName="w0133016163" Domain="officesg.local" IsVirtualMachine="False">
 	<BaseBoard Manufacturer="Gigabyte Technology Co., Ltd." Model="H510M H" SerialNumber="Default string" UUID="035E02D8-04D3-05EF-5106-160700080009" BIOSVersion="ALASKA - 1072009"/>
 	<Processors>
 		<CPU Name="Intel(R) Core(TM) i5-10400 CPU @ 2.90GHz" ProcessorId="BFEBFBFF000A0655" PartNumber="To Be Filled By O.E.M." SerialNumber="To Be Filled By O.E.M."/>

@@ -22,7 +22,7 @@ namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Controllers
         private readonly IOrganizationUnitAppService _organizationUnitAppService;
 
         public NotificationsController(
-            INotificationAppService notificationAppService, 
+            INotificationAppService notificationAppService,
             IOrganizationUnitAppService organizationUnitAppService)
         {
             _notificationAppService = notificationAppService;
@@ -39,24 +39,24 @@ namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Controllers
             var notificationSettings = await _notificationAppService.GetNotificationSettings();
             return PartialView("_SettingsModal", notificationSettings);
         }
-        
+
         [AbpMvcAuthorize(AppPermissions.Pages_Administration_MassNotification_Create)]
-        public async Task<PartialViewResult> CreateMassNotificationModal()
+        public Task<PartialViewResult> CreateMassNotificationModal()
         {
             var viewModel = new CreateMassNotificationViewModel
             {
                 TargetNotifiers = _notificationAppService.GetAllNotifiers()
             };
 
-            return PartialView("_CreateMassNotificationModal", viewModel);
+            return Task.FromResult(PartialView("_CreateMassNotificationModal", viewModel));
         }
-        
+
         [AbpMvcAuthorize(AppPermissions.Pages_Administration_MassNotification)]
         public PartialViewResult UserLookupTableModal()
         {
             return PartialView("_UserLookupTableModal");
         }
-        
+
         [AbpMvcAuthorize(AppPermissions.Pages_Administration_MassNotification)]
         public async Task<PartialViewResult> OrganizationUnitLookupTableModal()
         {
@@ -65,11 +65,11 @@ namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Controllers
             {
                 AllOrganizationUnits = ObjectMapper.Map<List<OrganizationUnitDto>>(organizationUnits)
             };
-            
+
             return PartialView("_OrganizationUnitLookupTableModal", model);
         }
-        
-                
+
+
         [AbpMvcAuthorize(AppPermissions.Pages_Administration_MassNotification)]
         public ActionResult MassNotifications()
         {

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace MyCompanyName.AbpZeroTemplate.Inventory.Dtos
@@ -14,6 +13,9 @@ namespace MyCompanyName.AbpZeroTemplate.Inventory.Dtos
 
             [XmlAttribute(AttributeName = "Domain")]
             public string Domain { get; set; }
+
+            [XmlAttribute(AttributeName = "IsVirtualMachine")]
+            public string IsVirtualMachine { get; set; }
 
             [XmlElement(ElementName = "BaseBoard")]
             public BaseBoard BaseBoard { get; set; }

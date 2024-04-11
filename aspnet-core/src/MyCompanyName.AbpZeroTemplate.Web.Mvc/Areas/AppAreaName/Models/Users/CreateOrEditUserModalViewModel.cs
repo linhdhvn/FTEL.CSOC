@@ -20,7 +20,5 @@ namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Users
         public bool IsEditMode => User.Id.HasValue;
 
         public PasswordComplexitySetting PasswordComplexitySetting { get; set; }
-
-        public string AllowedUserNameCharacters { get; set; }
     }
 }

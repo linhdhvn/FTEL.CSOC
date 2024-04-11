@@ -77,8 +77,7 @@ namespace MyCompanyName.AbpZeroTemplate.Web
             Configuration.Caching.Configure(TwoFactorCodeCacheItem.CacheName,
                 cache => { cache.DefaultSlidingExpireTime = TwoFactorCodeCacheItem.DefaultSlidingExpireTime; });
 
-            if (_appConfiguration["Authentication:JwtBearer:IsEnabled"] != null &&
-                bool.Parse(_appConfiguration["Authentication:JwtBearer:IsEnabled"]))
+            if (_appConfiguration["Authentication:JwtBearer:IsEnabled"] != null && bool.Parse(_appConfiguration["Authentication:JwtBearer:IsEnabled"]))
             {
                 ConfigureTokenAuth();
             }

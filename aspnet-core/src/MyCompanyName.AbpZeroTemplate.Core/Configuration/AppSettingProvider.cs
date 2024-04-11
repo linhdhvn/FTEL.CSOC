@@ -20,7 +20,7 @@ namespace MyCompanyName.AbpZeroTemplate.Configuration
     {
         private readonly IConfigurationRoot _appConfiguration;
         VisibleSettingClientVisibilityProvider _visibleSettingClientVisibilityProvider;
-        
+
         public AppSettingProvider(IAppConfigurationAccessor configurationAccessor)
         {
             _appConfiguration = configurationAccessor.Configuration;
@@ -104,28 +104,28 @@ namespace MyCompanyName.AbpZeroTemplate.Configuration
                 new SettingDefinition(AppSettings.Recaptcha.SiteKey, GetFromSettings("Recaptcha:SiteKey"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider),
                 new SettingDefinition(AppSettings.UiManagement.Theme,
-                    GetFromAppSettings(AppSettings.UiManagement.Theme, "default"), 
+                    GetFromAppSettings(AppSettings.UiManagement.Theme, "default"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider,
                     scopes: SettingScopes.All),
-                
+
                 new SettingDefinition(AppSettings.UserManagement.Password.EnableCheckingLastXPasswordWhenPasswordChange,
-                    GetFromAppSettings(AppSettings.UserManagement.Password.EnableCheckingLastXPasswordWhenPasswordChange, "false"), 
+                    GetFromAppSettings(AppSettings.UserManagement.Password.EnableCheckingLastXPasswordWhenPasswordChange, "false"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider),
-                
+
                 new SettingDefinition(AppSettings.UserManagement.Password.CheckingLastXPasswordCount,
-                    GetFromAppSettings(AppSettings.UserManagement.Password.CheckingLastXPasswordCount, "3"), 
+                    GetFromAppSettings(AppSettings.UserManagement.Password.CheckingLastXPasswordCount, "3"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider),
-                
+
                 new SettingDefinition(AppSettings.UserManagement.Password.EnablePasswordExpiration,
-                    GetFromAppSettings(AppSettings.UserManagement.Password.EnablePasswordExpiration, "false"), 
+                    GetFromAppSettings(AppSettings.UserManagement.Password.EnablePasswordExpiration, "false"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider),
-                
+
                 new SettingDefinition(AppSettings.UserManagement.Password.PasswordExpirationDayCount,
-                    GetFromAppSettings(AppSettings.UserManagement.Password.PasswordExpirationDayCount, "30"), 
+                    GetFromAppSettings(AppSettings.UserManagement.Password.PasswordExpirationDayCount, "30"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider),
-                
+
                 new SettingDefinition(AppSettings.UserManagement.Password.PasswordResetCodeExpirationHours,
-                    GetFromAppSettings(AppSettings.UserManagement.Password.PasswordResetCodeExpirationHours, "24"), 
+                    GetFromAppSettings(AppSettings.UserManagement.Password.PasswordResetCodeExpirationHours, "24"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider)
             };
         }
@@ -250,8 +250,8 @@ namespace MyCompanyName.AbpZeroTemplate.Configuration
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.LeftAside.HoverableAside,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.LeftAside.HoverableAside,
                         "true"), clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                
-                
+
+
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.Footer.FixedFooter,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Footer.FixedFooter, "false"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
@@ -560,7 +560,7 @@ namespace MyCompanyName.AbpZeroTemplate.Configuration
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All)
             };
         }
-        
+
         private IEnumerable<SettingDefinition> GetTheme13Settings()
         {
             var themeName = "theme13";
@@ -582,21 +582,17 @@ namespace MyCompanyName.AbpZeroTemplate.Configuration
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.SearchActive,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.SearchActive, "false"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                
+
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.SubHeader.Fixed,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.SubHeader.Fixed, "true"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All)
-                
+
             };
         }
 
         private IEnumerable<SettingDefinition> GetDashboardSettings()
         {
             var mvcDefaultHostView = GetDefaultMvcHostDashboardView();
-            var mvcDefaultTenantView = GetDefaultMvcTenantDashboardView();
-            
-            var angularDefaultHostView = GetDefaultAngularHostDashboardView();
-            var angularDefaultTenantView = GetDefaultAngularTenantDashboardView();
 
             string GetSettingName(string application, string dashboardName)
             {
@@ -611,33 +607,6 @@ namespace MyCompanyName.AbpZeroTemplate.Configuration
                         mvcDefaultHostView.DashboardName
                     ),
                     JsonConvert.SerializeObject(mvcDefaultHostView),
-                    scopes: SettingScopes.All,
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider
-                ),
-                new SettingDefinition(
-                    GetSettingName(
-                        AbpZeroTemplateDashboardCustomizationConsts.Applications.Mvc,
-                        mvcDefaultTenantView.DashboardName
-                    ),
-                    JsonConvert.SerializeObject(mvcDefaultTenantView),
-                    scopes: SettingScopes.All,
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider
-                ),
-                new SettingDefinition(
-                    GetSettingName(
-                        AbpZeroTemplateDashboardCustomizationConsts.Applications.Angular,
-                        angularDefaultHostView.DashboardName
-                    ),
-                    JsonConvert.SerializeObject(angularDefaultHostView),
-                    scopes: SettingScopes.All,
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider
-                ),
-                new SettingDefinition(
-                    GetSettingName(
-                        AbpZeroTemplateDashboardCustomizationConsts.Applications.Angular,
-                        angularDefaultTenantView.DashboardName
-                    ),
-                    JsonConvert.SerializeObject(angularDefaultTenantView),
                     scopes: SettingScopes.All,
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider
                 )
@@ -670,80 +639,6 @@ namespace MyCompanyName.AbpZeroTemplate.Configuration
                             {
                                 WidgetId =
                                     AbpZeroTemplateDashboardCustomizationConsts.Widgets.Host
-                                        .IncomeStatistics, // Income Statistics
-                                Height = 11,
-                                Width = 7,
-                                PositionX = 0,
-                                PositionY = 6
-                            },
-                            new Widget
-                            {
-                                WidgetId = AbpZeroTemplateDashboardCustomizationConsts.Widgets.Host
-                                    .RecentTenants, // Recent tenants
-                                Height = 10,
-                                Width = 5,
-                                PositionX = 7,
-                                PositionY = 17
-                            },
-                            new Widget
-                            {
-                                WidgetId = AbpZeroTemplateDashboardCustomizationConsts.Widgets.Host
-                                    .SubscriptionExpiringTenants, // Subscription expiring tenants
-                                Height = 10,
-                                Width = 7,
-                                PositionX = 0,
-                                PositionY = 17
-                            },
-                            new Widget
-                            {
-                                WidgetId = AbpZeroTemplateDashboardCustomizationConsts.Widgets.Host
-                                    .EditionStatistics, // Edition statistics
-                                Height = 11,
-                                Width = 5,
-                                PositionX = 7,
-                                PositionY = 6
-                            }
-                        }
-                    }
-                }
-            };
-        }
-
-        public Dashboard GetDefaultMvcTenantDashboardView()
-        {
-            //It is the default dashboard view which your user will see if they don't do any customization.
-            return new Dashboard
-            {
-                DashboardName = AbpZeroTemplateDashboardCustomizationConsts.DashboardNames.DefaultTenantDashboard,
-                Pages = new List<Page>
-                {
-                    new Page
-                    {
-                        Name = AbpZeroTemplateDashboardCustomizationConsts.DefaultPageName,
-                        Widgets = new List<Widget>
-                        {
-                            new Widget
-                            {
-                                WidgetId = AbpZeroTemplateDashboardCustomizationConsts.Widgets.Tenant
-                                    .GeneralStats, // General Stats
-                                Height = 9,
-                                Width = 6,
-                                PositionX = 0,
-                                PositionY = 19
-                            },
-                            new Widget
-                            {
-                                WidgetId = AbpZeroTemplateDashboardCustomizationConsts.Widgets.Tenant
-                                    .ProfitShare, // Profit Share
-                                Height = 13,
-                                Width = 6,
-                                PositionX = 0,
-                                PositionY = 28
-                            },
-                            new Widget
-                            {
-                                WidgetId =
-                                    AbpZeroTemplateDashboardCustomizationConsts.Widgets.Tenant
                                         .MemberActivity, // Memeber Activity
                                 Height = 13,
                                 Width = 6,
@@ -752,188 +647,12 @@ namespace MyCompanyName.AbpZeroTemplate.Configuration
                             },
                             new Widget
                             {
-                                WidgetId = AbpZeroTemplateDashboardCustomizationConsts.Widgets.Tenant
+                                WidgetId = AbpZeroTemplateDashboardCustomizationConsts.Widgets.Host
                                     .RegionalStats, // Regional Stats
                                 Height = 14,
                                 Width = 6,
                                 PositionX = 6,
                                 PositionY = 5
-                            },
-                            new Widget
-                            {
-                                WidgetId = AbpZeroTemplateDashboardCustomizationConsts.Widgets.Tenant
-                                    .DailySales, // Daily Sales
-                                Height = 9,
-                                Width = 6,
-                                PositionX = 6,
-                                PositionY = 19
-                            },
-                            new Widget
-                            {
-                                WidgetId = AbpZeroTemplateDashboardCustomizationConsts.Widgets.Tenant
-                                    .TopStats, // Top Stats
-                                Height = 5,
-                                Width = 12,
-                                PositionX = 0,
-                                PositionY = 0
-                            },
-                            new Widget
-                            {
-                                WidgetId = AbpZeroTemplateDashboardCustomizationConsts.Widgets.Tenant
-                                    .SalesSummary, // Sales Summary
-                                Height = 14,
-                                Width = 6,
-                                PositionX = 0,
-                                PositionY = 5
-                            }
-                        }
-                    }
-                }
-            };
-        }
-
-        public Dashboard GetDefaultAngularHostDashboardView()
-        {
-            //It is the default dashboard view which your user will see if they don't do any customization.
-            return new Dashboard
-            {
-                DashboardName = AbpZeroTemplateDashboardCustomizationConsts.DashboardNames.DefaultHostDashboard,
-                Pages = new List<Page>
-                {
-                    new Page
-                    {
-                        Name = AbpZeroTemplateDashboardCustomizationConsts.DefaultPageName,
-                        Widgets = new List<Widget>
-                        {
-                            new Widget
-                            {
-                                WidgetId = AbpZeroTemplateDashboardCustomizationConsts.Widgets.Host
-                                    .TopStats, // Top Stats
-                                Height = 5,
-                                Width = 12,
-                                PositionX = 0,
-                                PositionY = 0
-                            },
-                            new Widget
-                            {
-                                WidgetId =
-                                    AbpZeroTemplateDashboardCustomizationConsts.Widgets.Host
-                                        .IncomeStatistics, // Income Statistics
-                                Height = 8,
-                                Width = 7,
-                                PositionX = 0,
-                                PositionY = 5
-                            },
-                            new Widget
-                            {
-                                WidgetId =
-                                    AbpZeroTemplateDashboardCustomizationConsts.Widgets.Host
-                                        .RecentTenants, // Recent tenants
-                                Height = 9,
-                                Width = 5,
-                                PositionX = 7,
-                                PositionY = 13
-                            },
-                            new Widget
-                            {
-                                WidgetId = AbpZeroTemplateDashboardCustomizationConsts.Widgets.Host
-                                    .SubscriptionExpiringTenants, // Subscription expiring tenants
-                                Height = 9,
-                                Width = 7,
-                                PositionX = 0,
-                                PositionY = 13
-                            },
-                            new Widget
-                            {
-                                WidgetId = AbpZeroTemplateDashboardCustomizationConsts.Widgets.Host
-                                    .EditionStatistics, // Edition statistics
-                                Height = 8,
-                                Width = 5,
-                                PositionX = 7,
-                                PositionY = 5
-                            }
-                        }
-                    }
-                }
-            };
-        }
-
-        public Dashboard GetDefaultAngularTenantDashboardView()
-        {
-            //It is the default dashboard view which your user will see if they don't do any customization.
-            return new Dashboard
-            {
-                DashboardName = AbpZeroTemplateDashboardCustomizationConsts.DashboardNames.DefaultTenantDashboard,
-                Pages = new List<Page>
-                {
-                    new Page
-                    {
-                        Name = AbpZeroTemplateDashboardCustomizationConsts.DefaultPageName,
-                        Widgets = new List<Widget>
-                        {
-                            new Widget
-                            {
-                                WidgetId = AbpZeroTemplateDashboardCustomizationConsts.Widgets.Tenant
-                                    .TopStats, // Top Stats
-                                Height = 4,
-                                Width = 12,
-                                PositionX = 0,
-                                PositionY = 0
-                            },
-                            new Widget
-                            {
-                                WidgetId = AbpZeroTemplateDashboardCustomizationConsts.Widgets.Tenant
-                                    .SalesSummary, // Sales Summary
-                                Height = 12,
-                                Width = 6,
-                                PositionX = 0,
-                                PositionY = 4
-                            },
-                            new Widget
-                            {
-                                WidgetId = AbpZeroTemplateDashboardCustomizationConsts.Widgets.Tenant
-                                    .RegionalStats, // Regional Stats
-                                Height = 12,
-                                Width = 6,
-                                PositionX = 6,
-                                PositionY = 4
-                            },
-                            new Widget
-                            {
-                                WidgetId = AbpZeroTemplateDashboardCustomizationConsts.Widgets.Tenant
-                                    .GeneralStats, // General Stats
-                                Height = 8,
-                                Width = 6,
-                                PositionX = 0,
-                                PositionY = 16
-                            },
-                            new Widget
-                            {
-                                WidgetId = AbpZeroTemplateDashboardCustomizationConsts.Widgets.Tenant
-                                    .DailySales, // Daily Sales
-                                Height = 8,
-                                Width = 6,
-                                PositionX = 6,
-                                PositionY = 16
-                            },
-                            new Widget
-                            {
-                                WidgetId = AbpZeroTemplateDashboardCustomizationConsts.Widgets.Tenant
-                                    .ProfitShare, // Profit Share
-                                Height = 11,
-                                Width = 6,
-                                PositionX = 0,
-                                PositionY = 24
-                            },
-                            new Widget
-                            {
-                                WidgetId =
-                                    AbpZeroTemplateDashboardCustomizationConsts.Widgets.Tenant
-                                        .MemberActivity, // Member Activity
-                                Height = 11,
-                                Width = 6,
-                                PositionX = 6,
-                                PositionY = 24
                             }
                         }
                     }
@@ -1035,7 +754,7 @@ namespace MyCompanyName.AbpZeroTemplate.Configuration
                 ConsumerKey = consumerKey,
                 ConsumerSecret = consumerSecret
             };
-            
+
             return new[]
             {
                 new SettingDefinition(

@@ -1,5 +1,4 @@
-﻿using Abp.Runtime.Session;
-using Abp.Web.Models;
+﻿using Abp.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
@@ -11,9 +10,9 @@ namespace MyCompanyName.AbpZeroTemplate.Web.ControllerBase
     [Consumes(MediaTypeNames.Application.Json)]
     public abstract class ServiceControllerBase : ControllerBase
     {
-        public ServiceControllerBase(IAbpSession session)
+        protected ServiceControllerBase()
         {
-            session.Use(null, null);
+            AbpSession.Use(null, null);
         }
     }
 }

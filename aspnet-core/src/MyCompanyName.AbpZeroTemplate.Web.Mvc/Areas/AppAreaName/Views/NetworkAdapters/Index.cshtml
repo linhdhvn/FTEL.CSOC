@@ -38,51 +38,7 @@ ViewBag.CurrentPageName = AppAreaNamePageNames.Host.NetworkAdapters;
                         </div>
                     </div>
                 </div>
-                <div id="AdvacedAuditFiltersArea" style="display: none" class="row mb-4">
-                    <div class="col-md-12">
-
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="my-3">
-                            <label class="form-label" for="NameFilterId">@L("Name")</label>
-                            <input type="text" class="form-control" name="nameFilter" id="NameFilterId">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="my-3">
-                            <label class="form-label" for="PhysicalAddressFilterId">@L("PhysicalAddress")</label>
-                            <input type="text" class="form-control" name="physicalAddressFilter" id="PhysicalAddressFilterId">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="my-3">
-                            <label class="form-label" for="IPv4AddressFilterId">@L("IPv4Address")</label>
-                            <input type="text" class="form-control" name="iPv4AddressFilter" id="IPv4AddressFilterId">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="my-3">
-                            <label class="form-label" for="IPv6AddressFilterId">@L("IPv6Address")</label>
-                            <input type="text" class="form-control" name="iPv6AddressFilter" id="IPv6AddressFilterId">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <label class="form-label" for="UseDHCPFilterId">@L("UseDHCP")</label>
-                        <select class="form-select" name="UseDHCPFilter" id="UseDHCPFilterId">
-                            <option value="-1">@L("All")</option>
-                            <option value="0">@L("False")</option>
-                            <option value="1">@L("True")</option>
-                        </select>
-                    </div>
-
-                </div>
-                <div class="row my-4">
-                    <div class="col-xl-12">
-                        <span id="ShowAdvancedFiltersSpan" class="text-muted clickable-item"><i class="fa fa-angle-down"></i> @L("ShowAdvancedFilters")</span>
-                        <span id="HideAdvancedFiltersSpan" class="text-muted clickable-item" style="display: none"><i class="fa fa-angle-up"></i> @L("HideAdvancedFilters")</span>
-                    </div>
-                </div>
+                
                 <div class="row align-items-center">
                     <table id="NetworkAdaptersTable" class="table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer">
                         <thead>

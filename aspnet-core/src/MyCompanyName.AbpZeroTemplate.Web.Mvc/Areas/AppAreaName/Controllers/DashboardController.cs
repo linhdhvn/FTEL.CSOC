@@ -1,26 +1,31 @@
 ﻿using Abp.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MyCompanyName.AbpZeroTemplate.Authorization;
 using MyCompanyName.AbpZeroTemplate.DashboardCustomization;
 using System.Threading.Tasks;
 using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Startup;
+using Abp.Domain.Uow;
 
 namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Controllers
 {
     [Area("AppAreaName")]
-    [AbpMvcAuthorize(AppPermissions.Pages_Administration_Host_Dashboard)]
-    public class HostDashboardController : CustomizableDashboardControllerBase
+    [AbpMvcAuthorize()]
+    public class DashboardController : CustomizableDashboardControllerBase
     {
-        public HostDashboardController(
+        private readonly IUnitOfWorkManager _unitOfWorkManager;
+
+        public DashboardController(
+            IUnitOfWorkManager unitOfWorkManager,
             DashboardViewConfiguration dashboardViewConfiguration,
             IDashboardCustomizationAppService dashboardCustomizationAppService)
             : base(dashboardViewConfiguration, dashboardCustomizationAppService)
         {
-
+            _unitOfWorkManager = unitOfWorkManager;
         }
 
         public async Task<ActionResult> Index()
         {
+            _unitOfWorkManager.Current.SetTenantId(null);
+
             return await GetView(AbpZeroTemplateDashboardCustomizationConsts.DashboardNames.DefaultHostDashboard);
         }
     }

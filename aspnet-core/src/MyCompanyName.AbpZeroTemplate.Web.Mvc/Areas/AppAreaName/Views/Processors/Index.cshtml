@@ -3,11 +3,11 @@
 @using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Startup
 @model ProcessorsViewModel
 @{
-ViewBag.CurrentPageName = AppAreaNamePageNames.Host.Processors;
+    ViewBag.CurrentPageName = AppAreaNamePageNames.Host.Processors;
 }
 @section Scripts
 {
-<script abp-src="/view-resources/Areas/AppAreaName/Views/Processors/Index.js" asp-append-version="true"></script>
+    <script abp-src="/view-resources/Areas/AppAreaName/Views/Processors/Index.js" asp-append-version="true"></script>
 }
 
 <div class="content d-flex flex-column flex-column-fluid">
@@ -17,7 +17,7 @@ ViewBag.CurrentPageName = AppAreaNamePageNames.Host.Processors;
 
         @if (IsGranted(AppPermissions.Pages_Processors_Create))
         {
-        <button id="CreateNewProcessorButton" class="btn btn-primary blue"><i class="fa fa-plus"></i> @L("CreateNewProcessor")</button>
+            <button id="CreateNewProcessorButton" class="btn btn-primary blue"><i class="fa fa-plus"></i> @L("CreateNewProcessor")</button>
         }
     </abp-page-subheader>
 
@@ -38,37 +38,7 @@ ViewBag.CurrentPageName = AppAreaNamePageNames.Host.Processors;
                         </div>
                     </div>
                 </div>
-                <div id="AdvacedAuditFiltersArea" style="display: none" class="row mb-4">
-                    <div class="col-md-12">
 
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="my-3">
-                            <label class="form-label" for="NameFilterId">@L("Name")</label>
-                            <input type="text" class="form-control" name="nameFilter" id="NameFilterId">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="my-3">
-                            <label class="form-label" for="SerialNumberFilterId">@L("SerialNumber")</label>
-                            <input type="text" class="form-control" name="serialNumberFilter" id="SerialNumberFilterId">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="my-3">
-                            <label class="form-label" for="PartNumberFilterId">@L("PartNumber")</label>
-                            <input type="text" class="form-control" name="partNumberFilter" id="PartNumberFilterId">
-                        </div>
-                    </div>
-
-                </div>
-                <div class="row my-4">
-                    <div class="col-xl-12">
-                        <span id="ShowAdvancedFiltersSpan" class="text-muted clickable-item"><i class="fa fa-angle-down"></i> @L("ShowAdvancedFilters")</span>
-                        <span id="HideAdvancedFiltersSpan" class="text-muted clickable-item" style="display: none"><i class="fa fa-angle-up"></i> @L("HideAdvancedFilters")</span>
-                    </div>
-                </div>
                 <div class="row align-items-center">
                     <table id="ProcessorsTable" class="table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer">
                         <thead>

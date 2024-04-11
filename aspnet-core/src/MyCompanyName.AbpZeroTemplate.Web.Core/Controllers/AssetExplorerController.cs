@@ -21,10 +21,7 @@ namespace MyCompanyName.AbpZeroTemplate.Web.Web.Controllers
     {
         private readonly IConfigurationRoot _appConfiguration;
 
-        public AssetExplorerController(
-            IAbpSession session,
-            IWebHostEnvironment env
-            ) : base(session)
+        public AssetExplorerController(IWebHostEnvironment env)
         {
             _appConfiguration = env.GetAppConfiguration();
         }
@@ -33,16 +30,19 @@ namespace MyCompanyName.AbpZeroTemplate.Web.Web.Controllers
         [HttpPost, ActionName("Discover")]
         [Route("discover.html")]
         [Consumes("application/xml", "text/xml")]
-        public async Task<string> DiscoverAsync()
+        public async Task<IActionResult> DiscoverAsync()
         {
             StreamReader streamReader = new(Request.Body, encoding: Encoding.UTF8, detectEncodingFromByteOrderMarks: false);
             XDocument xDocument = XDocument.Parse(await streamReader.ReadToEndAsync());
 
             try
             {
-                var asset = XmlSerialization.Deserialize<AssetExplorerInput.Resource>(xDocument);
+                var _resource = XmlSerialization.Deserialize<AssetExplorerInput.Resource>(xDocument);
 
-                return Newtonsoft.Json.JsonConvert.SerializeObject(new
+
+
+
+                return Ok(new
                 {
                     Success = true,
                     Message = "Good job!"
@@ -50,7 +50,7 @@ namespace MyCompanyName.AbpZeroTemplate.Web.Web.Controllers
             }
             catch (System.Exception ex)
             {
-                return Newtonsoft.Json.JsonConvert.SerializeObject(new
+                return Ok(new
                 {
                     Success = false,
                     Message = ex.Message
