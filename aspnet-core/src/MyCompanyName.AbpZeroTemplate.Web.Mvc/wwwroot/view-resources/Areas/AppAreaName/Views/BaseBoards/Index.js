@@ -16,7 +16,7 @@
         });
 
         var _viewBaseBoardModal = new app.ModalManager({
-            viewUrl: abp.appPath + 'AppAreaName/BaseBoards/ViewBaseBoardModal',
+            viewUrl: abp.appPath + 'AppAreaName/BaseBoards/ViewbaseBoardModal',
             modalClass: 'ViewBaseBoardModal',
         });
 
@@ -150,8 +150,6 @@
                 }
             });
         }
-
-
 
         $('#CreateNewBaseBoardButton').click(function () {
             _createOrEditModal.open();

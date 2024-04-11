@@ -1,6 +1,10 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using Abp.Reflection.Extensions;
+using System.Text;
 using Microsoft.EntityFrameworkCore;
 using MyCompanyName.AbpZeroTemplate.EntityFrameworkCore;
+using Abp.IO.Extensions;
 
 namespace MyCompanyName.AbpZeroTemplate.Migrations.Seed.Host
 {
@@ -15,30 +19,34 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations.Seed.Host
 
         public void Create()
         {
-
-
-
-
-            
-            //_context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[local_Provinces] ON");
-            //_context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[local_Districts] ON");
-            //_context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[local_Wards] ON");
-
-            CreateTypes();
             CreateCountries();
-            CreateLocations();
-
-
-
-            //_context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[local_Countries] OFF");
-            //_context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[local_Provinces] OFF");
-            //_context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[local_Districts] OFF");
-            //_context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[local_Wards] OFF");
+            CreateProvinces();
+            CreateDistricts();
+            CreateWards();
         }
 
-        private void CreateTypes()
+        private void CreateCountries()
         {
+            var _country = _context.Countries.IgnoreQueryFilters().FirstOrDefault();
+            if (_country == null)
+            {
+                var dataStream = typeof(LocationCreator).GetAssembly().GetManifestResourceStream("MyCompanyName.AbpZeroTemplate.EntityFrameworkCore.ScriptSQL.Countries.sql");
+                var dataBytes = dataStream.GetAllBytes();
+                var dataSql = Encoding.UTF8.GetString(dataBytes, 3, dataBytes.Length - 3);
 
+                string[] commands = dataSql.Split(new string[] { "GO" }, StringSplitOptions.RemoveEmptyEntries);
+
+                foreach (string command in commands)
+                {
+                    _context.Database.ExecuteSqlRaw(command);
+                }
+
+                _context.SaveChanges();
+            }
+        }
+
+        private void CreateProvinces()
+        {
             var _provinceType = _context.ProvinceTypes.IgnoreQueryFilters().FirstOrDefault();
             if (_provinceType == null)
             {
@@ -52,6 +60,26 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations.Seed.Host
                 _context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[local_ProvinceTypes] OFF");
             }
 
+            var _provinces = _context.Provinces.IgnoreQueryFilters().FirstOrDefault();
+            if (_provinces == null)
+            {
+                var dataStream = typeof(LocationCreator).GetAssembly().GetManifestResourceStream("MyCompanyName.AbpZeroTemplate.EntityFrameworkCore.ScriptSQL.Provinces.sql");
+                var dataBytes = dataStream.GetAllBytes();
+                var dataSql = Encoding.UTF8.GetString(dataBytes, 3, dataBytes.Length - 3);
+
+                string[] commands = dataSql.Split(new string[] { "GO" }, StringSplitOptions.RemoveEmptyEntries);
+
+                foreach (string command in commands)
+                {
+                    _context.Database.ExecuteSqlRaw(command);
+                }
+
+                _context.SaveChanges();
+            }
+        }
+
+        private void CreateDistricts()
+        {
             var _districtTypes = _context.DistrictTypes.IgnoreQueryFilters().FirstOrDefault();
             if (_districtTypes == null)
             {
@@ -67,6 +95,26 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations.Seed.Host
                 _context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[local_DistrictTypes] OFF");
             }
 
+            var _district = _context.Districts.IgnoreQueryFilters().FirstOrDefault();
+            if (_district == null)
+            {
+                var dataStream = typeof(LocationCreator).GetAssembly().GetManifestResourceStream("MyCompanyName.AbpZeroTemplate.EntityFrameworkCore.ScriptSQL.Districts.sql");
+                var dataBytes = dataStream.GetAllBytes();
+                var dataSql = Encoding.UTF8.GetString(dataBytes, 3, dataBytes.Length - 3);
+
+                string[] commands = dataSql.Split(new string[] { "GO" }, StringSplitOptions.RemoveEmptyEntries);
+
+                foreach (string command in commands)
+                {
+                    _context.Database.ExecuteSqlRaw(command);
+                }
+
+                _context.SaveChanges();
+            }
+        }
+
+        private void CreateWards()
+        {
             var _wardTypes = _context.WardTypes.IgnoreQueryFilters().FirstOrDefault();
             if (_wardTypes == null)
             {
@@ -80,52 +128,22 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations.Seed.Host
                 _context.SaveChanges();
                 _context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[local_WardTypes] OFF");
             }
-        }
 
-        private void CreateCountries()
-        {
-            var _country = _context.Countries.IgnoreQueryFilters().FirstOrDefault();
-            if (_country == null)
-            {
-
-                _context.Countries.Add(new Localization.Country { Id = 1, Code = "VN", CommonName = "Việt Nam", FormalName = "Cộng hòa xã hội chủ nghĩa Việt Nam (Socialist Republic of Vietnam)", Capital = "Hà Nội", CurrencyCode = "VND", CurrencyName = "Dong", TelephoneCode = "84", InternetCountryCode = ".vn", Sort = 1 });
-                
-                _context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[local_Countries] ON");
-                _context.SaveChanges();
-                _context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[local_Countries] OFF");
-
-                _context.Countries.AddRange([
-                    new Localization.Country { Code = "US", CommonName = "United States", FormalName = "United States of America", Capital = "Washington", CurrencyCode = "USD", CurrencyName = "Dollar", TelephoneCode = "1", InternetCountryCode = ".us", Sort = 2 },
-                    new Localization.Country { Code = "AD", CommonName = "Andorra", FormalName = "Principality of Andorra", Capital = "Andorra la Vella", CurrencyCode = "EUR", CurrencyName = "Euro", TelephoneCode = "376", InternetCountryCode = ".ad", Sort = 3 }
-                ]);
-
-                _context.SaveChanges();
-            }
-        }
-
-        private void CreateLocations()
-        {
             var _ward = _context.Wards.IgnoreQueryFilters().FirstOrDefault();
-            var _district = _context.Districts.IgnoreQueryFilters();
-            var _province = _context.Provinces.IgnoreQueryFilters();
-
             if (_ward == null)
             {
-                if (_district.Any())
+                var dataStream = typeof(LocationCreator).GetAssembly().GetManifestResourceStream("MyCompanyName.AbpZeroTemplate.EntityFrameworkCore.ScriptSQL.Wards.sql");
+                var dataBytes = dataStream.GetAllBytes();
+                var dataSql = Encoding.UTF8.GetString(dataBytes, 3, dataBytes.Length - 3);
+
+                string[] commands = dataSql.Split(new string[] { "GO" }, StringSplitOptions.RemoveEmptyEntries);
+
+                foreach (string command in commands)
                 {
-
+                    _context.Database.ExecuteSqlRaw(command);
                 }
-                else
-                {
-                    if (_province.Any())
-                    {
 
-                    }
-                    else
-                    {
-
-                    }
-                }
+                _context.SaveChanges();
             }
         }
     }

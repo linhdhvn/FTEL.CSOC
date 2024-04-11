@@ -63,7 +63,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpEditions");
+                    b.ToTable("AbpEditions", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Application.Features.FeatureSetting", b =>
@@ -99,7 +99,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpFeatures");
+                    b.ToTable("AbpFeatures", (string)null);
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("FeatureSetting");
 
@@ -179,7 +179,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpAuditLogs");
+                    b.ToTable("AbpAuditLogs", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.PermissionSetting", b =>
@@ -215,7 +215,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("TenantId", "Name");
 
-                    b.ToTable("AbpPermissions");
+                    b.ToTable("AbpPermissions", (string)null);
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("PermissionSetting");
 
@@ -255,7 +255,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("TenantId", "ClaimType");
 
-                    b.ToTable("AbpRoleClaims");
+                    b.ToTable("AbpRoleClaims", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserAccount", b =>
@@ -316,7 +316,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("TenantId", "UserName");
 
-                    b.ToTable("AbpUserAccounts");
+                    b.ToTable("AbpUserAccounts", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserClaim", b =>
@@ -352,7 +352,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("TenantId", "ClaimType");
 
-                    b.ToTable("AbpUserClaims");
+                    b.ToTable("AbpUserClaims", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserLogin", b =>
@@ -391,7 +391,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("TenantId", "LoginProvider", "ProviderKey");
 
-                    b.ToTable("AbpUserLogins");
+                    b.ToTable("AbpUserLogins", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserLoginAttempt", b =>
@@ -440,7 +440,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("TenancyName", "UserNameOrEmailAddress", "Result");
 
-                    b.ToTable("AbpUserLoginAttempts");
+                    b.ToTable("AbpUserLoginAttempts", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserOrganizationUnit", b =>
@@ -477,7 +477,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpUserOrganizationUnits");
+                    b.ToTable("AbpUserOrganizationUnits", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserRole", b =>
@@ -511,7 +511,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpUserRoles");
+                    b.ToTable("AbpUserRoles", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserToken", b =>
@@ -549,7 +549,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpUserTokens");
+                    b.ToTable("AbpUserTokens", (string)null);
                 });
 
             modelBuilder.Entity("Abp.BackgroundJobs.BackgroundJobInfo", b =>
@@ -595,7 +595,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("IsAbandoned", "NextTryTime");
 
-                    b.ToTable("AbpBackgroundJobs");
+                    b.ToTable("AbpBackgroundJobs", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Configuration.Setting", b =>
@@ -639,7 +639,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                     b.HasIndex("TenantId", "Name", "UserId")
                         .IsUnique();
 
-                    b.ToTable("AbpSettings");
+                    b.ToTable("AbpSettings", (string)null);
                 });
 
             modelBuilder.Entity("Abp.DynamicEntityProperties.DynamicEntityProperty", b =>
@@ -668,7 +668,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                         .IsUnique()
                         .HasFilter("[EntityFullName] IS NOT NULL AND [TenantId] IS NOT NULL");
 
-                    b.ToTable("AbpDynamicEntityProperties");
+                    b.ToTable("AbpDynamicEntityProperties", (string)null);
                 });
 
             modelBuilder.Entity("Abp.DynamicEntityProperties.DynamicEntityPropertyValue", b =>
@@ -696,7 +696,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("DynamicEntityPropertyId");
 
-                    b.ToTable("AbpDynamicEntityPropertyValues");
+                    b.ToTable("AbpDynamicEntityPropertyValues", (string)null);
                 });
 
             modelBuilder.Entity("Abp.DynamicEntityProperties.DynamicProperty", b =>
@@ -729,7 +729,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                         .IsUnique()
                         .HasFilter("[PropertyName] IS NOT NULL AND [TenantId] IS NOT NULL");
 
-                    b.ToTable("AbpDynamicProperties");
+                    b.ToTable("AbpDynamicProperties", (string)null);
                 });
 
             modelBuilder.Entity("Abp.DynamicEntityProperties.DynamicPropertyValue", b =>
@@ -754,7 +754,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("DynamicPropertyId");
 
-                    b.ToTable("AbpDynamicPropertyValues");
+                    b.ToTable("AbpDynamicPropertyValues", (string)null);
                 });
 
             modelBuilder.Entity("Abp.EntityHistory.EntityChange", b =>
@@ -791,7 +791,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("EntityTypeFullName", "EntityId");
 
-                    b.ToTable("AbpEntityChanges");
+                    b.ToTable("AbpEntityChanges", (string)null);
                 });
 
             modelBuilder.Entity("Abp.EntityHistory.EntityChangeSet", b =>
@@ -844,7 +844,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpEntityChangeSets");
+                    b.ToTable("AbpEntityChangeSets", (string)null);
                 });
 
             modelBuilder.Entity("Abp.EntityHistory.EntityPropertyChange", b =>
@@ -887,7 +887,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("EntityChangeId");
 
-                    b.ToTable("AbpEntityPropertyChanges");
+                    b.ToTable("AbpEntityPropertyChanges", (string)null);
                 });
 
             modelBuilder.Entity("Abp.IdentityServer4vNext.PersistedGrantEntity", b =>
@@ -996,7 +996,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("TenantId", "Name");
 
-                    b.ToTable("AbpLanguages");
+                    b.ToTable("AbpLanguages", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Localization.ApplicationLanguageText", b =>
@@ -1046,7 +1046,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("TenantId", "Source", "LanguageName", "Key");
 
-                    b.ToTable("AbpLanguageTexts");
+                    b.ToTable("AbpLanguageTexts", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Notifications.NotificationInfo", b =>
@@ -1107,7 +1107,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpNotifications");
+                    b.ToTable("AbpNotifications", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Notifications.NotificationSubscriptionInfo", b =>
@@ -1150,7 +1150,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("TenantId", "NotificationName", "EntityTypeName", "EntityId", "UserId");
 
-                    b.ToTable("AbpNotificationSubscriptions");
+                    b.ToTable("AbpNotificationSubscriptions", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Notifications.TenantNotificationInfo", b =>
@@ -1200,7 +1200,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("TenantId");
 
-                    b.ToTable("AbpTenantNotifications");
+                    b.ToTable("AbpTenantNotifications", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Notifications.UserNotificationInfo", b =>
@@ -1232,7 +1232,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("UserId", "State", "CreationTime");
 
-                    b.ToTable("AbpUserNotifications");
+                    b.ToTable("AbpUserNotifications", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Organizations.OrganizationUnit", b =>
@@ -1286,7 +1286,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("TenantId", "Code");
 
-                    b.ToTable("AbpOrganizationUnits");
+                    b.ToTable("AbpOrganizationUnits", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Organizations.OrganizationUnitRole", b =>
@@ -1321,7 +1321,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("TenantId", "RoleId");
 
-                    b.ToTable("AbpOrganizationUnitRoles");
+                    b.ToTable("AbpOrganizationUnitRoles", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Webhooks.WebhookEvent", b =>
@@ -1351,7 +1351,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpWebhookEvents");
+                    b.ToTable("AbpWebhookEvents", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Webhooks.WebhookSendAttempt", b =>
@@ -1385,7 +1385,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("WebhookEventId");
 
-                    b.ToTable("AbpWebhookSendAttempts");
+                    b.ToTable("AbpWebhookSendAttempts", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Webhooks.WebhookSubscriptionInfo", b =>
@@ -1422,7 +1422,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpWebhookSubscriptions");
+                    b.ToTable("AbpWebhookSubscriptions", (string)null);
                 });
 
             modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Authorization.Delegation.UserDelegation", b =>
@@ -1475,7 +1475,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("TenantId", "TargetUserId");
 
-                    b.ToTable("AppUserDelegations");
+                    b.ToTable("AppUserDelegations", (string)null);
                 });
 
             modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Authorization.Roles.Role", b =>
@@ -1546,7 +1546,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("TenantId", "NormalizedName");
 
-                    b.ToTable("AbpRoles");
+                    b.ToTable("AbpRoles", (string)null);
                 });
 
             modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Authorization.Users.RecentPassword", b =>
@@ -1573,7 +1573,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AppRecentPasswords");
+                    b.ToTable("AppRecentPasswords", (string)null);
                 });
 
             modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Authorization.Users.User", b =>
@@ -1739,217 +1739,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("TenantId", "NormalizedUserName");
 
-                    b.ToTable("AbpUsers");
-                });
-
-            modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Inventory.BaseBoard", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<DateTime>("CreateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("Manufacturer")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("Model")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("SerialNumber")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("UUID")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<DateTime?>("UpdateTime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("BaseBoards");
-                });
-
-            modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Inventory.DataStorage", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<string>("HealthStatus")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("MediaType")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Model")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("SerialNumber")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<long?>("Size")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("inv_DataStorages");
-                });
-
-            modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Inventory.NetworkAdapter", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<string>("IPv4Address")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("IPv6Address")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("PhysicalAddress")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<bool>("UseDHCP")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("inv_NetworkAdapters");
-                });
-
-            modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Inventory.PhysicalMemory", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<long>("Capacity")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("PartNumber")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("SerialNumber")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<int>("Speed")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("inv_PhysicalMemories");
-                });
-
-            modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Inventory.Processor", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("PartNumber")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("SerialNumber")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("inv_Processors");
-                });
-
-            modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Inventory.Resource", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<string>("BuildNumber")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<DateTime>("CreateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("Domain")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("HostName")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<DateTime?>("InstallDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("LastBootUpTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("OperatingSystem")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<DateTime?>("UpdateTime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("inv_Resources");
+                    b.ToTable("AbpUsers", (string)null);
                 });
 
             modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Localization.Country", b =>
@@ -1974,6 +1764,14 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
+                    b.Property<string>("FormalName")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("InternationalName")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
                     b.Property<string>("CurrencyCode")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
@@ -1982,10 +1780,6 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("FormalName")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
                     b.Property<string>("InternetCountryCode")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
@@ -1993,13 +1787,16 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                     b.Property<int>("Sort")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsVisible")
+                        .HasColumnType("bit");
+
                     b.Property<string>("TelephoneCode")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("local_Countries");
+                    b.ToTable("local_Countries", (string)null);
                 });
 
             modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Localization.District", b =>
@@ -2009,6 +1806,12 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                         .HasColumnType("bigint");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<bool>("IsVisible")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Sort")
+                        .HasColumnType("int");
 
                     b.Property<int>("DistrictTypeId")
                         .HasColumnType("int");
@@ -2031,7 +1834,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("ProvinceId");
 
-                    b.ToTable("local_Districts");
+                    b.ToTable("local_Districts", (string)null);
                 });
 
             modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Localization.DistrictType", b =>
@@ -2049,7 +1852,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("local_DistrictTypes");
+                    b.ToTable("local_DistrictTypes", (string)null);
                 });
 
             modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Localization.Province", b =>
@@ -2075,6 +1878,12 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                     b.Property<int>("ProvinceTypeId")
                         .HasColumnType("int");
 
+                    b.Property<int>("Sort")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsVisible")
+                        .HasColumnType("bit");
+
                     b.Property<string>("TelephoneCode")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
@@ -2089,7 +1898,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("ProvinceTypeId");
 
-                    b.ToTable("local_Provinces");
+                    b.ToTable("local_Provinces", (string)null);
                 });
 
             modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Localization.ProvinceType", b =>
@@ -2107,7 +1916,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("local_ProvinceTypes");
+                    b.ToTable("local_ProvinceTypes", (string)null);
                 });
 
             modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Localization.Ward", b =>
@@ -2117,6 +1926,12 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                         .HasColumnType("bigint");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<int>("Sort")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsVisible")
+                        .HasColumnType("bit");
 
                     b.Property<long>("DistrictId")
                         .HasColumnType("bigint");
@@ -2139,7 +1954,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("WardTypeId");
 
-                    b.ToTable("local_Wards");
+                    b.ToTable("local_Wards", (string)null);
                 });
 
             modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Localization.WardType", b =>
@@ -2157,7 +1972,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("local_WardTypes");
+                    b.ToTable("local_WardTypes", (string)null);
                 });
 
             modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.MultiTenancy.Tenant", b =>
@@ -2223,7 +2038,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("TenancyName");
 
-                    b.ToTable("AbpTenants");
+                    b.ToTable("AbpTenants", (string)null);
                 });
 
             modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Storage.BinaryObject", b =>
@@ -2247,7 +2062,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("TenantId");
 
-                    b.ToTable("AppBinaryObjects");
+                    b.ToTable("AppBinaryObjects", (string)null);
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>
@@ -2259,7 +2074,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("EditionId", "Name");
 
-                    b.ToTable("AbpFeatures");
+                    b.ToTable("AbpFeatures", (string)null);
 
                     b.HasDiscriminator().HasValue("EditionFeatureSetting");
                 });
@@ -2270,7 +2085,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("TenantId", "Name");
 
-                    b.ToTable("AbpFeatures");
+                    b.ToTable("AbpFeatures", (string)null);
 
                     b.HasDiscriminator().HasValue("TenantFeatureSetting");
                 });
@@ -2284,7 +2099,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AbpPermissions");
+                    b.ToTable("AbpPermissions", (string)null);
 
                     b.HasDiscriminator().HasValue("RolePermissionSetting");
                 });
@@ -2298,7 +2113,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AbpPermissions");
+                    b.ToTable("AbpPermissions", (string)null);
 
                     b.HasDiscriminator().HasValue("UserPermissionSetting");
                 });

@@ -29,5 +29,9 @@ namespace MyCompanyName.AbpZeroTemplate.Localization
 
         [ForeignKey("ProvinceTypeId")]
         public ProvinceType ProvinceTypeFk { get; set; }
+
+        public virtual int Sort { get; set; } = 0;
+
+        public virtual bool IsVisible { get; set; } = false;
     }
 }

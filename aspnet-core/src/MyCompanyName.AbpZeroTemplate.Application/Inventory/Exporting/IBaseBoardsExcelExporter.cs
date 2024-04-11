@@ -6,6 +6,6 @@ namespace MyCompanyName.AbpZeroTemplate.Inventory.Exporting
 {
     public interface IBaseBoardsExcelExporter
     {
-        FileDto ExportToFile(List<GetBaseBoardForViewDto> BaseBoards);
+        FileDto ExportToFile(List<GetBaseBoardForViewDto> baseBoards);
     }
 }

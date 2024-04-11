@@ -7,47 +7,47 @@
 @await Html.PartialAsync("~/Areas/AppAreaName/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(Model.IsEditMode ? (L("EditBaseBoard")) : L("CreateNewBaseBoard")))
 
 <div class="modal-body">
-    <div id="Inv_BaseBoardInformationsTab">
-        <form name="Inv_BaseBoardInformationsForm" role="form" novalidate class="form-validation">
+    <div id="BaseBoardInformationsTab">
+        <form name="BaseBoardInformationsForm" role="form" novalidate class="form-validation">
 
             @if (Model.IsEditMode)
             {
-                <input type="hidden" name="id" value="@Model.BaseBoard.Id" />
+            <input type="hidden" name="id" value="@Model.BaseBoard.Id" />
             }
 
             <div class="my-3">
-                <label class="form-label" for="Inv_BaseBoard_Manufacturer">@L("Manufacturer")</label>
-                <input class="form-control" id="Inv_BaseBoard_Manufacturer" value="@Model.BaseBoard.Manufacturer" type="text" name="manufacturer" maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.BaseBoardConsts.MaxManufacturerLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.BaseBoardConsts.MinManufacturerLength" />
+                <label class="form-label" for="BaseBoard_Manufacturer">@L("Manufacturer")</label>
+                <input class="form-control" id="BaseBoard_Manufacturer" value="@Model.BaseBoard.Manufacturer" type="text" name="manufacturer" maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.BaseBoardConsts.MaxManufacturerLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.BaseBoardConsts.MinManufacturerLength" />
             </div>
 
             <div class="my-3">
-                <label class="form-label" for="Inv_BaseBoard_Model">@L("Model")</label>
-                <input class="form-control" id="Inv_BaseBoard_Model" value="@Model.BaseBoard.Model" type="text" name="model" maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.BaseBoardConsts.MaxModelLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.BaseBoardConsts.MinModelLength" />
+                <label class="form-label" for="BaseBoard_Model">@L("Model")</label>
+                <input class="form-control" id="BaseBoard_Model" value="@Model.BaseBoard.Model" type="text" name="model" maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.BaseBoardConsts.MaxModelLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.BaseBoardConsts.MinModelLength" />
             </div>
 
             <div class="my-3">
-                <label class="form-label" for="Inv_BaseBoard_SerialNumber">@L("SerialNumber")</label>
-                <input class="form-control" id="Inv_BaseBoard_SerialNumber" value="@Model.BaseBoard.SerialNumber" type="text" name="serialNumber" maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.BaseBoardConsts.MaxSerialNumberLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.BaseBoardConsts.MinSerialNumberLength" />
+                <label class="form-label" for="BaseBoard_SerialNumber">@L("SerialNumber")</label>
+                <input class="form-control" id="BaseBoard_SerialNumber" value="@Model.BaseBoard.SerialNumber" type="text" name="serialNumber" maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.BaseBoardConsts.MaxSerialNumberLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.BaseBoardConsts.MinSerialNumberLength" />
             </div>
 
             <div class="my-3">
-                <label class="form-label" for="Inv_BaseBoard_UUID">@L("UUID")</label>
-                <input class="form-control" id="Inv_BaseBoard_UUID" value="@Model.BaseBoard.UUID" type="text" name="uuid" maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.BaseBoardConsts.MaxUUIDLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.BaseBoardConsts.MinUUIDLength" />
+                <label class="form-label" for="BaseBoard_UUID">@L("UUID")</label>
+                <input class="form-control" id="BaseBoard_UUID" value="@Model.BaseBoard.UUID" type="text" name="uuid" maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.BaseBoardConsts.MaxUUIDLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.BaseBoardConsts.MinUUIDLength" />
             </div>
 
             <div class="my-3">
-                <label class="form-label" for="Inv_BaseBoard_Description">@L("Description")</label>
-                <input class="form-control" id="Inv_BaseBoard_Description" value="@Model.BaseBoard.Description" type="text" name="description" maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.BaseBoardConsts.MaxDescriptionLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.BaseBoardConsts.MinDescriptionLength" />
+                <label class="form-label" for="BaseBoard_Description">@L("Description")</label>
+                <input class="form-control" id="BaseBoard_Description" value="@Model.BaseBoard.Description" type="text" name="description" maxlength="@MyCompanyName.AbpZeroTemplate.Inventory.BaseBoardConsts.MaxDescriptionLength" minlength="@MyCompanyName.AbpZeroTemplate.Inventory.BaseBoardConsts.MinDescriptionLength" />
             </div>
 
             <div class="my-3">
-                <label class="form-label" for="Inv_BaseBoard_CreateTime">@L("CreateTime")</label>
-                <input class="form-control m-input date-picker" id="Inv_BaseBoard_CreateTime" type="text" name="createTime" value="@Model.BaseBoard.CreateTime" />
+                <label class="form-label" for="BaseBoard_CreateTime">@L("CreateTime")</label>
+                <input class="form-control m-input date-picker" id="BaseBoard_CreateTime" type="text" name="createTime" value="@Model.BaseBoard.CreateTime" />
             </div>
 
             <div class="my-3">
-                <label class="form-label" for="Inv_BaseBoard_UpdateTime">@L("UpdateTime")</label>
-                <input class="form-control m-input date-picker" id="Inv_BaseBoard_UpdateTime" type="text" name="updateTime" value="@Model.BaseBoard.UpdateTime" />
+                <label class="form-label" for="BaseBoard_UpdateTime">@L("UpdateTime")</label>
+                <input class="form-control m-input date-picker" id="BaseBoard_UpdateTime" type="text" name="updateTime" value="@Model.BaseBoard.UpdateTime" />
             </div>
 
         </form>

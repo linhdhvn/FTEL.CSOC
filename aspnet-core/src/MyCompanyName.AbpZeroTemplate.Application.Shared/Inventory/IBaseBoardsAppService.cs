@@ -11,9 +11,9 @@ namespace MyCompanyName.AbpZeroTemplate.Inventory
     {
         Task<PagedResultDto<GetBaseBoardForViewDto>> GetAll(GetAllBaseBoardsInput input);
 
-        Task<GetBaseBoardForViewDto> GetBaseBoardsForView(long id);
+        Task<GetBaseBoardForViewDto> GetBaseBoardForView(long id);
 
-        Task<GetBaseBoardForEditOutput> GetBaseBoardsForEdit(EntityDto<long> input);
+        Task<GetBaseBoardForEditOutput> GetBaseBoardForEdit(EntityDto<long> input);
 
         Task CreateOrEdit(CreateOrEditBaseBoardDto input);
 

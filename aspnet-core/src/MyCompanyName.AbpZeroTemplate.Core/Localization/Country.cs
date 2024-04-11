@@ -18,6 +18,9 @@ namespace MyCompanyName.AbpZeroTemplate.Localization
         [StringLength(CountryConsts.MaxFormalNameLength, MinimumLength = CountryConsts.MinFormalNameLength)]
         public virtual string FormalName { get; set; }
 
+        [StringLength(CountryConsts.MaxInternationalNameLength, MinimumLength = CountryConsts.MinInternationalNameLength)]
+        public virtual string InternationalName { get; set; }
+
         [StringLength(CountryConsts.MaxCapitalLength, MinimumLength = CountryConsts.MinCapitalLength)]
         public virtual string Capital { get; set; }
 
@@ -33,7 +36,8 @@ namespace MyCompanyName.AbpZeroTemplate.Localization
         [StringLength(CountryConsts.MaxInternetCountryCodeLength, MinimumLength = CountryConsts.MinInternetCountryCodeLength)]
         public virtual string InternetCountryCode { get; set; }
 
-        [Required]
         public virtual int Sort { get; set; }
+
+        public virtual bool IsVisible { get; set; } = false;
     }
 }

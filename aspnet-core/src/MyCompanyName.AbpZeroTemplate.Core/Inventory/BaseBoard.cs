@@ -6,7 +6,7 @@ using Abp.Domain.Entities;
 
 namespace MyCompanyName.AbpZeroTemplate.Inventory
 {
-    [Table("BaseBoards")]
+    [Table("inv_BaseBoards")]
     public class BaseBoard : Entity<long>
     {
 

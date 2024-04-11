@@ -11,6 +11,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<EmbeddedResource Include="EntityFrameworkCore\ScriptSQL\*.sql" />
+	</ItemGroup>
+	
+	<ItemGroup>
 		<PackageReference Include="Abp.EntityFrameworkCore.EFPlus" Version="8.0.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.1" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.1">

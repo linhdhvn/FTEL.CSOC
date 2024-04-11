@@ -23,5 +23,9 @@ namespace MyCompanyName.AbpZeroTemplate.Localization
 
         [ForeignKey("WardTypeId")]
         public WardType WardTypeFk { get; set; }
+
+        public virtual int Sort { get; set; } = 0;
+
+        public virtual bool IsVisible { get; set; } = false;
     }
 }

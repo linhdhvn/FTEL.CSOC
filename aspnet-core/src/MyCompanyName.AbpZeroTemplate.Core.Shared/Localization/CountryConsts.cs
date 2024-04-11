@@ -11,6 +11,9 @@
         public const int MinFormalNameLength = 0;
         public const int MaxFormalNameLength = 250;
 
+        public const int MinInternationalNameLength = 0;
+        public const int MaxInternationalNameLength = 250;
+
         public const int MinCapitalLength = 0;
         public const int MaxCapitalLength = 250;
 

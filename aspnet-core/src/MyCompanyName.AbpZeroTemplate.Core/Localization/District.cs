@@ -23,5 +23,9 @@ namespace MyCompanyName.AbpZeroTemplate.Localization
 
         [ForeignKey("DistrictTypeId")]
         public DistrictType DistrictTypeFk { get; set; }
+
+        public virtual int Sort { get; set; } = 0;
+
+        public virtual bool IsVisible { get; set; } = false;
     }
 }

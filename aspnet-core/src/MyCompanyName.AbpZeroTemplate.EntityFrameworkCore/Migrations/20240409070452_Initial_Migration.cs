@@ -456,12 +456,14 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                     Code = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     CommonName = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     FormalName = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    InternationalName = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
                     Capital = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
                     CurrencyCode = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     CurrencyName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     TelephoneCode = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     InternetCountryCode = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    Sort = table.Column<int>(type: "int", nullable: false)
+                    Sort = table.Column<int>(type: "int", nullable: false),
+                    IsVisible = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
                 {
@@ -633,7 +635,9 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                     TelephoneCode = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     ZipCode = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     CountryId = table.Column<int>(type: "int", nullable: false),
-                    ProvinceTypeId = table.Column<int>(type: "int", nullable: false)
+                    ProvinceTypeId = table.Column<int>(type: "int", nullable: false),
+                    Sort = table.Column<int>(type: "int", nullable: false),
+                    IsVisible = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
                 {
@@ -709,7 +713,9 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                     Name = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     LatiLongTude = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
                     ProvinceId = table.Column<long>(type: "bigint", nullable: false),
-                    DistrictTypeId = table.Column<int>(type: "int", nullable: false)
+                    DistrictTypeId = table.Column<int>(type: "int", nullable: false),
+                    Sort = table.Column<int>(type: "int", nullable: false),
+                    IsVisible = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
                 {
@@ -737,7 +743,9 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                     Name = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     LatiLongTude = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
                     DistrictId = table.Column<long>(type: "bigint", nullable: false),
-                    WardTypeId = table.Column<int>(type: "int", nullable: false)
+                    WardTypeId = table.Column<int>(type: "int", nullable: false),
+                    Sort = table.Column<int>(type: "int", nullable: false),
+                    IsVisible = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
                 {

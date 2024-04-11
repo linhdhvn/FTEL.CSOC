@@ -484,7 +484,7 @@
         "wwwroot/Common/Styles/pwstrength-customize.less",
         "!wwwroot/Common/Styles/**/*.min.css",
         "!wwwroot/Common/Styles/Themes/**/*.css",
-        "!wwwroot/Common/Styles/abp-zero-template-rtl.css"
+        "!wwwroot/Common/Styles/template-rtl.css"
       ]
     },
     {

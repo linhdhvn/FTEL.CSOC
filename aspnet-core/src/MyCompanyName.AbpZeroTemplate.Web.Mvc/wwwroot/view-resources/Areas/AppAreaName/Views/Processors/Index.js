@@ -20,7 +20,6 @@
             modalClass: 'ViewProcessorModal',
         });
 
-
         var dataTable = _$processorsTable.DataTable({
             paging: true,
             serverSide: true,

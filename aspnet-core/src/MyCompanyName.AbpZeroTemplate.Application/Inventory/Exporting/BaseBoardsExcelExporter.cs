@@ -24,7 +24,7 @@ namespace MyCompanyName.AbpZeroTemplate.Inventory.Exporting
             _abpSession = abpSession;
         }
 
-        public FileDto ExportToFile(List<GetBaseBoardForViewDto> BaseBoards)
+        public FileDto ExportToFile(List<GetBaseBoardForViewDto> baseBoards)
         {
             return CreateExcelPackage(
                 "BaseBoards.xlsx",
@@ -45,7 +45,7 @@ namespace MyCompanyName.AbpZeroTemplate.Inventory.Exporting
                         );
 
                     AddObjects(
-                        sheet, BaseBoards,
+                        sheet, baseBoards,
                         _ => _.BaseBoard.Manufacturer,
                         _ => _.BaseBoard.Model,
                         _ => _.BaseBoard.SerialNumber,
@@ -55,11 +55,11 @@ namespace MyCompanyName.AbpZeroTemplate.Inventory.Exporting
                         _ => _timeZoneConverter.Convert(_.BaseBoard.UpdateTime, _abpSession.TenantId, _abpSession.GetUserId())
                         );
 
-                    for (var i = 1; i <= BaseBoards.Count; i++)
+                    for (var i = 1; i <= baseBoards.Count; i++)
                     {
                         SetCellDataFormat(sheet.GetRow(i).Cells[6], "yyyy-mm-dd");
                     }
-                    sheet.AutoSizeColumn(6); for (var i = 1; i <= BaseBoards.Count; i++)
+                    sheet.AutoSizeColumn(6); for (var i = 1; i <= baseBoards.Count; i++)
                     {
                         SetCellDataFormat(sheet.GetRow(i).Cells[7], "yyyy-mm-dd");
                     }
