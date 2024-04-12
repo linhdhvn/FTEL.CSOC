@@ -6,6 +6,11 @@
     /// </summary>
     public static class AppPermissions
     {
+        public const string Pages_Inventory = "Pages.Inventory";
+        //public const string Pages_Inventory_Create = "Pages.Inventory.Create";
+        //public const string Pages_Inventory_Edit = "Pages.Inventory.Edit";
+        //public const string Pages_Inventory_Delete = "Pages.Inventory.Delete";
+
         public const string Pages_Resources = "Pages.Resources";
         public const string Pages_Resources_Create = "Pages.Resources.Create";
         public const string Pages_Resources_Edit = "Pages.Resources.Edit";
