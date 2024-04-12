@@ -6,10 +6,6 @@ namespace MyCompanyName.AbpZeroTemplate.Authorization.Accounts
 {
     public interface IAccountAppService : IApplicationService
     {
-        Task<IsTenantAvailableOutput> IsTenantAvailable(IsTenantAvailableInput input);
-
-        Task<int?> ResolveTenantId(ResolveTenantIdInput input);
-
         Task<RegisterOutput> Register(RegisterInput input);
 
         Task SendPasswordResetCode(SendPasswordResetCodeInput input);
@@ -22,8 +18,6 @@ namespace MyCompanyName.AbpZeroTemplate.Authorization.Accounts
         
         Task<ImpersonateOutput> ImpersonateUser(ImpersonateUserInput input);
         
-        Task<ImpersonateOutput> ImpersonateTenant(ImpersonateTenantInput input);
-
         Task<ImpersonateOutput> DelegatedImpersonate(DelegatedImpersonateInput input);
         
         Task<ImpersonateOutput> BackToImpersonator();

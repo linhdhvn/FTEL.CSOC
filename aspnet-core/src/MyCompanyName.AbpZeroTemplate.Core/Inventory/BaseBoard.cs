@@ -25,6 +25,9 @@ namespace MyCompanyName.AbpZeroTemplate.Inventory
         [StringLength(BaseBoardConsts.MaxDescriptionLength, MinimumLength = BaseBoardConsts.MinDescriptionLength)]
         public virtual string Description { get; set; }
 
+        [StringLength(BaseBoardConsts.MaxBIOSVersionLength, MinimumLength = BaseBoardConsts.MinBIOSVersionLength)]
+        public virtual string BIOSVersion { get; set; }
+
         public virtual DateTime CreateTime { get; set; }
 
         public virtual DateTime? UpdateTime { get; set; }

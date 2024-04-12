@@ -1,11 +1,11 @@
-﻿using System;
-using Abp.Application.Services.Dto;
+﻿using Abp.Application.Services.Dto;
 using System.ComponentModel.DataAnnotations;
 
 namespace MyCompanyName.AbpZeroTemplate.Inventory.Dtos
 {
     public class CreateOrEditDataStorageDto : EntityDto<long?>
     {
+        public long BaseBoardId { get; set; }
 
         [StringLength(DataStorageConsts.MaxModelLength, MinimumLength = DataStorageConsts.MinModelLength)]
         public string Model { get; set; }
@@ -21,5 +21,6 @@ namespace MyCompanyName.AbpZeroTemplate.Inventory.Dtos
         [StringLength(DataStorageConsts.MaxHealthStatusLength, MinimumLength = DataStorageConsts.MinHealthStatusLength)]
         public string HealthStatus { get; set; }
 
+        public  bool IsDeleted { get; set; }
     }
 }

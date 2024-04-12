@@ -807,7 +807,8 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
                     NormalizedEmailAddress = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: true)
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: true),
+                    AccountType = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

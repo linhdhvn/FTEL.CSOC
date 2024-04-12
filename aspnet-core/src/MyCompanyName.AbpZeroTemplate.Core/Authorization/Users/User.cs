@@ -35,6 +35,8 @@ namespace MyCompanyName.AbpZeroTemplate.Authorization.Users
 
         //Can add application specific user properties here
 
+        public virtual AccountType AccountType { get; set; }
+
         public virtual int? CountryId { get; set; }
 
         [ForeignKey("CountryId")]

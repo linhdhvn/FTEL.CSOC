@@ -24,5 +24,9 @@ namespace MyCompanyName.AbpZeroTemplate.Inventory
 
         public virtual bool UseDHCP { get; set; }
 
+        public virtual long BaseBoardId { get; set; }
+
+        [ForeignKey("BaseBoardId")]
+        public BaseBoard BaseBoardFk { get; set; }
     }
 }

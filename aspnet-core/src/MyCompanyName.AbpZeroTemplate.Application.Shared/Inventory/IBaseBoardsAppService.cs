@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using MyCompanyName.AbpZeroTemplate.Inventory.Dtos;
@@ -20,6 +19,5 @@ namespace MyCompanyName.AbpZeroTemplate.Inventory
         Task Delete(EntityDto<long> input);
 
         Task<FileDto> GetBaseBoardsToExcel(GetAllBaseBoardsForExcelInput input);
-
     }
 }

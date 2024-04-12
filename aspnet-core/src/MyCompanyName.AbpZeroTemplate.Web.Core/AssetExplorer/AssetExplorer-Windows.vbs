@@ -79,7 +79,7 @@ Set objReg = GetObject("winmgmts:{impersonationLevel=impersonate}!\\" & strCompu
 Set queryResult = objCIMVService.ExecQuery ("SELECT * FROM Win32_ComputerSystem")
 For Each iterResult in queryResult
     csdata = ""
-
+    
     computerNameForFile = LCase(iterResult.Caption & "")
     computerName = computerNameForFile
 
@@ -105,12 +105,16 @@ For Each iterResult in queryResult
     end if
 Next
 
+csdata = addCategoryData(csdata, "AgentScriptVersion", "1.0")
+
 nameAttr = addCategoryData("", "HostName", computerName)
 
 
 outputText = outputText & nameAttr & csdata
 outputText = outputText & bbdata
 outputText = outputText & dnsdata
+
+
 
 outputText = outputText & ">" & newLineConst
 Err.clear
@@ -191,9 +195,9 @@ Err.clear
 '=============
 On Error Resume Next
     Set queryResult = objStorageService.ExecQuery ("SELECT * FROM MSFT_PhysicalDisk")
-    dataText = "<PhysicalDisks>" & newLineConst
+    dataText = "<DataStorages>" & newLineConst
     For Each iterResult in queryResult
-        dataText = dataText & "<Disk "
+        dataText = dataText & "<DiskDrive "
         Select Case iterResult.MediaType
              Case 0
                  dataText = addCategoryData(dataText, "MediaType", "Unspecified")
@@ -225,7 +229,7 @@ On Error Resume Next
 
         dataText = dataText & " />" & newLineConst
     Next
-    dataText = dataText & "</PhysicalDisks>" & newLineConst
+    dataText = dataText & "</DataStorages>" & newLineConst
     outputText = outputText & dataText
 Err.clear
 
@@ -332,13 +336,6 @@ On Error Resume Next
     dataText = dataText & osdata & " />" & newLineConst
     outputText = outputText & dataText
 Err.clear
-
-'Adding Scan Script Information
-'=========================
-scanScriptVersionInfo = "<ScanScriptInfo "
-scanScriptVersionInfo = addCategoryData(scanScriptVersionInfo, "version", "1.0")
-scanScriptVersionInfo = scanScriptVersionInfo & " />" & newLineConst
-outputText = outputText & scanScriptVersionInfo
 
 outputText = outputText & "</Resource>"
 Err.clear

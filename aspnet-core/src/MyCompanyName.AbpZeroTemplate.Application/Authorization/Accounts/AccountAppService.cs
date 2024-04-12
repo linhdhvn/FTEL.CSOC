@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using System.Web;
 using Abp.Authorization;
 using Abp.Configuration;
 using Abp.Extensions;
@@ -13,12 +12,9 @@ using MyCompanyName.AbpZeroTemplate.Authorization.Accounts.Dto;
 using MyCompanyName.AbpZeroTemplate.Authorization.Impersonation;
 using MyCompanyName.AbpZeroTemplate.Authorization.Users;
 using MyCompanyName.AbpZeroTemplate.Configuration;
-using MyCompanyName.AbpZeroTemplate.Debugging;
-using MyCompanyName.AbpZeroTemplate.MultiTenancy;
 using MyCompanyName.AbpZeroTemplate.Security.Recaptcha;
 using MyCompanyName.AbpZeroTemplate.Url;
 using MyCompanyName.AbpZeroTemplate.Authorization.Delegation;
-using Abp.Domain.Repositories;
 using Abp.Timing;
 
 
@@ -44,7 +40,7 @@ namespace MyCompanyName.AbpZeroTemplate.Authorization.Accounts
             IImpersonationManager impersonationManager,
             IUserLinkManager userLinkManager,
             IPasswordHasher<User> passwordHasher,
-            IWebUrlService webUrlService, 
+            IWebUrlService webUrlService,
             IUserDelegationManager userDelegationManager)
         {
             _userEmailer = userEmailer;
@@ -57,41 +53,6 @@ namespace MyCompanyName.AbpZeroTemplate.Authorization.Accounts
             AppUrlService = NullAppUrlService.Instance;
             RecaptchaValidator = NullRecaptchaValidator.Instance;
             _userDelegationManager = userDelegationManager;
-        }
-
-        public async Task<IsTenantAvailableOutput> IsTenantAvailable(IsTenantAvailableInput input)
-        {
-            var tenant = await TenantManager.FindByTenancyNameAsync(input.TenancyName);
-            if (tenant == null)
-            {
-                return new IsTenantAvailableOutput(TenantAvailabilityState.NotFound);
-            }
-
-            if (!tenant.IsActive)
-            {
-                return new IsTenantAvailableOutput(TenantAvailabilityState.InActive);
-            }
-
-            return new IsTenantAvailableOutput(TenantAvailabilityState.Available, tenant.Id, _webUrlService.GetServerRootAddress(input.TenancyName));
-        }
-
-        public Task<int?> ResolveTenantId(ResolveTenantIdInput input)
-        {
-            if (string.IsNullOrEmpty(input.c))
-            {
-                return Task.FromResult(AbpSession.TenantId);
-            }
-
-            var parameters = SimpleStringCipher.Instance.Decrypt(input.c);
-            var query = HttpUtility.ParseQueryString(parameters);
-
-            if (query["tenantId"] == null)
-            {
-                return Task.FromResult<int?>(null);
-            }
-
-            var tenantId = Convert.ToInt32(query["tenantId"]) as int?;
-            return Task.FromResult(tenantId);
         }
 
         public async Task<RegisterOutput> Register(RegisterInput input)
@@ -126,7 +87,7 @@ namespace MyCompanyName.AbpZeroTemplate.Authorization.Accounts
             {
                 return;
             }
-            
+
             user.SetNewPasswordResetCode();
             await _userEmailer.SendPasswordResetLinkAsync(
                 user,
@@ -140,13 +101,14 @@ namespace MyCompanyName.AbpZeroTemplate.Authorization.Accounts
             {
                 throw new UserFriendlyException(L("PasswordResetLinkExpired"));
             }
-            
+
             var user = await UserManager.GetUserByIdAsync(input.UserId);
+
             if (user == null || user.PasswordResetCode.IsNullOrEmpty() || user.PasswordResetCode != input.ResetCode)
             {
                 throw new UserFriendlyException(L("InvalidPasswordResetCode"), L("InvalidPasswordResetCode_Detail"));
             }
-    
+
             await UserManager.InitializeOptionsAsync(AbpSession.TenantId);
             CheckErrors(await UserManager.ChangePasswordAsync(user, input.Password));
             user.PasswordResetCode = null;
@@ -199,20 +161,17 @@ namespace MyCompanyName.AbpZeroTemplate.Authorization.Accounts
         [AbpAuthorize(AppPermissions.Pages_Administration_Users_Impersonation)]
         public virtual async Task<ImpersonateOutput> ImpersonateUser(ImpersonateUserInput input)
         {
+            var user = await UserManager.FindByIdAsync(input.UserId.ToString());
+
+            if (user.AccountType == AccountType.Service)
+            {
+                throw new UserFriendlyException(L("YouCanNotLoginAsServiceAccount"));
+            }
+
             return new ImpersonateOutput
             {
-                ImpersonationToken = await _impersonationManager.GetImpersonationToken(input.UserId, AbpSession.TenantId),
-                TenancyName = await GetTenancyNameOrNullAsync(input.TenantId)
-            };
-        }
-        
-        [AbpAuthorize(AppPermissions.Pages_Tenants_Impersonation)]
-        public virtual async Task<ImpersonateOutput> ImpersonateTenant(ImpersonateTenantInput input)
-        {
-            return new ImpersonateOutput
-            {
-                ImpersonationToken = await _impersonationManager.GetImpersonationToken(input.UserId, input.TenantId),
-                TenancyName = await GetTenancyNameOrNullAsync(input.TenantId)
+                ImpersonationToken = await _impersonationManager.GetImpersonationToken(user.Id, AbpSession.TenantId),
+                TenancyName = null
             };
         }
 
@@ -227,7 +186,7 @@ namespace MyCompanyName.AbpZeroTemplate.Authorization.Accounts
             return new ImpersonateOutput
             {
                 ImpersonationToken = await _impersonationManager.GetImpersonationToken(userDelegation.SourceUserId, userDelegation.TenantId),
-                TenancyName = await GetTenancyNameOrNullAsync(userDelegation.TenantId)
+                TenancyName = null
             };
         }
 
@@ -236,7 +195,7 @@ namespace MyCompanyName.AbpZeroTemplate.Authorization.Accounts
             return new ImpersonateOutput
             {
                 ImpersonationToken = await _impersonationManager.GetBackToImpersonatorToken(),
-                TenancyName = await GetTenancyNameOrNullAsync(AbpSession.ImpersonatorTenantId)
+                TenancyName = null
             };
         }
 
@@ -250,34 +209,13 @@ namespace MyCompanyName.AbpZeroTemplate.Authorization.Accounts
             return new SwitchToLinkedAccountOutput
             {
                 SwitchAccountToken = await _userLinkManager.GetAccountSwitchToken(input.TargetUserId, input.TargetTenantId),
-                TenancyName = await GetTenancyNameOrNullAsync(input.TargetTenantId)
+                TenancyName = null
             };
         }
 
         private bool UseCaptchaOnRegistration()
         {
             return SettingManager.GetSettingValue<bool>(AppSettings.UserManagement.UseCaptchaOnRegistration);
-        }
-
-        private async Task<Tenant> GetActiveTenantAsync(int tenantId)
-        {
-            var tenant = await TenantManager.FindByIdAsync(tenantId);
-            if (tenant == null)
-            {
-                throw new UserFriendlyException(L("UnknownTenantId{0}", tenantId));
-            }
-
-            if (!tenant.IsActive)
-            {
-                throw new UserFriendlyException(L("TenantIdIsNotActive{0}", tenantId));
-            }
-
-            return tenant;
-        }
-
-        private async Task<string> GetTenancyNameOrNullAsync(int? tenantId)
-        {
-            return tenantId.HasValue ? (await GetActiveTenantAsync(tenantId.Value)).TenancyName : null;
         }
     }
 }

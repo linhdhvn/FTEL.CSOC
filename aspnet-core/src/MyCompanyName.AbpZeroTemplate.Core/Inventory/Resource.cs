@@ -8,7 +8,6 @@ namespace MyCompanyName.AbpZeroTemplate.Inventory
     [Table("inv_Resources")]
     public class Resource : Entity<long>
     {
-
         [Required]
         [StringLength(ResourceConsts.MaxNameLength, MinimumLength = ResourceConsts.MinNameLength)]
         public virtual string Name { get; set; }
@@ -30,12 +29,18 @@ namespace MyCompanyName.AbpZeroTemplate.Inventory
         [StringLength(ResourceConsts.MaxDescriptionLength, MinimumLength = ResourceConsts.MinDescriptionLength)]
         public virtual string Description { get; set; }
 
-        [Required]
         public virtual DateTime CreateTime { get; set; }
 
         public virtual DateTime? UpdateTime { get; set; }
 
         public virtual DateTime? LastBootUpTime { get; set; }
 
+        public virtual bool IsDeleted { get; set; }
+
+        [Key, Column(Order = 1)]
+        public virtual long BaseBoardId { get; set; }
+
+        [ForeignKey("BaseBoardId")]
+        public BaseBoard BaseBoardFk { get; set; }
     }
 }

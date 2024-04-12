@@ -903,20 +903,6 @@ namespace MyCompanyName.AbpZeroTemplate.Web.Controllers
             });
         }
 
-        [AbpMvcAuthorize(AppPermissions.Pages_Tenants_Impersonation)]
-        public virtual async Task<JsonResult> ImpersonateTenant([FromBody] ImpersonateTenantInput input)
-        {
-            var output = await _accountAppService.ImpersonateTenant(input);
-
-            await _signInManager.SignOutAsync();
-
-            return Json(new AjaxResponse
-            {
-                TargetUrl = _webUrlService.GetSiteRootAddress(output.TenancyName) +
-                            "Account/ImpersonateSignIn?tokenId=" + output.ImpersonationToken
-            });
-        }
-
         public virtual async Task<ActionResult> ImpersonateSignIn(string tokenId)
         {
             await ClearGetScriptsResponsePerUserCache();

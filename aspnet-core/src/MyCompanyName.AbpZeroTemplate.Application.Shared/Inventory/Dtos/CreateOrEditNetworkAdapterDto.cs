@@ -1,11 +1,11 @@
-﻿using System;
-using Abp.Application.Services.Dto;
+﻿using Abp.Application.Services.Dto;
 using System.ComponentModel.DataAnnotations;
 
 namespace MyCompanyName.AbpZeroTemplate.Inventory.Dtos
 {
     public class CreateOrEditNetworkAdapterDto : EntityDto<long?>
     {
+        public long BaseBoardId { get; set; }
 
         [StringLength(NetworkAdapterConsts.MaxNameLength, MinimumLength = NetworkAdapterConsts.MinNameLength)]
         public string Name { get; set; }
@@ -20,6 +20,5 @@ namespace MyCompanyName.AbpZeroTemplate.Inventory.Dtos
         public string IPv6Address { get; set; }
 
         public bool UseDHCP { get; set; }
-
     }
 }

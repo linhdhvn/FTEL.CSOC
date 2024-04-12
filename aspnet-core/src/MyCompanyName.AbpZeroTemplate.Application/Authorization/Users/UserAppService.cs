@@ -60,7 +60,7 @@ namespace MyCompanyName.AbpZeroTemplate.Authorization.Users
         private readonly IRepository<OrganizationUnitRole, long> _organizationUnitRoleRepository;
         private readonly IOptions<UserOptions> _userOptions;
         private readonly IEmailSettingsChecker _emailSettingsChecker;
-        
+
         public UserAppService(
             RoleManager roleManager,
             IUserEmailer userEmailer,
@@ -78,7 +78,7 @@ namespace MyCompanyName.AbpZeroTemplate.Authorization.Users
             IRoleManagementConfig roleManagementConfig,
             UserManager userManager,
             IRepository<UserOrganizationUnit, long> userOrganizationUnitRepository,
-            IRepository<OrganizationUnitRole, long> organizationUnitRoleRepository, 
+            IRepository<OrganizationUnitRole, long> organizationUnitRoleRepository,
             IOptions<UserOptions> userOptions, IEmailSettingsChecker emailSettingsChecker)
         {
             _roleManager = roleManager;
@@ -161,7 +161,7 @@ namespace MyCompanyName.AbpZeroTemplate.Authorization.Users
                 AllOrganizationUnits = ObjectMapper.Map<List<OrganizationUnitDto>>(allOrganizationUnits),
                 MemberedOrganizationUnits = new List<string>(),
                 AllowedUserNameCharacters = _userOptions.Value.AllowedUserNameCharacters,
-                IsSMTPSettingsProvided = await _emailSettingsChecker.EmailSettingsValidAsync() 
+                IsSMTPSettingsProvided = await _emailSettingsChecker.EmailSettingsValidAsync()
             };
 
             if (!input.Id.HasValue)
@@ -215,11 +215,11 @@ namespace MyCompanyName.AbpZeroTemplate.Authorization.Users
         private List<string> GetAllRoleNamesOfUsersOrganizationUnits(long userId)
         {
             return (from userOu in _userOrganizationUnitRepository.GetAll()
-                join roleOu in _organizationUnitRoleRepository.GetAll() on userOu.OrganizationUnitId equals roleOu
-                    .OrganizationUnitId
-                join userOuRoles in _roleRepository.GetAll() on roleOu.RoleId equals userOuRoles.Id
-                where userOu.UserId == userId
-                select userOuRoles.Name).ToList();
+                    join roleOu in _organizationUnitRoleRepository.GetAll() on userOu.OrganizationUnitId equals roleOu
+                        .OrganizationUnitId
+                    join userOuRoles in _roleRepository.GetAll() on roleOu.RoleId equals userOuRoles.Id
+                    where userOu.UserId == userId
+                    select userOuRoles.Name).ToList();
         }
 
         [AbpAuthorize(AppPermissions.Pages_Administration_Users_ChangePermissions)]
@@ -274,6 +274,12 @@ namespace MyCompanyName.AbpZeroTemplate.Authorization.Users
             }
 
             var user = await UserManager.GetUserByIdAsync(input.Id);
+
+            if (user.AccountType == AccountType.Service)
+            {
+                throw new UserFriendlyException(L("YouCanNotDeleteServiceAccount"));
+            }
+
             CheckErrors(await UserManager.DeleteAsync(user));
         }
 
@@ -291,37 +297,44 @@ namespace MyCompanyName.AbpZeroTemplate.Authorization.Users
 
             var user = await UserManager.FindByIdAsync(input.User.Id.Value.ToString());
 
-            //Update user properties
-            ObjectMapper.Map(input.User, user); //Passwords is not mapped (see mapping configuration)
-
-            CheckErrors(await UserManager.UpdateAsync(user));
-
-            if (input.SetRandomPassword)
+            if (user.AccountType == AccountType.Normal)
             {
-                var randomPassword = await _userManager.CreateRandomPassword();
-                user.Password = _passwordHasher.HashPassword(user, randomPassword);
-                input.User.Password = randomPassword;
+                //Update user properties
+                ObjectMapper.Map(input.User, user); //Passwords is not mapped (see mapping configuration)
+
+                CheckErrors(await UserManager.UpdateAsync(user));
+
+                if (input.SetRandomPassword)
+                {
+                    var randomPassword = await _userManager.CreateRandomPassword();
+                    user.Password = _passwordHasher.HashPassword(user, randomPassword);
+                    input.User.Password = randomPassword;
+                }
+                else if (!input.User.Password.IsNullOrEmpty())
+                {
+                    await UserManager.InitializeOptionsAsync(AbpSession.TenantId);
+                    CheckErrors(await UserManager.ChangePasswordAsync(user, input.User.Password));
+                }
+
+                //Update roles
+                CheckErrors(await UserManager.SetRolesAsync(user, input.AssignedRoleNames));
+
+                //update organization units
+                await UserManager.SetOrganizationUnitsAsync(user, input.OrganizationUnits.ToArray());
+
+                if (input.SendActivationEmail)
+                {
+                    user.SetNewEmailConfirmationCode();
+                    await _userEmailer.SendEmailActivationLinkAsync(
+                        user,
+                        AppUrlService.CreateEmailActivationUrlFormat(AbpSession.TenantId),
+                        input.User.Password
+                    );
+                }
             }
-            else if (!input.User.Password.IsNullOrEmpty())
+            else
             {
-                await UserManager.InitializeOptionsAsync(AbpSession.TenantId);
-                CheckErrors(await UserManager.ChangePasswordAsync(user, input.User.Password));
-            }
-
-            //Update roles
-            CheckErrors(await UserManager.SetRolesAsync(user, input.AssignedRoleNames));
-
-            //update organization units
-            await UserManager.SetOrganizationUnitsAsync(user, input.OrganizationUnits.ToArray());
-
-            if (input.SendActivationEmail)
-            {
-                user.SetNewEmailConfirmationCode();
-                await _userEmailer.SendEmailActivationLinkAsync(
-                    user,
-                    AppUrlService.CreateEmailActivationUrlFormat(AbpSession.TenantId),
-                    input.User.Password
-                );
+                throw new UserFriendlyException(L("YouCanNotUpdateServiceAccount"));
             }
         }
 
@@ -330,6 +343,7 @@ namespace MyCompanyName.AbpZeroTemplate.Authorization.Users
         {
             var user = ObjectMapper.Map<User>(input.User); //Passwords is not mapped (see mapping configuration)
             user.TenantId = AbpSession.TenantId;
+            user.AccountType = AccountType.Normal;
 
             //Set password
             if (input.SetRandomPassword)
@@ -426,8 +440,7 @@ namespace MyCompanyName.AbpZeroTemplate.Authorization.Users
         {
             var query = UserManager.Users
                 .WhereIf(input.Role.HasValue, u => u.Roles.Any(r => r.RoleId == input.Role.Value))
-                .WhereIf(input.OnlyLockedUsers,
-                    u => u.LockoutEndDateUtc.HasValue && u.LockoutEndDateUtc.Value > DateTime.UtcNow)
+                .WhereIf(input.OnlyLockedUsers, u => u.LockoutEndDateUtc.HasValue && u.LockoutEndDateUtc.Value > DateTime.UtcNow)
                 .WhereIf(
                     !input.Filter.IsNullOrWhiteSpace(),
                     u =>
@@ -447,23 +460,23 @@ namespace MyCompanyName.AbpZeroTemplate.Authorization.Users
                 input.Permissions = input.Permissions.Where(p => !string.IsNullOrEmpty(p)).ToList();
 
                 var userIds = from user in query
-                    join ur in _userRoleRepository.GetAll() on user.Id equals ur.UserId into urJoined
-                    from ur in urJoined.DefaultIfEmpty()
-                    join urr in _roleRepository.GetAll() on ur.RoleId equals urr.Id into urrJoined
-                    from urr in urrJoined.DefaultIfEmpty()
-                    join up in _userPermissionRepository.GetAll()
-                        .Where(userPermission => input.Permissions.Contains(userPermission.Name)) on user.Id equals up.UserId into upJoined
-                    from up in upJoined.DefaultIfEmpty()
-                    join rp in _rolePermissionRepository.GetAll()
-                        .Where(rolePermission => input.Permissions.Contains(rolePermission.Name)) on
-                        new { RoleId = ur == null ? 0 : ur.RoleId } equals new { rp.RoleId } into rpJoined
-                    from rp in rpJoined.DefaultIfEmpty()
-                    where (up != null && up.IsGranted) ||
-                          (up == null && rp != null && rp.IsGranted) ||
-                          (up == null && rp == null && staticRoleNames.Contains(urr.Name))
-                    group user by user.Id
+                              join ur in _userRoleRepository.GetAll() on user.Id equals ur.UserId into urJoined
+                              from ur in urJoined.DefaultIfEmpty()
+                              join urr in _roleRepository.GetAll() on ur.RoleId equals urr.Id into urrJoined
+                              from urr in urrJoined.DefaultIfEmpty()
+                              join up in _userPermissionRepository.GetAll()
+                                  .Where(userPermission => input.Permissions.Contains(userPermission.Name)) on user.Id equals up.UserId into upJoined
+                              from up in upJoined.DefaultIfEmpty()
+                              join rp in _rolePermissionRepository.GetAll()
+                                  .Where(rolePermission => input.Permissions.Contains(rolePermission.Name)) on
+                                  new { RoleId = ur == null ? 0 : ur.RoleId } equals new { rp.RoleId } into rpJoined
+                              from rp in rpJoined.DefaultIfEmpty()
+                              where (up != null && up.IsGranted) ||
+                                    (up == null && rp != null && rp.IsGranted) ||
+                                    (up == null && rp == null && staticRoleNames.Contains(urr.Name))
+                              group user by user.Id
                     into userGrouped
-                    select userGrouped.Key;
+                              select userGrouped.Key;
 
                 query = UserManager.Users.Where(e => userIds.Contains(e.Id));
             }

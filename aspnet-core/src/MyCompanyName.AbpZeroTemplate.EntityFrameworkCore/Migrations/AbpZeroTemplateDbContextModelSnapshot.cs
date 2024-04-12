@@ -1764,14 +1764,6 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
-                    b.Property<string>("FormalName")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("InternationalName")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
                     b.Property<string>("CurrencyCode")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
@@ -1779,6 +1771,14 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                     b.Property<string>("CurrencyName")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("FormalName")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("InternationalName")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("InternetCountryCode")
                         .HasMaxLength(50)
@@ -1788,7 +1788,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                         .HasColumnType("int");
 
                     b.Property<bool>("IsVisible")
-                        .HasColumnType("bit");
+                       .HasColumnType("bit");
 
                     b.Property<string>("TelephoneCode")
                         .HasMaxLength(50)
@@ -1807,12 +1807,6 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<bool>("IsVisible")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("Sort")
-                        .HasColumnType("int");
-
                     b.Property<int>("DistrictTypeId")
                         .HasColumnType("int");
 
@@ -1827,6 +1821,10 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.Property<long>("ProvinceId")
                         .HasColumnType("bigint");
+
+                    b.Property<int>("Sort").HasColumnType("int");
+
+                    b.Property<bool>("IsVisible").HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -1878,12 +1876,6 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                     b.Property<int>("ProvinceTypeId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Sort")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsVisible")
-                        .HasColumnType("bit");
-
                     b.Property<string>("TelephoneCode")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
@@ -1891,6 +1883,10 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                     b.Property<string>("ZipCode")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("Sort").HasColumnType("int");
+
+                    b.Property<bool>("IsVisible").HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -1927,12 +1923,6 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<int>("Sort")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsVisible")
-                        .HasColumnType("bit");
-
                     b.Property<long>("DistrictId")
                         .HasColumnType("bigint");
 
@@ -1947,6 +1937,10 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.Property<int>("WardTypeId")
                         .HasColumnType("int");
+
+                    b.Property<int>("Sort").HasColumnType("int");
+
+                    b.Property<bool>("IsVisible").HasColumnType("bit");
 
                     b.HasKey("Id");
 

@@ -6,7 +6,6 @@ namespace MyCompanyName.AbpZeroTemplate.Inventory.Dtos
 {
     public class CreateOrEditBaseBoardDto : EntityDto<long?>
     {
-
         [StringLength(BaseBoardConsts.MaxManufacturerLength, MinimumLength = BaseBoardConsts.MinManufacturerLength)]
         public string Manufacturer { get; set; }
 
@@ -22,9 +21,11 @@ namespace MyCompanyName.AbpZeroTemplate.Inventory.Dtos
         [StringLength(BaseBoardConsts.MaxDescriptionLength, MinimumLength = BaseBoardConsts.MinDescriptionLength)]
         public string Description { get; set; }
 
+        [StringLength(BaseBoardConsts.MaxBIOSVersionLength, MinimumLength = BaseBoardConsts.MinBIOSVersionLength)]
+        public string BIOSVersion { get; set; }
+
         public DateTime CreateTime { get; set; }
 
         public DateTime? UpdateTime { get; set; }
-
     }
 }

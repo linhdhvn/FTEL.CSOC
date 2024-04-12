@@ -9,7 +9,6 @@ namespace MyCompanyName.AbpZeroTemplate.Inventory
     [Table("inv_DataStorages")]
     public class DataStorage : Entity<long>
     {
-
         [StringLength(DataStorageConsts.MaxModelLength, MinimumLength = DataStorageConsts.MinModelLength)]
         public virtual string Model { get; set; }
 
@@ -24,5 +23,11 @@ namespace MyCompanyName.AbpZeroTemplate.Inventory
         [StringLength(DataStorageConsts.MaxHealthStatusLength, MinimumLength = DataStorageConsts.MinHealthStatusLength)]
         public virtual string HealthStatus { get; set; }
 
+        public virtual bool IsDeleted { get; set; }
+
+        public virtual long BaseBoardId { get; set; }
+
+        [ForeignKey("BaseBoardId")]
+        public BaseBoard BaseBoardFk { get; set; }
     }
 }

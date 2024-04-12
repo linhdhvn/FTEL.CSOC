@@ -75,7 +75,6 @@
 
         public const string Pages = "Pages";
 
-        public const string Pages_DemoUiComponents = "Pages.DemoUiComponents";
         public const string Pages_Administration = "Pages.Administration";
 
         public const string Pages_Administration_Roles = "Pages.Administration.Roles";
@@ -143,28 +142,9 @@
 
         public const string Pages_Administration_NewVersion_Create = "Pages_Administration_NewVersion_Create";
 
-        //TENANT-SPECIFIC PERMISSIONS
 
-        public const string Pages_Tenant_Dashboard = "Pages.Tenant.Dashboard";
-
-        public const string Pages_Administration_Tenant_Settings = "Pages.Administration.Tenant.Settings";
-
-        public const string Pages_Administration_Tenant_SubscriptionManagement = "Pages.Administration.Tenant.SubscriptionManagement";
 
         //HOST-SPECIFIC PERMISSIONS
-
-        public const string Pages_Editions = "Pages.Editions";
-        public const string Pages_Editions_Create = "Pages.Editions.Create";
-        public const string Pages_Editions_Edit = "Pages.Editions.Edit";
-        public const string Pages_Editions_Delete = "Pages.Editions.Delete";
-        public const string Pages_Editions_MoveTenantsToAnotherEdition = "Pages.Editions.MoveTenantsToAnotherEdition";
-
-        public const string Pages_Tenants = "Pages.Tenants";
-        public const string Pages_Tenants_Create = "Pages.Tenants.Create";
-        public const string Pages_Tenants_Edit = "Pages.Tenants.Edit";
-        public const string Pages_Tenants_ChangeFeatures = "Pages.Tenants.ChangeFeatures";
-        public const string Pages_Tenants_Delete = "Pages.Tenants.Delete";
-        public const string Pages_Tenants_Impersonation = "Pages.Tenants.Impersonation";
 
         public const string Pages_Administration_Host_Maintenance = "Pages.Administration.Host.Maintenance";
         public const string Pages_Administration_Host_Settings = "Pages.Administration.Host.Settings";

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Resource HostName="w0133016163" Domain="officesg.local" IsVirtualMachine="False">
+<Resource HostName="w0133016163" Domain="officesg.local" IsVirtualMachine="False" AgentScriptVersion="1.0">
 	<BaseBoard Manufacturer="Gigabyte Technology Co., Ltd." Model="H510M H" SerialNumber="Default string" UUID="035E02D8-04D3-05EF-5106-160700080009" BIOSVersion="ALASKA - 1072009"/>
 	<Processors>
 		<CPU Name="Intel(R) Core(TM) i5-10400 CPU @ 2.90GHz" ProcessorId="BFEBFBFF000A0655" PartNumber="To Be Filled By O.E.M." SerialNumber="To Be Filled By O.E.M."/>
@@ -8,11 +8,11 @@
 		<MemoryModule Name="Physical Memory 0" Capacity="8589934592" Speed="2400" Manufacturer="G Skill Intl" PartNumber="F4-2400C17-8GNT" SerialNumber="00000000"/>
 		<MemoryModule Name="Physical Memory 1" Capacity="8589934592" Speed="2400" Manufacturer="G Skill Intl" PartNumber="F4-2400C17-8GNT" SerialNumber="00000000"/>
 	</PhysicalMemories>
-	<PhysicalDisks>
-		<Disk MediaType="SSD" Model="Lexar 256GB SSD" Size="256060514304" SerialNumber="MDS4372008292"/>
-		<Disk MediaType="SSD" Model="WDC WDS240G2G0A-00JH30" Size="240065183744" SerialNumber="193891800676"/>
-		<Disk MediaType="HDD" Model="TOSHIBA DT01ACA100" Size="1000204886016" SerialNumber="X9F1X3RMS"/>
-	</PhysicalDisks>
+	<DataStorages>
+		<DiskDrive MediaType="SSD" Model="Lexar 256GB SSD" Size="256060514304" SerialNumber="MDS4372008292"/>
+		<DiskDrive MediaType="SSD" Model="WDC WDS240G2G0A-00JH30" Size="240065183744" SerialNumber="193891800676"/>
+		<DiskDrive MediaType="HDD" Model="TOSHIBA DT01ACA100" Size="1000204886016" SerialNumber="X9F1X3RMS"/>
+	</DataStorages>
 	<Monitors>
 		<Display Manufacturer="AOC International (Europe) GmbH" Model="AOC 2060W3" SerialNumber="GCDF7HA032505"/>
 		<Display Manufacturer="AOC International (Europe) GmbH" Model="AOC 2060W3" SerialNumber="GCDF7HA032490"/>
@@ -21,5 +21,4 @@
 		<Adapter Name="Hyper-V Virtual Ethernet Adapter" PhysicalAddress="D8:5E:D3:EF:51:16" UseDHCP="True" IpAddress="172.30.39.65-fe80::862e:369f:3ba1:24ca"/>
 	</NetworkAdapters>
 	<OperatingSystem Name="Microsoft Windows 11 Enterprise" BuildNumber="10.0.22631" InstallDate="2024/2/6" LastBootUpTime="2024/4/10 12:35:2"/>
-	<ScanScriptInfo version="1.0"/>
 </Resource>

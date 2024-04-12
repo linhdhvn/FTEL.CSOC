@@ -75,6 +75,11 @@ namespace MyCompanyName.AbpZeroTemplate.EntityFrameworkCore
                 b.HasIndex(e => new { e.TenantId, e.TargetUserId });
             });
 
+            modelBuilder.Entity<Resource>(b =>
+            {
+                b.HasKey(e => new { e.Id, e.BaseBoardId });
+            });
+
             modelBuilder.ConfigurePersistedGrantEntity();
         }
     }

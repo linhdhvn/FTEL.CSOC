@@ -18,5 +18,8 @@
         public const int MinDescriptionLength = 0;
         public const int MaxDescriptionLength = 250;
 
+        public const int MinBIOSVersionLength = 0;
+        public const int MaxBIOSVersionLength = 250;
+
     }
 }

@@ -61,6 +61,7 @@ namespace MyCompanyName.AbpZeroTemplate.Authorization.Users.Importing
         public override async Task ExecuteAsync(ImportUsersFromExcelJobArgs args)
         {
             var users = await GetUserListFromExcelOrNullAsync(args);
+
             if (users == null || !users.Any())
             {
                 await SendInvalidExcelNotificationAsync(args);
@@ -149,6 +150,7 @@ namespace MyCompanyName.AbpZeroTemplate.Authorization.Users.Importing
             var user = _objectMapper.Map<User>(input); //Passwords is not mapped (see mapping configuration)
             user.Password = input.Password;
             user.TenantId = tenantId;
+            user.AccountType = AccountType.Normal;
 
             if (!input.Password.IsNullOrEmpty())
             {

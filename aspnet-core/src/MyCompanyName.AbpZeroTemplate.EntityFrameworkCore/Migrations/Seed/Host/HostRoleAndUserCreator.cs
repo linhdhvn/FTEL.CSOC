@@ -31,7 +31,6 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations.Seed.Host
         private void CreateHostRoleAndUsers()
         {
             //Admin role for host
-
             var adminRoleForHost = _context.Roles.IgnoreQueryFilters().FirstOrDefault(r => r.TenantId == null && r.Name == StaticRoleNames.Host.Admin);
             if (adminRoleForHost == null)
             {
@@ -40,20 +39,20 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations.Seed.Host
             }
 
             //admin user for host
-
-            var adminUserForHost = _context.Users.IgnoreQueryFilters().FirstOrDefault(u => u.TenantId == null && u.UserName == AbpUserBase.AdminUserName);
+            var adminUserForHost = _context.Users.IgnoreQueryFilters().FirstOrDefault(u => u.TenantId == null && u.UserName == StaticUserAccount.AdminAccount);
             if (adminUserForHost == null)
             {
                 var user = new User
                 {
                     TenantId = null,
-                    UserName = AbpUserBase.AdminUserName,
+                    UserName = StaticUserAccount.AdminAccount,
                     Name = "admin",
                     Surname = "admin",
                     EmailAddress = "admin@csoc.local",
                     IsEmailConfirmed = true,
                     ShouldChangePasswordOnNextLogin = false,
                     IsActive = true,
+                    AccountType = AccountType.Normal,
                     Password = "AM4OLBpptxBYmM79lGOX9egzZk3vIQU3d/gFCJzaBjAPXzYIK3tQ2N7X4fcrHtElTw==", //123qwe
                     CountryId = 1
                 };
@@ -72,7 +71,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations.Seed.Host
                 {
                     TenantId = null,
                     UserId = adminUserForHost.Id,
-                    UserName = AbpUserBase.AdminUserName,
+                    UserName = StaticUserAccount.AdminAccount,
                     EmailAddress = adminUserForHost.EmailAddress
                 });
 
@@ -83,6 +82,33 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations.Seed.Host
                 _context.NotificationSubscriptions.Add(new NotificationSubscriptionInfo(SequentialGuidGenerator.Instance.Create(), null, adminUserForHost.Id, AppNotificationNames.NewUserRegistered));
 
                 _context.SaveChanges();
+            }
+
+            //Service account for host
+            var serviceAccountForHost = _context.Users.IgnoreQueryFilters().FirstOrDefault(u => u.TenantId == null && u.UserName == StaticUserAccount.ServiceAccount);
+            if (serviceAccountForHost == null)
+            {
+                var user = new User
+                {
+                    TenantId = null,
+                    UserName = StaticUserAccount.ServiceAccount,
+                    Name = "Service Account",
+                    Surname = "Service Account",
+                    EmailAddress = "service_account@csoc.local",
+                    IsEmailConfirmed = true,
+                    ShouldChangePasswordOnNextLogin = false,
+                    IsActive = false,
+                    AccountType = AccountType.Service,
+                    Password = "AM4OLBpptxBYmM79lGOX9egzZk3vIQU3d/gFCJzaBjAPXzYIK3tQ2N7X4fcrHtElTw==", //123qwe
+                    CountryId = 1
+                };
+
+                user.SetNormalizedNames();
+
+                _context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[AbpUsers] ON");
+                _context.Users.Add(user);
+                _context.SaveChanges();
+                _context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[AbpUsers] OFF");
             }
         }
     }

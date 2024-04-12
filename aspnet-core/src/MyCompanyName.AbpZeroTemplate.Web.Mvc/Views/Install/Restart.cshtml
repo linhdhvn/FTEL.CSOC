@@ -15,32 +15,32 @@
 <head>
     <title>AbpZeroTemplate Installation</title>
 
-    <link rel="shortcut icon" href="~/favicon.ico"/>
+    <link rel="shortcut icon" href="~/favicon.ico" />
 
-    <link rel="stylesheet" abp-href="/view-resources/Areas/AppAreaName/Views/_Bundles/vendors.bundle.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="/metronic/themes/default/css/style.bundle.css" asp-append-version="true"/>
-    <link rel="stylesheet" abp-href="/view-resources/Areas/AppAreaName/Views/_Bundles/app-layout-libs.css" asp-append-version="true"/>
-    <link rel="stylesheet" abp-href="/view-resources/Areas/AppAreaName/Views/_Bundles/common-styles.css" asp-append-version="true"/>
+    <link rel="stylesheet" abp-href="/view-resources/Areas/AppAreaName/Views/_Bundles/vendors.bundle.css" asp-append-version="true" />
+    <link rel="stylesheet" href="/metronic/themes/default/css/style.bundle.css" asp-append-version="true" />
+    <link rel="stylesheet" abp-href="/view-resources/Areas/AppAreaName/Views/_Bundles/app-layout-libs.css" asp-append-version="true" />
+    <link rel="stylesheet" abp-href="/view-resources/Areas/AppAreaName/Views/_Bundles/common-styles.css" asp-append-version="true" />
 
     @if (CultureHelper.IsRtl)
     {
-        <link rel="stylesheet" href="/Common/Styles/template-rtl.css" asp-append-version="true"/>
+        <link rel="stylesheet" href="/Common/Styles/template-rtl.css" asp-append-version="true" />
     }
 
-    <link rel="stylesheet" abp-href="/view-resources/Views/Install/Index.css" asp-append-version="true"/>
+    <link rel="stylesheet" abp-href="/view-resources/Views/Install/Index.css" asp-append-version="true" />
 </head>
 <body class="page-fixed header-static">
-<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-    <div class="@(await GetContainerClass())">
-        <div class="card">
-            <div class="card-body">
-                Restarting application...
+    <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+        <div class="@(await GetContainerClass())">
+            <div class="card">
+                <div class="card-body">
+                    Restarting application...
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<script type="text/javascript">
+    <script type="text/javascript">
         document.location = '/';
     </script>
 </body>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace MyCompanyName.AbpZeroTemplate.Inventory.Dtos
@@ -17,6 +18,9 @@ namespace MyCompanyName.AbpZeroTemplate.Inventory.Dtos
             [XmlAttribute(AttributeName = "IsVirtualMachine")]
             public string IsVirtualMachine { get; set; }
 
+            [XmlAttribute(AttributeName = "AgentScriptVersion")]
+            public string AgentScriptVersion { get; set; }
+
             [XmlElement(ElementName = "BaseBoard")]
             public BaseBoard BaseBoard { get; set; }
 
@@ -26,8 +30,8 @@ namespace MyCompanyName.AbpZeroTemplate.Inventory.Dtos
             [XmlElement(ElementName = "PhysicalMemories")]
             public PhysicalMemories PhysicalMemories { get; set; }
 
-            [XmlElement(ElementName = "PhysicalDisks")]
-            public PhysicalDisks PhysicalDisks { get; set; }
+            [XmlElement(ElementName = "DataStorages")]
+            public DataStorages DataStorages { get; set; }
 
             [XmlElement(ElementName = "Monitors")]
             public Monitors Monitors { get; set; }
@@ -37,15 +41,11 @@ namespace MyCompanyName.AbpZeroTemplate.Inventory.Dtos
 
             [XmlElement(ElementName = "OperatingSystem")]
             public OperatingSystem OperatingSystem { get; set; }
-
-            [XmlElement(ElementName = "ScanScriptInfo")]
-            public ScanScriptInfo ScanScriptInfo { get; set; }
         }
 
         [XmlRoot(ElementName = "BaseBoard")]
         public class BaseBoard
         {
-
             [XmlAttribute(AttributeName = "Manufacturer")]
             public string Manufacturer { get; set; }
 
@@ -65,7 +65,6 @@ namespace MyCompanyName.AbpZeroTemplate.Inventory.Dtos
         [XmlRoot(ElementName = "CPU")]
         public class CPU
         {
-
             [XmlAttribute(AttributeName = "Name")]
             public string Name { get; set; }
 
@@ -82,20 +81,18 @@ namespace MyCompanyName.AbpZeroTemplate.Inventory.Dtos
         [XmlRoot(ElementName = "Processors")]
         public class Processors
         {
-
             [XmlElement(ElementName = "CPU")]
-            public CPU CPU { get; set; }
+            public List<CPU> CPU { get; set; }
         }
 
         [XmlRoot(ElementName = "MemoryModule")]
         public class MemoryModule
         {
-
             [XmlAttribute(AttributeName = "Name")]
             public string Name { get; set; }
 
             [XmlAttribute(AttributeName = "Capacity")]
-            public double Capacity { get; set; }
+            public long Capacity { get; set; }
 
             [XmlAttribute(AttributeName = "Speed")]
             public int Speed { get; set; }
@@ -107,21 +104,19 @@ namespace MyCompanyName.AbpZeroTemplate.Inventory.Dtos
             public string PartNumber { get; set; }
 
             [XmlAttribute(AttributeName = "SerialNumber")]
-            public int SerialNumber { get; set; }
+            public string SerialNumber { get; set; }
         }
 
         [XmlRoot(ElementName = "PhysicalMemories")]
         public class PhysicalMemories
         {
-
             [XmlElement(ElementName = "MemoryModule")]
             public List<MemoryModule> MemoryModule { get; set; }
         }
 
-        [XmlRoot(ElementName = "Disk")]
-        public class Disk
+        [XmlRoot(ElementName = "DiskDrive")]
+        public class DiskDrive
         {
-
             [XmlAttribute(AttributeName = "MediaType")]
             public string MediaType { get; set; }
 
@@ -129,24 +124,22 @@ namespace MyCompanyName.AbpZeroTemplate.Inventory.Dtos
             public string Model { get; set; }
 
             [XmlAttribute(AttributeName = "Size")]
-            public double Size { get; set; }
+            public long Size { get; set; }
 
             [XmlAttribute(AttributeName = "SerialNumber")]
             public string SerialNumber { get; set; }
         }
 
-        [XmlRoot(ElementName = "PhysicalDisks")]
-        public class PhysicalDisks
+        [XmlRoot(ElementName = "DataStorages")]
+        public class DataStorages
         {
-
-            [XmlElement(ElementName = "Disk")]
-            public List<Disk> Disk { get; set; }
+            [XmlElement(ElementName = "DiskDrive")]
+            public List<DiskDrive> DiskDrive { get; set; }
         }
 
         [XmlRoot(ElementName = "Display")]
         public class Display
         {
-
             [XmlAttribute(AttributeName = "Manufacturer")]
             public string Manufacturer { get; set; }
 
@@ -160,7 +153,6 @@ namespace MyCompanyName.AbpZeroTemplate.Inventory.Dtos
         [XmlRoot(ElementName = "Monitors")]
         public class Monitors
         {
-
             [XmlElement(ElementName = "Display")]
             public List<Display> Display { get; set; }
         }
@@ -168,7 +160,6 @@ namespace MyCompanyName.AbpZeroTemplate.Inventory.Dtos
         [XmlRoot(ElementName = "Adapter")]
         public class Adapter
         {
-
             [XmlAttribute(AttributeName = "Name")]
             public string Name { get; set; }
 
@@ -185,15 +176,13 @@ namespace MyCompanyName.AbpZeroTemplate.Inventory.Dtos
         [XmlRoot(ElementName = "NetworkAdapters")]
         public class NetworkAdapters
         {
-
             [XmlElement(ElementName = "Adapter")]
-            public Adapter Adapter { get; set; }
+            public List<Adapter> Adapter { get; set; }
         }
 
         [XmlRoot(ElementName = "OperatingSystem")]
         public class OperatingSystem
         {
-
             [XmlAttribute(AttributeName = "Name")]
             public string Name { get; set; }
 
@@ -205,13 +194,6 @@ namespace MyCompanyName.AbpZeroTemplate.Inventory.Dtos
 
             [XmlAttribute(AttributeName = "LastBootUpTime")]
             public string LastBootUpTime { get; set; }
-        }
-
-        [XmlRoot(ElementName = "ScanScriptInfo")]
-        public class ScanScriptInfo
-        {
-            [XmlAttribute(AttributeName = "version")]
-            public double Version { get; set; }
         }
     }
 }
