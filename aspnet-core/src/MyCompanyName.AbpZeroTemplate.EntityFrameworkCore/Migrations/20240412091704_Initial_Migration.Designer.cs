@@ -12,7 +12,7 @@ using MyCompanyName.AbpZeroTemplate.EntityFrameworkCore;
 namespace MyCompanyName.AbpZeroTemplate.Migrations
 {
     [DbContext(typeof(AbpZeroTemplateDbContext))]
-    [Migration("20240409070452_Initial_Migration")]
+    [Migration("20240412091704_Initial_Migration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -1590,6 +1590,9 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<int>("AccountType")
+                        .HasColumnType("int");
+
                     b.Property<string>("AuthenticationSource")
                         .HasMaxLength(64)
                         .HasColumnType("nvarchar(64)");
@@ -1745,6 +1748,266 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                     b.ToTable("AbpUsers");
                 });
 
+            modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Inventory.BaseBoard", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("BIOSVersion")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Manufacturer")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Model")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("SerialNumber")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("UUID")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<DateTime?>("UpdateTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("inv_BaseBoards");
+                });
+
+            modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Inventory.DataStorage", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("BaseBoardId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("HealthStatus")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("MediaType")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Model")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("SerialNumber")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<long?>("Size")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BaseBoardId");
+
+                    b.ToTable("inv_DataStorages");
+                });
+
+            modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Inventory.NetworkAdapter", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("BaseBoardId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("IPv4Address")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("IPv6Address")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("PhysicalAddress")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<bool>("UseDHCP")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BaseBoardId");
+
+                    b.ToTable("inv_NetworkAdapters");
+                });
+
+            modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Inventory.PhysicalMemory", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("BaseBoardId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("Capacity")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("PartNumber")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("SerialNumber")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<int>("Speed")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BaseBoardId");
+
+                    b.ToTable("inv_PhysicalMemories");
+                });
+
+            modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Inventory.Processor", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("BaseBoardId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("PartNumber")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("ProcessorId")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("SerialNumber")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<DateTime?>("UpdateTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BaseBoardId");
+
+                    b.ToTable("inv_Processors");
+                });
+
+            modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Inventory.Resource", b =>
+                {
+                    b.Property<long>("Id")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("BaseBoardId")
+                        .HasColumnType("bigint")
+                        .HasColumnOrder(1);
+
+                    b.Property<string>("BuildNumber")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Domain")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("HostName")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("InstallDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastBootUpTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("OperatingSystem")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<DateTime?>("UpdateTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id", "BaseBoardId");
+
+                    b.HasIndex("BaseBoardId");
+
+                    b.ToTable("inv_Resources");
+                });
+
             modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Localization.Country", b =>
                 {
                     b.Property<int>("Id")
@@ -1779,9 +2042,16 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
+                    b.Property<string>("InternationalName")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
                     b.Property<string>("InternetCountryCode")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("IsVisible")
+                        .HasColumnType("bit");
 
                     b.Property<int>("Sort")
                         .HasColumnType("int");
@@ -1806,6 +2076,9 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                     b.Property<int>("DistrictTypeId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsVisible")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LatiLongTude")
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
@@ -1817,6 +2090,9 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
 
                     b.Property<long>("ProvinceId")
                         .HasColumnType("bigint");
+
+                    b.Property<int>("Sort")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -1860,12 +2136,18 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                     b.Property<int>("CountryId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsVisible")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
                     b.Property<int>("ProvinceTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Sort")
                         .HasColumnType("int");
 
                     b.Property<string>("TelephoneCode")
@@ -1914,6 +2196,9 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                     b.Property<long>("DistrictId")
                         .HasColumnType("bigint");
 
+                    b.Property<bool>("IsVisible")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LatiLongTude")
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
@@ -1922,6 +2207,9 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                         .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
+
+                    b.Property<int>("Sort")
+                        .HasColumnType("int");
 
                     b.Property<int>("WardTypeId")
                         .HasColumnType("int");
@@ -2292,6 +2580,61 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                     b.Navigation("ProvinceFk");
 
                     b.Navigation("WardFk");
+                });
+
+            modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Inventory.DataStorage", b =>
+                {
+                    b.HasOne("MyCompanyName.AbpZeroTemplate.Inventory.BaseBoard", "BaseBoardFk")
+                        .WithMany()
+                        .HasForeignKey("BaseBoardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BaseBoardFk");
+                });
+
+            modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Inventory.NetworkAdapter", b =>
+                {
+                    b.HasOne("MyCompanyName.AbpZeroTemplate.Inventory.BaseBoard", "BaseBoardFk")
+                        .WithMany()
+                        .HasForeignKey("BaseBoardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BaseBoardFk");
+                });
+
+            modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Inventory.PhysicalMemory", b =>
+                {
+                    b.HasOne("MyCompanyName.AbpZeroTemplate.Inventory.BaseBoard", "BaseBoardFk")
+                        .WithMany()
+                        .HasForeignKey("BaseBoardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BaseBoardFk");
+                });
+
+            modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Inventory.Processor", b =>
+                {
+                    b.HasOne("MyCompanyName.AbpZeroTemplate.Inventory.BaseBoard", "BaseBoardFk")
+                        .WithMany()
+                        .HasForeignKey("BaseBoardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BaseBoardFk");
+                });
+
+            modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Inventory.Resource", b =>
+                {
+                    b.HasOne("MyCompanyName.AbpZeroTemplate.Inventory.BaseBoard", "BaseBoardFk")
+                        .WithMany()
+                        .HasForeignKey("BaseBoardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BaseBoardFk");
                 });
 
             modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Localization.District", b =>

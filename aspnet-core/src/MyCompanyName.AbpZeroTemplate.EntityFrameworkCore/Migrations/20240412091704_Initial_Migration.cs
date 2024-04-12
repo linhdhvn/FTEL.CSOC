@@ -463,7 +463,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                     TelephoneCode = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     InternetCountryCode = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     Sort = table.Column<int>(type: "int", nullable: false),
-                    IsVisible = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
+                    IsVisible = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -637,7 +637,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                     CountryId = table.Column<int>(type: "int", nullable: false),
                     ProvinceTypeId = table.Column<int>(type: "int", nullable: false),
                     Sort = table.Column<int>(type: "int", nullable: false),
-                    IsVisible = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
+                    IsVisible = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -715,7 +715,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                     ProvinceId = table.Column<long>(type: "bigint", nullable: false),
                     DistrictTypeId = table.Column<int>(type: "int", nullable: false),
                     Sort = table.Column<int>(type: "int", nullable: false),
-                    IsVisible = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
+                    IsVisible = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -745,7 +745,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                     DistrictId = table.Column<long>(type: "bigint", nullable: false),
                     WardTypeId = table.Column<int>(type: "int", nullable: false),
                     Sort = table.Column<int>(type: "int", nullable: false),
-                    IsVisible = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
+                    IsVisible = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -776,6 +776,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                     SignInToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     GoogleAuthenticatorKey = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RecoveryCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AccountType = table.Column<int>(type: "int", nullable: false),
                     CountryId = table.Column<int>(type: "int", nullable: true),
                     ProvinceId = table.Column<long>(type: "bigint", nullable: true),
                     DistrictId = table.Column<long>(type: "bigint", nullable: true),
@@ -807,8 +808,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
                     NormalizedEmailAddress = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: true),
-                    AccountType = table.Column<int>(type: "int", nullable: false)
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1544,6 +1544,8 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                 name: "IX_AppUserDelegations_TenantId_TargetUserId",
                 table: "AppUserDelegations",
                 columns: new[] { "TenantId", "TargetUserId" });
+
+
 
             migrationBuilder.CreateIndex(
                 name: "IX_local_Districts_DistrictTypeId",
