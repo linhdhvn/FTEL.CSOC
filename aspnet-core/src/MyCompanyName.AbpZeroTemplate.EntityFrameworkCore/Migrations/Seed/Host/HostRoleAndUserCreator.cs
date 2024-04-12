@@ -105,10 +105,8 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations.Seed.Host
 
                 user.SetNormalizedNames();
 
-                _context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[AbpUsers] ON");
                 _context.Users.Add(user);
                 _context.SaveChanges();
-                _context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[AbpUsers] OFF");
             }
         }
     }

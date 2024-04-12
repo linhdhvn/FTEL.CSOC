@@ -624,6 +624,8 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+
+
             migrationBuilder.CreateTable(
                 name: "local_Provinces",
                 columns: table => new
@@ -1544,8 +1546,6 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                 name: "IX_AppUserDelegations_TenantId_TargetUserId",
                 table: "AppUserDelegations",
                 columns: new[] { "TenantId", "TargetUserId" });
-
-
 
             migrationBuilder.CreateIndex(
                 name: "IX_local_Districts_DistrictTypeId",

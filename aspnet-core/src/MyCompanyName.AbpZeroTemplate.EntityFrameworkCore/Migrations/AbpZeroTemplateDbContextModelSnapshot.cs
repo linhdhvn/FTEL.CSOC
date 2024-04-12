@@ -2319,60 +2319,7 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations
                     b.Navigation("WardFk");
                 });
 
-            modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Inventory.DataStorage", b =>
-                {
-                    b.HasOne("MyCompanyName.AbpZeroTemplate.Inventory.BaseBoard", "BaseBoardFk")
-                        .WithMany()
-                        .HasForeignKey("BaseBoardId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("BaseBoardFk");
-                });
-
-            modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Inventory.NetworkAdapter", b =>
-                {
-                    b.HasOne("MyCompanyName.AbpZeroTemplate.Inventory.BaseBoard", "BaseBoardFk")
-                        .WithMany()
-                        .HasForeignKey("BaseBoardId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("BaseBoardFk");
-                });
-
-            modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Inventory.PhysicalMemory", b =>
-                {
-                    b.HasOne("MyCompanyName.AbpZeroTemplate.Inventory.BaseBoard", "BaseBoardFk")
-                        .WithMany()
-                        .HasForeignKey("BaseBoardId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("BaseBoardFk");
-                });
-
-            modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Inventory.Processor", b =>
-                {
-                    b.HasOne("MyCompanyName.AbpZeroTemplate.Inventory.BaseBoard", "BaseBoardFk")
-                        .WithMany()
-                        .HasForeignKey("BaseBoardId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("BaseBoardFk");
-                });
-
-            modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Inventory.Resource", b =>
-                {
-                    b.HasOne("MyCompanyName.AbpZeroTemplate.Inventory.BaseBoard", "BaseBoardFk")
-                        .WithMany()
-                        .HasForeignKey("BaseBoardId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("BaseBoardFk");
-                });
+    
 
             modelBuilder.Entity("MyCompanyName.AbpZeroTemplate.Localization.District", b =>
                 {

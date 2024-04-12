@@ -12,7 +12,7 @@ using MyCompanyName.AbpZeroTemplate.EntityFrameworkCore;
 namespace MyCompanyName.AbpZeroTemplate.Migrations
 {
     [DbContext(typeof(AbpZeroTemplateDbContext))]
-    [Migration("20240412091704_Initial_Migration")]
+    [Migration("20240412092806_Initial_Migration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
