@@ -30,14 +30,6 @@ namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Startup
                     )
                 )
                 .AddItem(new MenuItemDefinition(
-                        AppAreaNamePageNames.Host.BaseBoards,
-                        L("BaseBoards"),
-                        url: "AppAreaName/BaseBoards",
-                        icon: "flaticon-more",
-                        permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_BaseBoards)
-                    )
-                )
-                .AddItem(new MenuItemDefinition(
                         AppAreaNamePageNames.Host.Processors,
                         L("Processors"),
                         url: "AppAreaName/Processors",
@@ -59,14 +51,6 @@ namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Startup
                         url: "AppAreaName/DataStorages",
                         icon: "flaticon-more",
                         permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_DataStorages)
-                    )
-                )
-                .AddItem(new MenuItemDefinition(
-                        AppAreaNamePageNames.Host.NetworkAdapters,
-                        L("NetworkAdapters"),
-                        url: "AppAreaName/NetworkAdapters",
-                        icon: "flaticon-more",
-                        permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_NetworkAdapters)
                     )
                 )
                 .AddItem(new MenuItemDefinition(

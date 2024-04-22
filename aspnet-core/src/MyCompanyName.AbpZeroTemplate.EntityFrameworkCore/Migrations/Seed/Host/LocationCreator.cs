@@ -47,19 +47,6 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations.Seed.Host
 
         private void CreateProvinces()
         {
-            var _provinceType = _context.ProvinceTypes.IgnoreQueryFilters().FirstOrDefault();
-            if (_provinceType == null)
-            {
-                _context.ProvinceTypes.AddRange([
-                    new Localization.ProvinceType { Id = 1, Name = "Thành phố" },
-                    new Localization.ProvinceType { Id = 2, Name = "Tỉnh" }
-                ]);
-
-                _context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[local_ProvinceTypes] ON");
-                _context.SaveChanges();
-                _context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[local_ProvinceTypes] OFF");
-            }
-
             var _provinces = _context.Provinces.IgnoreQueryFilters().FirstOrDefault();
             if (_provinces == null)
             {
@@ -80,21 +67,6 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations.Seed.Host
 
         private void CreateDistricts()
         {
-            var _districtTypes = _context.DistrictTypes.IgnoreQueryFilters().FirstOrDefault();
-            if (_districtTypes == null)
-            {
-                _context.DistrictTypes.AddRange([
-                    new Localization.DistrictType { Id = 1, Name = "Thị xã" },
-                    new Localization.DistrictType { Id = 2, Name = "Huyện" },
-                    new Localization.DistrictType { Id = 3, Name = "Quận" },
-                    new Localization.DistrictType { Id = 4, Name = "Thành phố" }
-                ]);
-
-                _context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[local_DistrictTypes] ON");
-                _context.SaveChanges();
-                _context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[local_DistrictTypes] OFF");
-            }
-
             var _district = _context.Districts.IgnoreQueryFilters().FirstOrDefault();
             if (_district == null)
             {
@@ -115,20 +87,6 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations.Seed.Host
 
         private void CreateWards()
         {
-            var _wardTypes = _context.WardTypes.IgnoreQueryFilters().FirstOrDefault();
-            if (_wardTypes == null)
-            {
-                _context.WardTypes.AddRange([
-                    new Localization.WardType { Id = 1, Name = "Xã" },
-                    new Localization.WardType { Id = 2, Name = "Thị trấn" },
-                    new Localization.WardType { Id = 3, Name = "Phường" }
-                ]);
-
-                _context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[local_WardTypes] ON");
-                _context.SaveChanges();
-                _context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT [dbo].[local_WardTypes] OFF");
-            }
-
             var _ward = _context.Wards.IgnoreQueryFilters().FirstOrDefault();
             if (_ward == null)
             {

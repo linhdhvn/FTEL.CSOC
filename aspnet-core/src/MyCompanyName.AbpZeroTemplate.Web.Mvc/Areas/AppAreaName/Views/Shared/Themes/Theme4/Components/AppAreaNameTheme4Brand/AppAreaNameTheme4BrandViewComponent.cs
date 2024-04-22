@@ -4,7 +4,7 @@ using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Layout;
 using MyCompanyName.AbpZeroTemplate.Web.Session;
 using MyCompanyName.AbpZeroTemplate.Web.Views;
 
-namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Views.Shared.Themes.Theme4.Components.AppAreaNameTheme4Brand
+namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Views.Shared.Themes.Theme13.Components.AppAreaNameTheme13Brand
 {
     public class AppAreaNameTheme4BrandViewComponent : AbpZeroTemplateViewComponent
     {

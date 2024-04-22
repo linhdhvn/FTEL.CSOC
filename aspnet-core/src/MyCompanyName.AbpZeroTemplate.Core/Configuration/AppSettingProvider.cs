@@ -42,15 +42,6 @@ namespace MyCompanyName.AbpZeroTemplate.Configuration
                 .Union(GetTheme2Settings())
                 .Union(GetTheme3Settings())
                 .Union(GetTheme4Settings())
-                .Union(GetTheme5Settings())
-                .Union(GetTheme6Settings())
-                .Union(GetTheme7Settings())
-                .Union(GetTheme8Settings())
-                .Union(GetTheme9Settings())
-                .Union(GetTheme10Settings())
-                .Union(GetTheme11Settings())
-                .Union(GetTheme12Settings())
-                .Union(GetTheme13Settings())
                 .Union(GetDashboardSettings())
                 .Union(GetExternalLoginProviderSettings());
         }
@@ -215,12 +206,15 @@ namespace MyCompanyName.AbpZeroTemplate.Configuration
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.DarkMode,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.DarkMode, "false"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
+
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.Header.DesktopFixedHeader,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Header.DesktopFixedHeader, "true"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
+
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.Header.MobileFixedHeader,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Header.MobileFixedHeader, "false"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
+
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.Header.Skin,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Header.Skin, "light"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
@@ -228,6 +222,7 @@ namespace MyCompanyName.AbpZeroTemplate.Configuration
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.SubHeader.Fixed,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.SubHeader.Fixed, "true"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
+
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.SubHeader.Style,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.SubHeader.Style, "solid"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
@@ -235,26 +230,31 @@ namespace MyCompanyName.AbpZeroTemplate.Configuration
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.LeftAside.AsideSkin,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.LeftAside.AsideSkin, "light"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
+
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.LeftAside.FixedAside,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.LeftAside.FixedAside, "true"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
+
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.LeftAside.AllowAsideMinimizing,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.LeftAside.AllowAsideMinimizing,
                         "true"), clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
+
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.LeftAside.DefaultMinimizedAside,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.LeftAside.DefaultMinimizedAside,
                         "false"), clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
+
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.LeftAside.SubmenuToggle,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.LeftAside.SubmenuToggle, "false"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
+
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.LeftAside.HoverableAside,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.LeftAside.HoverableAside,
                         "true"), clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
 
-
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.Footer.FixedFooter,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Footer.FixedFooter, "false"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
+
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.SearchActive,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.SearchActive, "false"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All)
@@ -270,18 +270,23 @@ namespace MyCompanyName.AbpZeroTemplate.Configuration
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.DarkMode,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.DarkMode, "false"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
+
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.LayoutType,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.LayoutType, "fixed"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
+
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.Header.DesktopFixedHeader,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Header.DesktopFixedHeader, "true"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
+
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.Header.MobileFixedHeader,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Header.MobileFixedHeader, "false"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
+
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.Header.MinimizeType,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Header.MinimizeType, "topbar"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
+
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.SearchActive,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.SearchActive, "false"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All)
@@ -297,23 +302,19 @@ namespace MyCompanyName.AbpZeroTemplate.Configuration
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.DarkMode,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.DarkMode, "false"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
+
+                new SettingDefinition(themeName + "." + AppSettings.UiManagement.LayoutType,
+                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.LayoutType, "fluid"),
+                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
+
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.Header.DesktopFixedHeader,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Header.DesktopFixedHeader, "true"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
+
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.Header.MobileFixedHeader,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Header.MobileFixedHeader, "false"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
 
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.SubHeader.Fixed,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.SubHeader.Fixed, "true"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.SubHeader.Style,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.SubHeader.Style, "solid"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.Footer.FixedFooter,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Footer.FixedFooter, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.SearchActive,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.SearchActive, "false"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All)
@@ -329,256 +330,19 @@ namespace MyCompanyName.AbpZeroTemplate.Configuration
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.DarkMode,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.DarkMode, "false"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.LayoutType,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.LayoutType, "fixed"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.Header.DesktopFixedHeader,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Header.DesktopFixedHeader, "true"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.Header.MobileFixedHeader,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Header.MobileFixedHeader, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.Header.MinimizeType,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Header.MinimizeType, "menu"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.SearchActive,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.SearchActive, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All)
-            };
-        }
 
-        private IEnumerable<SettingDefinition> GetTheme5Settings()
-        {
-            var themeName = "theme5";
-
-            return new[]
-            {
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.DarkMode,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.DarkMode, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.LayoutType,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.LayoutType, "fixed"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.Header.DesktopFixedHeader,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Header.DesktopFixedHeader, "true"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.Header.MobileFixedHeader,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Header.MobileFixedHeader, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.Header.MinimizeType,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Header.MinimizeType, "menu"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.Footer.FixedFooter,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Footer.FixedFooter, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.SearchActive,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.SearchActive, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All)
-            };
-        }
-
-        private IEnumerable<SettingDefinition> GetTheme6Settings()
-        {
-            var themeName = "theme6";
-
-            return new[]
-            {
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.DarkMode,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.DarkMode, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.Header.DesktopFixedHeader,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Header.DesktopFixedHeader, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.Header.MobileFixedHeader,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Header.MobileFixedHeader, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.SubHeader.Fixed,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.SubHeader.Fixed, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.SubHeader.Style,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.SubHeader.Style, "solid"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.Footer.FixedFooter,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Footer.FixedFooter, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.SearchActive,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.SearchActive, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All)
-            };
-        }
-
-        private IEnumerable<SettingDefinition> GetTheme7Settings()
-        {
-            var themeName = "theme7";
-
-            return new[]
-            {
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.DarkMode,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.DarkMode, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.Header.DesktopFixedHeader,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Header.DesktopFixedHeader, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.Header.MobileFixedHeader,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Header.MobileFixedHeader, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.SubHeader.Fixed,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.SubHeader.Fixed, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.SubHeader.Style,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.SubHeader.Style, "solid"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.Footer.FixedFooter,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Footer.FixedFooter, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.SearchActive,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.SearchActive, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All)
-            };
-        }
-
-        private IEnumerable<SettingDefinition> GetTheme8Settings()
-        {
-            var themeName = "theme8";
-
-            return new[]
-            {
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.DarkMode,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.DarkMode, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.LayoutType,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.LayoutType, "fluid"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.Header.DesktopFixedHeader,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Header.DesktopFixedHeader, "true"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.Header.MobileFixedHeader,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Header.MobileFixedHeader, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.SearchActive,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.SearchActive, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All)
-            };
-        }
 
-        private IEnumerable<SettingDefinition> GetTheme9Settings()
-        {
-            var themeName = "theme9";
-
-            return new[]
-            {
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.DarkMode,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.DarkMode, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.LayoutType,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.LayoutType, "fixed"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.Header.DesktopFixedHeader,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Header.DesktopFixedHeader, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.Header.MobileFixedHeader,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Header.MobileFixedHeader, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.SearchActive,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.SearchActive, "true"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All)
-            };
-        }
-
-        private IEnumerable<SettingDefinition> GetTheme10Settings()
-        {
-            var themeName = "theme10";
-
-            return new[]
-            {
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.DarkMode,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.DarkMode, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.LayoutType,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.LayoutType, "fluid"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.Header.DesktopFixedHeader,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Header.DesktopFixedHeader, "true"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.Header.MobileFixedHeader,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Header.MobileFixedHeader, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.SearchActive,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.SearchActive, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All)
-            };
-        }
-
-        private IEnumerable<SettingDefinition> GetTheme11Settings()
-        {
-            var themeName = "theme11";
-
-            return new[]
-            {
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.DarkMode,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.DarkMode, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.LayoutType,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.LayoutType, "fluid-xxl"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.Header.MobileFixedHeader,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Header.MobileFixedHeader, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.LeftAside.FixedAside,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.LeftAside.FixedAside, "true"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.SearchActive,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.SearchActive, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All)
-            };
-        }
-
-        private IEnumerable<SettingDefinition> GetTheme12Settings()
-        {
-            var themeName = "theme12";
-
-            return new[]
-            {
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.DarkMode,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.DarkMode, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.LayoutType,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.LayoutType, "fluid-xxl"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.Header.MobileFixedHeader,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Header.MobileFixedHeader, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.LeftAside.FixedAside,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.LeftAside.FixedAside, "true"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.SearchActive,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.SearchActive, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All)
-            };
-        }
-
-        private IEnumerable<SettingDefinition> GetTheme13Settings()
-        {
-            var themeName = "theme13";
-
-            return new[]
-            {
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.DarkMode,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.DarkMode, "false"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
-                new SettingDefinition(themeName + "." + AppSettings.UiManagement.LayoutType,
-                    GetFromAppSettings(themeName + "." + AppSettings.UiManagement.LayoutType, "fluid"),
-                    clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.Header.MobileFixedHeader,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.Header.MobileFixedHeader, "true"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
+
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.LeftAside.FixedAside,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.LeftAside.FixedAside, "true"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
+
                 new SettingDefinition(themeName + "." + AppSettings.UiManagement.SearchActive,
                     GetFromAppSettings(themeName + "." + AppSettings.UiManagement.SearchActive, "false"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider, scopes: SettingScopes.All),
@@ -602,10 +366,7 @@ namespace MyCompanyName.AbpZeroTemplate.Configuration
             return new[]
             {
                 new SettingDefinition(
-                    GetSettingName(
-                        AbpZeroTemplateDashboardCustomizationConsts.Applications.Mvc,
-                        mvcDefaultHostView.DashboardName
-                    ),
+                    GetSettingName(AbpZeroTemplateDashboardCustomizationConsts.Applications.Mvc,mvcDefaultHostView.DashboardName),
                     JsonConvert.SerializeObject(mvcDefaultHostView),
                     scopes: SettingScopes.All,
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider
@@ -637,22 +398,22 @@ namespace MyCompanyName.AbpZeroTemplate.Configuration
                             },
                             new Widget
                             {
-                                WidgetId =
-                                    AbpZeroTemplateDashboardCustomizationConsts.Widgets.Host
-                                        .MemberActivity, // Memeber Activity
-                                Height = 13,
+                                WidgetId = AbpZeroTemplateDashboardCustomizationConsts.Widgets.Host
+                                    .RegionalStats, // Regional Stats
+                                Height = 15,
                                 Width = 6,
-                                PositionX = 6,
-                                PositionY = 28
+                                PositionX = 0,
+                                PositionY = 6
                             },
                             new Widget
                             {
-                                WidgetId = AbpZeroTemplateDashboardCustomizationConsts.Widgets.Host
-                                    .RegionalStats, // Regional Stats
-                                Height = 14,
+                                WidgetId =
+                                    AbpZeroTemplateDashboardCustomizationConsts.Widgets.Host
+                                        .MemberActivity, // Memeber Activity
+                                Height = 15,
                                 Width = 6,
                                 PositionX = 6,
-                                PositionY = 5
+                                PositionY = 6
                             }
                         }
                     }

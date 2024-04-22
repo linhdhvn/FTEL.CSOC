@@ -1,18 +1,17 @@
 ﻿@using MyCompanyName.AbpZeroTemplate
 @using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Layout
-@using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Views.Shared.Components.AppAreaNameLogo
 @model FooterViewModel
 @{
     Layout = null;
 }
-<div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
-    <div class="@(await GetContainerClass()) d-flex flex-column flex-md-row flex-stack">
+<div class="footer py-2 py-lg-0 my-5 d-flex flex-lg-column " id="kt_footer">
+    <div class="@(await GetContainerClass()) d-flex flex-column flex-md-row align-items-center justify-content-between">
         <div class="text-dark order-2 order-md-1">
-            <span class="text-gray-400 fw-bold me-1">
+            <span class="text-muted fw-bold me-2">
                 @Model.GetProductNameWithEdition() | v@(AppVersionHelper.Version) [@AppVersionHelper.ReleaseDate.ToString("yyyyMMdd")]
             </span>
+            <div class="nav nav-dark order-1 order-md-2">
+            </div>
         </div>
-        <ul class="menu menu-gray-600 menu-hover-primary fw-bold order-1">
-        </ul>
     </div>
 </div>

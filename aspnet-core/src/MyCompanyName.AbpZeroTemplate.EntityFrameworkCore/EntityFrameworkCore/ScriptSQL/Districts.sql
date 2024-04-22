@@ -1,4 +1,17 @@
-﻿SET IDENTITY_INSERT [dbo].[local_Districts] ON 
+﻿SET IDENTITY_INSERT [dbo].[local_DistrictTypes] ON 
+GO
+INSERT [dbo].[local_DistrictTypes] ([Id], [Name]) VALUES (1, N'Thị xã')
+GO
+INSERT [dbo].[local_DistrictTypes] ([Id], [Name]) VALUES (2, N'Huyện')
+GO
+INSERT [dbo].[local_DistrictTypes] ([Id], [Name]) VALUES (3, N'Quận')
+GO
+INSERT [dbo].[local_DistrictTypes] ([Id], [Name]) VALUES (4, N'Thành phố')
+GO
+SET IDENTITY_INSERT [dbo].[local_DistrictTypes] OFF
+GO
+
+SET IDENTITY_INSERT [dbo].[local_Districts] ON 
 GO
 INSERT [dbo].[local_Districts] ([Id], [Name], [LatiLongTude], [DistrictTypeId], [ProvinceId], [Sort], [IsVisible]) VALUES (1, N'Ba Đình', N'21 02 08N, 105 49 38E', 3, 1, 1, 1)
 GO

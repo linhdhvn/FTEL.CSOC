@@ -3,12 +3,12 @@
 @model HeaderViewModel
 @{
     Layout = null;
-    var theme = await GetTheme();
 }
+
 <a href="@Url.Action("Index", "Home", new {area = string.Empty})">
     @await Component.InvokeAsync(typeof(AppAreaNameLogoViewComponent), new
     {
-        logoSkin = theme.BaseSettings.Layout.DarkMode ? "dark": "light", 
-        logoClass = "h-30px logo theme-"+(theme.BaseSettings.Layout.DarkMode ? "dark": "light")+"-show"
+        logoSkin = "dark",
+        logoClass = "h-25px h-lg-25px"
     })
 </a>

@@ -23,31 +23,32 @@ namespace MyCompanyName.AbpZeroTemplate.Web.UiCustomization.Metronic
                 {
                     Layout = new ThemeLayoutSettingsDto
                     {
-                        LayoutType = await GetSettingValueAsync(AppSettings.UiManagement.LayoutType),
+                        LayoutType = "fluid",
                         DarkMode = await GetSettingValueAsync<bool>(AppSettings.UiManagement.DarkMode)
                     },
-                    Header = new ThemeHeaderSettingsDto
+                    Menu = new ThemeMenuSettingsDto
                     {
-                        MinimizeDesktopHeaderType = await GetSettingValueAsync(AppSettings.UiManagement.Header.MinimizeType)
-                    },
-                    Menu = new ThemeMenuSettingsDto()
-                    {
+                        FixedAside = await GetSettingValueAsync<bool>(AppSettings.UiManagement.LeftAside.FixedAside),
                         SearchActive = await GetSettingValueAsync<bool>(AppSettings.UiManagement.SearchActive)
                     }
                 }
             };
 
             settings.BaseSettings.Theme = ThemeName;
-            settings.BaseSettings.Menu.FixedAside = true;
-            settings.BaseSettings.Menu.Position = "top";
+            settings.BaseSettings.SubHeader.SubheaderStyle = "transparent";
+            settings.BaseSettings.Menu.Position = "left";
             settings.BaseSettings.Menu.AsideSkin = "light";
-            settings.BaseSettings.Menu.EnableSecondary = false;
-
-            settings.BaseSettings.SubHeader.TitleStyle = "text-white me-5 mb-0";
-            settings.BaseSettings.SubHeader.ContainerStyle = "subheader pt-10 pb-8 toolbar";
+            settings.BaseSettings.Menu.SubmenuToggle = "false";
+            settings.BaseSettings.Menu.FixedAside = true;
             
-            settings.IsLeftMenuUsed = false;
-            settings.IsTopMenuUsed = true;
+            settings.BaseSettings.SubHeader.SubheaderSize = 5;
+            settings.BaseSettings.SubHeader.TitleStyle = "text-dark fw-bold my-2 me-5";
+            settings.BaseSettings.SubHeader.ContainerStyle = "toolbar";
+            settings.BaseSettings.SubHeader.SubContainerStyle = "px-10";
+            settings.BaseSettings.SubHeader.FixedSubHeader = true;
+            
+            settings.IsLeftMenuUsed = true;
+            settings.IsTopMenuUsed = false;
             settings.IsTabMenuUsed = false;
 
             return settings;
@@ -58,23 +59,21 @@ namespace MyCompanyName.AbpZeroTemplate.Web.UiCustomization.Metronic
             await SettingManager.ChangeSettingForUserAsync(user, AppSettings.UiManagement.Theme, ThemeName);
 
             await ChangeSettingForUserAsync(user, AppSettings.UiManagement.DarkMode, settings.Layout.DarkMode.ToString());
-            await ChangeSettingForUserAsync(user, AppSettings.UiManagement.LayoutType, settings.Layout.LayoutType);
-            await ChangeSettingForUserAsync(user, AppSettings.UiManagement.Header.DesktopFixedHeader, settings.Header.DesktopFixedHeader.ToString());
             await ChangeSettingForUserAsync(user, AppSettings.UiManagement.Header.MobileFixedHeader, settings.Header.MobileFixedHeader.ToString());
-            await ChangeSettingForUserAsync(user, AppSettings.UiManagement.Header.MinimizeType, settings.Header.MinimizeDesktopHeaderType);
+            await ChangeSettingForUserAsync(user, AppSettings.UiManagement.LeftAside.FixedAside, settings.Menu.FixedAside.ToString());
             await ChangeSettingForUserAsync(user, AppSettings.UiManagement.SearchActive, settings.Menu.SearchActive.ToString());
         }
 
         public async Task UpdateTenantUiManagementSettingsAsync(int tenantId, ThemeSettingsDto settings, UserIdentifier changerUser)
         {
             await SettingManager.ChangeSettingForTenantAsync(tenantId, AppSettings.UiManagement.Theme, ThemeName);
-
+            
             await ChangeSettingForTenantAsync(tenantId, AppSettings.UiManagement.DarkMode, settings.Layout.DarkMode.ToString());
-            await ChangeSettingForTenantAsync(tenantId, AppSettings.UiManagement.LayoutType, settings.Layout.LayoutType);
-            await ChangeSettingForTenantAsync(tenantId, AppSettings.UiManagement.Header.DesktopFixedHeader, settings.Header.DesktopFixedHeader.ToString());
             await ChangeSettingForTenantAsync(tenantId, AppSettings.UiManagement.Header.MobileFixedHeader, settings.Header.MobileFixedHeader.ToString());
-            await ChangeSettingForTenantAsync(tenantId, AppSettings.UiManagement.Header.MinimizeType, settings.Header.MinimizeDesktopHeaderType);
+            await ChangeSettingForTenantAsync(tenantId, AppSettings.UiManagement.LeftAside.FixedAside, settings.Menu.FixedAside.ToString());
             await ChangeSettingForTenantAsync(tenantId, AppSettings.UiManagement.SearchActive, settings.Menu.SearchActive.ToString());
+            
+            await ResetDarkModeSettingsAsync(changerUser);
         }
 
         public async Task UpdateApplicationUiManagementSettingsAsync(ThemeSettingsDto settings, UserIdentifier changerUser)
@@ -82,11 +81,11 @@ namespace MyCompanyName.AbpZeroTemplate.Web.UiCustomization.Metronic
             await SettingManager.ChangeSettingForApplicationAsync(AppSettings.UiManagement.Theme, ThemeName);
 
             await ChangeSettingForApplicationAsync(AppSettings.UiManagement.DarkMode, settings.Layout.DarkMode.ToString());
-            await ChangeSettingForApplicationAsync(AppSettings.UiManagement.LayoutType, settings.Layout.LayoutType);
-            await ChangeSettingForApplicationAsync(AppSettings.UiManagement.Header.DesktopFixedHeader, settings.Header.DesktopFixedHeader.ToString());
             await ChangeSettingForApplicationAsync(AppSettings.UiManagement.Header.MobileFixedHeader, settings.Header.MobileFixedHeader.ToString());
-            await ChangeSettingForApplicationAsync(AppSettings.UiManagement.Header.MinimizeType, settings.Header.MinimizeDesktopHeaderType);
+            await ChangeSettingForApplicationAsync(AppSettings.UiManagement.LeftAside.FixedAside, settings.Menu.FixedAside.ToString());
             await ChangeSettingForApplicationAsync(AppSettings.UiManagement.SearchActive, settings.Menu.SearchActive.ToString());
+            
+            await ResetDarkModeSettingsAsync(changerUser);
         }
 
         public async Task<ThemeSettingsDto> GetHostUiManagementSettings()
@@ -98,16 +97,17 @@ namespace MyCompanyName.AbpZeroTemplate.Web.UiCustomization.Metronic
                 Theme = theme,
                 Layout = new ThemeLayoutSettingsDto
                 {
-                    LayoutType = await GetSettingValueForApplicationAsync(AppSettings.UiManagement.LayoutType),
+                    LayoutType = "fluid",
                     DarkMode = await GetSettingValueForApplicationAsync<bool>(AppSettings.UiManagement.DarkMode)
                 },
-                Header = new ThemeHeaderSettingsDto
+                Menu = new ThemeMenuSettingsDto
                 {
-                    MinimizeDesktopHeaderType = await GetSettingValueForApplicationAsync(AppSettings.UiManagement.Header.MinimizeType)
-                },
-                Menu = new ThemeMenuSettingsDto()
-                {
+                    FixedAside = await GetSettingValueForApplicationAsync<bool>(AppSettings.UiManagement.LeftAside.FixedAside),
                     SearchActive = await GetSettingValueForApplicationAsync<bool>(AppSettings.UiManagement.SearchActive)
+                },
+                SubHeader = new ThemeSubHeaderSettingsDto
+                {
+                    FixedSubHeader = true
                 }
             };
         }
@@ -121,18 +121,31 @@ namespace MyCompanyName.AbpZeroTemplate.Web.UiCustomization.Metronic
                 Theme = theme,
                 Layout = new ThemeLayoutSettingsDto
                 {
-                    LayoutType = await GetSettingValueForTenantAsync(AppSettings.UiManagement.LayoutType, tenantId),
-                    DarkMode = await GetSettingValueForTenantAsync<bool>(AppSettings.UiManagement.DarkMode, tenantId)
+                    LayoutType = "fluid",
+                    DarkMode = await GetSettingValueForTenantAsync<bool>(AppSettings.UiManagement.DarkMode, tenantId),
                 },
-                Header = new ThemeHeaderSettingsDto
+                Menu = new ThemeMenuSettingsDto
                 {
-                    MinimizeDesktopHeaderType = await GetSettingValueForTenantAsync(AppSettings.UiManagement.Header.MinimizeType, tenantId)
-                },
-                Menu = new ThemeMenuSettingsDto()
-                {
+                    FixedAside = await GetSettingValueForTenantAsync<bool>(AppSettings.UiManagement.LeftAside.FixedAside, tenantId),
                     SearchActive = await GetSettingValueForTenantAsync<bool>(AppSettings.UiManagement.SearchActive, tenantId)
+                },
+                SubHeader = new ThemeSubHeaderSettingsDto
+                {
+                    FixedSubHeader = true
                 }
             };
+        }
+
+        public override Task<string> GetBodyClass()
+        {
+            return Task.FromResult(
+                "header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed aside-enabled aside-fixed"
+            );
+        }
+
+        public override Task<string> GetBodyStyle()
+        {
+            return Task.FromResult("--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px");
         }
     }
 }

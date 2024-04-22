@@ -1,6 +1,6 @@
 'Server Details
 '==============
-serviceHostAddress = "itsm.fpt.net"
+serviceHostAddress = "172.30.47.25"
 serviceHostPort = "80"
 serviceProtocol = "http"
 

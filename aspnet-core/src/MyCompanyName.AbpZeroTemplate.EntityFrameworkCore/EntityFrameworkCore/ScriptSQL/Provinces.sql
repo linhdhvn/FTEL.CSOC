@@ -1,4 +1,13 @@
-﻿SET IDENTITY_INSERT [dbo].[local_Provinces] ON 
+﻿SET IDENTITY_INSERT [dbo].[local_ProvinceTypes] ON 
+GO
+INSERT [dbo].[local_ProvinceTypes] ([Id], [Name]) VALUES (1, N'Thành phố')
+GO
+INSERT [dbo].[local_ProvinceTypes] ([Id], [Name]) VALUES (2, N'Tỉnh')
+GO
+SET IDENTITY_INSERT [dbo].[local_ProvinceTypes] OFF
+GO
+
+SET IDENTITY_INSERT [dbo].[local_Provinces] ON 
 GO
 INSERT [dbo].[local_Provinces] ([Id], [Name], [Code], [TelephoneCode], [ZipCode], [ProvinceTypeId], [CountryId], [Sort], [IsVisible]) VALUES (1, N'Hà Nội', N'HNI', N'24', N'10000-14000', 1, 1, 1, 1)
 GO
