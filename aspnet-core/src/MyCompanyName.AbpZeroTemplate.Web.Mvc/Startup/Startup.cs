@@ -125,7 +125,7 @@ namespace MyCompanyName.AbpZeroTemplate.Web.Startup
                 // Hangfire (Enable to use Hangfire instead of default job manager)
                 services.AddHangfire(config =>
                 {
-                    config.UseSqlServerStorage(_appConfiguration.GetConnectionString("Default"));
+                    config.UseSqlServerStorage(_appConfiguration.GetConnectionString("AppDefault"));
                 });
 
                 services.AddHangfireServer();

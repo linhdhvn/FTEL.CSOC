@@ -59,21 +59,21 @@
       ]
     },
     {
-      "output": "view-resources/Areas/AppAreaName/Views/_Bundles/theme1-scripts.bundle.min.js",
+      "output": "view-resources/Areas/AppAreaName/Views/_Bundles/theme-default-scripts.bundle.min.js",
       "input": [
-        "wwwroot/metronic/themes/theme1/js/components/**/*.js",
-        "wwwroot/metronic/themes/theme1/js/layout/**/*.js",
-        "!wwwroot/metronic/themes/theme1/js/components/**/*.min.js",
-        "!wwwroot/metronic/themes/theme1/js/layout/**/*.min.js"
+        "wwwroot/metronic/themes/default/js/components/**/*.js",
+        "wwwroot/metronic/themes/default/js/layout/**/*.js",
+        "!wwwroot/metronic/themes/default/js/components/**/*.min.js",
+        "!wwwroot/metronic/themes/default/js/layout/**/*.min.js"
       ]
     },
     {
-      "output": "view-resources/Areas/AppAreaName/Views/_Bundles/theme2-scripts.bundle.min.js",
+      "output": "view-resources/Areas/AppAreaName/Views/_Bundles/theme-blue-scripts.bundle.min.js",
       "input": [
-        "wwwroot/metronic/themes/theme2/js/components/**/*.js",
-        "wwwroot/metronic/themes/theme2/js/layout/**/*.js",
-        "!wwwroot/metronic/themes/theme2/js/components/**/*.min.js",
-        "!wwwroot/metronic/themes/theme2/js/layout/**/*.min.js"
+        "wwwroot/metronic/themes/blue/js/components/**/*.js",
+        "wwwroot/metronic/themes/blue/js/layout/**/*.js",
+        "!wwwroot/metronic/themes/blue/js/components/**/*.min.js",
+        "!wwwroot/metronic/themes/blue/js/layout/**/*.min.js"
       ]
     },
     {
@@ -429,7 +429,7 @@
         "node_modules/select2/dist/css/select2.css",
         "node_modules/animate.css/animate.min.css",
         "node_modules/toastr/build/toastr.css",
-        "node_modules/jstree/dist/themes/theme1/style.css",
+        "node_modules/jstree/dist/themes/default/style.css",
         "node_modules/chartist/dist/chartist.css",
         "node_modules/socicon/css/socicon.css",
         "node_modules/@fortawesome/fontawesome-free/css/all.css",
@@ -439,15 +439,15 @@
       ]
     },
     {
-      "output": "Common/Styles/Themes/theme1/metronic-customize.min.css",
+      "output": "Common/Styles/Themes/default/metronic-customize.min.css",
       "input": [
-        "wwwroot/Common/Styles/Themes/theme1/metronic-customize.less"
+        "wwwroot/Common/Styles/Themes/default/metronic-customize.less"
       ]
     },
     {
-      "output": "Common/Styles/Themes/theme2/metronic-customize.min.css",
+      "output": "Common/Styles/Themes/blue/metronic-customize.min.css",
       "input": [
-        "wwwroot/Common/Styles/Themes/theme2/metronic-customize.less"
+        "wwwroot/Common/Styles/Themes/blue/metronic-customize.less"
       ]
     },
     {

@@ -11,7 +11,7 @@ namespace MyCompanyName.AbpZeroTemplate.Web.UiCustomization.Metronic
     public class Theme2UiCustomizer : UiThemeCustomizerBase, IUiCustomizer
     {
         public Theme2UiCustomizer(ISettingManager settingManager)
-            : base(settingManager, AppConsts.Theme2)
+            : base(settingManager, AppConsts.ThemeBlue)
         {
         }
 

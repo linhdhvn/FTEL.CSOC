@@ -38,7 +38,7 @@ namespace MyCompanyName.AbpZeroTemplate.Configuration
 
             return GetHostSettings().Union(GetTenantSettings()).Union(GetSharedSettings())
                 // theme settings
-                .Union(GetTheme1Settings())
+                .Union(GetThemeDefaultSettings())
                 .Union(GetTheme2Settings())
                 .Union(GetDashboardSettings())
                 .Union(GetExternalLoginProviderSettings());
@@ -195,9 +195,9 @@ namespace MyCompanyName.AbpZeroTemplate.Configuration
             return _appConfiguration[name] ?? defaultValue;
         }
 
-        private IEnumerable<SettingDefinition> GetTheme1Settings()
+        private IEnumerable<SettingDefinition> GetThemeDefaultSettings()
         {
-            var themeName = "theme1";
+            var themeName = "default";
 
             return new[]
             {
@@ -261,7 +261,7 @@ namespace MyCompanyName.AbpZeroTemplate.Configuration
 
         private IEnumerable<SettingDefinition> GetTheme2Settings()
         {
-            var themeName = "theme2";
+            var themeName = "blue";
 
             return new[]
             {

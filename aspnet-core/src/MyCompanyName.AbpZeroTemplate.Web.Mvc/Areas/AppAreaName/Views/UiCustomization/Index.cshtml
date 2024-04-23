@@ -24,24 +24,24 @@
             <div id="metronicThemes" class="mb-3">
                 <ul class="nav nav-pills" role="tablist">
                     <li class="nav-item">
-                        <a href="#theme1" class="d-inline-block nav-link @(Model.Theme == AppConsts.Theme1 ? "active" : "")" data-bs-toggle="tab" role="tab">
-                            <img src="@(ApplicationPath)Common/Images/metronic-themes/theme1.png" width="150" />
-                            <span class="theme-name">@L("Theme_" + AppConsts.Theme1.ToPascalCase())</span>
+                        <a href="#default" class="d-inline-block nav-link @(Model.Theme == AppConsts.ThemeDefault ? "active" : "")" data-bs-toggle="tab" role="tab">
+                            <img src="@(ApplicationPath)Common/Images/metronic-themes/default.png" width="150" />
+                            <span class="theme-name">@L("Theme_" + AppConsts.ThemeDefault.ToPascalCase())</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#theme2" class="d-inline-block nav-link @(Model.Theme == AppConsts.Theme2 ? "active" : "")" data-bs-toggle="tab" role="tab">
-                            <img src="@(ApplicationPath)Common/Images/metronic-themes/theme2.png" width="150" />
-                            <span class="theme-name">@L("Theme_" + AppConsts.Theme2.ToPascalCase())</span>
+                        <a href="#blue" class="d-inline-block nav-link @(Model.Theme == AppConsts.ThemeBlue ? "active" : "")" data-bs-toggle="tab" role="tab">
+                            <img src="@(ApplicationPath)Common/Images/metronic-themes/blue.png" width="150" />
+                            <span class="theme-name">@L("Theme_" + AppConsts.ThemeBlue.ToPascalCase())</span>
                         </a>
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <div id="theme1" class="tab-pane pt-5 theme-selection @(Model.Theme == AppConsts.Theme1 ? "active show" : "")">
-                        @await Html.PartialAsync("_Theme1Settings", Model.GetThemeSettings(AppConsts.Theme1))
+                    <div id="default" class="tab-pane pt-5 theme-selection @(Model.Theme == AppConsts.ThemeDefault ? "active show" : "")">
+                        @await Html.PartialAsync("_ThemeDefaultSettings", Model.GetThemeSettings(AppConsts.ThemeDefault))
                     </div>
-                    <div id="theme2" class="tab-pane pt-5 theme-selection @(Model.Theme == AppConsts.Theme2 ? "active show" : "")">
-                        @await Html.PartialAsync("_Theme2Settings", Model.GetThemeSettings(AppConsts.Theme2))
+                    <div id="blue" class="tab-pane pt-5 theme-selection @(Model.Theme == AppConsts.ThemeBlue ? "active show" : "")">
+                        @await Html.PartialAsync("_ThemeBlueSettings", Model.GetThemeSettings(AppConsts.ThemeBlue))
                     </div>
                 </div>
 

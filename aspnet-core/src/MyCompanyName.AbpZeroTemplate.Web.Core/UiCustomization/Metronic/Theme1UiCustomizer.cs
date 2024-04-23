@@ -17,7 +17,7 @@ namespace MyCompanyName.AbpZeroTemplate.Web.UiCustomization.Metronic
         public Theme1UiCustomizer(
             ISettingManager settingManager,
             ILocalizationManager localizationManager)
-            : base(settingManager, AppConsts.Theme1)
+            : base(settingManager, AppConsts.ThemeDefault)
         {
             _localizationManager = localizationManager;
         }

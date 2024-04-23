@@ -4,25 +4,25 @@ using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Layout;
 using MyCompanyName.AbpZeroTemplate.Web.Session;
 using MyCompanyName.AbpZeroTemplate.Web.Views;
 
-namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Views.Shared.Themes.Theme1.Components.AppAreaNameTheme1Brand
+namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Views.Shared.Themes.Theme2.Components.AppAreaNameThemeBlueFooter
 {
-    public class AppAreaNameTheme1BrandViewComponent : AbpZeroTemplateViewComponent
+    public class AppAreaNameThemeBlueFooterViewComponent : AbpZeroTemplateViewComponent
     {
         private readonly IPerRequestSessionCache _sessionCache;
 
-        public AppAreaNameTheme1BrandViewComponent(IPerRequestSessionCache sessionCache)
+        public AppAreaNameThemeBlueFooterViewComponent(IPerRequestSessionCache sessionCache)
         {
             _sessionCache = sessionCache;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var headerModel = new HeaderViewModel
+            var footerModel = new FooterViewModel
             {
                 LoginInformations = await _sessionCache.GetCurrentLoginInformationsAsync()
             };
 
-            return View(headerModel);
+            return View(footerModel);
         }
     }
 }

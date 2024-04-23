@@ -35,7 +35,7 @@ namespace MyCompanyName.AbpZeroTemplate.Web.UiCustomization
 
         private IUiCustomizer GetUiCustomizerInternal(string theme)
         {
-            if (theme.Equals(AppConsts.Theme2, StringComparison.InvariantCultureIgnoreCase))
+            if (theme.Equals(AppConsts.ThemeBlue, StringComparison.InvariantCultureIgnoreCase))
             {
                 return _serviceProvider.GetService<Theme2UiCustomizer>();
             }

@@ -34,8 +34,8 @@ namespace MyCompanyName.AbpZeroTemplate
 
         public static string UserIdentifier = "user_identifier";
 
-        public const string Theme1 = "theme1";
-        public const string Theme2 = "theme2";
+        public const string ThemeDefault = "themeDefault";
+        public const string ThemeBlue = "themeBlue";
 
         public static TimeSpan AccessTokenExpiration = TimeSpan.FromDays(1);
         public static TimeSpan RefreshTokenExpiration = TimeSpan.FromDays(365);

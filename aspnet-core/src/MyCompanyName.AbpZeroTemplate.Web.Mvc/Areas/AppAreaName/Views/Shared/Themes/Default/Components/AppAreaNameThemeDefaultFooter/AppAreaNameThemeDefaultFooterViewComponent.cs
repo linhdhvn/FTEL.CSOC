@@ -4,13 +4,13 @@ using MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Layout;
 using MyCompanyName.AbpZeroTemplate.Web.Session;
 using MyCompanyName.AbpZeroTemplate.Web.Views;
 
-namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Views.Shared.Themes.Theme2.Components.AppAreaNameTheme2Footer
+namespace MyCompanyName.AbpZeroTemplate.Web.Areas.AppAreaName.Views.Shared.Themes.Default.Components.AppAreaNameThemeDefaultFooter
 {
-    public class AppAreaNameTheme2FooterViewComponent : AbpZeroTemplateViewComponent
+    public class AppAreaNameThemeDefaultFooterViewComponent : AbpZeroTemplateViewComponent
     {
         private readonly IPerRequestSessionCache _sessionCache;
 
-        public AppAreaNameTheme2FooterViewComponent(IPerRequestSessionCache sessionCache)
+        public AppAreaNameThemeDefaultFooterViewComponent(IPerRequestSessionCache sessionCache)
         {
             _sessionCache = sessionCache;
         }
