@@ -922,8 +922,8 @@
 		<text name="NewRegistration_Edition_Description">{0} Edition</text>
 		<text name="Item">Item</text>
 		<text name="RecurringSubscriptionUpgradeNote">The price difference between your current edition and the one you are upgrading will be charged from your account.</text>
-		<text name="Theme_Theme1">Theme 1</text>
-		<text name="Theme_Theme2">Theme 2</text>
+		<text name="ThemeDefault">Theme 1</text>
+		<text name="ThemeBlue">Theme 2</text>
 		<text name="SelectATheme">Select a Theme</text>
 		<text name="QuickThemeSelection">Quick theme selection</text>
 		<text name="IsQuickThemeSelectEnabled">Is quick theme select enabled</text>

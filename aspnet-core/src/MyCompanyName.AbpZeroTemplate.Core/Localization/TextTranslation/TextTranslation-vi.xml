@@ -877,8 +877,8 @@
 		<text name="UiCustomization_PushFooter">Đẩy chân trang</text>
 		<text name="UiCustomization_Header">Thanh tiêu đề</text>
 		<text name="UiCustomization_Theme">Chủ đề</text>
-		<text name="Theme_Theme1">Chủ đề 1</text>
-		<text name="Theme_Theme2">Chủ đề 2</text>
+		<text name="ThemeDefault">Chủ đề 1</text>
+		<text name="ThemeBlue">Chủ đề 2</text>
 		<text name="UiCustomization_DarkMode">Chế độ tối</text>
 		<text name="ShowMenuSearchInput">Hiển thị thanh tìm kiếm trong menu</text>
 		<text name="VisualSettings">Cài đặt giao diện</text>

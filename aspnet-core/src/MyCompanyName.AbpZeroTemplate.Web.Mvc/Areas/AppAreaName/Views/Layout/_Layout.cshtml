@@ -114,7 +114,7 @@
     <!-- end::Theme Selection Panel -->
     <!--begin::Base Scripts -->
     <script abp-src="/view-resources/Areas/AppAreaName/Views/_Bundles/app-layout-libs.js" asp-append-version="true"></script>
-    <script abp-src="/view-resources/Areas/AppAreaName/Views/_Bundles/theme-@theme.BaseSettings.Theme.ToLowerInvariant()-scripts.bundle.js" asp-append-version="true"></script>
+    <script abp-src="/view-resources/Areas/AppAreaName/Views/_Bundles/@theme.BaseSettings.Theme.ToLowerInvariant()-scripts.bundle.js" asp-append-version="true"></script>
 
     <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
     <script src="@(ApplicationPath)ServiceProxies/GetAll?v=@(AppTimes.StartupTime.Ticks)" type="text/javascript"></script>

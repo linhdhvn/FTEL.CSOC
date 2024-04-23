@@ -59,7 +59,7 @@
       ]
     },
     {
-      "output": "view-resources/Areas/AppAreaName/Views/_Bundles/theme-default-scripts.bundle.min.js",
+      "output": "view-resources/Areas/AppAreaName/Views/_Bundles/themedefault-scripts.bundle.min.js",
       "input": [
         "wwwroot/metronic/themes/default/js/components/**/*.js",
         "wwwroot/metronic/themes/default/js/layout/**/*.js",
@@ -68,7 +68,7 @@
       ]
     },
     {
-      "output": "view-resources/Areas/AppAreaName/Views/_Bundles/theme-blue-scripts.bundle.min.js",
+      "output": "view-resources/Areas/AppAreaName/Views/_Bundles/themeblue-scripts.bundle.min.js",
       "input": [
         "wwwroot/metronic/themes/blue/js/components/**/*.js",
         "wwwroot/metronic/themes/blue/js/layout/**/*.js",

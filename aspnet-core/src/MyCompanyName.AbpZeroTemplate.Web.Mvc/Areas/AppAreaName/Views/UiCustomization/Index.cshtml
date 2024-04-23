@@ -26,13 +26,13 @@
                     <li class="nav-item">
                         <a href="#default" class="d-inline-block nav-link @(Model.Theme == AppConsts.ThemeDefault ? "active" : "")" data-bs-toggle="tab" role="tab">
                             <img src="@(ApplicationPath)Common/Images/metronic-themes/default.png" width="150" />
-                            <span class="theme-name">@L("Theme_" + AppConsts.ThemeDefault.ToPascalCase())</span>
+                            <span class="theme-name">@L(AppConsts.ThemeDefault.ToPascalCase())</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#blue" class="d-inline-block nav-link @(Model.Theme == AppConsts.ThemeBlue ? "active" : "")" data-bs-toggle="tab" role="tab">
                             <img src="@(ApplicationPath)Common/Images/metronic-themes/blue.png" width="150" />
-                            <span class="theme-name">@L("Theme_" + AppConsts.ThemeBlue.ToPascalCase())</span>
+                            <span class="theme-name">@L(AppConsts.ThemeBlue.ToPascalCase())</span>
                         </a>
                     </li>
                 </ul>

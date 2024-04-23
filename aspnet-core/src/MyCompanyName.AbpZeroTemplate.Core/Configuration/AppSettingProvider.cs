@@ -39,7 +39,7 @@ namespace MyCompanyName.AbpZeroTemplate.Configuration
             return GetHostSettings().Union(GetTenantSettings()).Union(GetSharedSettings())
                 // theme settings
                 .Union(GetThemeDefaultSettings())
-                .Union(GetTheme2Settings())
+                .Union(GetThemeBlueSettings())
                 .Union(GetDashboardSettings())
                 .Union(GetExternalLoginProviderSettings());
         }
@@ -93,7 +93,7 @@ namespace MyCompanyName.AbpZeroTemplate.Configuration
                 new SettingDefinition(AppSettings.Recaptcha.SiteKey, GetFromSettings("Recaptcha:SiteKey"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider),
                 new SettingDefinition(AppSettings.UiManagement.Theme,
-                    GetFromAppSettings(AppSettings.UiManagement.Theme, "default"),
+                    GetFromAppSettings(AppSettings.UiManagement.Theme, "themeDefault"),
                     clientVisibilityProvider: _visibleSettingClientVisibilityProvider,
                     scopes: SettingScopes.All),
 
@@ -197,7 +197,7 @@ namespace MyCompanyName.AbpZeroTemplate.Configuration
 
         private IEnumerable<SettingDefinition> GetThemeDefaultSettings()
         {
-            var themeName = "default";
+            var themeName = "themeDefault";
 
             return new[]
             {
@@ -259,9 +259,9 @@ namespace MyCompanyName.AbpZeroTemplate.Configuration
             };
         }
 
-        private IEnumerable<SettingDefinition> GetTheme2Settings()
+        private IEnumerable<SettingDefinition> GetThemeBlueSettings()
         {
-            var themeName = "blue";
+            var themeName = "themeBlue";
 
             return new[]
             {
