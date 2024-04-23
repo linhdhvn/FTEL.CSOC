@@ -20,7 +20,7 @@ namespace MyCompanyName.AbpZeroTemplate
         /// <summary>
         /// Default pass phrase for SimpleStringCipher decrypt/encrypt operations
         /// </summary>
-        public const string DefaultPassPhrase = "gsKxGZ012HLL3MI5";
+        public const string DefaultPassPhrase = "jft6qen1yatvyq2XEX";
 
         public const int ResizedMaxProfilePictureBytesUserFriendlyValue = 1024;
 
@@ -34,10 +34,8 @@ namespace MyCompanyName.AbpZeroTemplate
 
         public static string UserIdentifier = "user_identifier";
 
-        public const string ThemeDefault = "default";
+        public const string Theme1 = "theme1";
         public const string Theme2 = "theme2";
-        public const string Theme3 = "theme3";
-        public const string Theme4 = "theme4";
 
         public static TimeSpan AccessTokenExpiration = TimeSpan.FromDays(1);
         public static TimeSpan RefreshTokenExpiration = TimeSpan.FromDays(365);

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Abp;
 using Abp.Configuration;
 using Abp.Extensions;
@@ -45,8 +44,7 @@ namespace MyCompanyName.AbpZeroTemplate.Web.UiCustomization.Metronic
 
         protected async Task<T> GetSettingValueForTenantAsync<T>(string settingName, int tenantId) where T : struct
         {
-            return (await SettingManager.GetSettingValueForTenantAsync(ThemeName + "." + settingName, tenantId))
-                .To<T>();
+            return (await SettingManager.GetSettingValueForTenantAsync(ThemeName + "." + settingName, tenantId)).To<T>();
         }
 
         protected async Task ChangeSettingForUserAsync(UserIdentifier user, string name, string value)
@@ -72,13 +70,13 @@ namespace MyCompanyName.AbpZeroTemplate.Web.UiCustomization.Metronic
         protected virtual async Task ResetDarkModeSettingsAsync(UserIdentifier user)
         {
             string applicationDefault;
+
             if (user.TenantId.HasValue)
             {
                 applicationDefault = await GetSettingValueForTenantAsync(AppSettings.UiManagement.DarkMode, user.TenantId.Value);
             }
             else
             {
-
                 applicationDefault = await GetSettingValueForApplicationAsync(AppSettings.UiManagement.DarkMode);
             }
 

@@ -6,7 +6,7 @@
 }
 
 @section Styles {
-    <link rel="stylesheet" abp-href="/view-resources/Areas/AppAreaName/Views/Maintenance/Index.css" asp-append-version="true"/>
+    <link rel="stylesheet" abp-href="/view-resources/Areas/AppAreaName/Views/Maintenance/Index.css" asp-append-version="true" />
 }
 
 @section Scripts {
@@ -52,17 +52,17 @@
                             <div class="col-xl-12">
                                 <table class="table align-middle table-row-dashed fs-6 gy-5 dataTable dtr-inline no-footer">
                                     <tbody>
-                                    @foreach (var cache in Model.Caches)
-                                    {
-                                        <tr>
-                                            <td>
-                                                <span>@cache.Name</span>
-                                                <button class="btn btn-primary btn-sm pull-right btn-clear-cache" data-cache-name="@cache.Name">
-                                                    <i class="fa fa-recycle"></i> @L("Clear")
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    }
+                                        @foreach (var cache in Model.Caches)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <span>@cache.Name</span>
+                                                    <button class="btn btn-primary btn-sm pull-right btn-clear-cache" data-cache-name="@cache.Name">
+                                                        <i class="fa fa-recycle"></i> @L("Clear")
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        }
                                     </tbody>
                                 </table>
                             </div>

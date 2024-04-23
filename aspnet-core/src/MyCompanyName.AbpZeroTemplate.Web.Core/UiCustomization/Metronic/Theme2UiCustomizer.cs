@@ -38,6 +38,7 @@ namespace MyCompanyName.AbpZeroTemplate.Web.UiCustomization.Metronic
             };
 
             settings.BaseSettings.Theme = ThemeName;
+            settings.BaseSettings.Layout.LayoutType = "fluid";
             settings.BaseSettings.Menu.Position = "top";
             settings.BaseSettings.Menu.AsideSkin = "dark";
             

@@ -40,17 +40,7 @@ namespace MyCompanyName.AbpZeroTemplate.Web.UiCustomization
                 return _serviceProvider.GetService<Theme2UiCustomizer>();
             }
 
-            if (theme.Equals(AppConsts.Theme3, StringComparison.InvariantCultureIgnoreCase))
-            {
-                return _serviceProvider.GetService<Theme3UiCustomizer>();
-            }
-
-            if (theme.Equals(AppConsts.Theme4, StringComparison.InvariantCultureIgnoreCase))
-            {
-                return _serviceProvider.GetService<Theme4UiCustomizer>();
-            }
-
-            return _serviceProvider.GetService<ThemeDefaultUiCustomizer>();
+            return _serviceProvider.GetService<Theme1UiCustomizer>();
         }
     }
 }
